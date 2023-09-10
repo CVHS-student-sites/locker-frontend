@@ -66,6 +66,8 @@
         padding-bottom: 32px;
         background-color: #313338;
         color: #fbfdfe;
+        background: rgb(2,0,36);
+        background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);
     }
 
     .login-header {
@@ -156,7 +158,8 @@
 
     @media only screen and (max-width: 600px) {
         .main{
-            background-color: #313338;
+            background: rgb(2,0,36);
+            background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);
         }
 
         .logo {
@@ -172,6 +175,7 @@
             width: 100vw;
             box-shadow: none;
             padding-bottom: 0;
+            background: unset;
         }
 
         .login-form {
