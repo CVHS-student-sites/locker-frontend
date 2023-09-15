@@ -95,7 +95,7 @@
     }
 
     .forgot {
-        color: #0a66c2;
+        color: #4ca6ff;
     }
 
     input[type=text],
@@ -153,14 +153,14 @@
     }
 
     .regs {
-        color: #0a66c2;
+        color: #4ca6ff;
         cursor: pointer;
     }
 
     @media only screen and (max-width: 600px) {
         .main{
             background: rgb(2,0,36);
-            background: linear-gradient(14deg, rgb(9, 3, 114) 0%, rgb(33, 97, 239) 100%);
+            background: linear-gradient(14deg, rgb(9, 3, 121) 0%, rgb(33, 97, 239) 100%);
         }
 
         .logo {
