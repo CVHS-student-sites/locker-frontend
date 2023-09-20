@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4058e824-ca44-447a-a4a6-78a81bea9f37" name="Changes" comment="cool color blue">
+      <change afterPath="$PROJECT_DIR$/src/routes/admin/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/login/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/login/+page.svelte" afterDir="false" />
     </list>
@@ -17,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="+page" />
         <option value="Topnav" />
+        <option value="+page" />
       </list>
     </option>
   </component>
@@ -86,6 +87,8 @@
       <workItem from="1694459715638" duration="464000" />
       <workItem from="1694460632980" duration="345000" />
       <workItem from="1694627406421" duration="106000" />
+      <workItem from="1694801978741" duration="2157000" />
+      <workItem from="1695231172573" duration="5131000" />
     </task>
     <task id="LOCAL-00001" summary="v1">
       <option name="closed" value="true" />
@@ -119,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694319649037</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="cool color blue">
+      <option name="closed" value="true" />
+      <created>1694801988436</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694801988436</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
