@@ -1,52 +1,38 @@
 <script>
-    // import Topnav from "$lib/components/Topnav.svelte";
-    import { goto } from '$app/navigation';
-    let username = "";
-    let password = "";
+    import { createEventDispatcher } from "svelte";
+    import { fade } from 'svelte/transition';
 
-    async function login() {
-        const response = await fetch('https://locker-api.cvapps.net/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
+    const dispatch = createEventDispatcher();
 
-                password: password,
-                username: username
-            }),
-            credentials: 'include', // Send and store cookies
+    let studentId;
+
+    function submit() {
+        // alert(studentId);
+        // dispatch("test");
+        dispatch("message", {
+            studentId: studentId,
         });
-
-        if (response.ok) {
-            // Redirect or perform other actions upon successful login
-            await goto('/admin');
-        } else {
-            // Handle login error
-            alert('error')
-        }
+        //TODO make the db route for this
     }
 
-
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            submit();
+        }
+    }
 </script>
 
 <svelte:head>
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+        rel="stylesheet"
+    />
 </svelte:head>
 
+
 <style>
-
-    .main {
-        font-family: 'Montserrat', sans-serif;
-        background-color: #313338;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        width: 100vw;
-    }
-
     .top {
         position: absolute;
         left: 30px;
@@ -70,39 +56,41 @@
         color: #fbfdfe;
     }
 
-
-    .login {
+    .lookup {
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
         align-items: center;
         justify-content: center;
-        row-gap: 30px;
-
+        /* row-gap: 30px; */
     }
 
-    .login-cont {
+    .lookup-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
         border-radius: 8px;
         /*border: 2px solid black;*/
         width: 416px;
-        box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15),
+            0 0 18px rgba(0, 0, 0, 0.15);
         padding-bottom: 32px;
         background-color: #313338;
         color: #fbfdfe;
         background: rgb(2, 0, 36);
         /*background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);*/
-        background: linear-gradient(14deg, rgb(9, 3, 114) 0%, rgb(33, 97, 239) 100%);
+        background: linear-gradient(
+            14deg,
+            rgb(17, 9, 157) 0%,
+            rgb(40, 108, 255) 100%
+        );
     }
 
-    .login-header {
-
+    .lookup-header {
     }
 
-    .login-form {
+    .lookup-form {
         display: flex;
         justify-content: center;
 
@@ -111,7 +99,6 @@
         /*align-items: center;*/
         row-gap: 10px;
     }
-
 
     label {
         color: #fbfdfe;
@@ -125,8 +112,8 @@
         color: #4ca6ff;
     }
 
-    input[type=text],
-    input[type=password] {
+    input[type="text"],
+    input[type="password"] {
         width: 100%;
         padding: 0px 8px 0px 8px;
         box-sizing: border-box;
@@ -140,7 +127,6 @@
         font-size: 14px;
     }
 
-
     input:focus {
         outline: none;
         border-color: grey;
@@ -152,10 +138,10 @@
         /*background-color: #eaeaea;*/
     }
 
-    .submit {
+    .search {
         width: 100%;
         height: 35px;
-        background-color: #3f51b5;
+        background-color: #32353b;
         border: none;
         border-radius: 4px;
         font-weight: bold;
@@ -165,7 +151,7 @@
         color: #fbfdfe;
     }
 
-    .submit:hover {
+    .search:hover {
         background-color: rgb(146, 192, 226);
     }
 
@@ -189,7 +175,11 @@
     @media only screen and (max-width: 600px) {
         .main {
             background: rgb(2, 0, 36);
-            background: linear-gradient(14deg, rgb(9, 3, 121) 0%, rgb(33, 97, 239) 100%);
+            background: linear-gradient(
+                14deg,
+                rgb(9, 3, 121) 0%,
+                rgb(33, 97, 239) 100%
+            );
         }
 
         .logo {
@@ -197,51 +187,54 @@
             /*left: 20px;*/
         }
 
-        .login {
+        .lookup {
             row-gap: 30px;
         }
 
-        .login-cont {
+        .lookup-cont {
             width: 100vw;
             box-shadow: none;
             padding-bottom: 0;
             background: unset;
         }
 
-        .login-form {
+        .lookup-form {
             width: 90vw;
         }
 
-        input[type=text],
-        input[type=password] {
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-
         }
     }
-
 </style>
-<div class="main">
+
+
+<div class="main" out:fade={{ delay: 50, duration: 300 }}>
     <div class="top">
-        <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png"></a>
+        <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png" /></a>
         <div class="top-text">CVHS Locker System</div>
     </div>
 
-    <div class="login">
+    <div class="lookup">
+        <div class="lookup-cont">
+            <h2 class="lookup-header">Find your Locker</h2>
 
-        <div class="login-cont">
-            <h2 class="login-header">Sign in</h2>
+            <div class="lookup-form">
+                <label for="studentId">Student ID</label>
+                <input
+                    id="studentId"
+                    name="sutdentId"
+                    placeholder="Enter student ID"
+                    type="text"
+                    bind:value={studentId}
+                    on:keydown={handleKeyPress}
+                />
 
-            <div class="login-form">
-                <label for="username">Username</label>
-                <input id="username" name="username" required type="text" bind:value={username}>
-
-                <label for="password">Password</label>
-                <input id="password" name="password" required type="password" bind:value={password}>
-
-                <button class="submit" on:click={login}>Sign in</button>
+                <button class="search" type="submit" on:click={submit}
+                    >Search</button
+                >
             </div>
-
         </div>
-
     </div>
 </div>
