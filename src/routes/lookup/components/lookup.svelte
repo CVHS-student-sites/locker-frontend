@@ -210,13 +210,13 @@
 </style>
 
 
-<div class="main" out:fade={{ delay: 50, duration: 300 }}>
+<div class="main" >
     <div class="top">
         <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png" /></a>
         <div class="top-text">CVHS Locker System</div>
     </div>
 
-    <div class="lookup">
+    <div class="lookup" out:fade={{ delay: 50, duration: 300 }}>
         <div class="lookup-cont">
             <h2 class="lookup-header">Find your Locker</h2>
 
