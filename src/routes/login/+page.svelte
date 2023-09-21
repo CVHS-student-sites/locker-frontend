@@ -152,10 +152,10 @@
 
     .submit {
         width: 100%;
-        height: 50px;
+        height: 35px;
         background-color: #3f51b5;
         border: none;
-        border-radius: 10px;
+        border-radius: 4px;
         font-weight: bold;
         margin-top: 10px;
         cursor: pointer;
@@ -236,20 +236,9 @@
                 <label for="password">Password</label>
                 <input id="password" name="password" required type="password" bind:value={password}>
 
-                <a href="#">
-                    <div class="forgot">Forgot Password?</div>
-                </a>
-
                 <button class="submit" on:click={login}>Sign in</button>
             </div>
 
-        </div>
-
-        <div class="bottom-text">
-            <div class="reg">Need an account?</div>
-            <a href="/register">
-                <div class="regs">Register</div>
-            </a>
         </div>
 
     </div>
