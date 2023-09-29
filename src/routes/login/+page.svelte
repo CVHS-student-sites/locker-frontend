@@ -135,14 +135,14 @@
         height: 35px;
         line-height: 35px;
         color: #fbfdfe;
-        border: 2px solid #3f51b5;
+        border: 2px solid #005cb3;
         /* border: none; */
-        background-color: #1e1f22;
+        background-color: #17171c;
+        
         border-radius: 4px;
         transition-duration: 50ms;
         font-size: 14px;
     }
-
 
     input:focus {
         outline: none;
