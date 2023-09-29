@@ -40,7 +40,7 @@
 
     .main {
         font-family: 'Montserrat', sans-serif;
-        background-color: #313338;
+        background-color: #101014;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -67,7 +67,7 @@
 
     .top-text {
         font-size: 18px;
-        color: #fbfdfe;
+        color: #d6d6d6;
     }
 
 
@@ -92,11 +92,13 @@
         box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);
         padding-bottom: 32px;
         background-color: #313338;
-        color: #fbfdfe;
+        color: #d6d6d6;
         background: rgb(2, 0, 36);
         /*background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);*/
-        background: linear-gradient(14deg, rgb(9, 3, 114) 0%, rgb(33, 97, 239) 100%);
-    }
+        /*background: linear-gradient(14deg, #182435 0%, #577db2 100%);*/
+        /* background-color:#131d2a; */
+        background-color: #1b2c42;
+        }
 
     .login-header {
 
@@ -134,6 +136,7 @@
         line-height: 35px;
         color: #fbfdfe;
         border: 2px solid #3f51b5;
+        /* border: none; */
         background-color: #1e1f22;
         border-radius: 4px;
         transition-duration: 50ms;
@@ -143,19 +146,19 @@
 
     input:focus {
         outline: none;
-        border-color: grey;
+        border-color: #577db2;
         /*background-color: #eaeaea;*/
     }
 
     input:hover {
-        border-color: grey;
+        border-color: #577db2;
         /*background-color: #eaeaea;*/
     }
 
     .submit {
         width: 100%;
         height: 35px;
-        background-color: #3f51b5;
+        background-color: #0082ff;
         border: none;
         border-radius: 4px;
         font-weight: bold;
@@ -166,7 +169,7 @@
     }
 
     .submit:hover {
-        background-color: rgb(146, 192, 226);
+        background-color: #577db2;
     }
 
     .bottom-text {
@@ -188,8 +191,8 @@
 
     @media only screen and (max-width: 600px) {
         .main {
-            background: rgb(2, 0, 36);
-            background: linear-gradient(14deg, rgb(9, 3, 121) 0%, rgb(33, 97, 239) 100%);
+            /* background: rgb(2, 0, 36); */
+            /* background: linear-gradient(14deg, rgb(9, 3, 121) 0%, rgb(33, 97, 239) 100%); */
         }
 
         .logo {
