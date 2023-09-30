@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4058e824-ca44-447a-a4a6-78a81bea9f37" name="Changes" comment="cool color blue">
+    <list default="true" id="4058e824-ca44-447a-a4a6-78a81bea9f37" name="Changes" comment="fixed some things">
+      <change afterPath="$PROJECT_DIR$/static/VBDS-mlgl.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/login/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/login/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/lookup/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/lookup/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/lookup/components/lookup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/lookup/views/lookup.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/lookup/components/show.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/lookup/views/show.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/lookup/views/lookup.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/lookup/views/lookup.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/lookup/views/show.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/lookup/views/show.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/register/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/register/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/CVHS-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/CVHS-logo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696032148919</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed some things">
+      <option name="closed" value="true" />
+      <created>1696035341701</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696035341701</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +177,7 @@
     <MESSAGE value="v2" />
     <MESSAGE value="cool color" />
     <MESSAGE value="cool color blue" />
-    <option name="LAST_COMMIT_MESSAGE" value="cool color blue" />
+    <MESSAGE value="fixed some things" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some things" />
   </component>
 </project>

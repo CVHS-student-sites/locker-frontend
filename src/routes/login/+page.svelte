@@ -78,7 +78,7 @@
     }
 
     .logo {
-        height: 65px;
+        height: 70px;
         cursor: pointer;
     }
 
@@ -104,7 +104,7 @@
         border-radius: 8px;
         /*border: 2px solid black;*/
         /*width: 416px;*/
-        box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);
+        /*box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);*/
         padding: 32px;
         color: green;
 
@@ -249,7 +249,7 @@
     <div class="login">
 
         <div class="login-cont">
-            <div class="login-header">Sign in</div>
+            <div class="login-header">Admin Login</div>
 
             <div class="login-form" on:keydown={handleKeyPress}>
                 <label for="username">Username</label>

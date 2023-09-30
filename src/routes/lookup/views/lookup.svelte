@@ -66,7 +66,7 @@
     }
 
     .logo {
-        height: 65px;
+        height: 70px;
         cursor: pointer;
     }
 
@@ -92,7 +92,6 @@
         border-radius: 8px;
         /*border: 2px solid black;*/
         /*width: 416px;*/
-        box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);
         padding: 32px;
         color: green;
 
@@ -105,7 +104,7 @@
     .login-header {
         font-size: 24px;
         color: var(--text);
-        margin-bottom: 12px;
+        margin-bottom: 20px;
     }
 
     .login-form {
@@ -240,8 +239,8 @@
             <div class="login-header">Lookup Locker</div>
 
             <div class="login-form" on:keydown={handleKeyPress}>
-                <label for="username">Student ID Number</label>
-                <input bind:value={username} id="username" name="username" required type="text">
+<!--                <label for="username">Student ID Number</label>-->
+                <input bind:value={username} id="username" name="username" placeholder="Student ID" required type="text">
 
                 <button class="submit" on:click={submit}>Search</button>
             </div>

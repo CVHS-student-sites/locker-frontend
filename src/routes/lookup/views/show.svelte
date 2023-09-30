@@ -65,7 +65,7 @@
     }
 
     .logo {
-        height: 65px;
+        height: 70px;
         cursor: pointer;
     }
 
