@@ -1,26 +1,61 @@
 <script>
+
+
     export let id;
 
     $: test = id;
+
+    // import Topnav from "$lib/components/Topnav.svelte";
+    import {goto} from '$app/navigation';
+
+    let username = "";
+    let password = "";
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            // Enter key was pressed, do something
+            submit();
+        }
+    }
+
+
+    import { createEventDispatcher } from "svelte";
     import { fade } from 'svelte/transition';
-    
+
+    const dispatch = createEventDispatcher();
+
+
 </script>
 
 <svelte:head>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-        rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </svelte:head>
 
 <style>
+    :root {
+        --text: #d6d6d6;
+        --background: #101014;
+        --primary: #0084ff;
+        --secondary: #1b2c42;
+        --accent: #577db2;
+    }
+
+
+    .main {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--background);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
+
     .top {
         position: absolute;
         left: 30px;
         top: 20px;
-        /*background-color: green;*/
 
         display: flex;
         justify-content: left;
@@ -36,44 +71,43 @@
 
     .top-text {
         font-size: 18px;
-        color: #fbfdfe;
+        color: var(--text);
     }
 
-    .lookup {
+    .login {
         display: flex;
         flex-direction: column;
-        height: 100vh;
-        width: 100vw;
+        flex-grow: 1;
+        width: 100%;
         align-items: center;
         justify-content: center;
-        /* row-gap: 30px; */
+        row-gap: 30px;
     }
 
-    .lookup-cont {
+    .login-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
         border-radius: 8px;
         /*border: 2px solid black;*/
-        width: 416px;
-        box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15),
-            0 0 18px rgba(0, 0, 0, 0.15);
-        padding-bottom: 32px;
-        background-color: #313338;
-        color: #fbfdfe;
-        background: rgb(2, 0, 36);
+        /*width: 416px;*/
+        box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);
+        padding: 32px;
+        color: green;
+
         /*background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);*/
-        background: linear-gradient(
-            14deg,
-            rgb(17, 9, 157) 0%,
-            rgb(40, 108, 255) 100%
-        );
+        /*background: linear-gradient(14deg, #182435 0%, #577db2 100%);*/
+        /* background-color:#131d2a; */
+        background-color: #1b2c42;
     }
 
-    .lookup-header {
+    .login-header {
+        font-size: 24px;
+        color: var(--text);
+        margin-bottom: 12px;
     }
 
-    .lookup-form {
+    .login-form {
         display: flex;
         justify-content: center;
 
@@ -83,8 +117,10 @@
         row-gap: 10px;
     }
 
+
     label {
-        color: #fbfdfe;
+        color: var(--text);
+        line-height: 20px;
     }
 
     a {
@@ -95,16 +131,18 @@
         color: #4ca6ff;
     }
 
-    input[type="text"],
-    input[type="password"] {
+    input[type=text],
+    input[type=password] {
         width: 100%;
         padding: 0px 8px 0px 8px;
         box-sizing: border-box;
         height: 35px;
         line-height: 35px;
-        color: #fbfdfe;
-        border: 2px solid #3f51b5;
-        background-color: #1e1f22;
+        color: var(--text);
+        border: 2px solid #005cb3;
+        /* border: none; */
+        background-color: #17171c;
+
         border-radius: 4px;
         transition-duration: 50ms;
         font-size: 14px;
@@ -112,30 +150,30 @@
 
     input:focus {
         outline: none;
-        border-color: grey;
+        border-color: #577db2;
         /*background-color: #eaeaea;*/
     }
 
     input:hover {
-        border-color: grey;
+        border-color: #577db2;
         /*background-color: #eaeaea;*/
     }
 
-    .search {
+    .submit {
         width: 100%;
         height: 35px;
-        background-color: #32353b;
+        background-color: #0082ff;
         border: none;
         border-radius: 4px;
         font-weight: bold;
         margin-top: 10px;
         cursor: pointer;
         transition-duration: 150ms;
-        color: #fbfdfe;
+        color: var(--text);
     }
 
-    .search:hover {
-        background-color: rgb(146, 192, 226);
+    .submit:hover {
+        background-color: #577db2;
     }
 
     .bottom-text {
@@ -157,12 +195,8 @@
 
     @media only screen and (max-width: 600px) {
         .main {
-            background: rgb(2, 0, 36);
-            background: linear-gradient(
-                14deg,
-                rgb(9, 3, 121) 0%,
-                rgb(33, 97, 239) 100%
-            );
+            /* background: rgb(2, 0, 36); */
+            /* background: linear-gradient(14deg, rgb(9, 3, 121) 0%, rgb(33, 97, 239) 100%); */
         }
 
         .logo {
@@ -170,37 +204,38 @@
             /*left: 20px;*/
         }
 
-        .lookup {
+        .login {
             row-gap: 30px;
         }
 
-        .lookup-cont {
+        .login-cont {
             width: 100vw;
             box-shadow: none;
-            padding-bottom: 0;
+            padding: 0;
             background: unset;
         }
 
-        .lookup-form {
+        .login-form {
             width: 90vw;
         }
 
-        input[type="text"],
-        input[type="password"] {
+        input[type=text],
+        input[type=password] {
             width: 100%;
+
         }
     }
-</style>
 
-<div class="main" >
+</style>
+<div class="main">
     <div class="top">
-        <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png" /></a>
+        <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png"></a>
         <div class="top-text">CVHS Locker System</div>
     </div>
 
-    <div class="lookup" transition:fade={{ delay: 50, duration: 300 }}>
-        <div class="lookup-cont">
-            <div>{test}</div>
-        </div>
+    <div class="login">
+
+        <h1>{id}</h1>
+
     </div>
 </div>

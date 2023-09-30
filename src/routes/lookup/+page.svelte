@@ -1,7 +1,7 @@
 <script>
 
-import Lookup from "./components/lookup.svelte";
-import Show from "./components/show.svelte";
+import Lookup from "./views/lookup.svelte";
+import Show from "./views/show.svelte";
 import { fade } from 'svelte/transition';
 
 let selected = Lookup;
@@ -32,7 +32,7 @@ function handleMessage(event) {
         width: 100vw;
     }
 
-  
+
 
 </style>
 <div class="main">

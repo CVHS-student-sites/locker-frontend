@@ -8,33 +8,21 @@
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
             // Enter key was pressed, do something
-            login();
+            submit();
         }
     }
 
 
-    async function login() {
-        alert("yoyo")
-        const response = await fetch('https://locker-api.cvapps.net/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
+    import { createEventDispatcher } from "svelte";
+    import { fade } from 'svelte/transition';
 
-                password: password,
-                username: username
-            }),
-            credentials: 'include', // Send and store cookies
+    const dispatch = createEventDispatcher();
+
+
+    async function submit() {
+        dispatch("message", {
+            studentId: username,
         });
-
-        if (response.ok) {
-            // Redirect or perform other actions upon successful login
-            await goto('/admin');
-        } else {
-            // Handle login error
-            alert('error');
-        }
     }
 
 
@@ -249,16 +237,13 @@
     <div class="login">
 
         <div class="login-cont">
-            <div class="login-header">Sign in</div>
+            <div class="login-header">Lookup Locker</div>
 
             <div class="login-form" on:keydown={handleKeyPress}>
-                <label for="username">Username</label>
+                <label for="username">Student ID Number</label>
                 <input bind:value={username} id="username" name="username" required type="text">
 
-                <label for="password">Password</label>
-                <input bind:value={password} id="password" name="password" required type="password">
-
-                <button class="submit" on:click={login}>Sign in</button>
+                <button class="submit" on:click={submit}>Search</button>
             </div>
 
         </div>
