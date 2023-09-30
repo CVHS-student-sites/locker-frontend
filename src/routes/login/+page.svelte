@@ -1,6 +1,7 @@
 <script>
     // import Topnav from "$lib/components/Topnav.svelte";
-    import { goto } from '$app/navigation';
+    import {goto} from '$app/navigation';
+
     let username = "";
     let password = "";
 
@@ -37,10 +38,18 @@
 </svelte:head>
 
 <style>
+    :root {
+        --text: #d6d6d6;
+        --background: #101014;
+        --primary: #0084ff;
+        --secondary: #1b2c42;
+        --accent: #577db2;
+    }
+
 
     .main {
         font-family: 'Montserrat', sans-serif;
-        background-color: #101014;
+        background-color: var(--background);
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -51,7 +60,6 @@
         position: absolute;
         left: 30px;
         top: 20px;
-        /*background-color: green;*/
 
         display: flex;
         justify-content: left;
@@ -67,9 +75,8 @@
 
     .top-text {
         font-size: 18px;
-        color: #d6d6d6;
+        color: var(--text);
     }
-
 
     .login {
         display: flex;
@@ -79,7 +86,6 @@
         align-items: center;
         justify-content: center;
         row-gap: 30px;
-
     }
 
     .login-cont {
@@ -88,20 +94,21 @@
         flex-direction: column;
         border-radius: 8px;
         /*border: 2px solid black;*/
-        width: 416px;
+        /*width: 416px;*/
         box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);
-        padding-bottom: 32px;
-        background-color: #313338;
-        color: #d6d6d6;
-        background: rgb(2, 0, 36);
+        padding: 32px;
+        color: green;
+
         /*background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);*/
         /*background: linear-gradient(14deg, #182435 0%, #577db2 100%);*/
         /* background-color:#131d2a; */
         background-color: #1b2c42;
-        }
+    }
 
     .login-header {
-
+        font-size: 24px;
+        color: var(--text);
+        margin-bottom: 12px;
     }
 
     .login-form {
@@ -116,7 +123,8 @@
 
 
     label {
-        color: #fbfdfe;
+        color: var(--text);
+        line-height: 20px;
     }
 
     a {
@@ -134,11 +142,11 @@
         box-sizing: border-box;
         height: 35px;
         line-height: 35px;
-        color: #fbfdfe;
+        color: var(--text);
         border: 2px solid #005cb3;
         /* border: none; */
         background-color: #17171c;
-        
+
         border-radius: 4px;
         transition-duration: 50ms;
         font-size: 14px;
@@ -165,7 +173,7 @@
         margin-top: 10px;
         cursor: pointer;
         transition-duration: 150ms;
-        color: #fbfdfe;
+        color: var(--text);
     }
 
     .submit:hover {
@@ -208,6 +216,7 @@
             width: 100vw;
             box-shadow: none;
             padding-bottom: 0;
+            padding: 0;
             background: unset;
         }
 
@@ -232,14 +241,14 @@
     <div class="login">
 
         <div class="login-cont">
-            <h2 class="login-header">Sign in</h2>
+            <div class="login-header">Sign in</div>
 
             <div class="login-form">
                 <label for="username">Username</label>
-                <input id="username" name="username" required type="text" bind:value={username}>
+                <input bind:value={username} id="username" name="username" required type="text">
 
                 <label for="password">Password</label>
-                <input id="password" name="password" required type="password" bind:value={password}>
+                <input bind:value={password} id="password" name="password" required type="password">
 
                 <button class="submit" on:click={login}>Sign in</button>
             </div>
