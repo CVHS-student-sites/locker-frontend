@@ -254,22 +254,22 @@
         <div class="login-cont">
             <div class="login-header">Register for a locker</div>
 
-            <div class="login-form" on:keydown={handleKeyPress}>
+            <form class="login-form" on:keydown={handleKeyPress}>
 
-                <label>Student one</label>
+                <label>Student 1</label>
                 <input bind:value={oneUsername} id="1username" name="1username" placeholder="Full Name" required
                        type="text">
                 <input bind:value={onePassword} id="1studentId" name="1studentId" placeholder="Student ID" required
                        type="text">
 
-                <label>Student two</label>
+                <label>Student 2</label>
                 <input bind:value={twoUsername} id="2username" name="2username" placeholder="Full Name" required
                        type="text">
                 <input bind:value={twoPassword} id="2studentId" name="2studentId" placeholder="Student ID" required
                        type="text">
 
                 <button class="submit" on:click={login}>Next Page</button>
-            </div>
+            </form>
 
         </div>
 
