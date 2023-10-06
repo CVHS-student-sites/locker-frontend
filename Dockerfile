@@ -16,6 +16,9 @@ COPY . .
 # Build the node server with vite
 RUN npm run build
 
+# Set the environment variable for the port
+ENV PORT=4000
+
 # Expose the port that your app will run on (change as needed)
 EXPOSE 4000
 
