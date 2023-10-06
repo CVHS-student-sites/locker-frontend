@@ -16,6 +16,7 @@ function handleMessage(event) {
 </script>
 
 <svelte:head>
+    <title>Lookup</title>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
