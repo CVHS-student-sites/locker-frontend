@@ -20,4 +20,4 @@ RUN npm run build
 EXPOSE 4000
 
 # Start the node.js server
-CMD ["node", "build"]
+CMD ["PORT=4000", "node", "build"]
