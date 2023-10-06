@@ -10,14 +10,14 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 
-# Build the node server
-RUN npm run build
-
 # Copy the rest of the application code to the container
 COPY . .
+
+# Build the node server with vite
+RUN npm run build
 
 # Expose the port that your app will run on (change as needed)
 EXPOSE 3000
 
-# Define the command to start your Node.js application
+# Start the node.js server
 CMD ["node", "build"]
