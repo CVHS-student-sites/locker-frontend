@@ -19,8 +19,8 @@ jobs:
         image-name: cvhs-locker-frontend # Provide only Docker image name, tag will be automatically set to latest
         dockerfile: Dockerfile # Provide custom Dockerfile name
 
-    - name: Notify Server
-      if: ${{ success() }} # Run this step only if previous steps were successful
-      run: |
-        WEBHOOK_URL="https://hook.cvapps.net/webhook"
-        curl -X POST $WEBHOOK_URL
+    # - name: Notify Server
+    #   if: ${{ success() }} # Run this step only if previous steps were successful
+    #   run: |
+    #     WEBHOOK_URL="https://hook.cvapps.net/webhook"
+    #     curl -X POST $WEBHOOK_URL
