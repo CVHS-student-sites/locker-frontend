@@ -23,4 +23,4 @@ ENV PORT=4000
 EXPOSE 4000
 
 # Start the node.js server
-CMD ["PORT=4000", "node", "build"]
+CMD ["node", "build"]
