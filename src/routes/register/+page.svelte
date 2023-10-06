@@ -46,6 +46,11 @@
 
 <svelte:head>
     <title>Register</title>
+
+    <meta name="description" content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized.">
+    <meta name="keywords" content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment">
+    <meta name="author" content="cvapps.net">
+
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">

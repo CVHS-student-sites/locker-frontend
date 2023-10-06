@@ -17,6 +17,11 @@ function handleMessage(event) {
 
 <svelte:head>
     <title>Lookup</title>
+
+    <meta name="description" content="Find your locker at Crescenta Valley High School (CVHS) with our locker lookup tool. Easily locate your locker and get organized for the school year.">
+    <meta name="keywords" content="Crescenta Valley High School, CVHS, locker lookup, locker search, school locker">
+    <meta name="author" content="cvapps.net">
+
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
