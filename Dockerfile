@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Expose the port that your app will run on (change as needed)
-EXPOSE 3000
+EXPOSE 4000
 
 # Start the node.js server
 CMD ["node", "build"]
