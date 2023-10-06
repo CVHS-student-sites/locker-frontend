@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 
+# Build the node server
+RUN npm run build
+
 # Copy the rest of the application code to the container
 COPY . .
 
@@ -17,6 +20,4 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to start your Node.js application
-CMD ["npm", "run", "sync-prod"]
-
-CMD ["npm", "run", "start-prod"]
+CMD ["node", "build"]
