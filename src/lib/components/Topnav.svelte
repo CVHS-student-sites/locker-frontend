@@ -113,7 +113,6 @@
         /* background-color: #1b2c42; */
         justify-content: space-between;
         flex-direction: row;
-        /* gap: 15px; */
         height: 60px;
         /* border-bottom: 2px solid grey; */
     }
