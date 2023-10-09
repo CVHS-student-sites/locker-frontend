@@ -228,10 +228,6 @@
 
 </style>
 <div class="main">
-    <div class="top">
-        <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png"></a>
-        <div class="top-text">CVHS Locker System</div>
-    </div>
 
     <div class="login">
 

@@ -1,5 +1,6 @@
 <script>
-    // import Topnav from "$lib/components/Topnav.svelte";
+    import Topnav from "$lib/components/Topnav.svelte";
+
     import {goto} from '$app/navigation';
 
     let oneUsername = "";
@@ -250,10 +251,7 @@
 
 </style>
 <div class="main">
-    <div class="top">
-        <a href="/"><img alt="IMS logo" class="logo" src="/CVHS-logo.png"></a>
-        <div class="top-text">CVHS Locker System</div>
-    </div>
+    <Topnav />
 
     <div class="login">
 
