@@ -122,12 +122,13 @@
         flex-direction: row;
         height: 65px;
         /* align-items: center; */
-        border-bottom: 2px solid #d6d6d6;
+        border-bottom: 3px solid #393947;
         /* padding-top: 15px; */
     }
 
     .logo {
         height: 60px;
+        width: 60px;
         cursor: pointer;
     }
 

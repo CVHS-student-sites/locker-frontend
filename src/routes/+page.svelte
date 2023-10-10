@@ -26,7 +26,7 @@
 
 <div class="main">
     <Topnav />
-
+    <div class="sub"></div>
 </div>
 
 <style>
@@ -45,5 +45,10 @@
         flex-direction: column;
         height: 100vh;
         width: 100vw;
+    }
+
+    .sub{
+        display: flex;
+        flex: 1;
     }
 </style>
