@@ -49,8 +49,7 @@
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100vh;
-        width: 100vw;
+        flex: 1;
     }
 
     .top {

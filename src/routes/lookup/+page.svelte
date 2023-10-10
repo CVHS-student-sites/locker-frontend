@@ -48,7 +48,7 @@
 <style>
     .main {
         font-family: "Montserrat", sans-serif;
-        background-color: #313338;
+        background-color: #101014;
         display: flex;
         flex-direction: column;
         height: 100vh;

@@ -1,6 +1,6 @@
 <div class="top">
     <div class="logo-cont">
-        <a href="/"><img alt="cv logo" class="logo" src="/CVHS-logo.png" /></a>
+        <a href="/"><img rel="preload" alt="cv logo" class="logo" src="/CVHS-logo.png" loading="eager"/></a>
         <div class="top-text">CVHS Locker System</div>
     </div>
 
@@ -23,6 +23,13 @@
             <div class="icon-stack">
                 <div class="material-symbols-outlined">search</div>
                 <div class="stack-text">Lookup</div>
+            </div>
+        </a>
+
+        <a href="/help">
+            <div class="icon-stack">
+                <div class="material-symbols-outlined">help</div>
+                <div class="stack-text">Help</div>
             </div>
         </a>
     </div>
@@ -81,7 +88,7 @@
     }
 
     .material-symbols-outlined {
-        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
         color: var(--text);
         user-select: none;
         cursor: pointer;
@@ -102,7 +109,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 25px;
+        gap: 15px;
     }
 
     .top {
@@ -113,8 +120,10 @@
         /* background-color: #1b2c42; */
         justify-content: space-between;
         flex-direction: row;
-        height: 60px;
-        /* border-bottom: 2px solid grey; */
+        height: 65px;
+        /* align-items: center; */
+        border-bottom: 2px solid #d6d6d6;
+        /* padding-top: 15px; */
     }
 
     .logo {

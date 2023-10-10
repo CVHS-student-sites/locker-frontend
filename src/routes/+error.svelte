@@ -53,7 +53,7 @@
 	.sub{
 		display: flex;
 		/* flex-direction: column; */
-		gap: 25px;
+		gap: 15px;
 		align-items: center;
 		justify-content: center;
 		flex: 1;
