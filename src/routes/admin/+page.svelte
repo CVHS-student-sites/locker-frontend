@@ -8,7 +8,7 @@
     async function checkAuthentication() {
         try {
             // Make a GET request to the server's /checkauth endpoint
-            const response = await fetch('https://locker-api.cvapps.net/checkauth', {
+            const response = await fetch('https://locker-api.cvapps.net/auth/checkauth', {
                 method: 'GET',
                 credentials: 'include', // Include cookies in the request
             });
