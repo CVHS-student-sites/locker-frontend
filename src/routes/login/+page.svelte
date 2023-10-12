@@ -14,7 +14,7 @@
 
 
     async function login() {
-        const response = await fetch('https://locker-api.cvapps.net/admin/login', {
+        const response = await fetch('https://locker-api.cvapps.net/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
