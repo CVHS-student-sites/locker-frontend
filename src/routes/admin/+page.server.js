@@ -6,7 +6,7 @@ export async function load({ request }) {
     console.log(authToken)
     try {
         console.log("hello")
-        const response = await fetch('https://locker-api.cvapps.net/auth/checkAuth', {
+        const response = await fetch('http://mysql-container/auth/checkAuth', {
             headers: {
                 'Authorization': authToken
             }
