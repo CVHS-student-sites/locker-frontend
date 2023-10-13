@@ -7,28 +7,28 @@
     <div class="icon-cont">
         <a href="/">
             <div class="icon-stack">
-                <div rel="preload" class="material-symbols-outlined" loading="eager">home</div>
+                <div class="material-symbols-outlined">home</div>
                 <div class="stack-text">Home</div>
             </div>
         </a>
 
         <a href="/register">
             <div class="icon-stack">
-                <div rel="preload" class="material-symbols-outlined" loading="eager">person_add</div>
+                <div class="material-symbols-outlined">person_add</div>
                 <div class="stack-text">Register</div>
             </div>
         </a>
 
         <a href="/lookup">
             <div class="icon-stack">
-                <div rel="preload" class="material-symbols-outlined" loading="eager">search</div>
+                <div class="material-symbols-outlined">search</div>
                 <div class="stack-text">Lookup</div>
             </div>
         </a>
 
         <a href="/help">
             <div class="icon-stack">
-                <div rel="preload" class="material-symbols-outlined" loading="eager">help</div>
+                <div class="material-symbols-outlined">help</div>
                 <div class="stack-text">Help</div>
             </div>
         </a>
@@ -37,7 +37,6 @@
 
 <svelte:head>
     <link
-        loading="eager"
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
