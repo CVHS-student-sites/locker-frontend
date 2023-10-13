@@ -3,6 +3,7 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ request }) {
     const authToken = request.headers.get('Authorization');
 
+    console.log(authToken)
     try {
         console.log("hello")
         const response = await fetch('https://locker-api.cvapps.net/auth/checkAuth', {
