@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ request }) {
     const authToken = request.headers.get('Authorization');
 
-    console.log(authToken)
+    console.log(request)
     try {
         console.log("hello")
         const response = await fetch('http://mysql-container/auth/checkAuth', {
