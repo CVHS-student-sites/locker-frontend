@@ -1,6 +1,6 @@
 <div class="top">
     <div class="logo-cont">
-        <a href="/"><img rel="preload" alt="cv logo" class="logo" src="/CVHS-logo.png" loading="eager"/></a>
+        <a href="/"><img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/></a>
         <div class="top-text">CVHS Locker System</div>
     </div>
 
@@ -37,15 +37,16 @@
 
 <svelte:head>
     <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            rel="stylesheet"
     />
 </svelte:head>
 
 <style>
-    .logo-cont a{
+    .logo-cont a {
         display: inherit;
     }
+
     a:link {
         text-decoration: none;
     }

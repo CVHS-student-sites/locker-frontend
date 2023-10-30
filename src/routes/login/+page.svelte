@@ -94,7 +94,7 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-        row-gap: 30px;
+        /*row-gap: 30px;*/
     }
 
     .login-cont {
