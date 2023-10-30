@@ -3,7 +3,6 @@
 
     import Lookup from "./views/lookup.svelte";
     import Show from "./views/show.svelte";
-    import { fade } from "svelte/transition";
 
     let selected = Lookup;
     let data;
@@ -19,29 +18,29 @@
     <title>Lookup</title>
 
     <meta
-        name="description"
-        content="Find your locker at Crescenta Valley High School (CVHS) with our locker lookup tool. Easily locate your locker and get organized for the school year."
+            content="Find your locker at Crescenta Valley High School (CVHS) with our locker lookup tool. Easily locate your locker and get organized for the school year."
+            name="description"
     />
     <meta
-        name="keywords"
-        content="Crescenta Valley High School, CVHS, locker lookup, locker search, school locker"
+            content="Crescenta Valley High School, CVHS, locker lookup, locker search, school locker"
+            name="keywords"
     />
-    <meta name="author" content="cvapps.net" />
+    <meta content="cvapps.net" name="author"/>
 
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-        rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+            rel="stylesheet"
     />
 </svelte:head>
 
 <div class="main">
-    <Topnav />
+    <Topnav/>
     <svelte:component
-        this={selected}
-        on:message={handleMessage}
-        data={data}
+            data={data}
+            on:message={handleMessage}
+            this={selected}
     />
 </div>
 
@@ -55,4 +54,5 @@
         width: 100vw;
         /* flex: 0; */
     }
+    .top
 </style>

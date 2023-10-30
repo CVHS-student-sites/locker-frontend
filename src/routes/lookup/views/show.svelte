@@ -23,7 +23,7 @@
     import { fade } from 'svelte/transition';
 
     const dispatch = createEventDispatcher();
-
+    console.log(data)
 
 </script>
 
@@ -48,20 +48,7 @@
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    .top {
-        position: absolute;
-        left: 30px;
-        top: 20px;
-
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        flex-direction: row;
-        gap: 15px;
+        flex: 1;
     }
 
     .logo {
@@ -231,7 +218,7 @@
 
     <div class="login">
 
-        <h1>{data}</h1>
+        <h1>{data.Locker.location.row}</h1>
 
     </div>
 </div>

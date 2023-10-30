@@ -9,8 +9,10 @@
 
         if (response.status === 404) {
             // Handle 404 status
-            alert('user not found.');
+            // alert('user not found.');
             canvasElement.style.borderColor = "red";
+            canvasElement.value = '';
+            canvasElement.placeholder = 'user not found';
         } else if (response.ok) {
             console.log()
             dispatch("message", {
@@ -73,17 +75,6 @@
         flex: 1;
     }
 
-    .top {
-        position: absolute;
-        left: 30px;
-        top: 20px;
-
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        flex-direction: row;
-        gap: 15px;
-    }
 
     .logo {
         height: 70px;
@@ -164,7 +155,7 @@
         background-color: #17171c;
 
         border-radius: 4px;
-        transition-duration: 50ms;
+        transition-duration: 500ms;
         font-size: 14px;
     }
 
