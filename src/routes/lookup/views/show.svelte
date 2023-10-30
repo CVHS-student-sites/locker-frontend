@@ -1,9 +1,9 @@
 <script>
 
 
-    export let id;
+    export let data;
 
-    $: test = id;
+    $: test = data;
 
     // import Topnav from "$lib/components/Topnav.svelte";
     import {goto} from '$app/navigation';
@@ -231,7 +231,7 @@
 
     <div class="login">
 
-        <h1>{id}</h1>
+        <h1>{data}</h1>
 
     </div>
 </div>

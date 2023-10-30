@@ -43,6 +43,9 @@
 </svelte:head>
 
 <style>
+    .logo-cont a{
+        display: inherit;
+    }
     a:link {
         text-decoration: none;
     }
@@ -122,13 +125,13 @@
         flex-direction: row;
         height: 65px;
         /* align-items: center; */
-        border-bottom: 3px solid #393947;
+        border-bottom: 2px solid #393947;
         /* padding-top: 15px; */
     }
 
     .logo {
         height: 60px;
-        width: 60px;
+        /*width: 60px;*/
         cursor: pointer;
     }
 

@@ -1,6 +1,27 @@
 <script>
     // import Topnav from "$lib/components/Topnav.svelte";
     import {goto} from '$app/navigation';
+    let canvasElement;
+    async function submit() {
+        const response = await fetch(`https://locker-api.cvapps.net/public/lookup-user/${username}`, {
+            method: 'get',
+        });
+
+        if (response.status === 404) {
+            // Handle 404 status
+            alert('user not found.');
+            canvasElement.style.borderColor = "red";
+        } else if (response.ok) {
+            console.log()
+            dispatch("message", {
+                        data: await response.json(),
+                    });
+        } else {
+            // Handle other error statuses
+            alert('error');
+        }
+    }
+
 
     let username = "";
     let password = "";
@@ -19,11 +40,11 @@
     const dispatch = createEventDispatcher();
 
 
-    async function submit() {
-        dispatch("message", {
-            studentId: username,
-        });
-    }
+    // async function submit() {
+    //     dispatch("message", {
+    //         studentId: username,
+    //     });
+    // }
 
 
 </script>
@@ -235,7 +256,7 @@
 
             <div class="login-form" on:keydown={handleKeyPress}>
 <!--                <label for="username">Student ID Number</label>-->
-                <input bind:value={username} id="username" name="username" placeholder="Student ID" required type="text">
+                <input bind:value={username} bind:this={canvasElement} id="username" name="username" placeholder="Student ID" required type="text">
 
                 <button class="submit" on:click={submit}>Search</button>
             </div>

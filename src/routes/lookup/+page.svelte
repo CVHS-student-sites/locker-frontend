@@ -6,12 +6,12 @@
     import { fade } from "svelte/transition";
 
     let selected = Lookup;
-    let studentId;
+    let data;
 
     function handleMessage(event) {
         selected = Show;
         // alert(event.detail.studentId)
-        studentId = event.detail.studentId;
+        data = event.detail.data;
     }
 </script>
 
@@ -41,7 +41,7 @@
     <svelte:component
         this={selected}
         on:message={handleMessage}
-        id={studentId}
+        data={data}
     />
 </div>
 
