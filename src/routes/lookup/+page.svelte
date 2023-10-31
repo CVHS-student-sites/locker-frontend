@@ -54,5 +54,4 @@
         width: 100vw;
         /* flex: 0; */
     }
-    .top
 </style>
