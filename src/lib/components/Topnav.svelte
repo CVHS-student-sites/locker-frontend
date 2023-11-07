@@ -96,6 +96,7 @@
         color: var(--text);
         user-select: none;
         cursor: pointer;
+        width: 24px;
     }
 
     .icon-cont {
