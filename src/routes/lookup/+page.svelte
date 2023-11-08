@@ -1,8 +1,9 @@
 <script>
     import Topnav from "$lib/components/Topnav.svelte";
-
     import Lookup from "./views/lookup.svelte";
     import Show from "./views/show.svelte";
+    import Botnav from "$lib/components/Botnav.svelte";
+
 
     let selected = Lookup;
     let data;
@@ -42,6 +43,7 @@
             on:message={handleMessage}
             this={selected}
     />
+    <Botnav pageId={2}/>
 </div>
 
 <style>

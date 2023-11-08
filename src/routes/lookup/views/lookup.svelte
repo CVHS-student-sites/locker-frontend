@@ -92,8 +92,9 @@
         flex-grow: 1;
         width: 100%;
         align-items: center;
-        justify-content: center;
+        /*justify-content: center;*/
         row-gap: 30px;
+        margin-top: 20vh;
     }
 
     .login-cont {

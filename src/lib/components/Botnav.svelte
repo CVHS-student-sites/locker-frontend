@@ -1,34 +1,29 @@
 <div class="top">
-    <div class="logo-cont">
-        <a href="/"><img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/></a>
-        <div class="top-text">CVHS Locker System</div>
-    </div>
-
     <div class="icon-cont">
         <a href="/">
             <div class="icon-stack">
-                <div class="material-symbols-outlined">home</div>
+                <div class="material-symbols-outlined" style="background-color: {pageId === 0 ? '#003566' : 'initial'}">home</div>
                 <div class="stack-text">Home</div>
             </div>
         </a>
 
         <a href="/register">
             <div class="icon-stack">
-                <div class="material-symbols-outlined">person_add</div>
+                <div class="material-symbols-outlined" style="background-color: {pageId === 1 ? '#003566' : 'initial'}">person_add</div>
                 <div class="stack-text">Register</div>
             </div>
         </a>
 
         <a href="/lookup">
             <div class="icon-stack">
-                <div class="material-symbols-outlined">search</div>
+                <div class="material-symbols-outlined" style="background-color: {pageId === 2 ? '#003566' : 'initial'}">search</div>
                 <div class="stack-text">Lookup</div>
             </div>
         </a>
 
         <a href="/help">
             <div class="icon-stack">
-                <div class="material-symbols-outlined">help</div>
+                <div class="material-symbols-outlined" style="background-color: {pageId === 3 ? '#003566' : 'initial'}">help</div>
                 <div class="stack-text">Help</div>
             </div>
         </a>
@@ -41,6 +36,13 @@
             rel="stylesheet"
     />
 </svelte:head>
+
+<script>
+    export let pageId;
+
+    let comp1
+
+</script>
 
 <style>
     .logo-cont a {
@@ -96,27 +98,24 @@
         color: var(--text);
         user-select: none;
         cursor: pointer;
-        width: 24px;
+        width: 64px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
 
     }
 
     .icon-cont {
-        margin-right: 20px;
+        width: 100vw;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-        gap: 35px;
+        justify-content: space-evenly;
+        /*gap: 35px;*/
     }
 
-    .logo-cont {
-        margin-left: 20px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-    }
 
     .top {
         font-family: "Montserrat", sans-serif;
@@ -132,21 +131,11 @@
         /* padding-top: 15px; */
     }
 
-    .logo {
-        height: 60px;
-        /*width: 60px;*/
-        cursor: pointer;
-    }
 
-    .top-text {
-        font-size: 18px;
-        color: var(--text);
-    }
 
-    @media only screen and (max-width: 600px) {
-        .top{
-            display: none;
+    @media only screen and (min-width: 600px) {
+        .top {
+            display: none; /* Hide the entire top container */
         }
-
     }
 </style>

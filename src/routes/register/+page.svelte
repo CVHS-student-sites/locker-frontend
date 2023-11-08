@@ -1,5 +1,6 @@
 <script>
     import Topnav from "$lib/components/Topnav.svelte";
+    import Botnav from "$lib/components/Botnav.svelte";
 
     import {goto} from '$app/navigation';
 
@@ -104,8 +105,9 @@
         flex: 1;
         width: 100%;
         align-items: center;
-        justify-content: center;
+        /*justify-content: center;*/
         row-gap: 30px;
+        margin-top: 15vh;
     }
 
     .login-cont {
@@ -251,8 +253,7 @@
 
 </style>
 <div class="main">
-    <Topnav />
-
+    <Topnav/>
     <div class="login">
 
         <div class="login-cont">
@@ -278,4 +279,5 @@
         </div>
 
     </div>
+    <Botnav pageId={1}/>
 </div>

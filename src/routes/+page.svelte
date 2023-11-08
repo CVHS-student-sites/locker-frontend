@@ -1,5 +1,6 @@
 <script>
     import Topnav from "$lib/components/Topnav.svelte";
+    import Botnav from "$lib/components/Botnav.svelte";
 
 </script>
 
@@ -27,6 +28,7 @@
 <div class="main">
     <Topnav />
     <div class="sub"></div>
+    <Botnav pageId={0}/>
 </div>
 
 <style>
