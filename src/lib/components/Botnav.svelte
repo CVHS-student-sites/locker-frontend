@@ -80,6 +80,7 @@
         justify-content: center;
         gap: 4px;
         cursor: pointer;
+        user-select: none;
     }
 
     /* .icon-stack:hover{
@@ -91,6 +92,7 @@
         /* font-family: Mo; */
         font-size: 14px;
         color: var(--text);
+        user-select: none;
     }
 
     .material-symbols-outlined {
@@ -104,6 +106,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 16px;
+        
 
     }
 

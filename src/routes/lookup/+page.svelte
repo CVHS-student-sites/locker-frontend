@@ -49,11 +49,11 @@
 <style>
     .main {
         font-family: "Montserrat", sans-serif;
-        background-color: #101014;
+        background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 100%;
+        position: absolute;
         width: 100vw;
-        /* flex: 0; */
     }
 </style>

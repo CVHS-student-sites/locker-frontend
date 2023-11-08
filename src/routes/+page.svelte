@@ -45,7 +45,8 @@
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 100%;
+        position: absolute;
         width: 100vw;
     }
 
