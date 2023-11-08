@@ -2,28 +2,28 @@
     <div class="icon-cont">
         <a href="/">
             <div class="icon-stack">
-                <div class="material-symbols-outlined" style="background-color: {pageId === 0 ? '#003566' : 'initial'}">home</div>
+                <div class="material-symbols-outlined" class:active={pageId === 0}>home</div>
                 <div class="stack-text">Home</div>
             </div>
         </a>
 
         <a href="/register">
             <div class="icon-stack">
-                <div class="material-symbols-outlined" style="background-color: {pageId === 1 ? '#003566' : 'initial'}">person_add</div>
+                <div class="material-symbols-outlined {pageId === 1 ? 'active' : ''}" >person_add</div>
                 <div class="stack-text">Register</div>
             </div>
         </a>
 
         <a href="/lookup">
             <div class="icon-stack">
-                <div class="material-symbols-outlined" style="background-color: {pageId === 2 ? '#003566' : 'initial'}">search</div>
+                <div class="material-symbols-outlined {pageId === 2 ? 'active' : ''}">search</div>
                 <div class="stack-text">Lookup</div>
             </div>
         </a>
 
         <a href="/help">
             <div class="icon-stack">
-                <div class="material-symbols-outlined" style="background-color: {pageId === 3 ? '#003566' : 'initial'}">help</div>
+                <div class="material-symbols-outlined {pageId === 3 ? 'active' : ''}">help</div>
                 <div class="stack-text">Help</div>
             </div>
         </a>
@@ -47,22 +47,28 @@
 <style>
     .logo-cont a {
         display: inherit;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
     }
 
     a:link {
         text-decoration: none;
+        user-select: none;
     }
 
     a:visited {
         text-decoration: none;
+        user-select: none;
     }
 
     a:hover {
         text-decoration: none;
+        user-select: none;
     }
 
     a:active {
         text-decoration: none;
+        user-select: none;
     }
 
     :root {
@@ -81,6 +87,7 @@
         gap: 4px;
         cursor: pointer;
         user-select: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     /* .icon-stack:hover{
@@ -93,6 +100,7 @@
         font-size: 14px;
         color: var(--text);
         user-select: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .material-symbols-outlined {
@@ -106,8 +114,14 @@
         align-items: center;
         justify-content: center;
         border-radius: 16px;
-        
+        -webkit-tap-highlight-color: transparent;
+        transition: background-color 1s;
 
+    }
+
+    .active{
+        background-color: #003566;
+        transition: background-color 1s;
     }
 
     .icon-cont {
@@ -116,6 +130,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
+        -webkit-tap-highlight-color: transparent;
         /*gap: 35px;*/
     }
 
