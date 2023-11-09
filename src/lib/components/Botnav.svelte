@@ -2,28 +2,28 @@
     <div class="icon-cont">
         <a href="/">
             <div class="icon-stack">
-                <div class="material-symbols-outlined" class:active={pageId === 0}>home</div>
+                <div class="material-symbols-outlined" class:active={pageId === 0} >home</div>
                 <div class="stack-text">Home</div>
             </div>
         </a>
 
         <a href="/register">
             <div class="icon-stack">
-                <div class="material-symbols-outlined {pageId === 1 ? 'active' : ''}" >person_add</div>
+                <div class="material-symbols-outlined" class:active={pageId === 1}>person_add</div>
                 <div class="stack-text">Register</div>
             </div>
         </a>
 
         <a href="/lookup">
             <div class="icon-stack">
-                <div class="material-symbols-outlined {pageId === 2 ? 'active' : ''}">search</div>
+                <div class="material-symbols-outlined" class:active={pageId === 2}>search</div>
                 <div class="stack-text">Lookup</div>
             </div>
         </a>
 
         <a href="/help">
             <div class="icon-stack">
-                <div class="material-symbols-outlined {pageId === 3 ? 'active' : ''}">help</div>
+                <div class="material-symbols-outlined" class:active={pageId === 3}>help</div>
                 <div class="stack-text">Help</div>
             </div>
         </a>
@@ -39,6 +39,8 @@
 
 <script>
     export let pageId;
+
+    import { fade } from 'svelte/transition';
 
     let comp1
 
@@ -129,7 +131,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-around;
         -webkit-tap-highlight-color: transparent;
         /*gap: 35px;*/
     }
