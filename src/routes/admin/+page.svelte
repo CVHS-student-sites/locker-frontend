@@ -10,6 +10,14 @@
     />
 </svelte:head>
 <style>
+    :root {
+        --text: #d6d6d6;
+        --background: #101014;
+        --primary: #0084ff;
+        --secondary: #1b2c42;
+        --accent: #577db2;
+    }
+
     .material-symbols-outlined {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
         color: #577db2;
@@ -18,6 +26,7 @@
         width: 24px;
 
     }
+
 
     .main {
         display: flex;
