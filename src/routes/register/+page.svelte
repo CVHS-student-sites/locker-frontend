@@ -1,6 +1,9 @@
 <script>
-    import Topnav from "$lib/components/Topnav.svelte";
-    import Botnav from "$lib/components/Botnav.svelte";
+
+    import { fade } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
+    import { quintOut } from 'svelte/easing';
+    import { quartOut } from 'svelte/easing';
 
     import {goto} from '$app/navigation';
 
@@ -69,13 +72,11 @@
 
 
     .main {
-        font-family: "Montserrat", sans-serif;
-        background-color: var(--background);
         display: flex;
         flex-direction: column;
         height: 100%;
-        position: absolute;
         width: 100vw;
+        flex: 1;
     }
 
     .top {
@@ -253,8 +254,7 @@
     }
 
 </style>
-<div class="main">
-    <Topnav/>
+<div class="main" in:slide={{ duration: 900, easing: quartOut, axis: 'x' }}>
     <div class="login">
 
         <div class="login-cont">
@@ -280,5 +280,4 @@
         </div>
 
     </div>
-    <Botnav pageId={1}/>
 </div>

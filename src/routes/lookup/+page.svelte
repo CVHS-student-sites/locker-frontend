@@ -1,8 +1,12 @@
 <script>
+
     import Topnav from "$lib/components/Topnav.svelte";
     import Lookup from "./views/lookup.svelte";
     import Show from "./views/show.svelte";
     import Botnav from "$lib/components/Botnav.svelte";
+    import { fade } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
+    import { quartOut } from 'svelte/easing';
 
 
     let selected = Lookup;
@@ -36,24 +40,22 @@
     />
 </svelte:head>
 
-<div class="main">
-    <Topnav/>
+<div class="main" in:slide={{ duration: 900, easing: quartOut, axis: '-x' }}>
+<!--    <Topnav/>-->
     <svelte:component
             data={data}
             on:message={handleMessage}
             this={selected}
     />
-    <Botnav pageId={2}/>
+<!--    <Botnav pageId={2}/>-->
 </div>
 
 <style>
     .main {
-        font-family: "Montserrat", sans-serif;
-        background-color: var(--background);
         display: flex;
         flex-direction: column;
         height: 100%;
-        position: absolute;
         width: 100vw;
+        flex: 1;
     }
 </style>

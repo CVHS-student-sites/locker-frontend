@@ -4,6 +4,9 @@
     import { fade } from 'svelte/transition';
 
 
+    import { goto } from '$app/navigation';
+
+
     import {tweened} from 'svelte/motion';
     import {cubicOut} from 'svelte/easing';
     import {onMount} from 'svelte';
@@ -19,6 +22,10 @@
     });
 
     function move(number) {
+        // if(number === 2){
+        //     goto('/lookup');
+        // }
+
         currentTargetIndex = number;
         const icons = document.querySelectorAll('.icond');
         const targetIcon = icons[currentTargetIndex];
@@ -69,7 +76,7 @@
         /*transition: background-color 0.5s ease;*/
     }
 
-    .logo-cont a {
+    .icond a {
         display: inherit;
         -webkit-tap-highlight-color: transparent;
         user-select: none;
@@ -156,7 +163,8 @@
     }
 
     .icond{
-        z-index: 9999;
+        z-index: 9998;
+        position: relative;
     }
 
     /*.active {*/
@@ -169,9 +177,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
         -webkit-tap-highlight-color: transparent;
-        /*gap: 35px;*/
+        gap: 4px;
     }
 
 
@@ -197,6 +205,7 @@
         border-radius: 50px;
         height: 32px;
         background-color: #003566;
+        z-index: 9998;
     }
 
     .visible {
@@ -222,10 +231,11 @@
     <div class="icon-cont">
         <div class="icon-background">
             <div class="test" class:visible={tests} style:left={$test + 'px'}></div>
-            <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(0)}>home</div>
-            <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(1)}>person_add</div>
-            <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(2)}>search</div>
-            <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(3)}>help</div>
+
+            <a href="/"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(0)}>home</div></a>
+            <a href="/register"> <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(1)}>person_add</div></a>
+            <a href="/lookup"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(2)}>search</div></a>
+            <a href="/help"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(3)}>help</div></a>
         </div>
 
         <div class="text-cont">

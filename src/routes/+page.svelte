@@ -26,9 +26,9 @@
 </svelte:head>
 
 <div class="main">
-    <Topnav />
+<!--    <Topnav />-->
     <div class="sub"></div>
-    <Botnav pageId={0}/>
+<!--    <Botnav pageId={0}/>-->
 </div>
 
 <style>
@@ -41,13 +41,11 @@
     }
 
     .main {
-        font-family: "Montserrat", sans-serif;
-        background-color: var(--background);
         display: flex;
         flex-direction: column;
         height: 100%;
-        position: absolute;
         width: 100vw;
+        flex: 1;
     }
 
     .sub{
