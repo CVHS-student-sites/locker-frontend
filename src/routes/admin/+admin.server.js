@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 export async function load({ cookies }) {
     const auth = cookies.get('connect.sid');
 
-    
+
     try {
         const response = await fetch('http://locker-backend:3000/auth/checkAuth', {
             credentials: 'include', // Include credentials (cookies) with the request
