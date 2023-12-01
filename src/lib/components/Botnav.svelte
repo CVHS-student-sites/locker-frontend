@@ -14,7 +14,7 @@
     let icon1;
     let tests;
     const test = tweened(start, {
-        duration: 600,
+        duration: 300,
         easing: cubicOut,
     });
 
