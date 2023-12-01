@@ -10,7 +10,7 @@
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: 100vh;
         position: absolute;
         width: 100vw;
     }
