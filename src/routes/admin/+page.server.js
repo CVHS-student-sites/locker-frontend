@@ -1,8 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ cookies }) {
-    console.log(process.env.NODE_ENV);
-
+    // console.log(process.env.NODE_ENV);
+    console.log(import.meta.env.PROD);
     
     const auth = cookies.get('connect.sid');
     
