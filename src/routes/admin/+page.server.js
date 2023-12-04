@@ -1,8 +1,12 @@
 import { redirect } from '@sveltejs/kit';
+import.meta.env.MODE
 
 export async function load({ cookies }) {
+    console.log(process.env.NODE_ENV);
+    console.log(meta.env.MODE);
+    
     const auth = cookies.get('connect.sid');
-
+    
 
     try {
         const response = await fetch('http://locker-backend:3000/auth/checkAuth', {
