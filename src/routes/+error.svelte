@@ -1,5 +1,4 @@
 <script>
-    import Topnav from "$lib/components/Topnav.svelte";
 	import { page } from '$app/stores';
 
 </script>
@@ -26,7 +25,6 @@
 </svelte:head>
 
 <div class="main">
-    <Topnav />
     <div class="sub">
 		<h1>Error:</h1>
 		<h1>{$page.error.message}</h1>
