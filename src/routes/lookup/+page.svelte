@@ -1,12 +1,9 @@
 <script>
 
-    import Topnav from "$lib/components/Topnav.svelte";
     import Lookup from "./views/lookup.svelte";
     import Show from "./views/show.svelte";
-    import Botnav from "$lib/components/Botnav.svelte";
-    import { fade } from 'svelte/transition';
-    import { slide } from 'svelte/transition';
-    import { quartOut } from 'svelte/easing';
+    import {fade} from 'svelte/transition';
+    import {quartOut} from 'svelte/easing';
 
 
     let selected = Lookup;
@@ -40,22 +37,35 @@
     />
 </svelte:head>
 
-<div class="main" in:fade={{ delay: 200, duration: 700, easing: quartOut, axis: 'x' }} out:fade={{ duration: 200, easing: quartOut, axis: 'x' }}>
-<!--    <Topnav/>-->
-    <svelte:component
-            data={data}
-            on:message={handleMessage}
-            this={selected}
-    />
-<!--    <Botnav pageId={2}/>-->
+<div class="main" in:fade={{ delay: 200, duration: 700, easing: quartOut, axis: 'x' }}
+     out:fade={{ duration: 200, easing: quartOut, axis: 'x' }}>
+    <!--    <Topnav/>-->
+<!--    <div class="main-animate" >-->
+
+
+        <svelte:component
+                data={data}
+                on:message={handleMessage}
+                this={selected}
+        />
+        <!--    <Botnav pageId={2}/>-->
+<!--    </div>-->
 </div>
 
 <style>
     .main {
+        /*position: absolute;*/
         display: flex;
+        margin-top: 67px;
         flex-direction: column;
         height: 100%;
         width: 100vw;
         flex: 1;
+    }
+
+    .main-animate {
+
+        height: 100%;
+        width: 100vw;
     }
 </style>

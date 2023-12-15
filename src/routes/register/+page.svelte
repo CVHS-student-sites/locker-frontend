@@ -1,9 +1,7 @@
 <script>
 
-    import { fade } from 'svelte/transition';
-    import { slide } from 'svelte/transition';
-    import { quintOut } from 'svelte/easing';
-    import { quartOut } from 'svelte/easing';
+    import {fade} from 'svelte/transition';
+    import {quartOut} from 'svelte/easing';
 
     import {goto} from '$app/navigation';
 
@@ -52,9 +50,11 @@
 <svelte:head>
     <title>Register</title>
 
-    <meta name="description" content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized.">
-    <meta name="keywords" content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment">
-    <meta name="author" content="cvapps.net">
+    <meta content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
+          name="description">
+    <meta content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
+          name="keywords">
+    <meta content="cvapps.net" name="author">
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
@@ -77,6 +77,12 @@
         height: 100%;
         width: 100vw;
         flex: 1;
+    }
+
+    .main-animate{
+        position: absolute;
+        height: 100%;
+        width: 100vw;
     }
 
     .top {
@@ -254,30 +260,34 @@
     }
 
 </style>
-<div class="main" in:fade={{ delay: 200, duration: 700, easing: quartOut, axis: 'x' }} out:fade={{ duration: 200, easing: quartOut, axis: 'x' }}>
-    <div class="login">
+<!--todo fix layout shift that occurs from transition-->
+<div class="main">
+    <div class="main-animate" in:fade={{ delay: 200, duration: 700, easing: quartOut, axis: 'x' }}
+         out:fade={{ duration: 200, easing: quartOut, axis: 'x' }}>
+        <div class="login">
 
-        <div class="login-cont">
-            <div class="login-header">Register for a locker</div>
+            <div class="login-cont">
+                <div class="login-header">Register for a locker</div>
 
-            <form class="login-form" on:keydown={handleKeyPress}>
+                <form class="login-form" on:keydown={handleKeyPress}>
 
-                <label>Student 1</label>
-                <input bind:value={oneUsername} id="1username" name="1username" placeholder="Full Name" required
-                       type="text">
-                <input bind:value={onePassword} id="1studentId" name="1studentId" placeholder="Student ID" required
-                       type="text">
+                    <label>Student 1</label>
+                    <input bind:value={oneUsername} id="1username" name="1username" placeholder="Full Name" required
+                           type="text">
+                    <input bind:value={onePassword} id="1studentId" name="1studentId" placeholder="Student ID" required
+                           type="text">
 
-                <label>Student 2</label>
-                <input bind:value={twoUsername} id="2username" name="2username" placeholder="Full Name" required
-                       type="text">
-                <input bind:value={twoPassword} id="2studentId" name="2studentId" placeholder="Student ID" required
-                       type="text">
+                    <label>Student 2</label>
+                    <input bind:value={twoUsername} id="2username" name="2username" placeholder="Full Name" required
+                           type="text">
+                    <input bind:value={twoPassword} id="2studentId" name="2studentId" placeholder="Student ID" required
+                           type="text">
 
-                <button class="submit" on:click={login}>Next Page</button>
-            </form>
+                    <button class="submit" on:click={login}>Next Page</button>
+                </form>
+
+            </div>
 
         </div>
-
     </div>
 </div>
