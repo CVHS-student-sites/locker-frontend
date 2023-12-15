@@ -254,7 +254,7 @@
     }
 
 </style>
-<div class="main" in:slide={{ duration: 900, easing: quartOut, axis: 'x' }}>
+<div class="main" in:fade={{ duration: 700, easing: quartOut, axis: 'x' }}>
     <div class="login">
 
         <div class="login-cont">

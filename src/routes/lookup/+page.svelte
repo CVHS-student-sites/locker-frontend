@@ -40,7 +40,7 @@
     />
 </svelte:head>
 
-<div class="main" in:slide={{ duration: 900, easing: quartOut, axis: '-x' }}>
+<div class="main" in:fade={{ duration: 700, easing: quartOut, axis: '-x' }}>
 <!--    <Topnav/>-->
     <svelte:component
             data={data}
