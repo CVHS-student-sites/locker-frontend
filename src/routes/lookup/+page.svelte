@@ -37,35 +37,21 @@
     />
 </svelte:head>
 
-<div class="main" in:fade={{ delay: 200, duration: 700, easing: quartOut, axis: 'x' }}
-     out:fade={{ duration: 200, easing: quartOut, axis: 'x' }}>
-    <!--    <Topnav/>-->
-<!--    <div class="main-animate" >-->
-
-
-        <svelte:component
-                data={data}
-                on:message={handleMessage}
-                this={selected}
-        />
-        <!--    <Botnav pageId={2}/>-->
-<!--    </div>-->
+<div class="main" in:fade={{ delay: 0, duration: 1200, easing: quartOut}}>
+    <svelte:component
+            data={data}
+            on:message={handleMessage}
+            this={selected}
+    />
 </div>
 
 <style>
     .main {
-        /*position: absolute;*/
         display: flex;
-        margin-top: 67px;
         flex-direction: column;
         height: 100%;
         width: 100vw;
         flex: 1;
     }
 
-    .main-animate {
-
-        height: 100%;
-        width: 100vw;
-    }
 </style>

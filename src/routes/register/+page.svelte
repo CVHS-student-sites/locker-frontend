@@ -79,11 +79,11 @@
         flex: 1;
     }
 
-    .main-animate{
-        position: absolute;
-        height: 100%;
-        width: 100vw;
-    }
+    /*.main-animate{*/
+    /*    !*position: absolute;*!*/
+    /*    height: 100vh;*/
+    /*    width: 100vw;*/
+    /*}*/
 
     .top {
         position: absolute;
@@ -261,33 +261,31 @@
 
 </style>
 <!--todo fix layout shift that occurs from transition-->
-<div class="main">
-    <div class="main-animate" in:fade={{ delay: 200, duration: 700, easing: quartOut, axis: 'x' }}
-         out:fade={{ duration: 200, easing: quartOut, axis: 'x' }}>
-        <div class="login">
+<div class="main" in:fade={{ delay: 0, duration: 1200, easing: quartOut}}
+>
+    <div class="login">
 
-            <div class="login-cont">
-                <div class="login-header">Register for a locker</div>
+        <div class="login-cont">
+            <div class="login-header">Register for a locker</div>
 
-                <form class="login-form" on:keydown={handleKeyPress}>
+            <form class="login-form" on:keydown={handleKeyPress}>
 
-                    <label>Student 1</label>
-                    <input bind:value={oneUsername} id="1username" name="1username" placeholder="Full Name" required
-                           type="text">
-                    <input bind:value={onePassword} id="1studentId" name="1studentId" placeholder="Student ID" required
-                           type="text">
+                <label>Student 1</label>
+                <input bind:value={oneUsername} id="1username" name="1username" placeholder="Full Name" required
+                       type="text">
+                <input bind:value={onePassword} id="1studentId" name="1studentId" placeholder="Student ID" required
+                       type="text">
 
-                    <label>Student 2</label>
-                    <input bind:value={twoUsername} id="2username" name="2username" placeholder="Full Name" required
-                           type="text">
-                    <input bind:value={twoPassword} id="2studentId" name="2studentId" placeholder="Student ID" required
-                           type="text">
+                <label>Student 2</label>
+                <input bind:value={twoUsername} id="2username" name="2username" placeholder="Full Name" required
+                       type="text">
+                <input bind:value={twoPassword} id="2studentId" name="2studentId" placeholder="Student ID" required
+                       type="text">
 
-                    <button class="submit" on:click={login}>Next Page</button>
-                </form>
-
-            </div>
+                <button class="submit" on:click={login}>Next Page</button>
+            </form>
 
         </div>
+
     </div>
 </div>
