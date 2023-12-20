@@ -152,7 +152,8 @@
     .grid-element-1 {
         width: 100%;
         height: 100%;
-        background-color: #1b2c42;
+        background-color: #00284d;
+        /*background-color: #131821;*/
         border-radius: 10px;
         padding: 8px 12px;
         box-sizing: border-box;

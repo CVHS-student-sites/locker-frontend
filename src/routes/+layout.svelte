@@ -14,17 +14,11 @@
         position: absolute;
         width: 100vw;
     }
-
-    .flex-cont {
-        flex: 1;
-    }
 </style>
 
 
 <div class="layout-main">
     <Topnav/>
-    <div class="flex-cont">
         <slot/>
-    </div>
     <Botnav/>
 </div>
