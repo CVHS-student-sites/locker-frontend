@@ -1,6 +1,6 @@
 <script>
-    // import Topnav from "$lib/components/Topnav.svelte";
-    import {goto} from '$app/navigation';
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher();
     let canvasElement;
     async function submit() {
         const response = await fetch(`https://locker-api.cvapps.net/public/lookup-user/${username}`, {
@@ -26,8 +26,6 @@
 
 
     let username = "";
-    let password = "";
-
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
             // Enter key was pressed, do something
@@ -36,17 +34,7 @@
     }
 
 
-    import { createEventDispatcher } from "svelte";
-    import { fade } from 'svelte/transition';
 
-    const dispatch = createEventDispatcher();
-
-
-    // async function submit() {
-    //     dispatch("message", {
-    //         studentId: username,
-    //     });
-    // }
 
 
 </script>
@@ -75,16 +63,6 @@
         flex: 1;
     }
 
-
-    .logo {
-        height: 70px;
-        cursor: pointer;
-    }
-
-    .top-text {
-        font-size: 18px;
-        color: var(--text);
-    }
 
     .login {
         display: flex;
@@ -188,33 +166,7 @@
         background-color: #577db2;
     }
 
-    .bottom-text {
-        width: 100%;
-        display: flex;
-        /*align-items: center;*/
-        justify-content: center;
-        column-gap: 5px;
-    }
-
-    .reg {
-        color: #fbfdfe;
-    }
-
-    .regs {
-        color: #4ca6ff;
-        cursor: pointer;
-    }
-
     @media only screen and (max-width: 600px) {
-        .main {
-            /* background: rgb(2, 0, 36); */
-            /* background: linear-gradient(14deg, rgb(9, 3, 121) 0%, rgb(33, 97, 239) 100%); */
-        }
-
-        .logo {
-            height: 35px;
-            /*left: 20px;*/
-        }
 
         .login {
             row-gap: 30px;

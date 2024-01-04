@@ -11,7 +11,6 @@
 
     function handleMessage(event) {
         selected = Show;
-        // alert(event.detail.studentId)
         data = event.detail.data;
     }
 </script>
