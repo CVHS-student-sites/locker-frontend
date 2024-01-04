@@ -43,9 +43,12 @@
     .main {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: 100vh;
         width: 100vw;
         flex: 1;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--background);
     }
 	.sub{
 		display: flex;

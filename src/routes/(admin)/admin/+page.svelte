@@ -18,119 +18,11 @@
         --accent: #577db2;
     }
 
-    .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-        color: #577db2;
-        user-select: none;
-        cursor: pointer;
-        width: 24px;
-
-    }
-
-
     .main {
         display: flex;
         flex-direction: column;
-        min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
         background-color: var(--background);
-    }
-
-    .top {
-        display: flex;
-        height: 60px;
-        padding: 0 12vw;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 9999;
-        background-color: var(--background);
-        align-items: center;
-    }
-
-    .logo-cont {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        /*width: 100%;*/
-        height: 100%;
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
-    .top-logo {
-        height: 100%;
-    }
-
-    .logo-text {
-        font-size: 16px;
-        font-family: 'Montserrat', sans-serif;
-        color: #d6d6d6;
-    }
-
-    .center {
-        gap: 16px;
-        display: flex;
-        flex: 1; /* Expand to fill remaining vertical space */
-        margin: 20px 12vw; /* Adjust the margin as needed */
-    }
-
-    .sidebar {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        width: 20%;
-        background-color: #18181b;
-        border-radius: 10px;
-        padding: 16px;
-        box-sizing: border-box;
-        gap: 5px;
-    }
-
-    .active-button{
-        background-color: #003566;
-    }
-
-    .side-element-1{
-        width: 100%;
-        height: 60px;
-        padding: 16px;
-        box-sizing: border-box;
-        border-radius: 5px;
-        transition: background-color 0.1s ease;
-        margin-bottom: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 16px;
-    }
-
-    .side-element-1:hover{
-        background-color: #404040;
-        cursor: pointer;
-    }
-
-    .user-text{
-        font-size: 16px;
-        font-family: 'Montserrat', sans-serif;
-        color: #d6d6d6;
-    }
-
-
-    .side-element-2{
-        width: 100%;
-        height: 50px;
-        padding: 16px;
-        box-sizing: border-box;
-        border-radius: 50px;
-        transition: background-color 0.1s ease;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 16px;
-    }
-
-    .side-element-2:hover{
-        background-color: #404040;
-        cursor: pointer;
+        flex: 1;
     }
 
     .button-text{
@@ -138,7 +30,6 @@
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
-
 
     .grid-cont {
         flex: 1; /* Expand to fill remaining horizontal space */
@@ -177,41 +68,6 @@
 
 
 <div class="main">
-
-    <div class="top">
-        <div class="logo-cont">
-            <img alt="CVHS falcon logo" class="top-logo" src="/CVHS-logo.png">
-            <div class="logo-text">CVHS Locker System</div>
-        </div>
-    </div>
-
-    <div class="center">
-        <div class="sidebar">
-            <div class="side-element-1">
-                <div class="material-symbols-outlined">account_circle</div>
-                <div class="user-text">Birdpump</div>
-            </div>
-
-            <div class="side-element-2 active-button">
-                <div class="material-symbols-outlined">data_usage</div>
-                <div class="button-text">Overview</div>
-            </div>
-            <div class="side-element-2">
-                <div class="material-symbols-outlined">list</div>
-                <div class="button-text">Edit</div>
-            </div>
-
-            <div class="side-element-2">
-                <div class="material-symbols-outlined">tune</div>
-                <div class="button-text">Management</div>
-            </div>
-
-            <div class="side-element-2">
-                <div class="material-symbols-outlined">settings</div>
-                <div class="button-text">Settings</div>
-            </div>
-        </div>
-
         <div class="grid-cont">
             <div class="grid-element-1">
                 <div class="button-text">Total users</div>
@@ -248,5 +104,4 @@
                 <div class="button-text">more buttons to do stuff, idk lol</div>
             </div>
         </div>
-    </div>
 </div>

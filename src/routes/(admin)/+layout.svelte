@@ -1,11 +1,11 @@
 <script>
 
-    import Topnav from "$lib/components/Topnav.svelte";
-    import Botnav from "$lib/components/Botnav.svelte";
+    import Topadmin from "$lib/components/admin/Topadmin.svelte";
+    import Sidenav from "$lib/components/admin/Sidenav.svelte";
 </script>
 
 <style>
-    .layout-main{
+    .layout-main {
         font-family: "Montserrat", sans-serif;
         background-color: var(--background);
         display: flex;
@@ -14,10 +14,19 @@
         position: absolute;
         width: 100vw;
     }
+
+    .center {
+        gap: 16px;
+        display: flex;
+        flex: 1; /* Expand to fill remaining vertical space */
+        margin: 20px 12vw; /* Adjust the margin as needed */
+    }
 </style>
 
 <div class="layout-main">
-<!--<Topnav/>-->
-<slot />
-<!--<Botnav pageId={2}/>-->
+    <Topadmin/>
+    <div class="center">
+        <Sidenav/>
+        <slot/>
+    </div>
 </div>
