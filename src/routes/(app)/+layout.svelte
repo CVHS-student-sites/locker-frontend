@@ -5,12 +5,13 @@
 </script>
 
 <style>
+    /*todo fix weird space on bottom on google*/
     .layout-main {
         font-family: "Montserrat", sans-serif;
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 100%;
         position: absolute;
         width: 100vw;
     }
