@@ -101,7 +101,7 @@
                 <div class="button-text">locker stats like grades enabled</div>
             </div>
             <div class="grid-element-1 medium">
-                <div class="button-text">system stats like uptime, ect</div>
+                <div class="button-text">system stats like uptime, ram usage, db size</div>
             </div>
         </div>
 </div>
