@@ -7,7 +7,6 @@
     import {cubicOut} from 'svelte/easing';
     import {onMount} from 'svelte';
 
-    export let pageId;
     let selectPage;
 
 
