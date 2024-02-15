@@ -36,7 +36,7 @@
     />
 </svelte:head>
 
-<div class="main" in:fade={{ delay: 0, duration: 1200, easing: quartOut}}>
+<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
     <svelte:component
             data={data}
             on:message={handleMessage}

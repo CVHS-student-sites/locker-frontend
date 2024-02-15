@@ -77,7 +77,7 @@
             <div class="grid-element-1">
                 <div class="button-text">Total lockers</div>
                 <div class="button-text">1,253</div>
-                <div class="button-text">+8%</div>
+                <div class="button-text">80% capacity</div>
             </div>
             <div class="grid-element-1">
                 <div class="button-text">last 30 days</div>
@@ -98,10 +98,10 @@
             </div>
 
             <div class="grid-element-1 medium">
-                <div class="button-text">buttons to control something like freeze registration</div>
+                <div class="button-text">locker stats like grades enabled</div>
             </div>
             <div class="grid-element-1 medium">
-                <div class="button-text">more buttons to do stuff, idk lol</div>
+                <div class="button-text">system stats like uptime, ect</div>
             </div>
         </div>
 </div>
