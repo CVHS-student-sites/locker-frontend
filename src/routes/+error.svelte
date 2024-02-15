@@ -26,8 +26,9 @@
 
 <div class="main">
     <div class="sub">
-		<h1>Error:</h1>
-		<h1>{$page.error.message}</h1>
+        <h1>{$page.status}</h1>
+        <img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/>
+        <h1>{$page.error.message}</h1>
 	</div>
 </div>
 
@@ -39,8 +40,18 @@
         --secondary: #1b2c42;
         --accent: #577db2;
     }
+    
+    h1{
+        margin: 0;
+        font-size: 36px;
+    }
+
+    .logo{
+        width: 10vw;
+    }
 
     .main {
+        font-family: "Montserrat", sans-serif;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -50,10 +61,11 @@
         justify-content: center;
         background-color: var(--background);
     }
+
 	.sub{
 		display: flex;
-		/* flex-direction: column; */
-		gap: 15px;
+		flex-direction: column;
+		gap: 10px;
 		align-items: center;
 		justify-content: center;
 		flex: 1;
