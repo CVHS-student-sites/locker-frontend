@@ -42,7 +42,6 @@
 
     $: if ($test === Math.round(beforecenter)) {
         tests = true;
-        console.log('done');
         icon1.classList.add('active');
         const icons = document.querySelectorAll('.icond');
         const prevIndex = (currentTargetIndex - 1 + icons.length) % icons.length;
