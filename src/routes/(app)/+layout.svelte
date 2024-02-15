@@ -5,7 +5,7 @@
 </script>
 
 <style>
-    /*todo fix weird space on bottom on google*/
+    /* todo fix weird layout shift on google when keyboard deployed */
     .layout-main {
         font-family: "Montserrat", sans-serif;
         background-color: var(--background);
