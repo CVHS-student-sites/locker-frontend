@@ -1,5 +1,15 @@
 <script>
+    import {page} from "$app/stores";
+
     export let pageId;
+    let selectPage;
+
+
+    // jank but ok
+    $: if ($page.url.pathname === '/') selectPage = 0;
+    $: if ($page.url.pathname === '/register') selectPage = 1;
+    $: if ($page.url.pathname === '/lookup') selectPage = 2;
+    $: if ($page.url.pathname === '/help') selectPage = 3;
 
     import { fade } from 'svelte/transition';
 
@@ -15,17 +25,13 @@
     let currentTargetIndex = 0; // Initialize with the first icon
     let beforecenter;
     let icon1;
-    let tests;
+    let tests = true;
     const test = tweened(start, {
         duration: 300,
         easing: cubicOut,
     });
 
     function move(number) {
-        // if(number === 2){
-        //     goto('/lookup');
-        // }
-
         currentTargetIndex = number;
         const icons = document.querySelectorAll('.icond');
         const targetIcon = icons[currentTargetIndex];
@@ -50,7 +56,13 @@
         tests = false;
     }
     onMount(async () => {
-        move(0)
+        move(selectPage)
+        const tests1 = document.querySelector('.test');
+        const icons2 = document.querySelectorAll('.icond');
+        const targetIcon2 = icons2[selectPage];
+
+        targetIcon2.classList.add('active');
+        tests1.classList.add('visible');
     });
 
 
@@ -167,11 +179,6 @@
         position: relative;
     }
 
-    /*.active {*/
-    /*    background-color: #003566;*/
-    /*    transition: background-color 1s;*/
-    /*}*/
-
     .icon-cont {
         width: 100vw;
         display: flex;
@@ -229,7 +236,7 @@
 <div class="top">
     <div class="icon-cont">
         <div class="icon-background">
-            <div class="test" class:visible={tests} style:left={$test + 'px'}></div>
+            <div class="test visible" class:visible={tests} style:left={$test + 'px'}></div>
 
             <a href="/"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(0)}>home</div></a>
             <a href="/register"> <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(1)}>person_add</div></a>
