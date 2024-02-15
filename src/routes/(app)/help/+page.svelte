@@ -1,6 +1,31 @@
-<script>
-    import Topnav from "$lib/components/Topnav.svelte";
-</script>
+<script></script>
+
+<svelte:head>
+    <title>CVHS Locker</title>
+
+    <meta
+            content="Manage your locker at Crescenta Valley High School (CVHS) with our locker system tool. Easily locate and register your locker and get organized for the school year."
+            name="description"
+    />
+    <meta
+            content="Crescenta Valley High School, CVHS, locker app, locker system, locker site, school locker, locker manager"
+            name="keywords"
+    />
+    <meta content="cvapps.net" name="author"/>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+            rel="stylesheet"
+    />
+</svelte:head>
+
+<div class="main">
+    <!--    <Topnav />-->
+    <div class="sub"></div>
+    <!--    <Botnav pageId={0}/>-->
+</div>
 
 <style>
     :root {
@@ -19,10 +44,8 @@
         flex: 1;
     }
 
-    .sub{
+    .sub {
         display: flex;
         flex: 1;
     }
 </style>
-<div class="main">
-</div>

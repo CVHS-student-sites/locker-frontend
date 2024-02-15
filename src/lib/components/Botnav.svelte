@@ -1,5 +1,11 @@
 <script>
     import {page} from "$app/stores";
+    import {fade} from 'svelte/transition';
+
+
+    import {tweened} from 'svelte/motion';
+    import {cubicOut} from 'svelte/easing';
+    import {onMount} from 'svelte';
 
     export let pageId;
     let selectPage;
@@ -10,16 +16,6 @@
     $: if ($page.url.pathname === '/register') selectPage = 1;
     $: if ($page.url.pathname === '/lookup') selectPage = 2;
     $: if ($page.url.pathname === '/help') selectPage = 3;
-
-    import { fade } from 'svelte/transition';
-
-
-    import { goto } from '$app/navigation';
-
-
-    import {tweened} from 'svelte/motion';
-    import {cubicOut} from 'svelte/easing';
-    import {onMount} from 'svelte';
 
     let start
     let currentTargetIndex = 0; // Initialize with the first icon
@@ -64,7 +60,6 @@
         targetIcon2.classList.add('active');
         tests1.classList.add('visible');
     });
-
 
 
 </script>
@@ -174,7 +169,7 @@
 
     }
 
-    .icond{
+    .icond {
         z-index: 9998;
         position: relative;
     }
@@ -218,7 +213,7 @@
         display: none;
     }
 
-    .text-cont{
+    .text-cont {
         display: flex;
         width: 100%;
         align-items: center;
@@ -238,10 +233,24 @@
         <div class="icon-background">
             <div class="test visible" class:visible={tests} style:left={$test + 'px'}></div>
 
-            <a href="/"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(0)}>home</div></a>
-            <a href="/register"> <div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(1)}>person_add</div></a>
-            <a href="/lookup"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(2)}>search</div></a>
-            <a href="/help"><div in:fade={{ duration: 300 }} class="material-symbols-outlined icond" on:click={() => move(3)}>help</div></a>
+            <a href="/">
+                <div class="material-symbols-outlined icond" in:fade={{ duration: 300 }} on:click={() => move(0)}>home
+                </div>
+            </a>
+            <a href="/register">
+                <div class="material-symbols-outlined icond" in:fade={{ duration: 300 }} on:click={() => move(1)}>
+                    person_add
+                </div>
+            </a>
+            <a href="/lookup">
+                <div class="material-symbols-outlined icond" in:fade={{ duration: 300 }} on:click={() => move(2)}>
+                    search
+                </div>
+            </a>
+            <a href="/help">
+                <div class="material-symbols-outlined icond" in:fade={{ duration: 300 }} on:click={() => move(3)}>help
+                </div>
+            </a>
         </div>
 
         <div class="text-cont">
