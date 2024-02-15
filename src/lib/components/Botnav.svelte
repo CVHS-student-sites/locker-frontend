@@ -193,7 +193,6 @@
         flex-direction: row;
         height: 65px;
         /* align-items: center; */
-        border-bottom: 2px solid #393947;
         /* padding-top: 15px; */
     }
 
