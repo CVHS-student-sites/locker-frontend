@@ -49,6 +49,7 @@
     } else {
         tests = false;
     }
+
     onMount(async () => {
         move(selectPage)
         const tests1 = document.querySelector('.test');
@@ -58,7 +59,6 @@
         targetIcon2.classList.add('active');
         tests1.classList.add('visible');
     });
-
 
 </script>
 
@@ -71,7 +71,6 @@
 
 <style>
 
-    :global(.my-class),
     :global(.active) {
         /* Style for the active icon with the box */
         background-color: #003566;
