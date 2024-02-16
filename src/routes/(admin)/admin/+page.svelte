@@ -1,4 +1,3 @@
-
 <svelte:head>
     <title>Login</title>
     <link href="https://fonts.googleapis.com" rel="preconnect">
