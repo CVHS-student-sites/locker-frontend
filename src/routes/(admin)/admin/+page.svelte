@@ -6,7 +6,7 @@
 
     onMount(async () => {
 
-        grades = await fetchOverviewData()
+        grades = await fetchEnabledGrades()
         console.log(grades)
         
     });
