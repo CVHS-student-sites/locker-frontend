@@ -180,7 +180,7 @@
                         
                         <div class="stat-1-grade-cont">
                             
-                                {#each Object.entries($gradesStore) as [grade, status]}
+                                {#each $gradesStore as [grade, status]}
                                     <div class="stat-1-grade-element-subcont">
                                         {#if status == true}
                                         <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
