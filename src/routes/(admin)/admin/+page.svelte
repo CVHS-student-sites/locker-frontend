@@ -1,12 +1,12 @@
 <script>
-    let grades;
+    let grades = [];
 
     import {fetchOverviewData, fetchEnabledGrades} from "$lib/services/admin/mainApi.js";
     import {onMount} from "svelte";
 
     onMount(async () => {
 
-        grades = fetchOverviewData()
+        grades = await fetchOverviewData()
         console.log(grades)
         
     });
@@ -177,9 +177,7 @@
                         <div class="stat-1-subcont-title">Enabled Grades</div>
                         
                         <div class="stat-1-grade-cont">
-                            {#await grades}
-                            <div>waiting</div>
-                            {:then grades}
+                            {#if grades.length > 0}
                                 {#each Object.entries(grades) as [grade, status]}
                                     <div class="stat-1-grade-element-subcont">
                                         {#if status == true}
@@ -189,7 +187,7 @@
                                         {/if}
                                     </div>
                                 {/each}
-                            {/await}
+                            {/if}
                         </div>
 
                     </div>
