@@ -8,9 +8,9 @@
 
     onMount(async () => {
         // Fetch the data
-        const gradesData = await fetchEnabledGrades();
+        // const gradesData = 
         // Update the store with fetched data
-        gradesStore.set(gradesData);
+        gradesStore.set(await fetchEnabledGrades());
     });
 </script>
 
@@ -180,7 +180,7 @@
                         
                         <div class="stat-1-grade-cont">
                             
-                                {#each $gradesStore as [grade, status]}
+                                {#each Object.entries($gradesStore) as [grade, status]}
                                     <div class="stat-1-grade-element-subcont">
                                         {#if status == true}
                                         <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
