@@ -5,9 +5,10 @@
     import {onMount} from "svelte";
 
     onMount(async () => {
-        grade = await fetchOverviewData()
-        console.log(grades)
 
+        grades = fetchOverviewData()
+        console.log(grades)
+        
     });
 </script>
 
@@ -176,15 +177,19 @@
                         <div class="stat-1-subcont-title">Enabled Grades</div>
                         
                         <div class="stat-1-grade-cont">
-                            {#each Object.entries(grades) as [grade, status]}
-                                <div class="stat-1-grade-element-subcont">
-                                    {#if status == true}
-                                    <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
-                                    {:else}
-                                    <div class="material-symbols-outlined">check_circle</div><div class="stat-1-grade-text">{grade}</div>
-                                    {/if}
-                                </div>
-                            {/each}
+                            {#await grades}
+                            <div>waiting</div>
+                            {:then grades}
+                                {#each Object.entries(grades) as [grade, status]}
+                                    <div class="stat-1-grade-element-subcont">
+                                        {#if status == true}
+                                        <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
+                                        {:else}
+                                        <div class="material-symbols-outlined">check_circle</div><div class="stat-1-grade-text">{grade}</div>
+                                        {/if}
+                                    </div>
+                                {/each}
+                            {/await}
                         </div>
 
                     </div>
