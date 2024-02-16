@@ -1,10 +1,5 @@
 <script>
-    import {fetchOverviewData} from "$lib/services/admin/api.js";
-    import {onMount} from "svelte";
-
-    onMount(async () => {
-        console.log(await fetchOverviewData())
-    });
+    
 </script>
 
 <form action="https://locker-api.cvapps.net/admin/lockerUpload" method="post" enctype="multipart/form-data">

@@ -1,3 +1,16 @@
+<script>
+    let grades;
+
+    import {fetchOverviewData, fetchEnabledGrades} from "$lib/services/admin/mainApi.js";
+    import {onMount} from "svelte";
+
+    onMount(async () => {
+        grade = await fetchOverviewData()
+        console.log(grades)
+
+    });
+</script>
+
 <svelte:head>
     <title>Login</title>
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -63,6 +76,66 @@
         grid-column: span 2;
         background-color: #18181b;
     }
+
+    .stat-cont-1{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;        
+        gap: 5px;
+    }
+
+    .stat-1-subcont-1{
+        box-sizing: border-box;
+        padding: 5px;
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        width: 50%;
+        height: 100%;
+    }
+
+    .stat-1-subcont-title{
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+
+    .stat-1-grade-cont{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+    .stat-1-grade-element-subcont{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: 100%;
+        height: 100%;
+        background-color: #101014;
+        border-radius: 5px;
+        gap: 8px;
+        padding-left: 8px;
+    }
+
+    .stat-1-grade-text{
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+
+    .material-symbols-outlined{
+        color: #d6d6d6;
+    }
 </style>
 
 
@@ -97,7 +170,30 @@
             </div>
 
             <div class="grid-element-1 medium">
-                <div class="button-text">locker stats like grades enabled</div>
+                <div class="stat-cont-1">
+
+                    <div class="stat-1-subcont-1">
+                        <div class="stat-1-subcont-title">Enabled Grades</div>
+                        
+                        <div class="stat-1-grade-cont">
+                            {#each Object.entries(grades) as [grade, status]}
+                                <div class="stat-1-grade-element-subcont">
+                                    {#if status == true}
+                                    <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
+                                    {:else}
+                                    <div class="material-symbols-outlined">check_circle</div><div class="stat-1-grade-text">{grade}</div>
+                                    {/if}
+                                </div>
+                            {/each}
+                        </div>
+
+                    </div>
+
+                    <div class="stat-1-subcont-1">
+
+                    </div>
+
+                </div>
             </div>
             <div class="grid-element-1 medium">
                 <div class="button-text">system stats like uptime, ram usage, db size</div>
