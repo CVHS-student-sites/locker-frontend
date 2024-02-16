@@ -1,14 +1,16 @@
 <script>
-    let grades = [];
+    import { writable } from 'svelte/store';
+    import { fetchEnabledGrades } from "$lib/services/admin/mainApi.js";
+    import { onMount } from "svelte";
 
-    import {fetchOverviewData, fetchEnabledGrades} from "$lib/services/admin/mainApi.js";
-    import {onMount} from "svelte";
+    // Create a writable store to hold grades data
+    const gradesStore = writable([]);
 
     onMount(async () => {
-
-        grades = await fetchEnabledGrades()
-        console.log(grades)
-        
+        // Fetch the data
+        const gradesData = await fetchEnabledGrades();
+        // Update the store with fetched data
+        gradesStore.set(gradesData);
     });
 </script>
 
@@ -177,8 +179,8 @@
                         <div class="stat-1-subcont-title">Enabled Grades</div>
                         
                         <div class="stat-1-grade-cont">
-                            {#if grades.length > 0}
-                                {#each Object.entries(grades) as [grade, status]}
+                            {#if $gradesStore.length > 0}
+                                {#each Object.entries($gradesStore) as [grade, status]}
                                     <div class="stat-1-grade-element-subcont">
                                         {#if status == true}
                                         <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
