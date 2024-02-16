@@ -1,3 +1,13 @@
+<script>
+    import {fetchOverviewData} from "$lib/services/admin/api.js";
+    import {onMount} from "svelte";
+
+    onMount(async () => {
+        await fetchOverviewData();
+    });
+
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
