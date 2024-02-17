@@ -132,7 +132,7 @@
 <div class="sidebar">
     <div class="side-element-1">
         <div class="material-symbols-outlined">account_circle</div>
-        <div class="user-text">Birdpump</div>
+        <div class="user-text">birdpump</div>
     </div>
 
     <a href="/admin">

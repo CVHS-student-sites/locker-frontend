@@ -90,10 +90,11 @@
         justify-content: center;
         flex-direction: column;
         gap: 5px;
+        padding: 5px;
     }
 
     .num-stat-subcont-title{
-        font-size: 16px;
+        font-size: 20px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
@@ -179,23 +180,30 @@
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Total Students</div>
                 <div class="num-stat-big-text">150</div>
+                <div class="num-stat-subcont-title">80% Registered</div>
             </div>
         </div>
 
         <div class="grid-element-1">
-            <div class="button-text">Total lockers</div>
-            <div class="button-text">1,253</div>
-            <div class="button-text">80% capacity</div>
+            <div class="num-stat-cont-1">
+                <div class="num-stat-subcont-title">Total Lockers</div>
+                <div class="num-stat-big-text">589</div>
+                <div class="num-stat-subcont-title">35% Capacity</div>
+            </div>
         </div>
         <div class="grid-element-1">
-            <div class="button-text">last 30 days</div>
-            <div class="button-text">+27 lockers</div>
-            <div class="button-text">+35%</div>
+            <div class="num-stat-cont-1">
+                <div class="num-stat-subcont-title">Last 30 Days</div>
+                <div class="num-stat-big-text">+12</div>
+                <div class="num-stat-subcont-title">Students</div>
+            </div>
         </div>
         <div class="grid-element-1">
-            <div class="button-text">Last 30 days</div>
-            <div class="button-text">+20 users</div>
-            <div class="button-text">+18%</div>
+            <div class="num-stat-cont-1">
+                <div class="num-stat-subcont-title">Last 30 Days</div>
+                <div class="num-stat-big-text">+22</div>
+                <div class="num-stat-subcont-title">Lockers</div>
+            </div>
         </div>
 
         <div class="grid-element-1 large">

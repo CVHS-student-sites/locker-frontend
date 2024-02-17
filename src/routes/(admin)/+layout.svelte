@@ -21,6 +21,12 @@
         flex: 1; /* Expand to fill remaining vertical space */
         margin: 20px 12vw; /* Adjust the margin as needed */
     }
+
+    @media screen and (max-width: 1500px) {
+        .center {
+            margin: 20px 16px; /* Adjust the margin as needed */
+        }
+    }
 </style>
 
 <div class="layout-main">
