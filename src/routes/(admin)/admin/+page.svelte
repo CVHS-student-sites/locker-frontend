@@ -182,10 +182,10 @@
                             
                                 {#each Object.entries($gradesStore) as [grade, status]}
                                     <div class="stat-1-grade-element-subcont">
-                                        {#if status == true}
-                                        <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
-                                        {:else}
+                                        {#if status === true}
                                         <div class="material-symbols-outlined">check_circle</div><div class="stat-1-grade-text">{grade}</div>
+                                        {:else}
+                                        <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
                                         {/if}
                                     </div>
                                 {/each}
