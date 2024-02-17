@@ -1,12 +1,14 @@
 <script>
-    import { writable } from 'svelte/store';
-    import { fetchEnabledGrades } from "$lib/services/admin/mainApi.js";
-    import { onMount } from "svelte";
+    import {writable} from 'svelte/store';
+    import {fetchEnabledGrades} from "$lib/services/admin/mainApi.js";
+    import {onMount} from "svelte";
 
-    // Create a writable store to hold grades data
-    const gradesStore = writable([]);
+    // Create a writable store
+    //todo fix stinky hack to prevent flash
+    const gradesStore = writable({"grade_9": false, "grade_10": false, "grade_11": false, "grade_12": false});
 
     onMount(async () => {
+
         // Fetch the data
         // const gradesData = 
         // Update the store with fetched data
@@ -40,7 +42,7 @@
         flex: 1;
     }
 
-    .button-text{
+    .button-text {
         font-size: 16px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
@@ -75,22 +77,49 @@
         background-color: #18181b;
     }
 
-    .medium{
+    .medium {
         grid-column: span 2;
         background-color: #18181b;
     }
 
-    .stat-cont-1{
+    .num-stat-cont-1{
         width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: row;        
+        flex-direction: column;
         gap: 5px;
     }
 
-    .stat-1-subcont-1{
+    .num-stat-subcont-title{
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+
+    .num-stat-big-text{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 58px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+
+    .stat-cont-1 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .stat-1-subcont-1 {
         box-sizing: border-box;
         padding: 5px;
         gap: 8px;
@@ -102,13 +131,13 @@
         height: 100%;
     }
 
-    .stat-1-subcont-title{
+    .stat-1-subcont-title {
         font-size: 16px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
 
-    .stat-1-grade-cont{
+    .stat-1-grade-cont {
         width: 100%;
         height: 100%;
         display: flex;
@@ -118,7 +147,7 @@
         gap: 5px;
     }
 
-    .stat-1-grade-element-subcont{
+    .stat-1-grade-element-subcont {
         display: flex;
         align-items: center;
         justify-content: left;
@@ -130,78 +159,80 @@
         padding-left: 8px;
     }
 
-    .stat-1-grade-text{
+    .stat-1-grade-text {
         font-size: 16px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
 
-    .material-symbols-outlined{
+    .material-symbols-outlined {
         color: #d6d6d6;
+        width: 24px;
+        user-select: none;
     }
 </style>
 
 
 <div class="main">
-        <div class="grid-cont">
-            <div class="grid-element-1">
-                <div class="button-text">Total users</div>
-                <div class="button-text">2,563</div>
-                <div class="button-text">+15%</div>
-            </div>
-            <div class="grid-element-1">
-                <div class="button-text">Total lockers</div>
-                <div class="button-text">1,253</div>
-                <div class="button-text">80% capacity</div>
-            </div>
-            <div class="grid-element-1">
-                <div class="button-text">last 30 days</div>
-                <div class="button-text">+27 lockers</div>
-                <div class="button-text">+35%</div>
-            </div>
-            <div class="grid-element-1">
-                <div class="button-text">Last 30 days</div>
-                <div class="button-text">+20 users</div>
-                <div class="button-text">+18%</div>
-            </div>
-
-            <div class="grid-element-1 large">
-                <div class="button-text">graph of some sort</div>
-            </div>
-            <div class="grid-element-1">
-                <div class="button-text">list names of new users</div>
-            </div>
-
-            <div class="grid-element-1 medium">
-                <div class="stat-cont-1">
-
-                    <div class="stat-1-subcont-1">
-                        <div class="stat-1-subcont-title">Enabled Grades</div>
-                        
-                        <div class="stat-1-grade-cont">
-                            
-                                {#each Object.entries($gradesStore) as [grade, status]}
-                                    <div class="stat-1-grade-element-subcont">
-                                        {#if status === true}
-                                        <div class="material-symbols-outlined">check_circle</div><div class="stat-1-grade-text">{grade}</div>
-                                        {:else}
-                                        <div class="material-symbols-outlined">cancel</div><div class="stat-1-grade-text">{grade}</div>
-                                        {/if}
-                                    </div>
-                                {/each}
-                            
-                        </div>
-
-                    </div>
-
-                    <div class="stat-1-subcont-1">
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="grid-element-1 medium">
-                <div class="button-text">system stats like uptime, ram usage, db size</div>
+    <div class="grid-cont">
+        <div class="grid-element-1">
+            <div class="num-stat-cont-1">
+                <div class="num-stat-subcont-title">Total Students</div>
+                <div class="num-stat-big-text">150</div>
             </div>
         </div>
+
+        <div class="grid-element-1">
+            <div class="button-text">Total lockers</div>
+            <div class="button-text">1,253</div>
+            <div class="button-text">80% capacity</div>
+        </div>
+        <div class="grid-element-1">
+            <div class="button-text">last 30 days</div>
+            <div class="button-text">+27 lockers</div>
+            <div class="button-text">+35%</div>
+        </div>
+        <div class="grid-element-1">
+            <div class="button-text">Last 30 days</div>
+            <div class="button-text">+20 users</div>
+            <div class="button-text">+18%</div>
+        </div>
+
+        <div class="grid-element-1 large">
+            <div class="button-text">graph of some sort</div>
+        </div>
+        <div class="grid-element-1">
+            <div class="button-text">list names of new users</div>
+        </div>
+
+        <div class="grid-element-1 medium">
+            <div class="stat-cont-1">
+
+                <div class="stat-1-subcont-1">
+                    <div class="stat-1-subcont-title">Enabled Grades</div>
+                    <div class="stat-1-grade-cont">
+                        {#each Object.entries($gradesStore) as [grade, status]}
+                            <div class="stat-1-grade-element-subcont">
+                                {#if status === true}
+                                    <div class="material-symbols-outlined" style="color:darkgreen">check_circle</div>
+                                    <div class="stat-1-grade-text">{grade}</div>
+                                {:else}
+                                    <div class="material-symbols-outlined" style="color:darkred">cancel</div>
+                                    <div class="stat-1-grade-text">{grade}</div>
+                                {/if}
+                            </div>
+                        {/each}
+                    </div>
+                </div>
+
+                <div class="stat-1-subcont-1">
+                    <div class="stat-1-subcont-title">Restricted Areas</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="grid-element-1 medium">
+            <div class="button-text">system stats like uptime, ram usage, db size</div>
+        </div>
+    </div>
 </div>
