@@ -52,6 +52,12 @@
         background-color: #1b2c42;
     }
 
+    .lookup-header {
+        font-size: 24px;
+        color: var(--text);
+        margin-bottom: 20px;
+    }
+
     .item {
         width: 100%;
         /*background-color: green;*/
@@ -105,6 +111,7 @@
 <div class="main">
     <div class="lookup">
         <div class="lookup-cont">
+            <div class="lookup-header">Your locker location:</div>
             <div class="expand">
                 <div class="item">
                     <div class="data-cont">{data.Locker.lockerNumber}</div>

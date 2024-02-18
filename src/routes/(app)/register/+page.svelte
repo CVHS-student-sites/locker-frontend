@@ -21,27 +21,7 @@
 
 
     async function login() {
-        alert("yoyo")
-        const response = await fetch('https://locker-api.cvapps.net/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
 
-                password: onePassword,
-                username: oneUsername
-            }),
-            credentials: 'include', // Send and store cookies
-        });
-
-        if (response.ok) {
-            // Redirect or perform other actions upon successful login
-            await goto('/admin');
-        } else {
-            // Handle login error
-            alert('error');
-        }
     }
 
 
