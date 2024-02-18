@@ -1,40 +1,41 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-    const dispatch = createEventDispatcher();
-    let canvasElement;
-    async function submit() {
-        const response = await fetch(`https://locker-api.cvapps.net/public/lookup-user/${username}`, {
-            method: 'get',
-        });
+    import {createEventDispatcher} from "svelte";
+    import {fetchLocker} from "$lib/services/app/mainApi.js";
 
+    const dispatch = createEventDispatcher();
+    let input;
+
+    let studentID = "";
+    async function submit() {
+
+        let response = await fetchLocker(studentID);
         if (response.status === 404) {
             // Handle 404 status
             // alert('user not found.');
-            canvasElement.style.borderColor = "red";
-            canvasElement.value = '';
-            canvasElement.placeholder = 'user not found';
+            input.style.borderColor = "red";
+            input.value = '';
+            input.placeholder = 'user not found';
         } else if (response.ok) {
             console.log()
             dispatch("message", {
-                        data: await response.json(),
-                    });
+                data: await response.json(),
+            });
         } else {
             // Handle other error statuses
-            alert('error');
+            input.style.borderColor = "red";
+            input.value = '';
+            input.placeholder = 'system error';
         }
     }
 
 
-    let username = "";
+
+
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
-            // Enter key was pressed, do something
             submit();
         }
     }
-
-
-
 
 
 </script>
@@ -64,7 +65,7 @@
     }
 
 
-    .login {
+    .lookup {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -75,7 +76,7 @@
         margin-top: 20vh;
     }
 
-    .login-cont {
+    .lookup-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -91,13 +92,13 @@
         background-color: #1b2c42;
     }
 
-    .login-header {
+    .lookup-header {
         font-size: 24px;
         color: var(--text);
         margin-bottom: 20px;
     }
 
-    .login-form {
+    .lookup-form {
         display: flex;
         justify-content: center;
 
@@ -108,21 +109,7 @@
     }
 
 
-    label {
-        color: var(--text);
-        line-height: 20px;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    .forgot {
-        color: #4ca6ff;
-    }
-
-    input[type=text],
-    input[type=password] {
+    input[type=text]{
         width: 100%;
         padding: 0px 8px 0px 8px;
         box-sizing: border-box;
@@ -168,23 +155,22 @@
 
     @media only screen and (max-width: 600px) {
 
-        .login {
+        .lookup {
             row-gap: 30px;
         }
 
-        .login-cont {
+        .lookup-cont {
             width: 100vw;
             box-shadow: none;
             padding: 0;
             background: unset;
         }
 
-        .login-form {
+        .lookup-form {
             width: 90vw;
         }
 
-        input[type=text],
-        input[type=password] {
+        input[type=text] {
             width: 100%;
 
         }
@@ -193,14 +179,15 @@
 </style>
 <div class="main">
 
-    <div class="login">
+    <div class="lookup">
 
-        <div class="login-cont">
-            <div class="login-header">Lookup Locker</div>
+        <div class="lookup-cont">
+            <div class="lookup-header">Lookup Locker</div>
 
-            <div class="login-form" on:keydown={handleKeyPress}>
-<!--                <label for="username">Student ID Number</label>-->
-                <input bind:value={username} bind:this={canvasElement} id="username" name="username" placeholder="Student ID" required type="text">
+            <div class="lookup-form" on:keydown={handleKeyPress}>
+                <!--                <label for="username">Student ID Number</label>-->
+                <input bind:this={input} bind:value={studentID} id="studentID" name="studentID"
+                       placeholder="Student ID" required type="text">
 
                 <button class="submit" on:click={submit}>Search</button>
             </div>

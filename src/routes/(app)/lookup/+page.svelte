@@ -52,5 +52,4 @@
         width: 100vw;
         flex: 1;
     }
-
 </style>

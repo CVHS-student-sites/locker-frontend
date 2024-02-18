@@ -1,30 +1,7 @@
 <script>
-
-
     export let data;
 
-    $: test = data;
-
-    // import Topnav from "$lib/components/Topnav.svelte";
-    import {goto} from '$app/navigation';
-
-    let username = "";
-    let password = "";
-
-    function handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            // Enter key was pressed, do something
-            submit();
-        }
-    }
-
-
-    import {createEventDispatcher} from "svelte";
-    import {fade} from 'svelte/transition';
-
-    const dispatch = createEventDispatcher();
-    console.log(data)
-
+    console.log()
 </script>
 
 <svelte:head>
@@ -52,7 +29,7 @@
     }
 
 
-    .login {
+    .lookup {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -63,7 +40,7 @@
         margin-top: 20vh;
     }
 
-    .login-cont {
+    .lookup-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -87,14 +64,15 @@
 
     .data-cont {
         height: 40px;
-        width: 80px;
-        background-color: black;
+        width: 90px;
+        background-color: #17171c;
         border-radius: 10px;
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 22px;
+        font-size: 18px;
+        border: 2px solid #005cb3;
     }
 
     .text {
@@ -110,24 +88,28 @@
 
     @media only screen and (max-width: 600px) {
 
-        .login {
+        .lookup {
             row-gap: 30px;
         }
 
-
-        .login-cont {
+        .lookup-cont {
             width: 90vw;
             padding: 0;
             background: unset;
         }
-
     }
 
 </style>
+
+
 <div class="main">
-    <div class="login">
-        <div class="login-cont">
+    <div class="lookup">
+        <div class="lookup-cont">
             <div class="expand">
+                <div class="item">
+                    <div class="data-cont">{data.Locker.lockerNumber}</div>
+                    <div class="text">Locker Number</div>
+                </div>
                 <div class="item">
                     <div class="data-cont">5000</div>
                     <div class="text">Building</div>
@@ -141,8 +123,6 @@
                     <div class="text">Level</div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
