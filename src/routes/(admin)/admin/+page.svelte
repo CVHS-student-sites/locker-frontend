@@ -1,17 +1,23 @@
 <script>
     import {writable} from 'svelte/store';
-    import {fetchEnabledGrades} from "$lib/services/admin/mainApi.js";
+    import {fetchEnabledGrades, fetchOverviewData} from "$lib/services/admin/mainApi.js";
     import {onMount} from "svelte";
 
     // Create a writable store
     //todo fix stinky hack to prevent flash
     const gradesStore = writable({"grade_9": false, "grade_10": false, "grade_11": false, "grade_12": false});
+    const statStore = writable({
+        "regUsers": 0,
+        "regLockers": 0,
+        "totalUsers": 0,
+        "totalLockers": 0,
+        "lastHour": 0,
+        "lastDay": 0
+    })
 
     onMount(async () => {
 
-        // Fetch the data
-        // const gradesData = 
-        // Update the store with fetched data
+        statStore.set(await fetchOverviewData())
         gradesStore.set(await fetchEnabledGrades());
     });
 </script>
@@ -178,30 +184,30 @@
     <div class="grid-cont">
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
-                <div class="num-stat-subcont-title">Total Students</div>
-                <div class="num-stat-big-text">150</div>
-                <div class="num-stat-subcont-title">80% Registered</div>
+                <div class="num-stat-subcont-title">Registered Students</div>
+                <div class="num-stat-big-text">{$statStore.regUsers}</div>
+                <div class="num-stat-subcont-title">Population: {$statStore.totalUsers}</div>
             </div>
         </div>
 
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
-                <div class="num-stat-subcont-title">Total Lockers</div>
-                <div class="num-stat-big-text">589</div>
-                <div class="num-stat-subcont-title">35% Capacity</div>
+                <div class="num-stat-subcont-title">Registered Lockers</div>
+                <div class="num-stat-big-text">{$statStore.regLockers}</div>
+                <div class="num-stat-subcont-title">Capacity: {$statStore.totalLockers}</div>
             </div>
         </div>
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
-                <div class="num-stat-subcont-title">Last 30 Days</div>
-                <div class="num-stat-big-text">+12</div>
-                <div class="num-stat-subcont-title">Students</div>
+                <div class="num-stat-subcont-title">Last Hour</div>
+                <div class="num-stat-big-text">+{$statStore.lastHour}</div>
+                <div class="num-stat-subcont-title">Lockers</div>
             </div>
         </div>
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
-                <div class="num-stat-subcont-title">Last 30 Days</div>
-                <div class="num-stat-big-text">+22</div>
+                <div class="num-stat-subcont-title">Last Day</div>
+                <div class="num-stat-big-text">+{$statStore.lastDay}</div>
                 <div class="num-stat-subcont-title">Lockers</div>
             </div>
         </div>
