@@ -1,9 +1,12 @@
 <script>
     // import Topnav from "$lib/components/Topnav.svelte";
+    import {Stretch} from 'svelte-loading-spinners';
     import {goto} from '$app/navigation';
 
     let username = "";
     let password = "";
+
+    let loading = false;
 
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
@@ -14,6 +17,7 @@
 
 
     async function login() {
+        loading = true;
         const response = await fetch('https://locker-api.cvapps.net/auth/login', {
             method: 'POST',
             headers: {
@@ -27,12 +31,14 @@
             credentials: 'include', // Send and store cookies
         });
 
+
         if (response.ok) {
             // Redirect or perform other actions upon successful login
             await goto('/admin');
         } else {
             // Handle login error
-            alert('error');
+
+            loading = false;
         }
     }
 
@@ -189,21 +195,12 @@
         background-color: #577db2;
     }
 
-    .bottom-text {
+    .loading-cont {
         width: 100%;
+        padding-top: 22px;
         display: flex;
-        /*align-items: center;*/
+        align-items: center;
         justify-content: center;
-        column-gap: 5px;
-    }
-
-    .reg {
-        color: #fbfdfe;
-    }
-
-    .regs {
-        color: #4ca6ff;
-        cursor: pointer;
     }
 
     @media only screen and (max-width: 600px) {
@@ -259,6 +256,12 @@
                 <input bind:value={password} id="password" name="password" required type="password">
 
                 <button class="submit" on:click={login}>Sign in</button>
+
+                {#if loading}
+                    <div class="loading-cont">
+                        <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
+                    </div>
+                {/if}
             </div>
 
         </div>
