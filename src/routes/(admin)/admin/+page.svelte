@@ -5,20 +5,14 @@
 
     // Create a writable store
     //todo fix stinky hack to prevent flash
-    const gradesStore = writable({"grade_9": false, "grade_10": false, "grade_11": false, "grade_12": false});
-    const statStore = writable({
-        "regUsers": 0,
-        "regLockers": 0,
-        "totalUsers": 0,
-        "totalLockers": 0,
-        "lastHour": 0,
-        "lastDay": 0
-    })
+    const gradesStore = writable({});
+    const statStore = writable({})
 
     onMount(async () => {
 
         statStore.set(await fetchOverviewData())
         gradesStore.set(await fetchEnabledGrades());
+        console.log($gradesStore)
     });
 </script>
 
@@ -88,7 +82,7 @@
         background-color: #18181b;
     }
 
-    .num-stat-cont-1{
+    .num-stat-cont-1 {
         width: 100%;
         height: 100%;
         display: flex;
@@ -99,13 +93,13 @@
         padding: 5px;
     }
 
-    .num-stat-subcont-title{
+    .num-stat-subcont-title {
         font-size: 20px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
 
-    .num-stat-big-text{
+    .num-stat-big-text {
         height: 100%;
         display: flex;
         align-items: center;
@@ -185,29 +179,29 @@
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Registered Students</div>
-                <div class="num-stat-big-text">{$statStore.regUsers}</div>
-                <div class="num-stat-subcont-title">Population: {$statStore.totalUsers}</div>
+                <div class="num-stat-big-text">{$statStore.regUsers ? $statStore.regUsers : ''}</div>
+                <div class="num-stat-subcont-title">Population: {$statStore.totalUsers ? $statStore.totalUsers : ''}</div>
             </div>
         </div>
 
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Registered Lockers</div>
-                <div class="num-stat-big-text">{$statStore.regLockers}</div>
-                <div class="num-stat-subcont-title">Capacity: {$statStore.totalLockers}</div>
+                <div class="num-stat-big-text">{$statStore.regLockers ? $statStore.regLockers : ''}</div>
+                <div class="num-stat-subcont-title">Capacity: {$statStore.totalLockers ? $statStore.totalLockers : ''}</div>
             </div>
         </div>
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Last Hour</div>
-                <div class="num-stat-big-text">+{$statStore.lastHour}</div>
+                <div class="num-stat-big-text">+{$statStore.lastHour ? $statStore.lastHour : ''}</div>
                 <div class="num-stat-subcont-title">Lockers</div>
             </div>
         </div>
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Last Day</div>
-                <div class="num-stat-big-text">+{$statStore.lastDay}</div>
+                <div class="num-stat-big-text">+{$statStore.lastHour ? $statStore.lastHour : ''}</div>
                 <div class="num-stat-subcont-title">Lockers</div>
             </div>
         </div>
@@ -223,19 +217,34 @@
             <div class="stat-cont-1">
 
                 <div class="stat-1-subcont-1">
-                    <div class="stat-1-subcont-title">Enabled Grades</div>
+                    <div class="stat-1-subcont-title">Enabled Registration</div>
                     <div class="stat-1-grade-cont">
-                        {#each Object.entries($gradesStore) as [grade, status]}
-                            <div class="stat-1-grade-element-subcont">
-                                {#if status === true}
-                                    <div class="material-symbols-outlined" style="color:darkgreen">check_circle</div>
-                                    <div class="stat-1-grade-text">{grade}</div>
-                                {:else}
-                                    <div class="material-symbols-outlined" style="color:darkred">cancel</div>
-                                    <div class="stat-1-grade-text">{grade}</div>
-                                {/if}
+
+                        <div class="stat-1-grade-element-subcont">
+                            <div class="material-symbols-outlined"
+                                 style="{$gradesStore.grade_12 ? 'color:darkgreen' : 'color:darkred'}">check_circle
                             </div>
-                        {/each}
+                            <div class="stat-1-grade-text">Grade 12</div>
+                        </div>
+                        <div class="stat-1-grade-element-subcont">
+                            <div class="material-symbols-outlined"
+                                 style="{$gradesStore.grade_11 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                            </div>
+                            <div class="stat-1-grade-text">Grade 11</div>
+                        </div>
+                        <div class="stat-1-grade-element-subcont">
+                            <div class="material-symbols-outlined"
+                                 style="{$gradesStore.grade_10 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                            </div>
+                            <div class="stat-1-grade-text">Grade 10</div>
+                        </div>
+                        <div class="stat-1-grade-element-subcont">
+                            <div class="material-symbols-outlined"
+                                 style="{$gradesStore.grade_9 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                            </div>
+                            <div class="stat-1-grade-text">Grade 9</div>
+                        </div>
+
                     </div>
                 </div>
 
