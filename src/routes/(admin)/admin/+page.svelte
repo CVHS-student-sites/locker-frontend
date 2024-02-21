@@ -222,25 +222,25 @@
 
                         <div class="stat-1-grade-element-subcont">
                             <div class="material-symbols-outlined"
-                                 style="{$gradesStore.grade_12 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                                 style="{$gradesStore.grade_12 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_12 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 12</div>
                         </div>
                         <div class="stat-1-grade-element-subcont">
                             <div class="material-symbols-outlined"
-                                 style="{$gradesStore.grade_11 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                                 style="{$gradesStore.grade_11 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_11 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 11</div>
                         </div>
                         <div class="stat-1-grade-element-subcont">
                             <div class="material-symbols-outlined"
-                                 style="{$gradesStore.grade_10 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                                 style="{$gradesStore.grade_10 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_10 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 10</div>
                         </div>
                         <div class="stat-1-grade-element-subcont">
                             <div class="material-symbols-outlined"
-                                 style="{$gradesStore.grade_9 ? 'color:darkgreen' : 'color:darkred'}">check_circle
+                                 style="{$gradesStore.grade_9 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_9 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 9</div>
                         </div>
