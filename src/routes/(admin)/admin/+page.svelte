@@ -94,7 +94,7 @@
     }
 
     .num-stat-subcont-title {
-        font-size: 20px;
+        font-size: 17px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
