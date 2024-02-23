@@ -167,10 +167,19 @@
     }
 
     .material-symbols-outlined {
+
         color: #d6d6d6;
         width: 24px;
         user-select: none;
     }
+
+    .filled-icons {
+        font-variation-settings: 'FILL' 1,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
 </style>
 
 
@@ -180,7 +189,8 @@
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Registered Students</div>
                 <div class="num-stat-big-text">{$statStore.regUsers ? $statStore.regUsers : ''}</div>
-                <div class="num-stat-subcont-title">Population: {$statStore.totalUsers ? $statStore.totalUsers : ''}</div>
+                <div class="num-stat-subcont-title">
+                    Population: {$statStore.totalUsers ? $statStore.totalUsers : ''}</div>
             </div>
         </div>
 
@@ -188,7 +198,8 @@
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Registered Lockers</div>
                 <div class="num-stat-big-text">{$statStore.regLockers ? $statStore.regLockers : ''}</div>
-                <div class="num-stat-subcont-title">Capacity: {$statStore.totalLockers ? $statStore.totalLockers : ''}</div>
+                <div class="num-stat-subcont-title">
+                    Capacity: {$statStore.totalLockers ? $statStore.totalLockers : ''}</div>
             </div>
         </div>
         <div class="grid-element-1">
@@ -221,25 +232,25 @@
                     <div class="stat-1-grade-cont">
 
                         <div class="stat-1-grade-element-subcont">
-                            <div class="material-symbols-outlined"
+                            <div class="material-symbols-outlined filled-icons"
                                  style="{$gradesStore.grade_12 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_12 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 12</div>
                         </div>
                         <div class="stat-1-grade-element-subcont">
-                            <div class="material-symbols-outlined"
+                            <div class="material-symbols-outlined filled-icons"
                                  style="{$gradesStore.grade_11 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_11 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 11</div>
                         </div>
                         <div class="stat-1-grade-element-subcont">
-                            <div class="material-symbols-outlined"
+                            <div class="material-symbols-outlined filled-icons"
                                  style="{$gradesStore.grade_10 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_10 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 10</div>
                         </div>
                         <div class="stat-1-grade-element-subcont">
-                            <div class="material-symbols-outlined"
+                            <div class="material-symbols-outlined filled-icons"
                                  style="{$gradesStore.grade_9 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_9 ? 'check_circle' : 'cancel'}
                             </div>
                             <div class="stat-1-grade-text">Grade 9</div>
