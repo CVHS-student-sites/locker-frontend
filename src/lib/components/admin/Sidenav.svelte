@@ -150,7 +150,7 @@
     </a>
 
     <a href="/admin/manage">
-        <div class="side-element-2" class:active-button={selectPage === 2}>
+        <div class="side-element-2" >
             <div class="material-symbols-outlined">tune</div>
             <div class="button-text">Management</div>
         </div>

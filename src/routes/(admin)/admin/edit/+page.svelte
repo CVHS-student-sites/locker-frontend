@@ -1,92 +1,14 @@
 <script>
-    import Grid from "gridjs-svelte";
-    import { h, PluginPosition } from "gridjs";
-    import "gridjs/dist/theme/mermaid.css";
-    import Modal from './Editmodal.svelte';
+    import LockerEdit from "./views/LockerEdit.svelte";
+    import UserEdit from "./views/UserEdit.svelte";
 
-    let showModal = false;
-
-    function launchEdit(id){
-        console.log("all")
-        showModal = true;
-    }
-
-    const data = [
-        ["marc hyeler", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["allah johnsons", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-    ];
-
-    const style = {
-        container: {
-            padding: '0px',
-        },
-        table: {
-            border: 'none'
-        },
-        th: {
-            color: '#d6d6d6',
-            'background-color': '#18181b',
-            'border-bottom': '2px solid #0084ff',
-            'border-left': 'none',
-            'border-right': 'none',
-            'text-align': 'center',
-
-        },
-        td: {
-            color: '#d6d6d6',
-            'background-color': '#18181b',
-            'border-bottom': '1px solid #1b2c42',
-            'border-left': 'none',
-            'border-right': 'none',
-            'text-align': 'center'
-        },
-        footer:{
-            'color': '#d6d6d6',
-            'background-color': '#18181b',
-            'border-top': 'none',
-        },
-        header:{
-            padding: '0px',
-            border: 'none'
-        }
-
-    }
-
-    const columns = [
-        'Name',
-        'Email',
-        'ID',
-        'Grade',
-        'Locker',
-        {
-            name: '',
-            formatter: (cell, row) => {
-                return [
-                    h('button', {
-                        "class": "main-btn",
-                        onClick: () => {
-                            launchEdit(row.cells[2].data)
-
-                        }
-                    }, 'Edit'),
-                    h('button', {
-                        "class": "main-btn",
-                        onClick: () => {
-
-
-                        }
-                    }, 'Delete')
-                ];
-            }
-        }
-    ];
+    let selected = UserEdit;
 
 
 </script>
 
 <svelte:head>
-    <title>Locker - Edit</title>
+    <title>Locker - Manage</title>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
@@ -95,7 +17,6 @@
             rel="stylesheet"
     />
 </svelte:head>
-
 <style>
     :root {
         --text: #d6d6d6;
@@ -112,41 +33,46 @@
         flex: 1;
     }
 
-    .modal-cont{
-
+    .top-menu{
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 100%;
+        height: 60px;
+        gap: 10px;
+        /* background-color:green; */
     }
 
-    :global(.gridjs-summary) {
+    .dataselect-button{
+        /* width: 80px; */
         color: #d6d6d6;
-        background-color: #18181b;
-        border-top: none;
-
+        height: 50px;
+        padding: 16px;
+        box-sizing: border-box;
+        border-radius: 50px;
+        transition: background-color 0.1s ease;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        background-color: #1b2c42;
     }
 
-    :global(.main-btn) {
-        color: #d6d6d6;
-        background-color: #0084ff;
-        border: none;
-        border-radius: 5px;
-        padding: 5px;
-        margin: 0 5px 0 5px;
-    }
-    :global(.main-btn:hover) {
+    .dataselect-button:hover{
+        /* background-color: ; */
         cursor: pointer;
-        background-color: #577db2;
+    }
+
+    .data-active-button{
+        background-color: #003566;
     }
 </style>
 
+
 <div class="main">
-
-    <div class="modal-cont">
-        <Modal bind:showModal/>
+    <div class="top-menu">
+        <div class="dataselect-button" on:click={selected = UserEdit} class:data-active-button={selected === UserEdit}>Users</div>
+        <div class="dataselect-button" on:click={selected = LockerEdit} class:data-active-button={selected === LockerEdit}>Lockers</div>
     </div>
-    <Grid
-
-            search
-            pagination={{ enabled: true, limit: 5 }}
-            {style}
-            {columns}
-            {data} />
+    <svelte:component this={selected}/>
 </div>
