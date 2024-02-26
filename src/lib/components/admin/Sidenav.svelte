@@ -131,8 +131,8 @@
 
 <div class="sidebar">
     <div class="side-element-1">
-        <div class="material-symbols-outlined">account_circle</div>
-        <div class="user-text">birdpump</div>
+        <div class="material-symbols-outlined">logout</div>
+        <div class="user-text">Logout</div>
     </div>
 
     <a href="/admin">
@@ -150,7 +150,7 @@
     </a>
 
     <a href="/admin/manage">
-        <div class="side-element-2" >
+        <div class="side-element-2" class:active-button={selectPage === 2}>
             <div class="material-symbols-outlined">tune</div>
             <div class="button-text">Management</div>
         </div>
