@@ -31,6 +31,10 @@
         flex-direction: column;
         background-color: var(--background);
         flex: 1;
+        /* height: 30%; */
+        /* position: relative; */
+
+        
     }
 
     .top-menu{
@@ -66,6 +70,12 @@
     .data-active-button{
         background-color: #003566;
     }
+
+    .sub-scroll{
+        flex: 1;
+        widows: 100%;
+        overflow-y: scroll;
+    }
 </style>
 
 
@@ -74,5 +84,7 @@
         <div class="dataselect-button" on:click={() => (selected = UserEdit)} class:data-active-button={selected === UserEdit}>Users</div>
         <div class="dataselect-button" on:click={() => (selected = LockerEdit)} class:data-active-button={selected === LockerEdit}>Lockers</div>
     </div>
-    <svelte:component this={selected}/>
+    <div class="sub-scroll">
+        <svelte:component this={selected}/>
+    </div>
 </div>

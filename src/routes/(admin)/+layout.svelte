@@ -20,6 +20,7 @@
         display: flex;
         flex: 1; /* Expand to fill remaining vertical space */
         margin: 20px 12vw; /* Adjust the margin as needed */
+        overflow: hidden;
     }
 
     @media screen and (max-width: 1500px) {
