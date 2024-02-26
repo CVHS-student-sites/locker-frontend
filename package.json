@@ -15,5 +15,9 @@
 		"svelte-loading-spinners": "^0.3.4",
 		"vite": "^4.4.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"gridjs": "^6.1.1",
+		"gridjs-svelte": "^2.1.1"
+	}
 }

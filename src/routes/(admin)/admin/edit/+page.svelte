@@ -1,3 +1,89 @@
+<script>
+    import Grid from "gridjs-svelte";
+    import { h, PluginPosition } from "gridjs";
+    import "gridjs/dist/theme/mermaid.css";
+    import Modal from './Editmodal.svelte';
+
+    let showModal = false;
+
+    function launchEdit(id){
+        console.log("all")
+        showModal = true;
+    }
+
+    const data = [
+        ["marc hyeler", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
+        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
+        ["allah johnsons", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
+    ];
+
+    const style = {
+        container: {
+            padding: '0px',
+        },
+        table: {
+            border: '1px solid #1b2c42'
+        },
+        th: {
+            color: '#d6d6d6',
+            'background-color': '#18181b',
+            'border-bottom': '2px solid #0084ff',
+            'border-left': 'none',
+            'border-right': 'none',
+            'text-align': 'center',
+            'border-radius': '5px'
+
+        },
+        td: {
+            color: '#d6d6d6',
+            'background-color': '#18181b',
+            'border-bottom': '1px solid #1b2c42',
+            'border-left': 'none',
+            'border-right': 'none',
+            'text-align': 'center'
+        },
+        footer:{
+            'color': '#d6d6d6',
+            'background-color': '#18181b',
+            'border-top': 'none',
+        },
+        header:{
+            padding: '0px',
+        }
+
+    }
+
+    const columns = [
+        'Name',
+        'Email',
+        'ID',
+        'Grade',
+        'Locker',
+        {
+            name: '',
+            formatter: (cell, row) => {
+                return [
+                    h('button', {
+                        "class": "main-btn",
+                        onClick: () => {
+                            launchEdit(row.cells[2].data)
+
+                        }
+                    }, 'Edit'),
+                    h('button', {
+                        "class": "main-btn",
+                        onClick: () => {
+
+
+                        }
+                    }, 'Delete')
+                ];
+            }
+        }
+    ];
+
+
+</script>
 
 <svelte:head>
     <title>Locker - Edit</title>
@@ -9,6 +95,7 @@
             rel="stylesheet"
     />
 </svelte:head>
+
 <style>
     :root {
         --text: #d6d6d6;
@@ -24,9 +111,42 @@
         background-color: var(--background);
         flex: 1;
     }
+
+    .modal-cont{
+
+    }
+
+    :global(.gridjs-summary) {
+        color: #d6d6d6;
+        background-color: #18181b;
+        border-top: none;
+
+    }
+
+    :global(.main-btn) {
+        color: #d6d6d6;
+        background-color: #0084ff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 0 5px 0 5px;
+    }
+    :global(.main-btn:hover) {
+        cursor: pointer;
+        background-color: #577db2;
+    }
 </style>
 
-
 <div class="main">
-    <h1>hello - edit</h1>
+
+    <div class="modal-cont">
+        <Modal bind:showModal/>
+    </div>
+    <Grid
+
+            search
+            pagination={{ enabled: true, limit: 5 }}
+            {style}
+            {columns}
+            {data} />
 </div>
