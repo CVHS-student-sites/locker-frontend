@@ -22,7 +22,7 @@
             padding: '0px',
         },
         table: {
-            border: '1px solid #1b2c42'
+            border: 'none'
         },
         th: {
             color: '#d6d6d6',
@@ -31,7 +31,6 @@
             'border-left': 'none',
             'border-right': 'none',
             'text-align': 'center',
-            'border-radius': '5px'
 
         },
         td: {
@@ -49,6 +48,7 @@
         },
         header:{
             padding: '0px',
+            border: 'none'
         }
 
     }
