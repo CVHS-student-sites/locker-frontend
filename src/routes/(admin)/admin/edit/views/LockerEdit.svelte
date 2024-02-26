@@ -1,7 +1,8 @@
 <script>
     import Grid from "gridjs-svelte";
     import { h, PluginPosition } from "gridjs";
-    import "gridjs/dist/theme/mermaid.css";
+    // import "gridjs/dist/theme/mermaid.css";
+    import '$lib/assets/admin-table.css'
     import Modal from '../Editmodal.svelte';
 
     let showModal = false;
@@ -12,9 +13,9 @@
     }
 
     const data = [
-        ["marc hyeler", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["allah johnsons", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
+        ["2024", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
+        ["2028", "bfred415@stu.gusd.net", 415632, 10, "1125"],
+        ["2024", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
     ];
 
     const style = {
@@ -147,7 +148,7 @@
     <Grid
 
             search
-            pagination={{ enabled: true, limit: 5 }}
+            pagination={{ enabled: true, limit: 2 }}
             {style}
             {columns}
             {data} />

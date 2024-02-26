@@ -71,8 +71,8 @@
 
 <div class="main">
     <div class="top-menu">
-        <div class="dataselect-button" on:click={selected = UserEdit} class:data-active-button={selected === UserEdit}>Users</div>
-        <div class="dataselect-button" on:click={selected = LockerEdit} class:data-active-button={selected === LockerEdit}>Lockers</div>
+        <div class="dataselect-button" on:click={() => (selected = UserEdit)} class:data-active-button={selected === UserEdit}>Users</div>
+        <div class="dataselect-button" on:click={() => (selected = LockerEdit)} class:data-active-button={selected === LockerEdit}>Lockers</div>
     </div>
     <svelte:component this={selected}/>
 </div>
