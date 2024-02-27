@@ -1,4 +1,5 @@
 <script>
+    //todo create reusable table component
     import Grid from "gridjs-svelte";
     import { h, PluginPosition } from "gridjs";
     // import "gridjs/dist/theme/mermaid.css";
@@ -113,17 +114,6 @@
         flex-direction: column;
         background-color: var(--background);
         /* flex: 1; */
-    }
-
-    .modal-cont{
-
-    }
-
-    :global(.gridjs-summary) {
-        color: #d6d6d6;
-        background-color: #18181b;
-        border-top: none;
-
     }
 
     :global(.main-btn) {

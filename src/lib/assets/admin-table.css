@@ -79,6 +79,9 @@ input.gridjs-input {
 .gridjs-pagination .gridjs-summary {
     float: left;
     margin-top: 5px;
+    color: #d6d6d6;
+    background-color: #18181b;
+    border-top: none;
 }
 .gridjs-pagination .gridjs-pages {
     float: right;

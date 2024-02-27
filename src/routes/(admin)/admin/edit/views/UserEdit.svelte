@@ -139,17 +139,6 @@
         /* flex: 1; */
     }
 
-    .modal-cont{
-
-    }
-
-    :global(.gridjs-summary) {
-        color: #d6d6d6;
-        background-color: #18181b;
-        border-top: none;
-
-    }
-
     :global(.main-btn) {
         color: #d6d6d6;
         background-color: #0084ff;
