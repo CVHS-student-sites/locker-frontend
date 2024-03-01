@@ -1,7 +1,5 @@
 <script>
     export let data;
-
-    console.log()
 </script>
 
 <svelte:head>
@@ -111,22 +109,22 @@
 <div class="main">
     <div class="lookup">
         <div class="lookup-cont">
-            <div class="lookup-header">Your locker location:</div>
+            <div class="lookup-header">Your locker:</div>
             <div class="expand">
                 <div class="item">
                     <div class="data-cont">{data.Locker.lockerNumber}</div>
                     <div class="text">Locker Number</div>
                 </div>
                 <div class="item">
-                    <div class="data-cont">5000</div>
+                    <div class="data-cont">{data.Locker.location.building}</div>
                     <div class="text">Building</div>
                 </div>
                 <div class="item">
-                    <div class="data-cont">3</div>
+                    <div class="data-cont">{data.Locker.location.floor}</div>
                     <div class="text">Floor</div>
                 </div>
                 <div class="item">
-                    <div class="data-cont">3</div>
+                    <div class="data-cont">{data.Locker.location.level}</div>
                     <div class="text">Level</div>
                 </div>
             </div>
