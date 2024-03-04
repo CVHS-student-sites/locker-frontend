@@ -27,13 +27,6 @@
             name="keywords"
     />
     <meta content="cvapps.net" name="author"/>
-
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-            rel="stylesheet"
-    />
 </svelte:head>
 
 <div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>

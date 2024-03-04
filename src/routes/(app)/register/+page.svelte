@@ -35,10 +35,6 @@
     <meta content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
           name="keywords">
     <meta content="cvapps.net" name="author">
-
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </svelte:head>
 
 <style>
