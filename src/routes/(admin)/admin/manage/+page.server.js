@@ -16,7 +16,7 @@ export async function load({ cookies }) {
             });
     
             if (!response.ok) {
-                throw redirect(302, '/login');
+                redirect(302, '/login');
             }
     
             // Continue loading the route as usual
@@ -24,7 +24,7 @@ export async function load({ cookies }) {
     
         } catch (error) {
             console.error("Error checking authentication:", error);
-            throw redirect(302, '/login');
+            redirect(302, '/login');
         }
     }else{
         //return route if not in prod without checking auth
