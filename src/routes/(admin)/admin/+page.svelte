@@ -3,6 +3,8 @@
     import {fetchEnabledGrades, fetchOverviewData} from "$lib/services/admin/mainApi.js";
     import {onMount} from "svelte";
 
+    import Chart from "$lib/components/admin/Chart.svelte";
+
     // Create a writable store
     //todo fix stinky hack to prevent flash
     const gradesStore = writable({});
@@ -211,7 +213,7 @@
         </div>
 
         <div class="grid-element-1 large">
-            <div class="button-text">graph of some sort</div>
+            <Chart/>
         </div>
         <div class="grid-element-1">
             <div class="button-text">list names of new users</div>
