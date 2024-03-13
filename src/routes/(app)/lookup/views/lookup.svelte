@@ -1,6 +1,6 @@
 <script>
-    import {createEventDispatcher} from "svelte";
-    import {fetchLocker} from "$lib/services/app/mainApi.js";
+    import { createEventDispatcher } from "svelte";
+    import { fetchLocker } from "$lib/services/app/mainApi.js";
 
     const dispatch = createEventDispatcher();
     let input;
@@ -8,36 +8,31 @@
     let studentID = "";
     async function submit() {
 
-        let response = await fetchLocker(studentID);
-        if (response.status === 404) {
-            // Handle 404 status
-            // alert('user not found.');
+        try {
+            let response = await fetchLocker(studentID);
+            if (response.status === 404) {
+                input.style.borderColor = "red";
+                input.value = "";
+                input.placeholder = "Student not found";
+            } else if (response.ok) {
+                dispatch("message", {
+                    data: await response.json(),
+                });
+            }
+        } catch (err) {
+            console.log(err)
             input.style.borderColor = "red";
-            input.value = '';
-            input.placeholder = 'user not found';
-        } else if (response.ok) {
-            console.log()
-            dispatch("message", {
-                data: await response.json(),
-            });
-        } else {
-            // Handle other error statuses
-            input.style.borderColor = "red";
-            input.value = '';
-            input.placeholder = 'system error';
+            input.value = "";
+            input.placeholder = "Internal system error";
+            
         }
     }
 
-
-
-
     function handleKeyPress(event) {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
             submit();
         }
     }
-
-
 </script>
 
 <style>
@@ -49,15 +44,13 @@
         --accent: #577db2;
     }
 
-
     .main {
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
         background-color: var(--background);
         display: flex;
         flex-direction: column;
         flex: 1;
     }
-
 
     .lookup {
         display: flex;
@@ -102,8 +95,7 @@
         row-gap: 10px;
     }
 
-
-    input[type=text]{
+    input[type="text"] {
         width: 100%;
         padding: 0px 8px 0px 8px;
         box-sizing: border-box;
@@ -148,7 +140,6 @@
     }
 
     @media only screen and (max-width: 600px) {
-
         .lookup {
             row-gap: 30px;
         }
@@ -164,29 +155,31 @@
             width: 90vw;
         }
 
-        input[type=text] {
+        input[type="text"] {
             width: 100%;
-
         }
     }
-
 </style>
+
 <div class="main">
-
     <div class="lookup">
-
         <div class="lookup-cont">
             <div class="lookup-header">Lookup Locker</div>
 
             <div class="lookup-form" on:keydown={handleKeyPress}>
                 <!--                <label for="username">Student ID Number</label>-->
-                <input bind:this={input} bind:value={studentID} id="studentID" name="studentID"
-                       placeholder="Student ID" required type="text">
+                <input
+                    bind:this={input}
+                    bind:value={studentID}
+                    id="studentID"
+                    name="studentID"
+                    placeholder="Student ID"
+                    required
+                    type="text"
+                />
 
                 <button class="submit" on:click={submit}>Search</button>
             </div>
-
         </div>
-
     </div>
 </div>
