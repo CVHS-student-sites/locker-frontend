@@ -5,22 +5,21 @@
 
     import Chart from "$lib/components/admin/Chart.svelte";
 
-    // Create a writable store
-    //todo fix stinky hack to prevent flash
+    let testData = [483, 253, 856, 348];
+
     const gradesStore = writable({});
     const statStore = writable({})
 
     onMount(async () => {
-
         statStore.set(await fetchOverviewData())
         gradesStore.set(await fetchEnabledGrades());
-        console.log($gradesStore)
     });
 </script>
 
 <svelte:head>
     <title>Locker - Overview</title>
 </svelte:head>
+
 <style>
     :root {
         --text: #d6d6d6;
@@ -213,7 +212,7 @@
         </div>
 
         <div class="grid-element-1 large">
-            <Chart/>
+            <Chart chartData={testData}/>
         </div>
         <div class="grid-element-1">
             <div class="button-text">list names of new users</div>

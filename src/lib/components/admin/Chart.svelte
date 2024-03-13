@@ -1,28 +1,28 @@
 <script>
     import { Pie } from "svelte-chartjs";
+    export let chartData;
+
 
     const data = {
         labels: ["9", "10", "11", "12"],
         borderColor: 'rgb(255, 99, 132)',
         datasets: [
             {
-                data: [300, 50, 100, 40],
+                data: chartData,
                 backgroundColor: [
-                    "#F7464A",
-                    "#46BFBD",
-                    "#FDB45C",
-                    "#949FB1",
-                    "#4D5360",
-                    "#AC64AD",
+                    "#0084ff",
+                    "#1b2c42",
+                    "#003479",
+                    "#294d85",
                 ],
-                borderColor: "white",
+                borderColor: "#d6d6d6",
+                borderWidth: 1,
+
                 hoverBackgroundColor: [
                     "#FF5A5E",
                     "#5AD3D1",
                     "#FFC870",
                     "#A8B3C5",
-                    "#616774",
-                    "#DA92DB",
                 ],
             },
         ],
