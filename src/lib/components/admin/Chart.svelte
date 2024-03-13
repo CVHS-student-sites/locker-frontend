@@ -1,20 +1,12 @@
 <script>
-    import { Pie } from "svelte-chartjs";
     export let chartData;
-
 
     const data = {
         labels: ["9", "10", "11", "12"],
-        borderColor: 'rgb(255, 99, 132)',
         datasets: [
             {
                 data: chartData,
-                backgroundColor: [
-                    "#0084ff",
-                    "#1b2c42",
-                    "#003479",
-                    "#294d85",
-                ],
+                backgroundColor: ["#0084ff", "#1b2c42", "#003479", "#294d85"],
                 borderColor: "#d6d6d6",
                 borderWidth: 1,
 
@@ -28,6 +20,8 @@
         ],
     };
 
+    import { Doughnut } from "svelte-chartjs";
+
     import {
         Chart as ChartJS,
         Title,
@@ -40,4 +34,4 @@
     ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 </script>
 
-<Pie {data} width={100}  options={{ maintainAspectRatio: false,}} />
+<Doughnut {data} width={100} options={{ maintainAspectRatio: false }} />
