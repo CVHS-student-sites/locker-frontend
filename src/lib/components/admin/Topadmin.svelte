@@ -21,6 +21,7 @@
 
     .top-logo {
         height: 100%;
+
     }
 
     .logo-text {
@@ -28,11 +29,15 @@
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
     }
+
+    a{
+        height: 100%;
+    }
 </style>
 
 <div class="top">
     <div class="logo-cont">
-        <img alt="CVHS falcon logo" class="top-logo" src="/CVHS-logo.png">
+        <a href="/"><img alt="CVHS falcon logo" class="top-logo" src="/CVHS-logo.png"></a>
         <div class="logo-text">CVHS Locker System</div>
     </div>
 </div>
