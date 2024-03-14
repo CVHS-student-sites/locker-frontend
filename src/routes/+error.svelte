@@ -20,7 +20,7 @@
 <div class="main">
     <div class="sub">
         <h1>{$page.status}</h1>
-        <img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/>
+        <a href="/"><img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/></a>
         <h1>{$page.error.message}</h1>
 	</div>
 </div>
