@@ -16,7 +16,9 @@
 
 <div class="main">
     <!--    <Topnav />-->
-    <div class="sub"></div>
+    <div class="sub">
+        
+    </div>
     <!--    <Botnav pageId={0}/>-->
 </div>
 
@@ -28,7 +30,12 @@
         --secondary: #1b2c42;
         --accent: #577db2;
     }
-
+    p{
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+        text-align: center;
+    }
     .main {
         display: flex;
         flex-direction: column;
@@ -41,4 +48,5 @@
         display: flex;
         flex: 1;
     }
+
 </style>
