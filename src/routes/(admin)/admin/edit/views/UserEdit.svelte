@@ -73,6 +73,7 @@
         'ID',
         'Grade',
         'Locker',
+        'Date Created',
         {
             name: '',
             formatter: (cell, row) => {
@@ -146,5 +147,9 @@
             pagination={{ enabled: true, limit: 11 }}
             {style}
             {columns}
-            {data} />
+            server={{
+                url: 'https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=10', // Assuming this is the route where you fetch data
+                then: data => data // Assuming getUsersDB() already returns the formatted data
+            }}
+             />
 </div>
