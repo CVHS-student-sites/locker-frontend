@@ -6,9 +6,9 @@
         datasets: [
             {
                 data: chartData,
-                backgroundColor: ["#0084ff", "#1b2c42", "#003479", "#294d85"],
-                borderColor: "#d6d6d6",
-                borderWidth: 1,
+                backgroundColor: ["#1e39da", "#0b2aec", "#1c1d9b", "#0052ff"],
+                borderColor: "#22263a",
+                borderWidth: 2,
 
                 hoverBackgroundColor: [
                     "#FF5A5E",
