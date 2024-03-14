@@ -1,5 +1,6 @@
 <script>
     export let data;
+    console.log(data)
 </script>
 
 <style>
@@ -110,15 +111,15 @@
                     <div class="text">Locker Number</div>
                 </div>
                 <div class="item">
-                    <div class="data-cont">{data.Locker.location.building}</div>
+                    <div class="data-cont">{data.Locker.location.Building}</div>
                     <div class="text">Building</div>
                 </div>
                 <div class="item">
-                    <div class="data-cont">{data.Locker.location.floor}</div>
+                    <div class="data-cont">{data.Locker.location.Floor}</div>
                     <div class="text">Floor</div>
                 </div>
                 <div class="item">
-                    <div class="data-cont">{data.Locker.location.level}</div>
+                    <div class="data-cont">{data.Locker.location.Level}</div>
                     <div class="text">Level</div>
                 </div>
             </div>
