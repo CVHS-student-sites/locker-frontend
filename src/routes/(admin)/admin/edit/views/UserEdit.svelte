@@ -4,6 +4,10 @@
     // import "gridjs/dist/theme/mermaid.css";
     import '$lib/assets/admin-table.css'
     import Modal from '../Editmodal.svelte';
+    import { onMount } from 'svelte';
+
+    import {fetchUserData} from "$lib/services/admin/mainApi.js";
+
 
     let showModal = false;
 
@@ -12,24 +16,7 @@
         showModal = true;
     }
 
-    const data = [
-        ["joe allen", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["jane doe", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-        ["joe allen", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["jane doe", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-        ["joe allen", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["jane doe", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-        ["joe allen", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["jane doe", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-        ["joe allen", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["bob freeman", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["jane doe", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-
-    ];
+    let data;
 
     const style = {
         container: {
@@ -98,6 +85,9 @@
     ];
 
 
+    onMount(async () => {
+        data = await fetchUserData();
+    });
 </script>
 
 <svelte:head>
@@ -147,9 +137,6 @@
             pagination={{ enabled: true, limit: 11 }}
             {style}
             {columns}
-            server={{
-                url: 'https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=10', // Assuming this is the route where you fetch data
-                then: (response) => response.json() // Parse response JSON
-            }}
+            {data}
              />
 </div>

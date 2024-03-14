@@ -15,3 +15,12 @@ export async function fetchEnabledGrades() {
 
     return await response.json();
 }
+
+export async function fetchUserData(){
+    const response = await fetch('https://locker-api.cvapps.net/admin/data/user-data?page=3&pageSize=1', {
+        method: 'get',
+        credentials: 'include'
+    });
+
+    return await response.json();
+}
