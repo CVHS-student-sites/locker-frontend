@@ -17,7 +17,10 @@
 <div class="main">
     <!--    <Topnav />-->
     <div class="sub">
-        
+        <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">
+        <ul class="list">
+            <li><p>Please contact the AP office for help with locker registration: <a href ="mailto:miguelgonzalez@gusd.net" target="_blank">Miguel Gonzalez</a></p></li>
+        </ul>
     </div>
     <!--    <Botnav pageId={0}/>-->
 </div>
@@ -30,12 +33,7 @@
         --secondary: #1b2c42;
         --accent: #577db2;
     }
-    p{
-        font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-        color: #d6d6d6;
-        text-align: center;
-    }
+
     .main {
         display: flex;
         flex-direction: column;
@@ -43,10 +41,23 @@
         width: 100vw;
         flex: 1;
     }
-
-    .sub {
-        display: flex;
-        flex: 1;
+    .list{
+        padding:2vw;
+    }
+    .big-logo{
+        display: block;
+        max-height: 20vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    p, a{
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+        text-align: center;
+        padding:1vh;
+    }
+    .sub{
     }
 
 </style>
