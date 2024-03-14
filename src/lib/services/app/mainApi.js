@@ -3,3 +3,13 @@ export async function fetchLocker(username) {
             method: 'get',
     });
 }
+
+export async function validateIDs(data){
+    return await fetch(`https://locker-api.cvapps.net/public/validate-IDs`, {
+        method: "get",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+}
