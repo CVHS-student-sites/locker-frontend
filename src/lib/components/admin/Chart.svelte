@@ -5,7 +5,6 @@
 
     const data = {
         labels: ["9", "10", "11", "12"],
-        borderColor: 'rgb(255, 99, 132)',
         datasets: [
             {
                 data: chartData,
