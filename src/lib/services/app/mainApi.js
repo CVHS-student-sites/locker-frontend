@@ -4,8 +4,8 @@ export async function fetchLocker(username) {
     });
 }
 
-export async function validateIDs(data){
-    return await fetch(`https://locker-api.cvapps.net/public/validate-IDs/`, {
+export async function validateID(data){
+    return await fetch(`https://locker-api.cvapps.net/public/validate-ID/${data}`, {
         method: "get",
     });
 }

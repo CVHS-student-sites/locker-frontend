@@ -1,13 +1,11 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-    import { fade } from "svelte/transition";
-    import { quartOut } from "svelte/easing";
-
-    import { validateIDs } from "$lib/services/app/mainApi.js";
+    import {createEventDispatcher} from "svelte";
+    import {fade} from "svelte/transition";
+    import {quartOut} from "svelte/easing";
+    import {validateID} from "$lib/services/app/mainApi.js";
+    import {studentId1, studentId2, singleLocker} from "../store.js";
 
     const dispatch = createEventDispatcher();
-
-    let singleLocker = true;
 
     let student1 = "";
     let student2 = "";
@@ -22,14 +20,16 @@
     }
 
     async function login() {
-        if (singleLocker) {
+        if ($singleLocker) {
             try {
-                let response = await validateIDs(student1);
+                let response = await validateID(student1);
                 if (response.status === 404) {
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = "Student Error"; //todo this should get a message from the server
                 } else if (response.ok) {
+                    studentId1.set(studentId1);
+
                     dispatch("message", {
                         data: await response.json(), //todo set this in the store
                     });
@@ -39,7 +39,52 @@
                 input1.value = "";
                 input1.placeholder = "Internal system error";
             }
-        }else{
+        } else {
+            //student 1
+            let responses = [];
+            let status = true;
+
+            try {
+                let response = await validateID(student1);
+                if (response.status === 404) {
+                    input1.style.borderColor = "red";
+                    input1.value = "";
+                    input1.placeholder = "Student Error"; //todo this should get a message from the server
+                } else if (response.ok) {
+                    studentId1.set(student1);
+                    responses[0] = await response.json();
+                }
+            } catch (error) {
+                input1.style.borderColor = "red";
+                input1.value = "";
+                input1.placeholder = "Internal system error";
+                status = false;
+            }
+
+            //student 2
+            try {
+                let response = await validateID(student2);
+                if (response.status === 404) {
+                    input2.style.borderColor = "red";
+                    input2.value = "";
+                    input2.placeholder = "Student Error"; //todo this should get a message from the server
+                } else if (response.ok) {
+                    studentId2.set(student2);
+                    responses[1] = await response.json();
+                }
+            } catch (error) {
+                input2.style.borderColor = "red";
+                input2.value = "";
+                input2.placeholder = "Internal system error";
+                status = false;
+            }
+
+            //once both all good, send the response
+            if (status) {
+                dispatch("message", {
+                    data: responses, //todo set this in the store
+                });
+            }
 
         }
 
@@ -51,51 +96,16 @@
     <title>Register</title>
 
     <meta
-        content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
-        name="description"
+            content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
+            name="description"
     />
     <meta
-        content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
-        name="keywords"
+            content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
+            name="keywords"
     />
-    <meta content="cvapps.net" name="author" />
+    <meta content="cvapps.net" name="author"/>
 </svelte:head>
-<!--todo fix layout shift that occurs from transition-->
-<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
-    <div class="login">
-        <div class="login-cont">
-            <div class="login-header">Register for a locker</div>
 
-            <form class="login-form" on:keydown={handleKeyPress}>
-                <label>Student 1</label>
-
-                <input
-                    bind:value={student1}
-                    bind:this={input1}
-                    id="1studentId"
-                    name="1studentId"
-                    placeholder="Student ID"
-                    required
-                    type="text"
-                />
-
-                {#if !singleLocker}
-                    <label>Student 2</label>
-                    <input
-                        bind:value={student2}
-                        bind:this={input2}
-                        id="2studentId"
-                        name="2studentId"
-                        placeholder="Student ID"
-                        required
-                        type="text"
-                    />
-                {/if}
-                <button class="submit" on:click={login}>Next</button>
-            </form>
-        </div>
-    </div>
-</div>
 
 <style>
     :root {
@@ -150,7 +160,7 @@
         align-items: center;
         /*justify-content: center;*/
         row-gap: 30px;
-        margin-top: 15vh;
+        margin-top: 20vh;
     }
 
     .login-cont {
@@ -205,7 +215,7 @@
         background-color: #17171c;
 
         border-radius: 4px;
-        transition-duration: 50ms;
+        transition-duration: 500ms;
         font-size: 14px;
     }
 
@@ -284,3 +294,41 @@
         }
     }
 </style>
+
+
+<!--todo fix layout shift that occurs from transition-->
+<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
+    <div class="login">
+        <div class="login-cont">
+            <div class="login-header">Register for a locker</div>
+
+            <form class="login-form" on:keydown={handleKeyPress}>
+                <label>Student 1</label>
+
+                <input
+                        bind:this={input1}
+                        bind:value={student1}
+                        id="1studentId"
+                        name="1studentId"
+                        placeholder="Student ID"
+                        required
+                        type="text"
+                />
+
+                {#if !$singleLocker}
+                    <label>Student 2</label>
+                    <input
+                            bind:value={student2}
+                            bind:this={input2}
+                            id="2studentId"
+                            name="2studentId"
+                            placeholder="Student ID"
+                            required
+                            type="text"
+                    />
+                {/if}
+                <button class="submit" on:click={login}>Next</button>
+            </form>
+        </div>
+    </div>
+</div>
