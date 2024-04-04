@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    import {fade} from "svelte/transition";
+    import {fade, slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {validateID} from "$lib/services/app/mainApi.js";
     import {studentId1, studentId2, singleLocker} from "../store.js";
@@ -19,7 +19,9 @@
         }
     }
 
-    async function login() {
+    async function login(event) {
+        event.preventDefault();
+        
         if ($singleLocker) {
             try {
                 let response = await validateID(student1);
@@ -45,6 +47,7 @@
             let status = true;
 
             if(student1 === student2) status = false;
+
             try {
                 let response = await validateID(student1);
                 if (response.status === 400) {
@@ -177,7 +180,7 @@
     .login-header {
         font-size: 24px;
         color: var(--text);
-        margin-bottom: 12px;
+        margin-bottom: 24px;
     }
 
     .login-form {
@@ -248,23 +251,6 @@
         background-color: #577db2;
     }
 
-    .bottom-text {
-        width: 100%;
-        display: flex;
-        /*align-items: center;*/
-        justify-content: center;
-        column-gap: 5px;
-    }
-
-    .reg {
-        color: #fbfdfe;
-    }
-
-    .regs {
-        color: #4ca6ff;
-        cursor: pointer;
-    }
-
     @media only screen and (max-width: 600px) {
         .main {
         }
@@ -298,12 +284,12 @@
 
 
 <!--todo fix layout shift that occurs from transition-->
-<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
+<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
     <div class="login">
         <div class="login-cont">
             <div class="login-header">Register for a locker</div>
 
-            <form class="login-form" on:keydown={handleKeyPress}>
+            <form class="login-form" on:submit={login} on:keydown={handleKeyPress}>
                 <label>Student 1</label>
 
                 <input
@@ -328,7 +314,7 @@
                             type="text"
                     />
                 {/if}
-                <button class="submit" on:click={login}>Next</button>
+                <button class="submit" type="submit">Next</button>
             </form>
         </div>
     </div>

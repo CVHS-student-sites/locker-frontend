@@ -5,7 +5,7 @@
 
     import Map from "$lib/components/app/Map.svelte";
 
-    import {validateIDs} from "$lib/services/app/mainApi.js";
+    import {validateID} from "$lib/services/app/mainApi.js";
 
     const dispatch = createEventDispatcher();
 

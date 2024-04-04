@@ -6,13 +6,13 @@
 
     import View1 from "./views/View1.svelte";
     import View2 from "./views/View2.svelte";
+    import Status from './views/Status.svelte';
     let data;
 
-    let selected = View1;
+    let selected = Status;
 
     function handleMessage(event) {
-        selected = Show;
-        data = event.detail.data;
+        if(event.detail.page === 0) selected = View1;
     }
 
 

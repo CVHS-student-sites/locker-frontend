@@ -9,3 +9,11 @@ export async function validateID(data){
         method: "get",
     });
 }
+
+export async function fetchEnabledGrades() {
+    const response = await fetch('https://locker-api.cvapps.net/public/grade-restrictions', {
+        method: 'get',
+    });
+
+    return await response.json();
+}
