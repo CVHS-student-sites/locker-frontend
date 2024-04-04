@@ -19,14 +19,30 @@
         });
     }
 
+    async function verify(token){
+        fetch(`https://locker-api.cvapps.net/public/verify-student/${token}`)
+            .then(response => {
+                if (response.ok) {
+                    console.log('Student verified successfully');
+                    message = 'Done';
+                    visible = false;
+                    showCheck = true;
+                } else {
+                    // If the response status is not OK, handle the error (e.g., display an error message)
+                    throw new Error('Failed to verify student');
+                }
+            })
+            .catch(error => {
+                // If there's an error in the fetch request itself (e.g., network error), handle it here
+                console.error('Error:', error);
+            });
+    }
+
     onMount(() => {
         // message = 'Verifying'
         const param1Value = $page.url.searchParams.get('token');
-        test();
-        message = 'Done';
-        visible = false;
-        showCheck = true;
-        // messageDiv.style.backgroundColor = 'green';
+        verify(param1Value);
+        // test();
     });
 </script>
 
