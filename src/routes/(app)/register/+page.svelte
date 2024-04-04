@@ -5,6 +5,7 @@
     import Show from "../lookup/views/show.svelte";
 
     import View1 from "./views/View1.svelte";
+    import View2 from "./views/View2.svelte";
     let data;
 
     let selected = View1;

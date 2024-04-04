@@ -1,101 +1,49 @@
 <script>
     import { createEventDispatcher } from "svelte";
-    import { fade } from "svelte/transition";
-    import { quartOut } from "svelte/easing";
+    import {fade} from 'svelte/transition';
+    import {quartOut} from 'svelte/easing';
 
-    import { validateIDs } from "$lib/services/app/mainApi.js";
+    import Map from "$lib/components/app/Map.svelte";
+
+    import {validateIDs} from "$lib/services/app/mainApi.js";
 
     const dispatch = createEventDispatcher();
 
-    let singleLocker = true;
 
-    let student1 = "";
-    let student2 = "";
+    let oneUsername = "";
+    let onePassword = "";
 
-    let input1;
-    let input2;
+
+    let twoUsername = "";
+    let twoPassword = "";
 
     function handleKeyPress(event) {
-        if (event.key === "Enter") {
+        if (event.key === 'Enter') {
+            // Enter key was pressed, do something
             login();
         }
     }
 
+
     async function login() {
-        if (singleLocker) {
-            try {
-                let response = await validateIDs(student1);
-                if (response.status === 404) {
-                    input1.style.borderColor = "red";
-                    input1.value = "";
-                    input1.placeholder = "Student Error"; //todo this should get a message from the server
-                } else if (response.ok) {
-                    dispatch("message", {
-                        data: await response.json(), //todo set this in the store
-                    });
-                }
-            } catch (error) {
-                input1.style.borderColor = "red";
-                input1.value = "";
-                input1.placeholder = "Internal system error";
-            }
-        }else{
-
-        }
-
-
+        let response
+        dispatch("message", {
+            data: await response.json(),
+        });
     }
+
+
 </script>
 
 <svelte:head>
     <title>Register</title>
 
-    <meta
-        content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
-        name="description"
-    />
-    <meta
-        content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
-        name="keywords"
-    />
-    <meta content="cvapps.net" name="author" />
+    <meta content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
+          name="description">
+    <meta content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
+          name="keywords">
+    <meta content="cvapps.net" name="author">
 </svelte:head>
-<!--todo fix layout shift that occurs from transition-->
-<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
-    <div class="login">
-        <div class="login-cont">
-            <div class="login-header">Register for a locker</div>
-
-            <form class="login-form" on:keydown={handleKeyPress}>
-                <label>Student 1</label>
-
-                <input
-                    bind:value={student1}
-                    bind:this={input1}
-                    id="1studentId"
-                    name="1studentId"
-                    placeholder="Student ID"
-                    required
-                    type="text"
-                />
-
-                {#if !singleLocker}
-                    <label>Student 2</label>
-                    <input
-                        bind:value={student2}
-                        bind:this={input2}
-                        id="2studentId"
-                        name="2studentId"
-                        placeholder="Student ID"
-                        required
-                        type="text"
-                    />
-                {/if}
-                <button class="submit" on:click={login}>Next</button>
-            </form>
-        </div>
-    </div>
-</div>
 
 <style>
     :root {
@@ -105,6 +53,7 @@
         --secondary: #1b2c42;
         --accent: #577db2;
     }
+
 
     .main {
         display: flex;
@@ -158,8 +107,16 @@
         align-items: center;
         flex-direction: column;
         border-radius: 8px;
+        /*border: 2px solid black;*/
+        /*width: 416px;*/
+        /*box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);*/
         padding: 32px;
         color: green;
+        width: 352px;
+
+        /*background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);*/
+        /*background: linear-gradient(14deg, #182435 0%, #577db2 100%);*/
+        /* background-color:#131d2a; */
         background-color: #1b2c42;
     }
 
@@ -179,6 +136,7 @@
         row-gap: 10px;
     }
 
+
     label {
         color: var(--text);
         line-height: 20px;
@@ -192,8 +150,8 @@
         color: #4ca6ff;
     }
 
-    input[type="text"],
-    input[type="password"] {
+    input[type=text],
+    input[type=password] {
         width: 100%;
         padding: 0px 8px 0px 8px;
         box-sizing: border-box;
@@ -256,6 +214,7 @@
 
     @media only screen and (max-width: 600px) {
         .main {
+
         }
 
         .logo {
@@ -268,7 +227,7 @@
         }
 
         .login-cont {
-            width: 100vw;
+            width: 90vw;
             box-shadow: none;
             padding: 0;
             background: unset;
@@ -278,9 +237,23 @@
             width: 90vw;
         }
 
-        input[type="text"],
-        input[type="password"] {
+        input[type=text],
+        input[type=password] {
             width: 100%;
+
         }
     }
+
 </style>
+<!--todo fix layout shift that occurs from transition-->
+<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}
+>
+    <div class="login">
+
+        <div class="login-cont">
+            
+            <Map/>
+        </div>
+
+    </div>
+</div>
