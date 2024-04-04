@@ -35,6 +35,7 @@
             .catch(error => {
                 // If there's an error in the fetch request itself (e.g., network error), handle it here
                 console.error('Error:', error);
+                message = 'Internal system error';
             });
     }
 
