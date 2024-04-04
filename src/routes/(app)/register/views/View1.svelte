@@ -23,10 +23,10 @@
         if ($singleLocker) {
             try {
                 let response = await validateID(student1);
-                if (response.status === 404) {
+                if (response.status === 400) {
                     input1.style.borderColor = "red";
                     input1.value = "";
-                    input1.placeholder = "Student Error"; //todo this should get a message from the server
+                    input1.placeholder = "Invalid ID"; //todo this should get a message from the server
                 } else if (response.ok) {
                     studentId1.set(studentId1);
 
@@ -44,12 +44,13 @@
             let responses = [];
             let status = true;
 
+            if(student1 === student2) status = false;
             try {
                 let response = await validateID(student1);
-                if (response.status === 404) {
+                if (response.status === 400) {
                     input1.style.borderColor = "red";
                     input1.value = "";
-                    input1.placeholder = "Student Error"; //todo this should get a message from the server
+                    input1.placeholder = "Invalid ID"; //todo this should get a message from the server
                 } else if (response.ok) {
                     studentId1.set(student1);
                     responses[0] = await response.json();
@@ -64,10 +65,10 @@
             //student 2
             try {
                 let response = await validateID(student2);
-                if (response.status === 404) {
+                if (response.status === 400) {
                     input2.style.borderColor = "red";
                     input2.value = "";
-                    input2.placeholder = "Student Error"; //todo this should get a message from the server
+                    input2.placeholder = "Invalid ID"; //todo this should get a message from the server
                 } else if (response.ok) {
                     studentId2.set(student2);
                     responses[1] = await response.json();
