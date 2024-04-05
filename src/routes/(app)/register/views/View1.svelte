@@ -3,7 +3,7 @@
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {validateID} from "$lib/services/app/mainApi.js";
-    import {singleLocker, studentId1, studentId2} from "../store.js";
+    import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
 
     const dispatch = createEventDispatcher();
 
@@ -31,11 +31,8 @@
                     input1.value = "";
                     input1.placeholder = jsonResponse.error;
                 } else if (response.ok) {
-                    studentId1.set(studentId1);
-
-                    // dispatch("message", {
-                    //     data: await response.json(), //todo set this in the store
-                    // });
+                    studentId1.set(student1);
+                    pageView.set(2);
                 }
             } catch (error) {
                 input1.style.borderColor = "red";
@@ -87,10 +84,7 @@
 
             //once both all good, send the response
             if (status) {
-                // dispatch("message", {
-                //     data: responses, //todo set this in the store
-                // });
-                alert("all good");
+                pageView.set(2);
             }
 
         }
@@ -289,7 +283,7 @@
 <div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
     <div class="login">
         <div class="login-cont">
-            <div class="login-header">Register for a locker</div>
+            <div class="login-header">Verify IDs</div>
 
             <form class="login-form" on:keydown={handleKeyPress} on:submit={login}>
                 <label>Student 1</label>

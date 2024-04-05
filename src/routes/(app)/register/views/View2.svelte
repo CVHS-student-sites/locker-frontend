@@ -1,49 +1,101 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-    import {fade} from 'svelte/transition';
-    import {quartOut} from 'svelte/easing';
+    import {onMount} from "svelte";
+    import {writable} from "svelte/store";
+    import {slide} from "svelte/transition";
+    import {quartOut} from "svelte/easing";
+    import {singleLocker, studentId1, studentId2} from "../store.js";
 
-    import Map from "$lib/components/app/Map.svelte";
+    import {checkVerification} from "$lib/services/app/mainApi.js";
 
-    import {validateID} from "$lib/services/app/mainApi.js";
+    const studentStatusStore = writable({});
 
-    const dispatch = createEventDispatcher();
+    let buttonMessage = 'Check';
 
+    function next() {
 
-    let oneUsername = "";
-    let onePassword = "";
+        //todo call check verify function
+        checkIDs();
+        // pageView.set(3);
+    }
 
+    async function checkIDs(){
+        if($singleLocker){
+            let response = await checkVerification($studentId1);
+            let json = await response.json();
 
-    let twoUsername = "";
-    let twoPassword = "";
+            studentStatusStore.set({student_1: json.verified});
 
-    function handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            // Enter key was pressed, do something
-            login();
+            if($studentStatusStore.student_1) console.log("one verified");
+        }else{
+            let response1 = await checkVerification($studentId1);
+            let response2 = await checkVerification($studentId2);
+            let json1 = await response1.json();
+            let json2 = await response2.json();
+
+            studentStatusStore.set({student_1: json1.verified, student_2: json2.verified});
+
+            if($studentStatusStore.student_1 && $studentStatusStore.student_2) console.log("both verified");
         }
-    }
 
 
-    async function login() {
-        let response
-        dispatch("message", {
-            data: await response.json(),
-        });
     }
+
+    onMount(async () => {
+        //
+        await checkIDs();
+    });
 
 
 </script>
 
-<svelte:head>
-    <title>Register</title>
+<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
+    <div class="box">
+        <div class="box-cont">
+            <div class="box-header">Verification Status</div>
 
-    <meta content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
-          name="description">
-    <meta content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
-          name="keywords">
-    <meta content="cvapps.net" name="author">
-</svelte:head>
+            <div class="stat-div">
+                <div class="stat-1-subcont-1">
+                    <div class="stat-1-grade-cont">
+
+
+                        <div class="stat-1-grade-element-subcont">
+                            <div
+                                    class="material-symbols-outlined filled-icons"
+                                    style={$studentStatusStore.student_1
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                            >
+                                {$studentStatusStore.student_1
+                                    ? "check_circle"
+                                    : "cancel"}
+                            </div>
+                            <div class="stat-1-grade-text">{$studentId1}</div>
+                        </div>
+
+                        {#if !$singleLocker}
+                            <div class="stat-1-grade-element-subcont">
+                                <div
+                                        class="material-symbols-outlined filled-icons"
+                                        style={$studentStatusStore.student_2
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                                >
+                                    {$studentStatusStore.student_2
+                                        ? "check_circle"
+                                        : "cancel"}
+                                </div>
+                                <div class="stat-1-grade-text">{$studentId2}</div>
+                            </div>
+                        {/if}
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="submit" on:click={next}>{buttonMessage}</button>
+        </div>
+    </div>
+</div>
 
 <style>
     :root {
@@ -54,7 +106,6 @@
         --accent: #577db2;
     }
 
-
     .main {
         display: flex;
         flex-direction: column;
@@ -63,35 +114,7 @@
         flex: 1;
     }
 
-    /*.main-animate{*/
-    /*    !*position: absolute;*!*/
-    /*    height: 100vh;*/
-    /*    width: 100vw;*/
-    /*}*/
-
-    .top {
-        position: absolute;
-        left: 30px;
-        top: 20px;
-
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        flex-direction: row;
-        gap: 15px;
-    }
-
-    .logo {
-        height: 70px;
-        cursor: pointer;
-    }
-
-    .top-text {
-        font-size: 18px;
-        color: var(--text);
-    }
-
-    .login {
+    .box {
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -99,84 +122,68 @@
         align-items: center;
         /*justify-content: center;*/
         row-gap: 30px;
-        margin-top: 15vh;
+        margin-top: 20vh;
     }
 
-    .login-cont {
+    .box-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
         border-radius: 8px;
-        /*border: 2px solid black;*/
-        /*width: 416px;*/
-        /*box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.15), 0 0 18px rgba(0, 0, 0, 0.15);*/
         padding: 32px;
         color: green;
-        width: 352px;
-
-        /*background: linear-gradient(14deg, rgba(2,0,36,1) 0%, rgba(101,62,165,1) 100%);*/
-        /*background: linear-gradient(14deg, #182435 0%, #577db2 100%);*/
-        /* background-color:#131d2a; */
         background-color: #1b2c42;
     }
 
-    .login-header {
+    .box-header {
         font-size: 24px;
         color: var(--text);
-        margin-bottom: 12px;
+        margin-bottom: 24px;
     }
 
-    .login-form {
-        display: flex;
-        justify-content: center;
-
+    .stat-div {
         width: 352px;
-        flex-direction: column;
-        /*align-items: center;*/
-        row-gap: 10px;
     }
 
-
-    label {
-        color: var(--text);
-        line-height: 20px;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    .forgot {
-        color: #4ca6ff;
-    }
-
-    input[type=text],
-    input[type=password] {
-        width: 100%;
-        padding: 0px 8px 0px 8px;
+    .stat-1-subcont-1 {
         box-sizing: border-box;
-        height: 35px;
-        line-height: 35px;
-        color: var(--text);
-        border: 2px solid #005cb3;
-        /* border: none; */
-        background-color: #17171c;
-
-        border-radius: 4px;
-        transition-duration: 50ms;
-        font-size: 14px;
+        padding: 5px;
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+        height: 100%;
     }
 
-    input:focus {
-        outline: none;
-        border-color: #577db2;
-        /*background-color: #eaeaea;*/
+    .stat-1-grade-cont {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
     }
 
-    /*input:hover {*/
-    /*    !*border-color: #577db2;*!*/
-    /*    background-color: #eaeaea;*/
-    /*!*}*!*/
+    .stat-1-grade-element-subcont {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: 100%;
+        height: 40px;
+        background-color: #101014;
+        border-radius: 5px;
+        gap: 8px;
+        padding-left: 8px;
+    }
+
+    .stat-1-grade-text {
+        font-size: 16px;
+        font-family: "Montserrat", sans-serif;
+        color: #d6d6d6;
+    }
 
     .submit {
         width: 100%;
@@ -185,7 +192,7 @@
         border: none;
         border-radius: 4px;
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 20px;
         cursor: pointer;
         transition-duration: 150ms;
         color: var(--text);
@@ -195,65 +202,41 @@
         background-color: #577db2;
     }
 
-    .bottom-text {
-        width: 100%;
-        display: flex;
-        /*align-items: center;*/
-        justify-content: center;
-        column-gap: 5px;
+    .material-symbols-outlined {
+        color: #d6d6d6;
+        width: 24px;
+        user-select: none;
     }
 
-    .reg {
-        color: #fbfdfe;
-    }
-
-    .regs {
-        color: #4ca6ff;
-        cursor: pointer;
+    .filled-icons {
+        font-variation-settings: "FILL" 1,
+        "wght" 600,
+        "GRAD" 0,
+        "opsz" 24;
     }
 
     @media only screen and (max-width: 600px) {
-        .main {
-
-        }
-
-        .logo {
-            height: 35px;
-            /*left: 20px;*/
-        }
-
-        .login {
+        .box {
             row-gap: 30px;
         }
 
-        .login-cont {
-            width: 90vw;
+        .box-cont {
+            width: 100vw;
             box-shadow: none;
             padding: 0;
             background: unset;
         }
 
-        .login-form {
+        .stat-div {
             width: 90vw;
         }
 
-        input[type=text],
-        input[type=password] {
-            width: 100%;
+        .submit {
+            width: 90vw;
+        }
 
+        .stat-1-grade-element-subcont {
+            background-color: #090606;
         }
     }
-
 </style>
-<!--todo fix layout shift that occurs from transition-->
-<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}
->
-    <div class="login">
-
-        <div class="login-cont">
-            
-            <Map/>
-        </div>
-
-    </div>
-</div>

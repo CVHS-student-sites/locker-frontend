@@ -1,19 +1,22 @@
 <script>
-
     import {fade} from 'svelte/transition';
     import {quartOut} from 'svelte/easing';
-    import Show from "../lookup/views/show.svelte";
+
+    import {pageView} from "./store.js";
 
     import View1 from "./views/View1.svelte";
     import View2 from "./views/View2.svelte";
     import Status from './views/Status.svelte';
+
     let data;
 
-    let selected = Status;
+    let selected;
 
-    function handleMessage(event) {
-        if(event.detail.page === 0) selected = View1;
-    }
+    $: if($pageView === 0) selected = Status;
+    $: if($pageView === 1) selected = View1;
+
+    $: if($pageView === 2) selected = View2;
+
 
 
 </script>
@@ -41,7 +44,6 @@
 <div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
     <svelte:component
             data={data}
-            on:message={handleMessage}
             this={selected}
     />
 </div>

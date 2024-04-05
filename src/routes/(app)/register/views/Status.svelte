@@ -4,15 +4,15 @@
     import {onMount} from "svelte";
     import { fade } from "svelte/transition";
     import { quartOut } from "svelte/easing";
-    import {fetchEnabledGrades} from "$lib/services/app/mainApi.js";
 
-    const dispatch = createEventDispatcher();
+    import {fetchEnabledGrades} from "$lib/services/app/mainApi.js";
+    import {pageView} from "../store.js";
+
 
     const gradesStore = writable({});
 
-
     function next(){
-        dispatch("message", {page: 0});
+        pageView.set(1);
     }
 
     onMount(async () => {
@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <button class="submit" on:click={next}>Next</button>
+            <button class="submit" on:click={next}>Start Registration</button>
         </div>
     </div>
 </div>
