@@ -52,7 +52,7 @@
     <div class="box">
         <div class="box-cont">
             <div class="box-header">Verification Status</div>
-
+            <div class="small-text">Check Your School Email for Verification link</div>
             <div class="stat-div">
                 <div class="stat-1-subcont-1">
                     <div class="stat-1-grade-cont">
@@ -139,6 +139,13 @@
         font-size: 24px;
         color: var(--text);
         margin-bottom: 24px;
+    }
+
+    .small-text{
+        text-align: left;
+        font-size: 14px;
+        color: var(--text);
+        margin-bottom: 8px;
     }
 
     .stat-div {
