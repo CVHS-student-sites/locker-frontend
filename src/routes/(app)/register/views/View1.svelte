@@ -2,7 +2,7 @@
     import {createEventDispatcher} from "svelte";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {validateID} from "$lib/services/app/mainApi.js";
+    import {validateID, sendVerification} from "$lib/services/app/mainApi.js";
     import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
 
     const dispatch = createEventDispatcher();
@@ -32,6 +32,7 @@
                     input1.placeholder = jsonResponse.error;
                 } else if (response.ok) {
                     studentId1.set(student1);
+                    await sendVerification($studentId1);
                     pageView.set(2);
                 }
             } catch (error) {
@@ -84,6 +85,8 @@
 
             //once both all good, send the response
             if (status) {
+                await sendVerification($studentId1);
+                await sendVerification($studentId2);
                 pageView.set(2);
             }
 

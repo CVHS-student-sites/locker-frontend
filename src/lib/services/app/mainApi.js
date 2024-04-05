@@ -18,6 +18,12 @@ export async function fetchEnabledGrades() {
     return await response.json();
 }
 
+export async function sendVerification(data){
+    return await fetch(`https://locker-api.cvapps.net/public/send-verify-student/${data}`, {
+        method: "post",
+    });
+}
+
 export async function checkVerification(data){
     return await fetch(`https://locker-api.cvapps.net/public/check-verification/${data}`, {
         method: "get",
