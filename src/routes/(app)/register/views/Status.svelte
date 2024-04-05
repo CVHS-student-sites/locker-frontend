@@ -4,17 +4,11 @@
     import {onMount} from "svelte";
     import { fade } from "svelte/transition";
     import { quartOut } from "svelte/easing";
-
-    //todo import fetch
+    import {fetchEnabledGrades} from "$lib/services/app/mainApi.js";
 
     const dispatch = createEventDispatcher();
 
-    const gradesStore = writable({
-        grade_9: false,
-        grade_10: true,
-        grade_11: true,
-        grade_12: true,
-    });
+    const gradesStore = writable({});
 
 
     function next(){
@@ -22,7 +16,7 @@
     }
 
     onMount(async () => {
-        // gradesStore.set(await fetchEnabledGrades());
+        gradesStore.set(await fetchEnabledGrades());
     });
 </script>
 
