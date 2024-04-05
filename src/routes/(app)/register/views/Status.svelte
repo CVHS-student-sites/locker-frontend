@@ -233,5 +233,9 @@
         .submit {
             width: 90vw;
         }
+
+        .stat-1-grade-element-subcont{
+            background-color: #090606;
+        }
     }
 </style>
