@@ -3,7 +3,7 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {singleLocker, studentId1, studentId2, selectedLocation} from "../store.js";
+    import {singleLocker, studentId1, studentId2, selectedLocation, pageView} from "../store.js";
 
     import Select from "$lib/components/app/Select.svelte";
 
@@ -15,23 +15,24 @@
     let data2 = ['1', '2', '3'];
     let data3 = ['Top', 'Single', 'Bottom'];
 
-	let value1 = null;
-    let value2 = null;
-    let value3 = null;
+	let value1;
+    let value2;
+    let value3;
 
 
 
     function next() {
+        // console.log(value2)
 
         //todo ge tform feilds
         selectedLocation.set({
             building: value1.label,
-            building: value2.label,
-            building: value3.label,
+            floor: value2.label,
+            position: value3.label,
 
         })
-        checkIDs();
-        // pageView.set(3);
+        console.log($selectedLocation)
+        pageView.set(2);
     }
 
 
@@ -51,17 +52,17 @@
 
                 <div class="input-group">
                     <div class="selection-label">Building</div>
-                    <Select items={data1} placeholder="Select Building" bind:value1/>
+                    <Select items={data1} placeholder="Select Building" bind:value={value1}/>
                 </div>
                 
                 <div class="input-group">
                     <div class="selection-label">Floor</div>
-                    <Select items={data2} placeholder="Select Floor" bind:value2/>
+                    <Select items={data2} placeholder="Select Floor" bind:value={value2}/>
                 </div>
 
                 <div class="input-group">
                     <div class="selection-label">Position</div>
-                    <Select items={data3} placeholder="Select Position" bind:value3/>
+                    <Select items={data3} placeholder="Select Position" bind:value={value3}/>
                 </div>
 
             </div>
