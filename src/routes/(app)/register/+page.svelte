@@ -7,14 +7,19 @@
     import View1 from "./views/View1.svelte";
     import View2 from "./views/View2.svelte";
     import Status from './views/Status.svelte';
+    import Final from './views/Final.svelte';
+    import Selection from './views/Selection.svelte';
+
 
     let data;
 
     let selected;
 
     $: if($pageView === 0) selected = Status;
-    $: if($pageView === 1) selected = View1;
-    $: if($pageView === 2) selected = View2;
+    $: if($pageView === 1) selected = Selection;
+    $: if($pageView === 2) selected = View1;
+    $: if($pageView === 3) selected = View2;
+
 
 
 

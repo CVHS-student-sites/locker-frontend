@@ -21,6 +21,7 @@
 		"chart.js": "^4.4.2",
 		"gridjs": "^6.1.1",
 		"gridjs-svelte": "^2.1.1",
-		"svelte-chartjs": "^3.1.5"
+		"svelte-chartjs": "^3.1.5",
+		"svelte-select": "^5.8.3"
 	}
 }
