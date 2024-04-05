@@ -1,9 +1,9 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    import {fade, slide} from "svelte/transition";
+    import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {validateID} from "$lib/services/app/mainApi.js";
-    import {studentId1, studentId2, singleLocker} from "../store.js";
+    import {singleLocker, studentId1, studentId2} from "../store.js";
 
     const dispatch = createEventDispatcher();
 
@@ -21,20 +21,21 @@
 
     async function login(event) {
         event.preventDefault();
-        
+
         if ($singleLocker) {
             try {
                 let response = await validateID(student1);
                 if (response.status === 400) {
+                    const jsonResponse = await response.json();
                     input1.style.borderColor = "red";
                     input1.value = "";
-                    input1.placeholder = "Invalid ID"; //todo this should get a message from the server
+                    input1.placeholder = jsonResponse.error;
                 } else if (response.ok) {
                     studentId1.set(studentId1);
 
-                    dispatch("message", {
-                        data: await response.json(), //todo set this in the store
-                    });
+                    // dispatch("message", {
+                    //     data: await response.json(), //todo set this in the store
+                    // });
                 }
             } catch (error) {
                 input1.style.borderColor = "red";
@@ -43,20 +44,20 @@
             }
         } else {
             //student 1
-            let responses = [];
             let status = true;
 
-            if(student1 === student2) status = false;
+            if (student1 === student2) status = false;
 
             try {
                 let response = await validateID(student1);
                 if (response.status === 400) {
+                    const jsonResponse = await response.json();
+                    status = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
-                    input1.placeholder = "Invalid ID"; //todo this should get a message from the server
+                    input1.placeholder = jsonResponse.error; //todo this should get a message from the server
                 } else if (response.ok) {
                     studentId1.set(student1);
-                    responses[0] = await response.json();
                 }
             } catch (error) {
                 input1.style.borderColor = "red";
@@ -69,12 +70,13 @@
             try {
                 let response = await validateID(student2);
                 if (response.status === 400) {
+                    const jsonResponse = await response.json();
+                    status = false;
                     input2.style.borderColor = "red";
                     input2.value = "";
-                    input2.placeholder = "Invalid ID"; //todo this should get a message from the server
+                    input2.placeholder = jsonResponse.error; //todo this should get a message from the server
                 } else if (response.ok) {
                     studentId2.set(student2);
-                    responses[1] = await response.json();
                 }
             } catch (error) {
                 input2.style.borderColor = "red";
@@ -85,9 +87,10 @@
 
             //once both all good, send the response
             if (status) {
-                dispatch("message", {
-                    data: responses, //todo set this in the store
-                });
+                // dispatch("message", {
+                //     data: responses, //todo set this in the store
+                // });
+                alert("all good");
             }
 
         }
@@ -109,7 +112,6 @@
     />
     <meta content="cvapps.net" name="author"/>
 </svelte:head>
-
 
 <style>
     :root {
@@ -289,7 +291,7 @@
         <div class="login-cont">
             <div class="login-header">Register for a locker</div>
 
-            <form class="login-form" on:submit={login} on:keydown={handleKeyPress}>
+            <form class="login-form" on:keydown={handleKeyPress} on:submit={login}>
                 <label>Student 1</label>
 
                 <input
