@@ -33,7 +33,7 @@
                 } else if (response.ok) {
                     studentId1.set(student1);
                     await sendVerification($studentId1);
-                    pageView.set(2);
+                    pageView.set(3);
                 }
             } catch (error) {
                 input1.style.borderColor = "red";
@@ -87,7 +87,7 @@
             if (status) {
                 await sendVerification($studentId1);
                 await sendVerification($studentId2);
-                pageView.set(2);
+                pageView.set(3);
             }
 
         }
