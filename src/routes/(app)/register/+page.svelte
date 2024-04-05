@@ -14,7 +14,6 @@
 
     $: if($pageView === 0) selected = Status;
     $: if($pageView === 1) selected = View1;
-
     $: if($pageView === 2) selected = View2;
 
 
