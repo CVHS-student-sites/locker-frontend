@@ -11,7 +11,7 @@ export async function validateID(data){
 }
 
 export async function fetchEnabledGrades() {
-    const response = await fetch('https://locker-api.cvapps.net/public/avalible-grades', {
+    const response = await fetch('https://locker-api.cvapps.net/public/available-grades', {
         method: 'get',
     });
 
