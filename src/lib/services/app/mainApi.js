@@ -31,7 +31,7 @@ export async function checkVerification(data){
 }
 
 export async function fetchAvailableLockers(){
-    let response = await fetch(`http://locker-api.cvapps.net/public/available-lockers`, {
+    let response = await fetch(`https://locker-api.cvapps.net/public/available-lockers`, {
         method: "get",
     });
 
