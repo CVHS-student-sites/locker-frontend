@@ -4,6 +4,7 @@
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {singleLocker, studentId1, studentId2, selectedLocation, pageView} from "../store.js";
+    import {fetchAvailableLockers} from "$lib/services/app/mainApi.js";
 
     import Select from "$lib/components/app/Select.svelte";
 
@@ -11,37 +12,55 @@
     let buttonMessage = 'Submit';
 
 
-    let data1 = ['1000', '2000', '7000'];
-    let data2 = ['1', '2', '3'];
+
+    let areas = {};
+    let data1 = [];
+    let data2 = [];
     let data3 = ['Top', 'Single', 'Bottom'];
 
-    
-
-	let value1;
+    let value1;
     let value2;
     let value3;
 
+    async function fetchData() {
+        areas = await fetchAvailableLockers();
+        // Update data1 based on fetched areas
+        data1 = Object.keys(areas);
+        // Check if value1 is selected and update data2 accordingly
+        if (value1 && areas[value1.value]) {
+            data2 = areas[value1.value];
+        }
+    }
 
-
-    function next() {
-        // console.log(value2)
-
-        //todo ge tform feilds
+    async function next() {
         selectedLocation.set({
             building: value1.label,
             floor: value2.label,
-            position: value3.label,
-
-        })
-        console.log($selectedLocation)
+            level: value3.label,
+        });
+        console.log($selectedLocation);
         pageView.set(2);
     }
 
-
     onMount(async () => {
-        
+        await fetchData();
     });
 
+    // Watch for changes in value1 and update data2 accordingly
+    $: {
+        if (value1 && areas[value1.value]) {
+            console.log("feuj")
+
+            data2 = areas[value1.value];
+            clear();
+
+        }
+    }
+
+    function clear(){
+        value2 = null;
+        value3 = null;
+    }
 
 </script>
 
@@ -49,14 +68,14 @@
     <div class="box">
         <div class="box-cont">
             <div class="box-header">Select locker Location</div>
-            
+
             <div class="selection-div">
 
                 <div class="input-group">
                     <div class="selection-label">Building</div>
                     <Select items={data1} placeholder="Select Building" bind:value={value1}/>
                 </div>
-                
+
                 <div class="input-group">
                     <div class="selection-label">Floor</div>
                     <Select items={data2} placeholder="Select Floor" bind:value={value2}/>

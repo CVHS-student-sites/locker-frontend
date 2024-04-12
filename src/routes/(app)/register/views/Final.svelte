@@ -3,54 +3,32 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {singleLocker, studentId1, studentId2} from "../store.js";
+    import {submitLockers} from "$lib/services/app/mainApi.js";
+
+    import {singleLocker, studentId1, studentId2, selectedLocation} from "../store.js";
 
 
-    const studentStatusStore = writable({});
+    let studentsArr = [];
 
-    let buttonMessage = 'Check';
+    let buttonMessage = 'Submit';
 
     function next() {
+        studentsArr[0] = $studentId1;
+        studentsArr[1] = $studentId2; //todo account for single lockers
 
-        //todo call check verify function
-        checkIDs();
-        // pageView.set(3);
-    }
-
-    async function checkIDs(){
-        if($singleLocker){
-            let response = await checkVerification($studentId1);
-            let json = await response.json();
-
-            studentStatusStore.set({student_1: json.verified});
-
-            if($studentStatusStore.student_1) console.log("one verified");
-        }else{
-            let response1 = await checkVerification($studentId1);
-            let response2 = await checkVerification($studentId2);
-            let json1 = await response1.json();
-            let json2 = await response2.json();
-
-            studentStatusStore.set({student_1: json1.verified, student_2: json2.verified});
-
-            if($studentStatusStore.student_1 && $studentStatusStore.student_2) console.log("both verified");
+        let finalArr = {
+            "students": studentsArr,
+            "location": $selectedLocation,
         }
-
-
+        submitLockers(finalArr);
     }
-
-    onMount(async () => {
-        //
-        await checkIDs();
-    });
-
 
 </script>
 
 <div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
     <div class="box">
         <div class="box-cont">
-            <div class="box-header">Select locker Location</div>
+            <div class="box-header">Confirm Locker Selection</div>
             <div class="small-text">Your locker is assigned randomly</div>
             <div class="selection-div">
 

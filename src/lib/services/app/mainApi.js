@@ -29,3 +29,20 @@ export async function checkVerification(data){
         method: "get",
     });
 }
+
+export async function fetchAvailableLockers(){
+    let response = await fetch(`http://locker-api.cvapps.net/public/available-lockers`, {
+        method: "get",
+    });
+
+    return await response.json();
+}
+
+
+export async function submitLockers(data){
+    return await fetch('https://locker-api.cvapps.net/public/register-locker', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
+}

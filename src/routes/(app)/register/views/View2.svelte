@@ -3,7 +3,7 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {singleLocker, studentId1, studentId2} from "../store.js";
+    import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
 
     import {checkVerification} from "$lib/services/app/mainApi.js";
 
@@ -25,7 +25,7 @@
 
             studentStatusStore.set({student_1: json.verified});
 
-            if($studentStatusStore.student_1) console.log("one verified");
+            if($studentStatusStore.student_1) pageView.set(4);
         }else{
             let response1 = await checkVerification($studentId1);
             let response2 = await checkVerification($studentId2);
@@ -34,7 +34,7 @@
 
             studentStatusStore.set({student_1: json1.verified, student_2: json2.verified});
 
-            if($studentStatusStore.student_1 && $studentStatusStore.student_2) console.log("both verified");
+            if($studentStatusStore.student_1 && $studentStatusStore.student_2) pageView.set(4);
         }
 
 

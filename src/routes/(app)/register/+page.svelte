@@ -19,6 +19,7 @@
     $: if($pageView === 1) selected = Selection;
     $: if($pageView === 2) selected = View1;
     $: if($pageView === 3) selected = View2;
+    $: if($pageView === 4) selected = Final;
 
 
 
