@@ -6,17 +6,10 @@
     import '$lib/assets/admin-table.css'
     import {fetchUserData} from "$lib/services/admin/mainApi.js";
 
+    import moment from 'moment';
+
     let showModal = false;
-    let data = [
-        [
-            "Marc Hyeler",
-            "birdpump@gmail.com",
-            415631,
-            10,
-            null,
-            "2024-04-13T00:47:52.000Z"
-        ]
-    ];
+    let data;
 
     function launchEdit(id) {
         console.log("all")
@@ -63,8 +56,20 @@
         'Email',
         'ID',
         'Grade',
-        'Locker',
-        'Date Created',
+        {
+            name: 'Locker',
+            formatter: (cell) => {
+                if (cell === null) {
+                    return 'No Locker';
+                } else {
+                    return cell;
+                }
+            }
+        },
+        {
+            name: 'Date Registered',
+            formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
+        },
         {
             name: '',
             formatter: (cell, row) => {
@@ -76,13 +81,6 @@
 
                         }
                     }, 'Edit'),
-                    h('button', {
-                        "class": "main-btn",
-                        onClick: () => {
-
-
-                        }
-                    }, 'Delete')
                 ];
             }
         }

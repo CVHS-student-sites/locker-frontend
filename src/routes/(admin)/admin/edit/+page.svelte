@@ -2,7 +2,7 @@
     import LockerEdit from "./views/LockerEdit.svelte";
     import UserEdit from "./views/UserEdit.svelte";
 
-    let selected = LockerEdit;
+    let selected = UserEdit;
 
 
 </script>
@@ -76,6 +76,7 @@
     <div class="top-menu">
         <div class="dataselect-button" on:click={() => (selected = UserEdit)} class:data-active-button={selected === UserEdit}>Users</div>
         <div class="dataselect-button" on:click={() => (selected = LockerEdit)} class:data-active-button={selected === LockerEdit}>Lockers</div>
+        <div class="dataselect-button" on:click={() => (selected = LockerEdit)} class:data-active-button={selected === LockerEdit}>Search</div>
     </div>
     <div class="sub-scroll">
         <svelte:component this={selected}/>
