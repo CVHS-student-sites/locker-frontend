@@ -67,7 +67,7 @@
     .sub-scroll{
         flex: 1;
         widows: 100%;
-        overflow-y: scroll;
+
     }
 </style>
 
