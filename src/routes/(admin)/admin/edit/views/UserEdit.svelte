@@ -101,9 +101,9 @@
             pagination={{ enabled: true, limit: 11 }}
             search
             server={{
-		url: 'https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=1',
+		url: 'https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=10',
 		then: data => data.results.map(movie => {
-			return [movie[0], movie[1], movie[2], movie[3]]
+			return [movie[0], movie[1], movie[2], movie[3], movie[4], movie[5]]
 		})
 	}}
             {style}
