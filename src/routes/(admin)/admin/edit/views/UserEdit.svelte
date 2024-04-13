@@ -7,7 +7,16 @@
     import {fetchUserData} from "$lib/services/admin/mainApi.js";
 
     let showModal = false;
-    let data;
+    let data = [
+        [
+            "Marc Hyeler",
+            "birdpump@gmail.com",
+            415631,
+            10,
+            null,
+            "2024-04-13T00:47:52.000Z"
+        ]
+    ];
 
     function launchEdit(id) {
         console.log("all")
@@ -79,8 +88,10 @@
         }
     ];
 
+    let showData = false;
     onMount(async () => {
         data = await fetchUserData();
+        showData = true;
     });
 </script>
 
@@ -96,16 +107,13 @@
     <div class="modal-cont">
         <Modal bind:showModal/>
     </div>
-    <Grid
-            {columns}
-            pagination={{ enabled: true, limit: 11 }}
-            search
-            server={{
-		url: 'https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=10',
-		then: data => data.results.map(movie => {
-			return [movie[0], movie[1], movie[2], movie[3], movie[4], movie[5]]
-		})
-	}}
-            {style}
-    />
+    {#if showData}
+        <Grid
+                {columns}
+                pagination={{ enabled: true, limit: 11 }}
+                search
+                {data}
+                {style}
+        />
+    {/if}
 </div>

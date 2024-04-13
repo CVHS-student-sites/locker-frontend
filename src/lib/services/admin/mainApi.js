@@ -17,7 +17,7 @@ export async function fetchEnabledGrades() {
 }
 
 export async function fetchUserData(){
-    const response = await fetch('https://locker-api.cvapps.net/admin/data/user-data?page=3&pageSize=1', {
+    const response = await fetch('https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=10', {
         method: 'get',
         credentials: 'include'
     });
