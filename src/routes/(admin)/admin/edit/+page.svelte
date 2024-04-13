@@ -2,7 +2,7 @@
     import LockerEdit from "./views/LockerEdit.svelte";
     import UserEdit from "./views/UserEdit.svelte";
 
-    let selected = UserEdit;
+    let selected = LockerEdit;
 
 
 </script>

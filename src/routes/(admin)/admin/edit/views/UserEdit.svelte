@@ -1,14 +1,15 @@
 <script>
     import Grid from "gridjs-svelte";
-    import { h } from "gridjs";
+    import {h} from "gridjs";
     import Modal from '../Editmodal.svelte';
-    import { onMount } from 'svelte';
-    import { fetchUserData } from "$lib/services/admin/mainApi.js";
+    import {onMount} from 'svelte';
+    import '$lib/assets/admin-table.css'
+    import {fetchUserData} from "$lib/services/admin/mainApi.js";
 
     let showModal = false;
     let data;
 
-    function launchEdit(id){
+    function launchEdit(id) {
         console.log("all")
         showModal = true;
     }
@@ -37,12 +38,12 @@
             'border-right': 'none',
             'text-align': 'center'
         },
-        footer:{
+        footer: {
             'color': '#d6d6d6',
             'background-color': '#18181b',
             'border-top': 'none',
         },
-        header:{
+        header: {
             padding: '0px',
             border: 'none'
         }
@@ -95,17 +96,16 @@
     <div class="modal-cont">
         <Modal bind:showModal/>
     </div>
-    {#await data}
-        <p>Loading...</p>
-    {:then userData}
-        <Grid
-            search
-            pagination={{ enabled: true, limit: 11 }}
-            {style}
+    <Grid
             {columns}
-            {userData}
-        />
-    {:catch error}
-        <p>Error fetching data: {error.message}</p>
-    {/await}
+            pagination={{ enabled: true, limit: 11 }}
+            search
+            server={{
+		url: 'https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=1',
+		then: data => data.results.map(movie => {
+			return [movie[0], movie[1], movie[2], movie[3]]
+		})
+	}}
+            {style}
+    />
 </div>
