@@ -29,7 +29,7 @@ export async function fetchUserData(){
 
 export async function fetchLockerData() {
     try {
-        const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data?page=1&pageSize=3', {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data?page=1&pageSize=10', {
             withCredentials: true
         });
         return response.data;

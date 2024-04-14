@@ -66,10 +66,12 @@
                 }
             }
         },
-        'Users',
         {
-            name: 'Date Updated',
-            formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
+            name: 'Users',
+            formatter: (cell) => {
+                // Return the array of student IDs
+                return cell.map(user => user.studentId).join(', ');
+            }
         },
         {
             name: '',
@@ -78,7 +80,7 @@
                     h('button', {
                         "class": "main-btn",
                         onClick: () => {
-                            launchEdit(row.cells[2].data)
+                            launchEdit(row.cells[0].data)
 
                         }
                     }, 'Edit'),
@@ -111,6 +113,7 @@
         <Grid
                 {columns}
                 pagination={{ enabled: true, limit: 11 }}
+
                 search
                 {data}
                 {style}
