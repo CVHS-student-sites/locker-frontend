@@ -1,23 +1,20 @@
 <script>
-    //todo create reusable table component
     import Grid from "gridjs-svelte";
-    import { h, PluginPosition } from "gridjs";
-    // import "gridjs/dist/theme/mermaid.css";
-    import '$lib/assets/admin-table.css'
+    import {h} from "gridjs";
     import Modal from '../Editmodal.svelte';
+    import {onMount} from 'svelte';
+    import '$lib/assets/admin-table.css'
+    import {fetchLockerData} from "$lib/services/admin/mainApi.js";
+
+    import moment from 'moment';
 
     let showModal = false;
+    let data;
 
-    function launchEdit(id){
+    function launchEdit(id) {
         console.log("all")
         showModal = true;
     }
-
-    const data = [
-        ["2024", "mhye5631@stu.gusd.net", 415631, 10, "1125"],
-        ["2028", "bfred415@stu.gusd.net", 415632, 10, "1125"],
-        ["2024", "juo9d415@stu.gusd.net", 415532, 11, "1130"],
-    ];
 
     const style = {
         container: {
@@ -43,24 +40,41 @@
             'border-right': 'none',
             'text-align': 'center'
         },
-        footer:{
+        footer: {
             'color': '#d6d6d6',
             'background-color': '#18181b',
             'border-top': 'none',
         },
-        header:{
+        header: {
             padding: '0px',
             border: 'none'
         }
-
     }
 
     const columns = [
-        'Name',
-        'Email',
-        'ID',
-        'Grade',
-        'Locker',
+        'Number',
+        'Floor',
+        'Level',
+        'Building',
+        {
+            name: 'Status',
+            formatter: (cell) => {
+                if (cell === null) {
+                    return 'No Status';
+                } else {
+                    return cell;
+                }
+            }
+        },
+        'Users',
+        {
+            name: 'Date Created',
+            formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
+        },
+        {
+            name: 'Date Updated',
+            formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
+        },
         {
             name: '',
             formatter: (cell, row) => {
@@ -72,19 +86,15 @@
 
                         }
                     }, 'Edit'),
-                    h('button', {
-                        "class": "main-btn",
-                        onClick: () => {
-
-
-                        }
-                    }, 'Delete')
                 ];
             }
         }
     ];
 
-
+    let promise = Promise.resolve([]);
+    onMount(async () => {
+        promise = await fetchLockerData();
+    });
 </script>
 
 <svelte:head>
@@ -92,47 +102,24 @@
 </svelte:head>
 
 <style>
-    :root {
-        --text: #d6d6d6;
-        --background: #101014;
-        --primary: #0084ff;
-        --secondary: #1b2c42;
-        --accent: #577db2;
-    }
-
-    .locker-edit {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        background-color: var(--background);
-        /* flex: 1; */
-    }
-
-    :global(.main-btn) {
-        color: #d6d6d6;
-        background-color: #0084ff;
-        border: none;
-        border-radius: 5px;
-        padding: 5px;
-        margin: 0 5px 0 5px;
-    }
-    :global(.main-btn:hover) {
-        cursor: pointer;
-        background-color: #577db2;
-    }
+    /* Your styles here */
 </style>
 
 <div class="locker-edit">
-
     <div class="modal-cont">
         <Modal bind:showModal/>
     </div>
-    <Grid
-
-            search
-            pagination={{ enabled: true, limit: 2 }}
-            {style}
-            {columns}
-            {data} />
+    {#await promise}
+        <p>...waiting</p>
+    {:then data}
+        <Grid
+                {columns}
+                pagination={{ enabled: true, limit: 11 }}
+                search
+                {data}
+                {style}
+        />
+    {:catch error}
+        <p style="color: red">{error.message}</p>
+    {/await}
 </div>
