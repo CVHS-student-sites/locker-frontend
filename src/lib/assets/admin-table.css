@@ -341,4 +341,16 @@ th.gridjs-th:last-child {
     background-color: #9bc2f7;
 }
 
-/*# sourceMappingURL=mermaid.css.map */
+.main-btn {
+    color: #d6d6d6;
+    background-color: #0084ff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 5px 0 5px;
+}
+.main-btn:hover {
+    cursor: pointer;
+    background-color: #577db2;
+}
+

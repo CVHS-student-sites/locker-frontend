@@ -35,13 +35,13 @@
         const centerPosition = targetIconRect.left - contRect.left + targetIconRect.width / 2;
         beforecenter = Math.round(centerPosition - 32);
         test.set(Math.round(centerPosition - 32));
-        icons.forEach((icon) => icon.classList.remove('active'));
+        icons.forEach((icon) => icon.classList.remove('botnav-active'));
         icon1 = targetIcon;
     }
 
     $: if ($test === Math.round(beforecenter)) {
         tests = true;
-        icon1.classList.add('active');
+        icon1.classList.add('botnav-active');
         const icons = document.querySelectorAll('.icond');
         const prevIndex = (currentTargetIndex - 1 + icons.length) % icons.length;
         const prevTargetIcon = icons[prevIndex];
@@ -56,7 +56,7 @@
         const icons2 = document.querySelectorAll('.icond');
         const targetIcon2 = icons2[selectPage];
 
-        targetIcon2.classList.add('active');
+        targetIcon2.classList.add('botnav-active');
         tests1.classList.add('visible');
     });
 
@@ -64,7 +64,7 @@
 
 <style>
 
-    :global(.active) {
+    :global(.botnav-active) {
         /* Style for the active icon with the box */
         background-color: #003566;
         border-radius: 20px;
