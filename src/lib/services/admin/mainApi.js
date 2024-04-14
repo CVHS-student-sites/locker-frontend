@@ -29,7 +29,9 @@ export async function fetchUserData(){
 
 export async function fetchLockerData() {
     try {
-        const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data?page=1&pageSize=3');
+        const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data?page=1&pageSize=3', {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         throw error; // Rethrow the error to handle it elsewhere if needed

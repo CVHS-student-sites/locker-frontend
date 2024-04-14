@@ -91,9 +91,11 @@
         }
     ];
 
-    let promise = Promise.resolve([]);
+
+    let showData = false;
     onMount(async () => {
-        promise = await fetchLockerData();
+        data = await fetchLockerData();
+        showData = true;
     });
 </script>
 
@@ -109,9 +111,7 @@
     <div class="modal-cont">
         <Modal bind:showModal/>
     </div>
-    {#await promise}
-        <p>...waiting</p>
-    {:then data}
+    {#if showData}
         <Grid
                 {columns}
                 pagination={{ enabled: true, limit: 11 }}
@@ -119,7 +119,5 @@
                 {data}
                 {style}
         />
-    {:catch error}
-        <p style="color: red">{error.message}</p>
-    {/await}
+    {/if}
 </div>
