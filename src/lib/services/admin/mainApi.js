@@ -27,7 +27,7 @@ export async function fetchUserData(){
     return await response.json();
 }
 
-async function fetchLockerData() {
+export async function fetchLockerData() {
     try {
         const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data?page=1&pageSize=3');
         return response.data;
