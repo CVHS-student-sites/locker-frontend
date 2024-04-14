@@ -68,10 +68,6 @@
         },
         'Users',
         {
-            name: 'Date Created',
-            formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
-        },
-        {
             name: 'Date Updated',
             formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
         },
