@@ -6,21 +6,28 @@
     import {submitLockers} from "$lib/services/app/mainApi.js";
 
     import {singleLocker, studentId1, studentId2, selectedLocation} from "../store.js";
+    import {goto} from "$app/navigation";
 
 
     let studentsArr = [];
 
     let buttonMessage = 'Submit';
 
-    function next() {
+    async function next() {
         studentsArr[0] = $studentId1;
-        studentsArr[1] = $studentId2; //todo account for single lockers
+        if(!$singleLocker) studentsArr[1] = $studentId2;
 
         let finalArr = {
             "students": studentsArr,
             "location": $selectedLocation,
         }
-        submitLockers(finalArr);
+        let response = await submitLockers(finalArr);
+        if(response.ok){
+            await goto(`/lookup?id=${$studentId1}`);
+
+        }else{
+            //todo show error reason
+        }
     }
 
 </script>

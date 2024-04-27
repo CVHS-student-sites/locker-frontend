@@ -1,11 +1,21 @@
 <script>
-    import { createEventDispatcher } from "svelte";
+    import {createEventDispatcher, onMount} from "svelte";
     import { fetchLocker } from "$lib/services/app/mainApi.js";
+    import {page} from "$app/stores";
+    import {goto} from "$app/navigation";
 
     const dispatch = createEventDispatcher();
     let input;
 
     let studentID = "";
+
+    let id = $page.url.searchParams.get('id');
+
+    if(id) {
+        studentID = id;
+        submit();
+    }
+
     async function submit() {
 
         try {
@@ -33,6 +43,9 @@
             submit();
         }
     }
+
+
+
 </script>
 
 <style>

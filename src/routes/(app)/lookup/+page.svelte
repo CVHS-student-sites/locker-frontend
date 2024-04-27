@@ -4,6 +4,8 @@
     import Show from "./views/show.svelte";
     import {fade} from 'svelte/transition';
     import {quartOut} from 'svelte/easing';
+    import {onMount} from "svelte";
+    import {page} from "$app/stores";
 
 
     let selected = Lookup;
