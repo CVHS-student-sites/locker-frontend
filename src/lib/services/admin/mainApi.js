@@ -18,18 +18,20 @@ export async function fetchEnabledGrades() {
     return await response.json();
 }
 
-export async function fetchUserData(){
-    const response = await fetch('https://locker-api.cvapps.net/admin/data/user-data?page=1&pageSize=10', {
-        method: 'get',
-        credentials: 'include'
-    });
-
-    return await response.json();
+export async function fetchUserData() {
+    try {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/data/user-data', {
+            withCredentials: true
+        });
+        return response.data;
+    } catch (error) {
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
 }
 
 export async function fetchLockerData() {
     try {
-        const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data?page=1&pageSize=10', {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/data/locker-data', {
             withCredentials: true
         });
         return response.data;

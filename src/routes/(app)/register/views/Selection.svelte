@@ -16,7 +16,7 @@
     let areas = {};
     let data1 = [];
     let data2 = [];
-    let data3 = ['Top', 'Single', 'Bottom'];
+    let data3 = [];
 
     let value1;
     let value2;
@@ -26,10 +26,6 @@
         areas = await fetchAvailableLockers();
         // Update data1 based on fetched areas
         data1 = Object.keys(areas);
-        // Check if value1 is selected and update data2 accordingly
-        if (value1 && areas[value1.value]) {
-            data2 = areas[value1.value];
-        }
     }
 
     async function next() {
@@ -38,6 +34,8 @@
             floor: value2.label,
             level: value3.label,
         });
+        if(value3.label === "Single") singleLocker.set(true);
+
         console.log($selectedLocation);
         pageView.set(2);
     }
@@ -49,17 +47,26 @@
     // Watch for changes in value1 and update data2 accordingly
     $: {
         if (value1 && areas[value1.value]) {
-            console.log("feuj")
 
-            data2 = areas[value1.value];
-            clear();
+            data2 = Object.keys(areas[value1.value]);
+
+            clear(1);
 
         }
     }
 
-    function clear(){
-        value2 = null;
-        value3 = null;
+    $:{
+        if (value2 && areas[value1.value][value2.value]) {
+
+            data3 = areas[value1.value][value2.value]['Levels']
+            clear(2);
+
+        }
+    }
+
+    function clear(number){
+        if(number === 1) value2 = null;
+        if(number === 2) value3 = null;
     }
 
 </script>

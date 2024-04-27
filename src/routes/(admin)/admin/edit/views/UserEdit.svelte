@@ -109,7 +109,7 @@
         <Grid
                 {columns}
                 pagination={{ enabled: true, limit: 11 }}
-
+                sort
                 search
                 {data}
                 {style}
