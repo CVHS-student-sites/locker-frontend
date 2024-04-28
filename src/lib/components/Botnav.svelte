@@ -11,6 +11,7 @@
 
 
     // jank but ok
+    //todo when ui changes page to lookup on register, bottom selector does not move
     $: if ($page.url.pathname === '/') selectPage = 0;
     $: if ($page.url.pathname === '/register') selectPage = 1;
     $: if ($page.url.pathname === '/lookup') selectPage = 2;
