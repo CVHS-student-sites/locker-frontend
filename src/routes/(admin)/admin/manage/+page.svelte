@@ -57,7 +57,7 @@
         justify-content: center;
         flex-direction: column;
         gap: 5px;
-        /*padding: 5px;*/
+        padding: 5px;
         box-sizing: border-box;
 
     }
@@ -71,6 +71,11 @@
         box-sizing: border-box;
         align-items: center;
         justify-content: center;
+    }
+
+    .form{
+        width: 100%;
+        height: 100%;
     }
 
 </style>
@@ -90,16 +95,19 @@
                 <div class="subcont-title">Upload Data</div>
                 <div class="import-cont">
 
+                    <div class="form">
                     <form action="https://locker-api.cvapps.net/admin/lockerUpload" method="post" enctype="multipart/form-data">
                         <input type="file" name="csvFile" accept=".csv" required>
                         <button type="submit">Upload Locker</button>
                     </form>
+                    </div>
 
-
+                    <div class="form">
                     <form action="https://locker-api.cvapps.net/admin/userUpload" method="post" enctype="multipart/form-data">
                         <input type="file" name="csvFile" accept=".csv" required>
                         <button type="submit">Upload User</button>
                     </form>
+                    </div>
 
 
                 </div>
