@@ -1,4 +1,7 @@
+<script>
 
+
+</script>
 <svelte:head>
     <title>Locker - Manage</title>
 </svelte:head>
@@ -17,9 +20,97 @@
         background-color: var(--background);
         flex: 1;
     }
+
+    .grid-container {
+        width: 100%;
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .grid-item {
+        background-color: #1b2c42;
+        /*background-color: #131821;*/
+        border-radius: 10px;
+        padding: 8px 12px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        text-align: center;
+    }
+
+    .subcont-title {
+        font-size: 17px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+
+    .subcont-main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        /*padding: 5px;*/
+        box-sizing: border-box;
+
+    }
+
+    .import-cont{
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: green;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+    }
+
 </style>
 
 
 <div class="main">
-    <h1>hello - management</h1>
+    <div class="grid-container">
+
+        <div class="grid-item">
+
+
+        </div>
+
+        <div class="grid-item">
+
+            <div class="subcont-main">
+                <div class="subcont-title">Upload Data</div>
+                <div class="import-cont">
+
+                    <form action="https://locker-api.cvapps.net/admin/lockerUpload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="csvFile" accept=".csv" required>
+                        <button type="submit">Upload Locker</button>
+                    </form>
+
+
+                    <form action="https://locker-api.cvapps.net/admin/userUpload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="csvFile" accept=".csv" required>
+                        <button type="submit">Upload User</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="grid-item">
+
+        </div>
+        <div class="grid-item">
+
+        </div>
+
+    </div>
 </div>
