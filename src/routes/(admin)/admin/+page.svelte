@@ -290,6 +290,7 @@
             <div class="button-text">list names of new users</div>
         </div>
 
+<!--        todo should really be separate components-->
         <div class="grid-element-1 medium">
             <div class="stat-cont-1">
 
