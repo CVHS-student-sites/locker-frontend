@@ -265,7 +265,7 @@
                 <div class="num-stat-subcont-title">Registered Lockers</div>
                 <div class="num-stat-big-text">{$statStore.regLockers ? $statStore.regLockers : ''}</div>
                 <div class="num-stat-subcont-title">
-                    Capacity: {$statStore.totalLockers ? $statStore.totalLockers : ''}</div>
+                    Available: {$statStore.availableLockers ? $statStore.availableLockers : ''}</div>
             </div>
         </div>
         <div class="grid-element-1">
