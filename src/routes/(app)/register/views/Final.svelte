@@ -5,7 +5,7 @@
     import {quartOut} from "svelte/easing";
     import {submitLockers} from "$lib/services/app/mainApi.js";
 
-    import {singleLocker, studentId1, studentId2, selectedLocation, pageView} from "../store.js";
+    import {singleLocker, registrationData, studentId1, studentId2, selectedLocation, pageView} from "../store.js";
     import {goto} from "$app/navigation";
 
 
@@ -23,6 +23,14 @@
         }
         let response = await submitLockers(finalArr);
         if(response.ok){
+            //clear the regestration stores / kinda jank but ok
+            selectedLocation.set({});
+            registrationData.set({});
+            studentId1.set(null);
+            studentId2.set(null);
+            singleLocker.set(false);
+
+
             await goto(`/lookup?id=${$studentId1}`);
             pageView.set(0);
         }else{
