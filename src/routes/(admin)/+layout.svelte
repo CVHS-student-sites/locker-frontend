@@ -6,6 +6,7 @@
 
     let isSmallScreen = false;
     onMount(() => {
+        isSmallScreen = window.innerWidth < 600;
         const updateScreenSize = () => {
             isSmallScreen = window.innerWidth < 600;
         };
