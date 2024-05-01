@@ -42,6 +42,7 @@
         console.log(gradeCanRegister);
     }
 
+    //todo this could use a hell of a lot of optimization
     async function login(event) {
         event.preventDefault();
 
