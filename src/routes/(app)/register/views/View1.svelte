@@ -1,9 +1,18 @@
 <script>
-    import {createEventDispatcher} from "svelte";
-    import {slide} from "svelte/transition";
-    import {quartOut} from "svelte/easing";
-    import {validateID, sendVerification} from "$lib/services/app/mainApi.js";
-    import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
+    import { createEventDispatcher } from "svelte";
+    import { slide } from "svelte/transition";
+    import { quartOut } from "svelte/easing";
+    import {
+        validateID,
+        sendVerification,
+        fetchEnabledGrades,
+    } from "$lib/services/app/mainApi.js";
+    import {
+        singleLocker,
+        studentId1,
+        studentId2,
+        pageView,
+    } from "../store.js";
 
     const dispatch = createEventDispatcher();
 
@@ -19,21 +28,42 @@
         }
     }
 
+    let gradeCanRegister = false;
+
+    async function checkGrade(grade) {
+        let enableGrades = await fetchEnabledGrades();
+
+        const gradeKey = "grade_" + grade;
+        // Check if the grade exists in the JSON object and if it's enabled
+        if (enableGrades.hasOwnProperty(gradeKey) && enableGrades[gradeKey]) {
+            gradeCanRegister = true;
+        }
+
+        console.log(gradeCanRegister);
+    }
+
     async function login(event) {
         event.preventDefault();
 
         if ($singleLocker) {
             try {
                 let response = await validateID(student1);
+                const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    const jsonResponse = await response.json();
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = jsonResponse.error;
                 } else if (response.ok) {
-                    studentId1.set(student1);
-                    await sendVerification($studentId1);
-                    pageView.set(3);
+                    checkGrade(jsonResponse.grade);
+                    if (gradeCanRegister) {
+                        studentId1.set(student1);
+                        await sendVerification($studentId1);
+                        pageView.set(3);
+                    } else {
+                        input1.style.borderColor = "red";
+                        input1.value = "";
+                        input1.placeholder = "Grade cannot register";
+                    }
                 }
             } catch (error) {
                 input1.style.borderColor = "red";
@@ -44,12 +74,14 @@
             //student 1
             let status = true;
 
+            //todo display some sort of error here
             if (student1 === student2) status = false;
 
             try {
                 let response = await validateID(student1);
+                const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    const jsonResponse = await response.json();
+                    checkGrade(jsonResponse.grade);
                     status = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
@@ -67,8 +99,9 @@
             //student 2
             try {
                 let response = await validateID(student2);
+                const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    const jsonResponse = await response.json();
+                    checkGrade(jsonResponse.grade);
                     status = false;
                     input2.style.borderColor = "red";
                     input2.value = "";
@@ -85,14 +118,17 @@
 
             //once both all good, send the response
             if (status) {
-                await sendVerification($studentId1);
-                await sendVerification($studentId2);
-                pageView.set(3);
+                if (gradeCanRegister) {
+                    await sendVerification($studentId1);
+                    await sendVerification($studentId2);
+                    pageView.set(3);
+                } else {
+                    input1.style.borderColor = "red";
+                    input1.value = "";
+                    input1.placeholder = "Grade cannot register";
+                }
             }
-
         }
-
-
     }
 </script>
 
@@ -100,15 +136,59 @@
     <title>Register</title>
 
     <meta
-            content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
-            name="description"
+        content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
+        name="description"
     />
     <meta
-            content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
-            name="keywords"
+        content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
+        name="keywords"
     />
-    <meta content="cvapps.net" name="author"/>
+    <meta content="cvapps.net" name="author" />
 </svelte:head>
+
+<!--todo fix layout shift that occurs from transition-->
+<div
+    class="main"
+    in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: "x" }}
+>
+    <div class="login">
+        <div class="login-cont">
+            <div class="login-header">Verify IDs</div>
+
+            <form
+                class="login-form"
+                on:keydown={handleKeyPress}
+                on:submit={login}
+            >
+                <label>Student 1</label>
+
+                <input
+                    bind:this={input1}
+                    bind:value={student1}
+                    id="1studentId"
+                    name="1studentId"
+                    placeholder="Student ID"
+                    required
+                    type="text"
+                />
+
+                {#if !$singleLocker}
+                    <label>Student 2</label>
+                    <input
+                        bind:value={student2}
+                        bind:this={input2}
+                        id="2studentId"
+                        name="2studentId"
+                        placeholder="Student ID"
+                        required
+                        type="text"
+                    />
+                {/if}
+                <button class="submit" type="submit">Next</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <style>
     :root {
@@ -280,41 +360,3 @@
         }
     }
 </style>
-
-
-<!--todo fix layout shift that occurs from transition-->
-<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
-    <div class="login">
-        <div class="login-cont">
-            <div class="login-header">Verify IDs</div>
-
-            <form class="login-form" on:keydown={handleKeyPress} on:submit={login}>
-                <label>Student 1</label>
-
-                <input
-                        bind:this={input1}
-                        bind:value={student1}
-                        id="1studentId"
-                        name="1studentId"
-                        placeholder="Student ID"
-                        required
-                        type="text"
-                />
-
-                {#if !$singleLocker}
-                    <label>Student 2</label>
-                    <input
-                            bind:value={student2}
-                            bind:this={input2}
-                            id="2studentId"
-                            name="2studentId"
-                            placeholder="Student ID"
-                            required
-                            type="text"
-                    />
-                {/if}
-                <button class="submit" type="submit">Next</button>
-            </form>
-        </div>
-    </div>
-</div>
