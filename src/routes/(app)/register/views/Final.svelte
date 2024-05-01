@@ -26,12 +26,12 @@
             //clear the regestration stores / kinda jank but ok
             selectedLocation.set({});
             registrationData.set({});
-            studentId1.set(null);
-            studentId2.set(null);
             singleLocker.set(false);
 
-
             await goto(`/lookup?id=${$studentId1}`);
+            
+            studentId1.set(null);
+            studentId2.set(null);
             pageView.set(0);
         }else{
             //todo show error reason
