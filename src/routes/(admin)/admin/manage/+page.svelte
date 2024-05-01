@@ -10,7 +10,7 @@
     <div class="grid-container">
         <div class="grid-item">
             <div class="subcont-main">
-                <div class="subcont-title">Area Restrictions</div>
+                <div class="subcont-title">Restricted Areas </div>
                 <BuildingEdit/>
             </div>
 
