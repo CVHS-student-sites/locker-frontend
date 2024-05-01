@@ -1,18 +1,30 @@
 <script>
     import {writable} from 'svelte/store';
-    import {fetchEnabledGrades, fetchOverviewData} from "$lib/services/admin/mainApi.js";
+    import {fetchAreaRestrictions, fetchEnabledGrades, fetchOverviewData} from "$lib/services/admin/mainApi.js";
     import {onMount} from "svelte";
 
     import Chart from "$lib/components/admin/Chart.svelte";
+    import {Stretch} from "svelte-loading-spinners";
+    import Switch from "$lib/components/global/Switch.svelte";
 
-    let testData = [483, 253, 856, 348];
+
+
+
+    let showData = false;
+    let areas;
+    let gradeCounts;
 
     const gradesStore = writable({});
     const statStore = writable({})
 
+    //todo dont really need a store here
     onMount(async () => {
-        statStore.set(await fetchOverviewData())
+        areas = await fetchAreaRestrictions();
+
+        statStore.set(await fetchOverviewData());
         gradesStore.set(await fetchEnabledGrades());
+        gradeCounts = Object.values($statStore.regUsersByGrade);
+        showData = true;
     });
 </script>
 
@@ -49,6 +61,8 @@
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: 2fr 3fr 2fr; /* Adjust the fr values as needed */
         box-sizing: border-box;
+        min-height: 0;
+        min-width: 0;
     }
 
     .grid-element-1 {
@@ -57,13 +71,15 @@
         background-color: #00284d;
         /*background-color: #131821;*/
         border-radius: 10px;
-        padding: 8px 12px;
+        padding: 8px 8px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         text-align: center;
+        min-height: 0;
+        min-width: 0;
     }
 
     .large {
@@ -142,6 +158,17 @@
         gap: 5px;
     }
 
+    .stat-1-area-cont {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+        overflow-y: scroll;
+    }
+
     .stat-1-grade-element-subcont {
         display: flex;
         align-items: center;
@@ -152,12 +179,60 @@
         border-radius: 5px;
         gap: 8px;
         padding-left: 8px;
+        box-sizing: border-box;
     }
 
     .stat-1-grade-text {
         font-size: 16px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
+    }
+
+
+    .area-restrictions-cont {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        gap: 10px;
+    }
+
+    .area-restrictions-cont::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .area-restrictions-cont {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .building {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        gap: 5px;
+        border: 2px dotted #00284d;
+        padding: 5px;
+    }
+
+    .floor {
+        display: flex;
+        background-color: #101014;
+        border-radius: 5px;
+        padding: 10px;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .area-restrictions-title {
+        font-size: 16px;
+        font-family: "Montserrat", sans-serif;
+        color: #d6d6d6;
+        text-align: left;
     }
 
     .material-symbols-outlined {
@@ -193,7 +268,7 @@
                 <div class="num-stat-subcont-title">Registered Lockers</div>
                 <div class="num-stat-big-text">{$statStore.regLockers ? $statStore.regLockers : ''}</div>
                 <div class="num-stat-subcont-title">
-                    Capacity: {$statStore.totalLockers ? $statStore.totalLockers : ''}</div>
+                    Available: {$statStore.availableLockers ? $statStore.availableLockers : ''}</div>
             </div>
         </div>
         <div class="grid-element-1">
@@ -212,12 +287,13 @@
         </div>
 
         <div class="grid-element-1 large">
-            <Chart chartData={testData}/>
+            <Chart chartData={gradeCounts}/>
         </div>
         <div class="grid-element-1">
             <div class="button-text">list names of new users</div>
         </div>
 
+<!--        todo should really be separate components-->
         <div class="grid-element-1 medium">
             <div class="stat-cont-1">
 
@@ -255,8 +331,32 @@
 
                 <div class="stat-1-subcont-1">
                     <div class="stat-1-subcont-title">Restricted Areas</div>
+                    <div class="stat-1-area-cont">
+                        {#if showData}
+                            <div class="area-restrictions-cont">
+                                {#each Object.keys(areas) as building}
+                                    <div class="building">
+                                        <div class="area-restrictions-title">
+                                            Building {building.split("_")[1]}
+                                        </div>
+                                        {#each Object.keys(areas[building]) as floor}
+                                            <div class="floor">
+                                                <div class="material-symbols-outlined filled-icons"
+                                                     style="{areas[building][floor] ? 'color:darkgreen' : 'color:darkred'}">{areas[building][floor] ? 'check_circle' : 'cancel'}
+                                                </div>
+                                                <div class="area-restrictions-title">
+                                                    Floor {floor.split("_")[1]}
+                                                </div>
+                                            </div>
+                                        {/each}
+                                    </div>
+                                {/each}
+                            </div>
+                        {:else}
+                            <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
+                        {/if}
+                    </div>
                 </div>
-
             </div>
         </div>
         <div class="grid-element-1 medium">
