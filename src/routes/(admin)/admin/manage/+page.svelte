@@ -9,7 +9,11 @@
 <div class="main">
     <div class="grid-container">
         <div class="grid-item">
-            <BuildingEdit />
+            <div class="subcont-main">
+                <div class="subcont-title">Area Restrictions</div>
+                <BuildingEdit/>
+            </div>
+
         </div>
 
         <div class="grid-item">
@@ -18,15 +22,15 @@
                 <div class="import-cont">
                     <div class="form">
                         <form
-                            action="https://locker-api.cvapps.net/admin/lockerUpload"
-                            method="post"
-                            enctype="multipart/form-data"
+                                action="https://locker-api.cvapps.net/admin/lockerUpload"
+                                enctype="multipart/form-data"
+                                method="post"
                         >
                             <input
-                                type="file"
-                                name="csvFile"
-                                accept=".csv"
-                                required
+                                    accept=".csv"
+                                    name="csvFile"
+                                    required
+                                    type="file"
                             />
                             <button type="submit">Upload Locker</button>
                         </form>
@@ -34,15 +38,15 @@
 
                     <div class="form">
                         <form
-                            action="https://locker-api.cvapps.net/admin/userUpload"
-                            method="post"
-                            enctype="multipart/form-data"
+                                action="https://locker-api.cvapps.net/admin/userUpload"
+                                enctype="multipart/form-data"
+                                method="post"
                         >
                             <input
-                                type="file"
-                                name="csvFile"
-                                accept=".csv"
-                                required
+                                    accept=".csv"
+                                    name="csvFile"
+                                    required
+                                    type="file"
                             />
                             <button type="submit">Upload User</button>
                         </form>
@@ -78,21 +82,18 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 10px;
-        min-height: 0; 
+        min-height: 0;
         min-width: 0;
     }
 
     .grid-item {
-        background-color: #1b2c42;
-        /*background-color: #131821;*/
+        /*background-color: #1b2c42;*/
+        background-color: #18181b;
         border-radius: 10px;
-        padding: 8px 12px;
+        padding: 8px 8px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        text-align: center;
         min-width: 0;
         min-height: 0;
     }
@@ -108,7 +109,7 @@
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         flex-direction: column;
         gap: 5px;
         padding: 5px;
