@@ -7,10 +7,12 @@
     import {Stretch} from "svelte-loading-spinners";
     import Switch from "$lib/components/global/Switch.svelte";
 
-    let testData = [483, 253, 856, 348];
+
+
 
     let showData = false;
     let areas;
+    let gradeCounts;
 
     const gradesStore = writable({});
     const statStore = writable({})
@@ -21,6 +23,7 @@
 
         statStore.set(await fetchOverviewData());
         gradesStore.set(await fetchEnabledGrades());
+        gradeCounts = Object.values($statStore.regUsersByGrade);
         showData = true;
     });
 </script>
@@ -284,7 +287,7 @@
         </div>
 
         <div class="grid-element-1 large">
-            <Chart chartData={testData}/>
+            <Chart chartData={gradeCounts}/>
         </div>
         <div class="grid-element-1">
             <div class="button-text">list names of new users</div>
