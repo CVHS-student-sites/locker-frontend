@@ -1,7 +1,19 @@
 <script>
-
     import Topadmin from "$lib/components/admin/Topadmin.svelte";
     import Sidenav from "$lib/components/admin/Sidenav.svelte";
+
+    import { toasts, ToastContainer, FlatToast, BootstrapToast }  from "svelte-toasts";
+
+    export function showToast(description){
+        const toast = toasts.add({
+            description: description,
+            duration: 1500, // 0 or negative to avoid auto-remove
+            type: 'error',
+            theme: 'dark',
+            placement: 'bottom-right',
+            showProgress: false,
+        });
+    }
 </script>
 
 <style>
@@ -31,6 +43,9 @@
 </style>
 
 <div class="layout-main">
+    <ToastContainer let:data={data}>
+        <BootstrapToast {data}  />
+    </ToastContainer>
     <Topadmin/>
     <div class="center">
         <Sidenav/>

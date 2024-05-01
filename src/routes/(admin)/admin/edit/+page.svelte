@@ -27,7 +27,7 @@
         /* height: 30%; */
         /* position: relative; */
 
-        
+
     }
 
     .top-menu{
@@ -66,8 +66,7 @@
 
     .sub-scroll{
         flex: 1;
-        widows: 100%;
-
+        overflow-y: scroll;
     }
 </style>
 

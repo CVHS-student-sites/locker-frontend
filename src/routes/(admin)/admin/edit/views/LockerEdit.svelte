@@ -112,9 +112,10 @@
     {#if showData}
         <Grid
                 {columns}
-                pagination={{ enabled: true, limit: 11 }}
+                pagination={{ enabled: true, limit: 15  }}
                 sort
                 search
+                height="auto"
                 {data}
                 {style}
         />
