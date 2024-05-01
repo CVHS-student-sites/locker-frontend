@@ -81,12 +81,12 @@
                 let response = await validateID(student1);
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    await checkGrade(jsonResponse.grade);
                     status = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = jsonResponse.error; //todo this should get a message from the server
                 } else if (response.ok) {
+                    await checkGrade(jsonResponse.grade);
                     studentId1.set(student1);
                 }
             } catch (error) {
@@ -101,12 +101,12 @@
                 let response = await validateID(student2);
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    await checkGrade(jsonResponse.grade);
                     status = false;
                     input2.style.borderColor = "red";
                     input2.value = "";
                     input2.placeholder = jsonResponse.error; //todo this should get a message from the server
                 } else if (response.ok) {
+                    await checkGrade(jsonResponse.grade);
                     studentId2.set(student2);
                 }
             } catch (error) {
