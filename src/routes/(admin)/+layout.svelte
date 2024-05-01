@@ -30,8 +30,8 @@
     .center {
         gap: 16px;
         display: flex;
-        flex: 1; /* Expand to fill remaining vertical space */
-        margin: 20px 12vw; /* Adjust the margin as needed */
+        flex: 1;
+        margin: 20px 12vw;
         overflow: hidden;
     }
 
@@ -49,7 +49,7 @@
         color: #d6d6d6;
     }
 
-    .sus-gif{
+    .sus-gif {
         width: 85%;
     }
 
