@@ -54,7 +54,7 @@
                     input1.value = "";
                     input1.placeholder = jsonResponse.error;
                 } else if (response.ok) {
-                    checkGrade(jsonResponse.grade);
+                    await checkGrade(jsonResponse.grade);
                     if (gradeCanRegister) {
                         studentId1.set(student1);
                         await sendVerification($studentId1);
@@ -81,7 +81,7 @@
                 let response = await validateID(student1);
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    checkGrade(jsonResponse.grade);
+                    await checkGrade(jsonResponse.grade);
                     status = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
@@ -101,7 +101,7 @@
                 let response = await validateID(student2);
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
-                    checkGrade(jsonResponse.grade);
+                    await checkGrade(jsonResponse.grade);
                     status = false;
                     input2.style.borderColor = "red";
                     input2.value = "";
