@@ -167,6 +167,7 @@
         justify-content: space-between;
         gap: 5px;
         overflow-y: scroll;
+        scrollbar-width: none;
     }
 
     .stat-1-grade-element-subcont {
