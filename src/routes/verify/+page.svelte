@@ -1,25 +1,17 @@
 <script>
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
+    import {page} from '$app/stores';
+    import {onMount} from 'svelte';
 
 
-    import { DoubleBounce } from 'svelte-loading-spinners';
+    import {DoubleBounce} from 'svelte-loading-spinners';
 
     let message = 'Verifying';
     let showCheck = false;
+    let showError = false;
     let messageDiv;
     let visible = true;
 
-    function test(){
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6LdvDa4pAAAAAAT3LQR-kngSzbbpWbfpRwAdxcVM', {action: 'submit'}).then(function(token) {
-              // Add your logic to submit to your backend server here.
-            return token;
-          });
-        });
-    }
-
-    async function verify(token){
+    async function verify(token) {
         fetch(`https://locker-api.cvapps.net/public/verify-student/${token}`)
             .then(response => {
                 if (response.ok) {
@@ -28,29 +20,26 @@
                     visible = false;
                     showCheck = true;
                 } else {
+                    visible = false;
+                    showError = true;
                     let message = response.json();
 
-                    // If the response status is not OK, handle the error (e.g., display an error message)
                     throw new Error(message.error);
                 }
             })
             .catch(error => {
-                // If there's an error in the fetch request itself (e.g., network error), handle it here
-                console.error('Error:', error);
                 message = error.message;
             });
     }
 
     onMount(() => {
-        // message = 'Verifying'
         const param1Value = $page.url.searchParams.get('token');
         verify(param1Value);
-        // test();
     });
 </script>
 
 <svelte:head>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LdvDa4pAAAAAAT3LQR-kngSzbbpWbfpRwAdxcVM"></script>
+    <title>Locker Verify</title>
 </svelte:head>
 <style>
     :root {
@@ -70,7 +59,7 @@
         width: 100vw;
     }
 
-    .verify-cont{
+    .verify-cont {
         width: 100vw;
         height: 100%;
         display: flex;
@@ -79,7 +68,7 @@
         flex-direction: column;
     }
 
-    .header{
+    .header {
         color: var(--text);
     }
 
@@ -87,14 +76,13 @@
     .material-symbols-outlined {
         color: green;
         font-size: 100px;
-        font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 200,
-            'opsz' 48
+        font-variation-settings: 'FILL' 0,
+        'wght' 400,
+        'GRAD' 200,
+        'opsz' 48
     }
 
-    .status-cont{
+    .status-cont {
         width: 100px;
         height: 100px;
         display: flex;
@@ -104,13 +92,16 @@
 </style>
 
 <div class="main">
-    <div class="verify-cont" bind:this={messageDiv}>
+    <div bind:this={messageDiv} class="verify-cont">
         <h1 class="header">{message}</h1>
-            <div class="status-cont">
-                <div class="material-symbols-outlined" style="display: {showCheck ? '' : 'none'};">check_circle</div>
-                {#if visible}
-                    <DoubleBounce size="85" color="#0084ff" unit="px" duration="1s" />
-                {/if}
+        <div class="status-cont">
+            <div class="material-symbols-outlined" style="display: {showCheck ? '' : 'none'}; color: green;">
+                check_circle
             </div>
+            <div class="material-symbols-outlined" style="display: {showError ? '' : 'none'}; color: red;">error</div>
+            {#if visible}
+                <DoubleBounce size="85" color="#0084ff" unit="px" duration="1s"/>
+            {/if}
+        </div>
     </div>
 </div>
