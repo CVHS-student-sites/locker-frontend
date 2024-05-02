@@ -28,11 +28,10 @@
                     visible = false;
                     showCheck = true;
                 } else {
-                    let error = response.json();
-
+                    let message = response.json();
 
                     // If the response status is not OK, handle the error (e.g., display an error message)
-                    throw new Error(error.message);
+                    throw new Error(message.error);
                 }
             })
             .catch(error => {
