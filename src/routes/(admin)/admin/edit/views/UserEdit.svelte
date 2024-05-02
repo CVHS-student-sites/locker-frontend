@@ -53,7 +53,7 @@
 
     const columns = [
         'Name',
-        'Email',
+        // 'Email',
         'ID',
         'Grade',
         {
