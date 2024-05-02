@@ -1,7 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
-    
+
 
     import { DoubleBounce } from 'svelte-loading-spinners';
 
@@ -28,14 +28,17 @@
                     visible = false;
                     showCheck = true;
                 } else {
+                    let error = response.json();
+
+
                     // If the response status is not OK, handle the error (e.g., display an error message)
-                    throw new Error('Failed to verify student');
+                    throw new Error(error.message);
                 }
             })
             .catch(error => {
                 // If there's an error in the fetch request itself (e.g., network error), handle it here
                 console.error('Error:', error);
-                message = 'Internal system error';
+                message = error.message;
             });
     }
 
@@ -103,12 +106,12 @@
 
 <div class="main">
     <div class="verify-cont" bind:this={messageDiv}>
-        <h1 class="header">{message}</h1>   
+        <h1 class="header">{message}</h1>
             <div class="status-cont">
-                <div class="material-symbols-outlined" style="display: {showCheck ? '' : 'none'};">check_circle</div> 
+                <div class="material-symbols-outlined" style="display: {showCheck ? '' : 'none'};">check_circle</div>
                 {#if visible}
                     <DoubleBounce size="85" color="#0084ff" unit="px" duration="1s" />
                 {/if}
-            </div> 
+            </div>
     </div>
 </div>
