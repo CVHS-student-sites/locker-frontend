@@ -1,35 +1,30 @@
 <script>
     import {page} from '$app/stores';
     import {onMount} from 'svelte';
-
-
     import {DoubleBounce} from 'svelte-loading-spinners';
 
     let message = 'Verifying';
     let showCheck = false;
     let showError = false;
-    let messageDiv;
     let visible = true;
 
     async function verify(token) {
-        fetch(`https://locker-api.cvapps.net/public/verify-student/${token}`)
-            .then(response => {
-                if (response.ok) {
-                    console.log('Student verified successfully');
-                    message = 'Done';
-                    visible = false;
-                    showCheck = true;
-                } else {
-                    visible = false;
-                    showError = true;
-                    let message = response.json();
-
-                    throw new Error(message.error);
-                }
-            })
-            .catch(error => {
-                message = error.message;
-            });
+        try {
+            const response = await fetch(`https://locker-api.cvapps.net/public/verify-student/${token}`);
+            if (response.ok) {
+                message = 'Verification Succeeded';
+                visible = false;
+                showCheck = true;
+            } else {
+                visible = false;
+                showError = true;
+                const errorResponse = await response.json();
+                throw new Error(errorResponse.error);
+            }
+        } catch (error) {
+            console.log(error);
+            message = error.message;
+        }
     }
 
     onMount(() => {
@@ -37,7 +32,6 @@
         verify(param1Value);
     });
 </script>
-
 <svelte:head>
     <title>Locker Verify</title>
 </svelte:head>
@@ -55,7 +49,7 @@
         background-color: var(--background);
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 100%;
         width: 100vw;
     }
 
@@ -72,14 +66,14 @@
         color: var(--text);
     }
 
-
     .material-symbols-outlined {
-        color: green;
         font-size: 100px;
+        user-select: none;
         font-variation-settings: 'FILL' 0,
         'wght' 400,
         'GRAD' 200,
         'opsz' 48
+
     }
 
     .status-cont {
@@ -92,7 +86,7 @@
 </style>
 
 <div class="main">
-    <div bind:this={messageDiv} class="verify-cont">
+    <div class="verify-cont">
         <h1 class="header">{message}</h1>
         <div class="status-cont">
             <div class="material-symbols-outlined" style="display: {showCheck ? '' : 'none'}; color: green;">
