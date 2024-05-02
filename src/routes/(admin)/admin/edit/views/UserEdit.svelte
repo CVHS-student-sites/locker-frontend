@@ -57,6 +57,16 @@
         'ID',
         'Grade',
         {
+            name: 'Permissions',
+            formatter: (cell) => {
+                if (cell === 0) {
+                    return 'PreReg';
+                } else {
+                    return cell;
+                }
+            }
+        },
+        {
             name: 'Locker',
             formatter: (cell) => {
                 if (cell === null) {
