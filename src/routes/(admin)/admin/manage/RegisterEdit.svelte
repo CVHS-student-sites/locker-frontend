@@ -27,8 +27,73 @@
     }
 </script>
 
+<style>
+    .area-restrictions-cont {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+
+        gap: 10px;
+        /*background-color: green;*/
+    }
+
+    .area-restrictions-cont::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .area-restrictions-cont {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .stat-1-grade-element-subcont {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: 100%;
+        height: 100%;
+        background-color: #101014;
+        border-radius: 5px;
+        gap: 8px;
+        padding-left: 8px;
+        box-sizing: border-box;
+    }
+
+    .stat-1-grade-cont {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+    .stat-1-grade-text {
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+
+    .stat-1-grade-element-subcont {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        width: 100%;
+        height: 100%;
+        background-color: #101014;
+        border-radius: 5px;
+        gap: 8px;
+        padding-left: 8px;
+        box-sizing: border-box;
+    }
+</style>
+
 <div class="area-restrictions-cont">
-{#if showData}
+    {#if showData}
 
         <div class="stat-1-grade-cont">
 
@@ -90,71 +155,7 @@
 
         </div>
 
-{:else}
-    <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
-{/if}
+    {:else}
+        <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
+    {/if}
 </div>
-
-<style>
-    .area-restrictions-cont {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        height: 100%;
-
-        gap: 10px;
-        /*background-color: green;*/
-    }
-
-    .area-restrictions-cont::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .area-restrictions-cont {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-    }
-
-    .stat-1-grade-element-subcont {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        width: 100%;
-        height: 100%;
-        background-color: #101014;
-        border-radius: 5px;
-        gap: 8px;
-        padding-left: 8px;
-        box-sizing: border-box;
-    }
-
-    .stat-1-grade-cont {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        gap: 5px;
-    }
-    .stat-1-grade-text {
-        font-size: 16px;
-        font-family: 'Montserrat', sans-serif;
-        color: #d6d6d6;
-    }
-
-    .stat-1-grade-element-subcont {
-        display: flex;
-        align-items: center;
-        justify-content: left;
-        width: 100%;
-        height: 100%;
-        background-color: #101014;
-        border-radius: 5px;
-        gap: 8px;
-        padding-left: 8px;
-        box-sizing: border-box;
-    }
-</style>
