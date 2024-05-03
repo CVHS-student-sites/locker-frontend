@@ -1,9 +1,9 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    import { writable } from "svelte/store";
+    import {writable} from "svelte/store";
     import {onMount} from "svelte";
-    import { fade } from "svelte/transition";
-    import { quartOut } from "svelte/easing";
+    import {fade} from "svelte/transition";
+    import {quartOut} from "svelte/easing";
 
     import {fetchEnabledGrades} from "$lib/services/app/mainApi.js";
     import {pageView} from "../store.js";
@@ -11,7 +11,7 @@
 
     const gradesStore = writable({});
 
-    function next(){
+    function next() {
         pageView.set(1);
     }
 
@@ -19,75 +19,6 @@
         gradesStore.set(await fetchEnabledGrades());
     });
 </script>
-
-<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
-    <div class="box">
-        <div class="box-cont">
-            <div class="box-header">Grades that can Register:</div>
-
-            <div class="stat-div">
-                <div class="stat-1-subcont-1">
-                    <div class="stat-1-grade-cont">
-                        <div class="stat-1-grade-element-subcont">
-                            <div
-                                class="material-symbols-outlined filled-icons"
-                                style={$gradesStore.grade_12
-                                    ? "color:darkgreen"
-                                    : "color:darkred"}
-                            >
-                                {$gradesStore.grade_12
-                                    ? "check_circle"
-                                    : "cancel"}
-                            </div>
-                            <div class="stat-1-grade-text">Grade 12</div>
-                        </div>
-                        <div class="stat-1-grade-element-subcont">
-                            <div
-                                class="material-symbols-outlined filled-icons"
-                                style={$gradesStore.grade_11
-                                    ? "color:darkgreen"
-                                    : "color:darkred"}
-                            >
-                                {$gradesStore.grade_11
-                                    ? "check_circle"
-                                    : "cancel"}
-                            </div>
-                            <div class="stat-1-grade-text">Grade 11</div>
-                        </div>
-                        <div class="stat-1-grade-element-subcont">
-                            <div
-                                class="material-symbols-outlined filled-icons"
-                                style={$gradesStore.grade_10
-                                    ? "color:darkgreen"
-                                    : "color:darkred"}
-                            >
-                                {$gradesStore.grade_10
-                                    ? "check_circle"
-                                    : "cancel"}
-                            </div>
-                            <div class="stat-1-grade-text">Grade 10</div>
-                        </div>
-                        <div class="stat-1-grade-element-subcont">
-                            <div
-                                class="material-symbols-outlined filled-icons"
-                                style={$gradesStore.grade_9
-                                    ? "color:darkgreen"
-                                    : "color:darkred"}
-                            >
-                                {$gradesStore.grade_9
-                                    ? "check_circle"
-                                    : "cancel"}
-                            </div>
-                            <div class="stat-1-grade-text">Grade 9</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="submit" on:click={next}>Start Registration</button>
-        </div>
-    </div>
-</div>
 
 <style>
     :root {
@@ -201,11 +132,10 @@
     }
 
     .filled-icons {
-        font-variation-settings:
-            "FILL" 1,
-            "wght" 600,
-            "GRAD" 0,
-            "opsz" 24;
+        font-variation-settings: "FILL" 1,
+        "wght" 600,
+        "GRAD" 0,
+        "opsz" 24;
     }
 
     @media only screen and (max-width: 600px) {
@@ -228,8 +158,77 @@
             width: 90vw;
         }
 
-        .stat-1-grade-element-subcont{
+        .stat-1-grade-element-subcont {
             background-color: #090606;
         }
     }
 </style>
+
+<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
+    <div class="box">
+        <div class="box-cont">
+            <div class="box-header">Grades that can Register:</div>
+
+            <div class="stat-div">
+                <div class="stat-1-subcont-1">
+                    <div class="stat-1-grade-cont">
+                        <div class="stat-1-grade-element-subcont">
+                            <div
+                                    class="material-symbols-outlined filled-icons"
+                                    style={$gradesStore.grade_12
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                            >
+                                {$gradesStore.grade_12
+                                    ? "check_circle"
+                                    : "cancel"}
+                            </div>
+                            <div class="stat-1-grade-text">Grade 12</div>
+                        </div>
+                        <div class="stat-1-grade-element-subcont">
+                            <div
+                                    class="material-symbols-outlined filled-icons"
+                                    style={$gradesStore.grade_11
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                            >
+                                {$gradesStore.grade_11
+                                    ? "check_circle"
+                                    : "cancel"}
+                            </div>
+                            <div class="stat-1-grade-text">Grade 11</div>
+                        </div>
+                        <div class="stat-1-grade-element-subcont">
+                            <div
+                                    class="material-symbols-outlined filled-icons"
+                                    style={$gradesStore.grade_10
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                            >
+                                {$gradesStore.grade_10
+                                    ? "check_circle"
+                                    : "cancel"}
+                            </div>
+                            <div class="stat-1-grade-text">Grade 10</div>
+                        </div>
+                        <div class="stat-1-grade-element-subcont">
+                            <div
+                                    class="material-symbols-outlined filled-icons"
+                                    style={$gradesStore.grade_9
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                            >
+                                {$gradesStore.grade_9
+                                    ? "check_circle"
+                                    : "cancel"}
+                            </div>
+                            <div class="stat-1-grade-text">Grade 9</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="submit" on:click={next}>Start Registration</button>
+        </div>
+    </div>
+</div>

@@ -79,7 +79,7 @@
         font-size: 24px;
     }
 
-    .expand{
+    .expand {
         display: flex;
         gap: 10px;
         flex-direction: column;

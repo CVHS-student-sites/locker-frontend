@@ -8,62 +8,6 @@
     <title>Locker - Manage</title>
 </svelte:head>
 
-<div class="main">
-    <div class="grid-container">
-        <div class="grid-item">
-            <div class="subcont-main">
-                <div class="subcont-title">Config Restrictions</div>
-                <div class="subcont-order">
-                    <RegisterEdit/>
-                    <BuildingEdit/>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="grid-item">
-            <div class="subcont-main">
-                <div class="subcont-title">Upload Data</div>
-                <div class="import-cont">
-                    <div class="form">
-                        <form
-                                action="https://locker-api.cvapps.net/admin/lockerUpload"
-                                enctype="multipart/form-data"
-                                method="post"
-                        >
-                            <input
-                                    accept=".csv"
-                                    name="csvFile"
-                                    required
-                                    type="file"
-                            />
-                            <button type="submit">Upload Locker</button>
-                        </form>
-                    </div>
-
-                    <div class="form">
-                        <form
-                                action="https://locker-api.cvapps.net/admin/userUpload"
-                                enctype="multipart/form-data"
-                                method="post"
-                        >
-                            <input
-                                    accept=".csv"
-                                    name="csvFile"
-                                    required
-                                    type="file"
-                            />
-                            <button type="submit">Upload User</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="grid-item"></div>
-        <div class="grid-item"></div>
-    </div>
-</div>
-
 <style>
     :root {
         --text: #d6d6d6;
@@ -150,3 +94,59 @@
         height: 100%;
     }
 </style>
+
+<div class="main">
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="subcont-main">
+                <div class="subcont-title">Config Restrictions</div>
+                <div class="subcont-order">
+                    <RegisterEdit/>
+                    <BuildingEdit/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid-item">
+            <div class="subcont-main">
+                <div class="subcont-title">Upload Data</div>
+                <div class="import-cont">
+                    <div class="form">
+                        <form
+                                action="https://locker-api.cvapps.net/admin/lockerUpload"
+                                enctype="multipart/form-data"
+                                method="post"
+                        >
+                            <input
+                                    accept=".csv"
+                                    name="csvFile"
+                                    required
+                                    type="file"
+                            />
+                            <button type="submit">Upload Locker</button>
+                        </form>
+                    </div>
+
+                    <div class="form">
+                        <form
+                                action="https://locker-api.cvapps.net/admin/userUpload"
+                                enctype="multipart/form-data"
+                                method="post"
+                        >
+                            <input
+                                    accept=".csv"
+                                    name="csvFile"
+                                    required
+                                    type="file"
+                            />
+                            <button type="submit">Upload User</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+    </div>
+</div>

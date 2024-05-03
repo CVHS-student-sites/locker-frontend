@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher, onMount} from "svelte";
-    import { fetchLocker } from "$lib/services/app/mainApi.js";
+    import {fetchLocker} from "$lib/services/app/mainApi.js";
     import {page} from "$app/stores";
     import {goto} from "$app/navigation";
 
@@ -11,7 +11,7 @@
 
     let id = $page.url.searchParams.get('id');
 
-    if(id) {
+    if (id) {
         studentID = id;
         submit();
     }
@@ -34,7 +34,7 @@
             input.style.borderColor = "red";
             input.value = "";
             input.placeholder = "Internal system error";
-            
+
         }
     }
 
@@ -43,7 +43,6 @@
             submit();
         }
     }
-
 
 
 </script>
@@ -182,13 +181,13 @@
             <div class="lookup-form" on:keydown={handleKeyPress}>
                 <!--                <label for="username">Student ID Number</label>-->
                 <input
-                    bind:this={input}
-                    bind:value={studentID}
-                    id="studentID"
-                    name="studentID"
-                    placeholder="Student ID"
-                    required
-                    type="text"
+                        bind:this={input}
+                        bind:value={studentID}
+                        id="studentID"
+                        name="studentID"
+                        placeholder="Student ID"
+                        required
+                        type="text"
                 />
 
                 <button class="submit" on:click={submit}>Search</button>

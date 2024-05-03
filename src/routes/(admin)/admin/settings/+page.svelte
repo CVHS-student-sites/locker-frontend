@@ -1,4 +1,3 @@
-
 <svelte:head>
     <title>Locker - Settings</title>
 </svelte:head>

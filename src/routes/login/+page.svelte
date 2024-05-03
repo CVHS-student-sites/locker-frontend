@@ -1,7 +1,7 @@
 <script>
     // import Topnav from "$lib/components/Topnav.svelte";
-    import { Stretch } from "svelte-loading-spinners";
-    import { goto } from "$app/navigation";
+    import {Stretch} from "svelte-loading-spinners";
+    import {goto} from "$app/navigation";
 
     let username = "";
     let password = "";
@@ -221,7 +221,7 @@
 <div class="main">
     <div class="top">
         <a href="/static"
-            ><img alt="IMS logo" class="logo" src="/CVHS-logo.png" /></a
+        ><img alt="IMS logo" class="logo" src="/CVHS-logo.png"/></a
         >
         <div class="top-text">CVHS Locker System</div>
     </div>
@@ -233,20 +233,20 @@
             <div class="login-form" on:keydown={handleKeyPress}>
                 <label for="username">Username</label>
                 <input
-                    bind:value={username}
-                    id="username"
-                    name="username"
-                    required
-                    type="text"
+                        bind:value={username}
+                        id="username"
+                        name="username"
+                        required
+                        type="text"
                 />
 
                 <label for="password">Password</label>
                 <input
-                    bind:value={password}
-                    id="password"
-                    name="password"
-                    required
-                    type="password"
+                        bind:value={password}
+                        id="password"
+                        name="password"
+                        required
+                        type="password"
                 />
 
                 <button class="submit" on:click={login}>Sign in</button>
@@ -255,7 +255,7 @@
 
         <div class="loading-cont">
             {#if loading}
-                <Stretch size="60" color="#577db2" unit="px" duration="1s" />
+                <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
             {/if}
         </div>
     </div>

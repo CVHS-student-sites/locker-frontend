@@ -18,15 +18,15 @@
         // pageView.set(3);
     }
 
-    async function checkIDs(){
-        if($singleLocker){
+    async function checkIDs() {
+        if ($singleLocker) {
             let response = await checkVerification($studentId1);
             let json = await response.json();
 
             studentStatusStore.set({student_1: json.verified});
 
-            if($studentStatusStore.student_1) pageView.set(4);
-        }else{
+            if ($studentStatusStore.student_1) pageView.set(4);
+        } else {
             let response1 = await checkVerification($studentId1);
             let response2 = await checkVerification($studentId2);
             let json1 = await response1.json();
@@ -34,7 +34,7 @@
 
             studentStatusStore.set({student_1: json1.verified, student_2: json2.verified});
 
-            if($studentStatusStore.student_1 && $studentStatusStore.student_2) pageView.set(4);
+            if ($studentStatusStore.student_1 && $studentStatusStore.student_2) pageView.set(4);
         }
 
 
@@ -47,55 +47,6 @@
 
 
 </script>
-
-<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
-    <div class="box">
-        <div class="box-cont">
-            <div class="box-header">Verification Status</div>
-            <div class="small-text">Check Your School Email for Verification link</div>
-            <div class="stat-div">
-                <div class="stat-1-subcont-1">
-                    <div class="stat-1-grade-cont">
-
-
-                        <div class="stat-1-grade-element-subcont">
-                            <div
-                                    class="material-symbols-outlined filled-icons"
-                                    style={$studentStatusStore.student_1
-                                    ? "color:darkgreen"
-                                    : "color:darkred"}
-                            >
-                                {$studentStatusStore.student_1
-                                    ? "check_circle"
-                                    : "cancel"}
-                            </div>
-                            <div class="stat-1-grade-text">{$studentId1}</div>
-                        </div>
-
-                        {#if !$singleLocker}
-                            <div class="stat-1-grade-element-subcont">
-                                <div
-                                        class="material-symbols-outlined filled-icons"
-                                        style={$studentStatusStore.student_2
-                                    ? "color:darkgreen"
-                                    : "color:darkred"}
-                                >
-                                    {$studentStatusStore.student_2
-                                        ? "check_circle"
-                                        : "cancel"}
-                                </div>
-                                <div class="stat-1-grade-text">{$studentId2}</div>
-                            </div>
-                        {/if}
-
-                    </div>
-                </div>
-            </div>
-
-            <button class="submit" on:click={next}>{buttonMessage}</button>
-        </div>
-    </div>
-</div>
 
 <style>
     :root {
@@ -141,7 +92,7 @@
         margin-bottom: 24px;
     }
 
-    .small-text{
+    .small-text {
         text-align: left;
         font-size: 14px;
         color: var(--text);
@@ -247,3 +198,52 @@
         }
     }
 </style>
+
+<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
+    <div class="box">
+        <div class="box-cont">
+            <div class="box-header">Verification Status</div>
+            <div class="small-text">Check Your School Email for Verification link</div>
+            <div class="stat-div">
+                <div class="stat-1-subcont-1">
+                    <div class="stat-1-grade-cont">
+
+
+                        <div class="stat-1-grade-element-subcont">
+                            <div
+                                    class="material-symbols-outlined filled-icons"
+                                    style={$studentStatusStore.student_1
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                            >
+                                {$studentStatusStore.student_1
+                                    ? "check_circle"
+                                    : "cancel"}
+                            </div>
+                            <div class="stat-1-grade-text">{$studentId1}</div>
+                        </div>
+
+                        {#if !$singleLocker}
+                            <div class="stat-1-grade-element-subcont">
+                                <div
+                                        class="material-symbols-outlined filled-icons"
+                                        style={$studentStatusStore.student_2
+                                    ? "color:darkgreen"
+                                    : "color:darkred"}
+                                >
+                                    {$studentStatusStore.student_2
+                                        ? "check_circle"
+                                        : "cancel"}
+                                </div>
+                                <div class="stat-1-grade-text">{$studentId2}</div>
+                            </div>
+                        {/if}
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="submit" on:click={next}>{buttonMessage}</button>
+        </div>
+    </div>
+</div>

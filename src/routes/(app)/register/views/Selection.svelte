@@ -12,7 +12,6 @@
     let buttonMessage = 'Submit';
 
 
-
     let areas = {};
     let data1 = [];
     let data2 = [];
@@ -34,7 +33,7 @@
             floor: value2.label,
             level: value3.label,
         });
-        if(value3.label === "Single") singleLocker.set(true);
+        if (value3.label === "Single") singleLocker.set(true);
 
         console.log($selectedLocation);
         pageView.set(2);
@@ -64,41 +63,12 @@
         }
     }
 
-    function clear(number){
-        if(number === 1) value2 = null;
-        if(number === 2) value3 = null;
+    function clear(number) {
+        if (number === 1) value2 = null;
+        if (number === 2) value3 = null;
     }
 
 </script>
-
-<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
-    <div class="box">
-        <div class="box-cont">
-            <div class="box-header">Select locker Location</div>
-
-            <div class="selection-div">
-
-                <div class="input-group">
-                    <div class="selection-label">Building</div>
-                    <Select items={data1} placeholder="Select Building" bind:value={value1}/>
-                </div>
-
-                <div class="input-group">
-                    <div class="selection-label">Floor</div>
-                    <Select items={data2} placeholder="Select Floor" bind:value={value2}/>
-                </div>
-
-                <div class="input-group">
-                    <div class="selection-label">Position</div>
-                    <Select items={data3} placeholder="Select Position" bind:value={value3}/>
-                </div>
-
-            </div>
-
-            <button class="submit" on:click={next}>{buttonMessage}</button>
-        </div>
-    </div>
-</div>
 
 <style>
     :root {
@@ -144,7 +114,7 @@
         margin-bottom: 24px;
     }
 
-    .small-text{
+    .small-text {
         font-size: 14px;
         color: var(--text);
         margin-bottom: 8px;
@@ -157,11 +127,11 @@
         gap: 15px;
     }
 
-    .input-group{
+    .input-group {
         width: 100%;
     }
 
-    .selection-label{
+    .selection-label {
         font-size: 14px;
         font-weight: bold;
         color: var(--text);
@@ -226,3 +196,32 @@
         }
     }
 </style>
+
+<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
+    <div class="box">
+        <div class="box-cont">
+            <div class="box-header">Select locker Location</div>
+
+            <div class="selection-div">
+
+                <div class="input-group">
+                    <div class="selection-label">Building</div>
+                    <Select items={data1} placeholder="Select Building" bind:value={value1}/>
+                </div>
+
+                <div class="input-group">
+                    <div class="selection-label">Floor</div>
+                    <Select items={data2} placeholder="Select Floor" bind:value={value2}/>
+                </div>
+
+                <div class="input-group">
+                    <div class="selection-label">Position</div>
+                    <Select items={data3} placeholder="Select Position" bind:value={value3}/>
+                </div>
+
+            </div>
+
+            <button class="submit" on:click={next}>{buttonMessage}</button>
+        </div>
+    </div>
+</div>

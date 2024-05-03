@@ -2,6 +2,7 @@
     import LockerEdit from "./views/LockerEdit.svelte";
     import UserEdit from "./views/UserEdit.svelte";
     import CreateUser from "./views/CreateUser.svelte";
+
     let selected = UserEdit;
 
 
@@ -30,7 +31,7 @@
 
     }
 
-    .top-menu{
+    .top-menu {
         display: flex;
         align-items: center;
         justify-content: right;
@@ -40,7 +41,7 @@
         /* background-color:green; */
     }
 
-    .dataselect-button{
+    .dataselect-button {
         /* width: 80px; */
         color: #d6d6d6;
         height: 50px;
@@ -55,16 +56,16 @@
         background-color: #1b2c42;
     }
 
-    .dataselect-button:hover{
+    .dataselect-button:hover {
         /* background-color: ; */
         cursor: pointer;
     }
 
-    .data-active-button{
+    .data-active-button {
         background-color: #003566;
     }
 
-    .sub-scroll{
+    .sub-scroll {
         flex: 1;
         overflow-y: scroll;
     }
@@ -73,9 +74,15 @@
 
 <div class="main">
     <div class="top-menu">
-        <div class="dataselect-button" on:click={() => (selected = UserEdit)} class:data-active-button={selected === UserEdit}>Users</div>
-        <div class="dataselect-button" on:click={() => (selected = LockerEdit)} class:data-active-button={selected === LockerEdit}>Lockers</div>
-        <div class="dataselect-button" on:click={() => (selected = CreateUser)} class:data-active-button={selected === CreateUser}>+ Create</div>
+        <div class="dataselect-button" on:click={() => (selected = UserEdit)}
+             class:data-active-button={selected === UserEdit}>Users
+        </div>
+        <div class="dataselect-button" on:click={() => (selected = LockerEdit)}
+             class:data-active-button={selected === LockerEdit}>Lockers
+        </div>
+        <div class="dataselect-button" on:click={() => (selected = CreateUser)}
+             class:data-active-button={selected === CreateUser}>+ Create
+        </div>
     </div>
     <div class="sub-scroll">
         <svelte:component this={selected}/>

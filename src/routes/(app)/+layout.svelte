@@ -28,6 +28,6 @@
 
 <div class="layout-main">
     <Topnav/>
-        <slot/>
+    <slot/>
     <Botnav/>
 </div>

@@ -25,10 +25,10 @@
 {#if design == "inner"}
     <div class="s s--inner">
         <button
-            role="switch"
-            aria-checked={checked}
-            aria-labelledby={`switch-${uniqueID}`}
-            on:click={handleClick}
+                role="switch"
+                aria-checked={checked}
+                aria-labelledby={`switch-${uniqueID}`}
+                on:click={handleClick}
         >
             <span>on</span>
             <span>off</span>
@@ -37,28 +37,28 @@
 {:else if design == "slider"}
     <div class="s s--slider" style="font-size:{fontSize}px">
         <button
-            role="switch"
-            aria-checked={checked}
-            aria-labelledby={`switch-${uniqueID}`}
-            on:click={handleClick}
+                role="switch"
+                aria-checked={checked}
+                aria-labelledby={`switch-${uniqueID}`}
+                on:click={handleClick}
         >
         </button>
     </div>
 {:else}
     <div class="s s--multi">
         <div
-            role="radiogroup"
-            class="group-container"
-            aria-labelledby={`label-${uniqueID}`}
-            style="font-size:{fontSize}px"
-            id={`group-${uniqueID}`}
+                role="radiogroup"
+                class="group-container"
+                aria-labelledby={`label-${uniqueID}`}
+                style="font-size:{fontSize}px"
+                id={`group-${uniqueID}`}
         >
             {#each options as option}
                 <input
-                    type="radio"
-                    id={`${option}-${uniqueID}`}
-                    value={option}
-                    bind:group={value}
+                        type="radio"
+                        id={`${option}-${uniqueID}`}
+                        value={option}
+                        bind:group={value}
                 />
                 <label for={`${option}-${uniqueID}`}>
                     {option}
@@ -73,12 +73,14 @@
         --accent-color: #0084ff;
         --gray: #ccc;
     }
+
     /* Inner Design Option */
     .s--inner button {
         padding: 0.5em;
         background-color: #fff;
         border: 1px solid var(--gray);
     }
+
     [role="switch"][aria-checked="true"] :first-child,
     [role="switch"][aria-checked="false"] :last-child {
         display: none;

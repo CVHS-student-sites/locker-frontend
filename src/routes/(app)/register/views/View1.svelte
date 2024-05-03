@@ -1,7 +1,7 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-    import { slide } from "svelte/transition";
-    import { quartOut } from "svelte/easing";
+    import {createEventDispatcher} from "svelte";
+    import {slide} from "svelte/transition";
+    import {quartOut} from "svelte/easing";
     import {
         validateID,
         sendVerification,
@@ -137,60 +137,17 @@
     <title>Register</title>
 
     <meta
-        content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
-        name="description"
+            content="Register for a locker at Crescenta Valley High School (CVHS) for the upcoming school year. Secure your locker space and stay organized."
+            name="description"
     />
     <meta
-        content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
-        name="keywords"
+            content="Crescenta Valley High School, CVHS, locker registration, school locker, locker allocation, locker assignment"
+            name="keywords"
     />
-    <meta content="cvapps.net" name="author" />
+    <meta content="cvapps.net" name="author"/>
 </svelte:head>
 
 <!--todo fix layout shift that occurs from transition-->
-<div
-    class="main"
-    in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: "x" }}
->
-    <div class="login">
-        <div class="login-cont">
-            <div class="login-header">Verify IDs</div>
-
-            <form
-                class="login-form"
-                on:keydown={handleKeyPress}
-                on:submit={login}
-            >
-                <label>Student 1</label>
-
-                <input
-                    bind:this={input1}
-                    bind:value={student1}
-                    id="1studentId"
-                    name="1studentId"
-                    placeholder="Student ID"
-                    required
-                    type="text"
-                />
-
-                {#if !$singleLocker}
-                    <label>Student 2</label>
-                    <input
-                        bind:value={student2}
-                        bind:this={input2}
-                        id="2studentId"
-                        name="2studentId"
-                        placeholder="Student ID"
-                        required
-                        type="text"
-                    />
-                {/if}
-                <button class="submit" type="submit">Next</button>
-            </form>
-        </div>
-    </div>
-</div>
-
 <style>
     :root {
         --text: #d6d6d6;
@@ -361,3 +318,46 @@
         }
     }
 </style>
+
+<div
+        class="main"
+        in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: "x" }}
+>
+    <div class="login">
+        <div class="login-cont">
+            <div class="login-header">Verify IDs</div>
+
+            <form
+                    class="login-form"
+                    on:keydown={handleKeyPress}
+                    on:submit={login}
+            >
+                <label>Student 1</label>
+
+                <input
+                        bind:this={input1}
+                        bind:value={student1}
+                        id="1studentId"
+                        name="1studentId"
+                        placeholder="Student ID"
+                        required
+                        type="text"
+                />
+
+                {#if !$singleLocker}
+                    <label>Student 2</label>
+                    <input
+                            bind:value={student2}
+                            bind:this={input2}
+                            id="2studentId"
+                            name="2studentId"
+                            placeholder="Student ID"
+                            required
+                            type="text"
+                    />
+                {/if}
+                <button class="submit" type="submit">Next</button>
+            </form>
+        </div>
+    </div>
+</div>

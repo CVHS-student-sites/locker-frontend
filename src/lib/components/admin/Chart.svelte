@@ -20,7 +20,7 @@
         ],
     };
 
-    import { Doughnut } from "svelte-chartjs";
+    import {Doughnut} from "svelte-chartjs";
 
     import {
         Chart as ChartJS,
@@ -34,4 +34,4 @@
     ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
 </script>
 
-<Doughnut {data} width={100} options={{ maintainAspectRatio: false }} />
+<Doughnut {data} width={100} options={{ maintainAspectRatio: false }}/>

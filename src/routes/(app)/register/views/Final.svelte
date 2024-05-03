@@ -15,44 +15,30 @@
 
     async function next() {
         studentsArr[0] = $studentId1;
-        if(!$singleLocker) studentsArr[1] = $studentId2;
+        if (!$singleLocker) studentsArr[1] = $studentId2;
 
         let finalArr = {
             "students": studentsArr,
             "location": $selectedLocation,
         }
         let response = await submitLockers(finalArr);
-        if(response.ok){
+        if (response.ok) {
             //clear the regestration stores / kinda jank but ok
             selectedLocation.set({});
             registrationData.set({});
             singleLocker.set(false);
 
             await goto(`/lookup?id=${$studentId1}`);
-            
+
             studentId1.set(null);
             studentId2.set(null);
             pageView.set(0);
-        }else{
+        } else {
             //todo show error reason
         }
     }
 
 </script>
-
-<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
-    <div class="box">
-        <div class="box-cont">
-            <div class="box-header">Confirm Locker Selection</div>
-            <div class="small-text">Your locker is assigned randomly</div>
-            <div class="selection-div">
-
-            </div>
-
-            <button class="submit" on:click={next}>{buttonMessage}</button>
-        </div>
-    </div>
-</div>
 
 <style>
     :root {
@@ -98,7 +84,7 @@
         margin-bottom: 24px;
     }
 
-    .small-text{
+    .small-text {
         text-align: left;
         font-size: 14px;
         color: var(--text);
@@ -164,3 +150,17 @@
         }
     }
 </style>
+
+<div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
+    <div class="box">
+        <div class="box-cont">
+            <div class="box-header">Confirm Locker Selection</div>
+            <div class="small-text">Your locker is assigned randomly</div>
+            <div class="selection-div">
+
+            </div>
+
+            <button class="submit" on:click={next}>{buttonMessage}</button>
+        </div>
+    </div>
+</div>

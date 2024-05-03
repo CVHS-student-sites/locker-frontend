@@ -30,7 +30,7 @@
         color: #d6d6d6;
     }
 
-    a{
+    a {
         height: 100%;
     }
 </style>

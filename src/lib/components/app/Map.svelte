@@ -1,6 +1,6 @@
 <script>
-    import { onMount } from "svelte";
-    import { draw } from "svelte/transition";
+    import {onMount} from "svelte";
+    import {draw} from "svelte/transition";
 
     let objects = [];
     let selected = [];
@@ -31,7 +31,7 @@
 
 <style>
 
-    .main{
+    .main {
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -87,42 +87,46 @@
 </style>
 
 
-    <div class="box">
-        <svg viewBox="0 0 1880 1500" class="img">
-            <image
+<div class="box">
+    <svg viewBox="0 0 1880 1500" class="img">
+        <image
                 href="/maps_big.jpg"
                 width="173%"
                 x="-720"
                 y="-142"
-            />
+        />
 
-            <text class="texts" x="570" y="310" font-size="100" z="1" fill="blue"
-                >1000</text
-            >
-            <text class="texts" x="110" y="310" font-size="100" z="1" fill="blue"
-                >2000</text
-            >
-            <text class="texts" x="1500" y="895" font-size="100" fill="blue"
-                >7000</text
-            >
-            <text class="texts" x="1106" y="895" font-size="80" fill="blue"
-                >5000</text
-            >
+        <text class="texts" x="570" y="310" font-size="100" z="1" fill="blue"
+        >1000
+        </text
+        >
+        <text class="texts" x="110" y="310" font-size="100" z="1" fill="blue"
+        >2000
+        </text
+        >
+        <text class="texts" x="1500" y="895" font-size="100" fill="blue"
+        >7000
+        </text
+        >
+        <text class="texts" x="1106" y="895" font-size="80" fill="blue"
+        >5000
+        </text
+        >
 
-            <g>
-                {#each objects as feature, i}
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <!-- svelte-ignore a11y-no-static-element-interactions -->
-                    <path
+        <g>
+            {#each objects as feature, i}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
+                <!-- svelte-ignore a11y-no-static-element-interactions -->
+                <path
                         stroke="blue"
                         d={feature.data}
                         on:click={() => (selected = feature)}
                         class={`state ${i === select && "flash"}`}
                         in:draw={{ delay: i * 200, duration: 1500 }}
                         stroke-width="14"
-                    />
-                {/each}
-            </g>
-        </svg>
-    </div>
+                />
+            {/each}
+        </g>
+    </svg>
+</div>
 

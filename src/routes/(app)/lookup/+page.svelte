@@ -31,14 +31,6 @@
     <meta content="cvapps.net" name="author"/>
 </svelte:head>
 
-<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
-    <svelte:component
-            data={data}
-            on:message={handleMessage}
-            this={selected}
-    />
-</div>
-
 <style>
     .main {
         display: flex;
@@ -48,3 +40,11 @@
         flex: 1;
     }
 </style>
+
+<div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
+    <svelte:component
+            data={data}
+            on:message={handleMessage}
+            this={selected}
+    />
+</div>

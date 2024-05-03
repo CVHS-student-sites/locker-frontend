@@ -16,21 +16,6 @@
     <meta content="cvapps.net" name="author"/>
 </svelte:head>
 
-<div class="main">
-    <div class="sub">
-        <div class="graphic">
-            <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">
-        </div>
-
-        <div class="landing">
-            <h1>Welcome To CV Locker</h1>
-        </div>
-
-
-
-    </div>
-</div>
-
 <style>
     :root {
         --text: #d6d6d6;
@@ -75,3 +60,17 @@
         height: 100%;
     }
 </style>
+
+<div class="main">
+    <div class="sub">
+        <div class="graphic">
+            <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">
+        </div>
+
+        <div class="landing">
+            <h1>Welcome To CV Locker</h1>
+        </div>
+
+
+    </div>
+</div>

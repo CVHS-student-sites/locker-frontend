@@ -25,34 +25,6 @@
     }
 </script>
 
-<div class="area-restrictions-cont">
-{#if showData}
-
-        {#each Object.keys(areas) as building}
-            <div class="building">
-                <div class="area-restrictions-title">
-                    Building {building.split("_")[1]}
-                </div>
-                {#each Object.keys(areas[building]) as floor}
-                    <div class="floor">
-                        <div class="area-restrictions-title">
-                            Floor {floor.split("_")[1]}
-                        </div>
-                        <Switch
-                                bind:checked={areas[building][floor]}
-                                fontSize={12}
-                                design="slider"
-                        />
-                    </div>
-                {/each}
-            </div>
-        {/each}
-
-{:else}
-    <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
-{/if}
-</div>
-
 <style>
     .area-restrictions-cont {
         align-items: center;
@@ -100,3 +72,31 @@
         color: #d6d6d6;
     }
 </style>
+
+<div class="area-restrictions-cont">
+    {#if showData}
+
+        {#each Object.keys(areas) as building}
+            <div class="building">
+                <div class="area-restrictions-title">
+                    Building {building.split("_")[1]}
+                </div>
+                {#each Object.keys(areas[building]) as floor}
+                    <div class="floor">
+                        <div class="area-restrictions-title">
+                            Floor {floor.split("_")[1]}
+                        </div>
+                        <Switch
+                                bind:checked={areas[building][floor]}
+                                fontSize={12}
+                                design="slider"
+                        />
+                    </div>
+                {/each}
+            </div>
+        {/each}
+
+    {:else}
+        <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
+    {/if}
+</div>

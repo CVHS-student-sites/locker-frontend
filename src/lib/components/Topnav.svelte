@@ -1,40 +1,3 @@
-<div class="top">
-    <div class="logo-cont">
-        <a href="/"><img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/></a>
-        <div class="top-text">CVHS Locker System</div>
-    </div>
-
-    <div class="icon-cont">
-        <a href="/">
-            <div class="icon-stack">
-                <div class="material-symbols-outlined">home</div>
-                <div class="stack-text">Home</div>
-            </div>
-        </a>
-
-        <a href="/register">
-            <div class="icon-stack">
-                <div class="material-symbols-outlined">person_add</div>
-                <div class="stack-text">Register</div>
-            </div>
-        </a>
-
-        <a href="/lookup">
-            <div class="icon-stack">
-                <div class="material-symbols-outlined">search</div>
-                <div class="stack-text">Lookup</div>
-            </div>
-        </a>
-
-        <a href="/help">
-            <div class="icon-stack">
-                <div class="material-symbols-outlined">help</div>
-                <div class="stack-text">Help</div>
-            </div>
-        </a>
-    </div>
-</div>
-
 <style>
     .logo-cont a {
         display: inherit;
@@ -138,9 +101,46 @@
     }
 
     @media only screen and (max-width: 600px) {
-        .top{
+        .top {
             display: none;
         }
 
     }
 </style>
+
+<div class="top">
+    <div class="logo-cont">
+        <a href="/"><img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/></a>
+        <div class="top-text">CVHS Locker System</div>
+    </div>
+
+    <div class="icon-cont">
+        <a href="/">
+            <div class="icon-stack">
+                <div class="material-symbols-outlined">home</div>
+                <div class="stack-text">Home</div>
+            </div>
+        </a>
+
+        <a href="/register">
+            <div class="icon-stack">
+                <div class="material-symbols-outlined">person_add</div>
+                <div class="stack-text">Register</div>
+            </div>
+        </a>
+
+        <a href="/lookup">
+            <div class="icon-stack">
+                <div class="material-symbols-outlined">search</div>
+                <div class="stack-text">Lookup</div>
+            </div>
+        </a>
+
+        <a href="/help">
+            <div class="icon-stack">
+                <div class="material-symbols-outlined">help</div>
+                <div class="stack-text">Help</div>
+            </div>
+        </a>
+    </div>
+</div>
