@@ -5,9 +5,6 @@
 
     import Chart from "$lib/components/admin/Chart.svelte";
     import {Stretch} from "svelte-loading-spinners";
-    import Switch from "$lib/components/global/Switch.svelte";
-
-
 
 
     let showData = false;
@@ -224,7 +221,7 @@
         display: flex;
         background-color: #101014;
         border-radius: 5px;
-        padding: 10px;
+        padding: 4px;
         align-items: center;
         gap: 8px;
     }
@@ -294,7 +291,7 @@
             <div class="button-text">list names of new users</div>
         </div>
 
-<!--        todo should really be separate components-->
+        <!--        todo should really be separate components-->
         <div class="grid-element-1 medium">
             <div class="stat-cont-1">
 
@@ -302,6 +299,12 @@
                     <div class="stat-1-subcont-title">Enabled Registration</div>
                     <div class="stat-1-grade-cont">
 
+                        <div class="stat-1-grade-element-subcont">
+                            <div class="material-symbols-outlined filled-icons"
+                                 style="{$gradesStore.preReg ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.preReg ? 'check_circle' : 'cancel'}
+                            </div>
+                            <div class="stat-1-grade-text">Preregister</div>
+                        </div>
                         <div class="stat-1-grade-element-subcont">
                             <div class="material-symbols-outlined filled-icons"
                                  style="{$gradesStore.grade_12 ? 'color:darkgreen' : 'color:darkred'}">{$gradesStore.grade_12 ? 'check_circle' : 'cancel'}

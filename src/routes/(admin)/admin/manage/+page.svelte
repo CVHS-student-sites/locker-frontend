@@ -1,5 +1,7 @@
 <script>
     import BuildingEdit from "./BuildingEdit.svelte";
+
+    import RegisterEdit from "./RegisterEdit.svelte";
 </script>
 
 <svelte:head>
@@ -10,8 +12,11 @@
     <div class="grid-container">
         <div class="grid-item">
             <div class="subcont-main">
-                <div class="subcont-title">Restricted Areas </div>
-                <BuildingEdit/>
+                <div class="subcont-title">Config Restrictions</div>
+                <div class="subcont-order">
+                    <RegisterEdit/>
+                    <BuildingEdit/>
+                </div>
             </div>
 
         </div>
@@ -114,6 +119,19 @@
         gap: 5px;
         padding: 5px;
         box-sizing: border-box;
+    }
+
+    .subcont-order {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        /*background-color: green;*/
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        overflow-y: scroll;
+        gap: 5px;
     }
 
     .import-cont {

@@ -25,8 +25,9 @@
     }
 </script>
 
+<div class="area-restrictions-cont">
 {#if showData}
-    <div class="area-restrictions-cont">
+
         {#each Object.keys(areas) as building}
             <div class="building">
                 <div class="area-restrictions-title">
@@ -46,19 +47,22 @@
                 {/each}
             </div>
         {/each}
-    </div>
+
 {:else}
     <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
 {/if}
+</div>
 
 <style>
     .area-restrictions-cont {
+        align-items: center;
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 50%;
         height: 100%;
         overflow-y: scroll;
         gap: 10px;
+        /*background-color: green;*/
     }
 
     .area-restrictions-cont::-webkit-scrollbar {

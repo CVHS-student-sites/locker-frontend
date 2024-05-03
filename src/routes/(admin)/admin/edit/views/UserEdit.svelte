@@ -10,9 +10,10 @@
 
     let showModal = false;
     let data;
+    let id;
 
-    function launchEdit(id) {
-        console.log("all")
+    function launchEdit(data) {
+        id = data;
         showModal = true;
     }
 
@@ -87,7 +88,7 @@
                     h('button', {
                         "class": "main-btn",
                         onClick: () => {
-                            launchEdit(row.cells[2].data)
+                            launchEdit(row.cells[1].data)
 
                         }
                     }, 'Edit'),
@@ -113,7 +114,7 @@
 
 <div class="locker-edit">
     <div class="modal-cont">
-        <Modal bind:showModal/>
+        <Modal bind:showModal data={id}/>
     </div>
     {#if showData}
         <Grid
