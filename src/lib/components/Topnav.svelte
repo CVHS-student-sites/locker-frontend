@@ -111,7 +111,7 @@
 <div class="top">
     <div class="logo-cont">
         <a href="/"><img alt="cv logo" class="logo" loading="eager" rel="preload" src="/CVHS-logo.png"/></a>
-        <div class="top-text">CVHS Locker System</div>
+        <div class="top-text">CVHS Locker</div>
     </div>
 
     <div class="icon-cont">
