@@ -7,13 +7,13 @@
     let isSmallScreen = false;
     onMount(() => {
         isSmallScreen = window.innerWidth < 600;
-        const updateScreenSize = () => {
-            isSmallScreen = window.innerWidth < 600;
-        };
-        window.addEventListener("resize", updateScreenSize);
-        return () => {
-            window.removeEventListener("resize", updateScreenSize);
-        };
+        // const updateScreenSize = () => {
+        //     isSmallScreen = window.innerWidth < 600;
+        // };
+        // window.addEventListener("resize", updateScreenSize);
+        // return () => {
+        //     window.removeEventListener("resize", updateScreenSize);
+        // };
     });
 </script>
 
