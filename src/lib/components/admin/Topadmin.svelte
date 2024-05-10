@@ -4,7 +4,7 @@
         height: 60px;
         padding: 0 12vw;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 9999;
+        z-index: 500;
         background-color: var(--background);
         align-items: center;
     }

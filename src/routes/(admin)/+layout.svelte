@@ -65,7 +65,7 @@
 </style>
 
 {#if !isSmallScreen}
-<SvelteToast {options} />
+    <SvelteToast {options} />
     <div class="layout-main">
         <Topadmin/>
         <div class="center">
