@@ -160,16 +160,21 @@
         color: var(--text);
     }
 
+    .submit:hover{
+        background-color: #577db2;
+    }
+
     .action-cont{
         display: flex;
         align-items: center;
         justify-content: center;
         height: 35px;
         width: 100%;
+        gap: 15px;
+        margin-top: 10px;
     }
 
     .action-btn {
-        margin: 10px;
         cursor: pointer;
     }
 </style>
