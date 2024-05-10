@@ -1,5 +1,5 @@
 import axios from "axios";
-import { throwErrorToast } from "./throwToast.js";
+import {throwErrorToast} from "./throwToast.js";
 
 export async function fetchOverviewData() {
     const response = await fetch('https://locker-api.cvapps.net/admin/management/get-statistics', {
@@ -78,13 +78,12 @@ export async function fetchGradeRestrictions() {
 
 export async function postEnabledGrades(data) {
     try {
-        const response = await axios.post('https://locker-api.cvapps.net/admin/management/grade-restrictions',
+        return await axios.post('https://locker-api.cvapps.net/admin/management/grade-restrictions',
             data
             , {
                 withCredentials: true
             }
         );
-        return response.data;
     } catch (error) {
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
