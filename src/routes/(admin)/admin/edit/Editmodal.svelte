@@ -167,10 +167,9 @@
     .action-cont{
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         height: 35px;
         width: 100%;
-        gap: 15px;
         margin-top: 10px;
     }
 
