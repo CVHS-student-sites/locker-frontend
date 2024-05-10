@@ -169,7 +169,8 @@
     }
 
     .action-btn {
-        
+        margin: 10px;
+        cursor: pointer;
     }
 </style>
 
