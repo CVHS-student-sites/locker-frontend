@@ -24,6 +24,7 @@ export async function fetchUserData() {
         });
         return response.data;
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -35,6 +36,7 @@ export async function fetchLockerData() {
         });
         return response.data;
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -46,6 +48,7 @@ export async function fetchAreaRestrictions() {
         });
         return response.data;
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -60,6 +63,7 @@ export async function postAreaRestrictions(data) {
         );
         return response.data;
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -72,6 +76,7 @@ export async function fetchGradeRestrictions() {
         });
         return response.data;
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -85,6 +90,7 @@ export async function postEnabledGrades(data) {
             }
         );
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -99,6 +105,7 @@ export async function getUserEditData(user) {
         );
         return response.data;
     } catch (error) {
+        throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
     }
 }
@@ -112,6 +119,7 @@ export async function updateUserEditData(user, data) {
             }
         );
     } catch (error) {
+        throwErrorToast("Server error");
         throw error;
     }
 }
@@ -126,6 +134,7 @@ export async function postRemoveUsersLocker(user) {
             }
         );
     } catch (error) {
+        throwErrorToast("Server error");
         throw error;
     }
 }
@@ -139,7 +148,7 @@ export async function postDeleteUser(user) {
             }
         );
     } catch (error) {
-        throwErrorToast("error");
+        throwErrorToast("Server error");
         throw error;
     }
 }
