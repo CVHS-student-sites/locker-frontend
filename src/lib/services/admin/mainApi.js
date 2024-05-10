@@ -120,6 +120,7 @@ export async function updateUserEditData(user, data) {
 export async function postRemoveUsersLocker(user) {
     try {
         return await axios.post(`https://locker-api.cvapps.net/admin/edit/remove-users-locker/${user}`,
+            null,
             {
                 withCredentials: true
             }
@@ -132,6 +133,7 @@ export async function postRemoveUsersLocker(user) {
 export async function postDeleteUser(user) {
     try {
         return await axios.post(`https://locker-api.cvapps.net/admin/edit/delete-user/${user}`,
+            null,
             {
                 withCredentials: true
             }
