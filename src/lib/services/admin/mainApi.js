@@ -115,3 +115,28 @@ export async function updateUserEditData(user, data) {
         throw error;
     }
 }
+
+
+export async function postRemoveUsersLocker(user) {
+    try {
+        return await axios.post(`https://locker-api.cvapps.net/admin/edit/remove-users-locker/${user}`,
+            {
+                withCredentials: true
+            }
+        );
+    } catch (error) {
+        throw error;
+    }
+}
+
+export async function postDeleteUser(user) {
+    try {
+        return await axios.post(`https://locker-api.cvapps.net/admin/edit/delete-user/${user}`,
+            {
+                withCredentials: true
+            }
+        );
+    } catch (error) {
+        throw error;
+    }
+}

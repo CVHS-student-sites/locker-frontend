@@ -1,5 +1,5 @@
 <script>
-    import {getUserEditData, updateUserEditData} from "$lib/services/admin/mainApi.js";
+    import {getUserEditData, updateUserEditData, postRemoveUsersLocker, postDeleteUser} from "$lib/services/admin/mainApi.js";
 
     export let showModal; // boolean
     export let data;
@@ -18,6 +18,22 @@
 
     async function submit() {
         let response = await updateUserEditData(data, userData);
+
+        if (response.status === 200) {
+            dialog.close();
+        }
+    }
+
+    async function deleteUser(){
+        let response = await postDeleteUser(userData.studentId);
+
+        if (response.status === 200) {
+            dialog.close();
+        }
+    }
+
+    async function removeLocker(){
+        let response = await postRemoveUsersLocker(userData.studentId);
 
         if (response.status === 200) {
             dialog.close();
@@ -251,8 +267,8 @@
 
 
                 <div class="action-cont">
-                    <div class="action-btn material-symbols-outlined" on:click={() => dialog.close()}>delete</div>
-                    <div class="action-btn material-symbols-outlined" on:click={() => dialog.close()}>person_remove</div>
+                    <div class="action-btn material-symbols-outlined" on:click={deleteUser}>delete</div>
+                    <div class="action-btn material-symbols-outlined" on:click={removeLocker}>person_remove</div>
                 </div>
             </div>
         {/if}
