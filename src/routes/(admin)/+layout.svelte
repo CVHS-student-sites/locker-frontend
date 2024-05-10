@@ -5,7 +5,11 @@
 
     import {onMount} from "svelte";
 
-    const options = {};
+    const options = {
+        theme: {
+            '--toastBtnFont': '"Montserrat", sans-serif',
+        },
+    };
 
     let isSmallScreen = false;
     onMount(() => {
