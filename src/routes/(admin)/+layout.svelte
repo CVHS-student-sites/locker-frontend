@@ -65,8 +65,8 @@
 </style>
 
 {#if !isSmallScreen}
+<SvelteToast {options} />
     <div class="layout-main">
-        <SvelteToast {options} />
         <Topadmin/>
         <div class="center">
             <Sidenav/>
