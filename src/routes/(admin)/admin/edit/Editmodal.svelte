@@ -102,7 +102,6 @@
         margin-bottom: 20px;
     }
 
-
     .edit-cont {
         display: flex;
         justify-content: center;
@@ -159,6 +158,18 @@
         cursor: pointer;
         transition-duration: 150ms;
         color: var(--text);
+    }
+
+    .action-cont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 35px;
+        width: 100%;
+    }
+
+    .action-btn {
+        
     }
 </style>
 
@@ -233,6 +244,11 @@
 
                 <button class="submit" on:click={submit}>Submit</button>
 
+
+                <div class="action-cont">
+                    <div class="action-btn material-symbols-outlined" on:click={() => dialog.close()}>delete</div>
+                    <div class="action-btn material-symbols-outlined" on:click={() => dialog.close()}>person_remove</div>
+                </div>
             </div>
         {/if}
 
