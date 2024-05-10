@@ -1,6 +1,6 @@
 import { toast } from '@zerodevx/svelte-toast';
 
-export async function throwSuccessToast(message){
+export function throwSuccessToast(message){
     toast.push(message, {
         theme: {
             '--toastColor': 'mintcream',
@@ -11,7 +11,7 @@ export async function throwSuccessToast(message){
       })
 }
 
-export async function throwErrorToast(message){
+export function throwErrorToast(message){
     toast.push(message, {
         theme: {
             '--toastColor': 'mintcream',

@@ -3,6 +3,7 @@
     import {onMount} from "svelte";
     import {Stretch} from "svelte-loading-spinners";
     import {fetchGradeRestrictions, postEnabledGrades} from "$lib/services/admin/mainApi.js";
+    import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
 
 
     let showData = false;
@@ -12,8 +13,14 @@
     async function fetchData() {
         grades = await fetchGradeRestrictions();
         initialGrades = JSON.stringify(grades); // Store initial state as a string
-        console.log("test")
         showData = true;
+    }
+
+    async function updateData(){
+        let response = await postEnabledGrades(grades);
+        if(response.status === 200){
+            throwSuccessToast("Grade updated successfully.");
+        }
     }
 
     onMount(fetchData);
@@ -21,7 +28,7 @@
     $: {
         if (showData && JSON.stringify(grades) !== initialGrades) {
 
-            postEnabledGrades(grades);
+            updateData();
             initialGrades = JSON.stringify(grades);
         }
     }
