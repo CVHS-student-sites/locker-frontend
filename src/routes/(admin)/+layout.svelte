@@ -1,8 +1,11 @@
 <script>
     import Topadmin from "$lib/components/admin/Topadmin.svelte";
     import Sidenav from "$lib/components/admin/Sidenav.svelte";
+    import { SvelteToast } from '@zerodevx/svelte-toast'
 
     import {onMount} from "svelte";
+
+    const options = {};
 
     let isSmallScreen = false;
     onMount(() => {
@@ -63,6 +66,7 @@
 
 {#if !isSmallScreen}
     <div class="layout-main">
+        <SvelteToast {options} />
         <Topadmin/>
         <div class="center">
             <Sidenav/>

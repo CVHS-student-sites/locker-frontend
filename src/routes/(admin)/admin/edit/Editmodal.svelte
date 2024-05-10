@@ -1,5 +1,6 @@
 <script>
     import {getUserEditData, updateUserEditData, postRemoveUsersLocker, postDeleteUser} from "$lib/services/admin/mainApi.js";
+    import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
 
     export let showModal; // boolean
     export let data;
@@ -21,6 +22,7 @@
 
         if (response.status === 200) {
             dialog.close();
+            throwSuccessToast("Submitted successfully");
         }
     }
 
@@ -29,6 +31,7 @@
 
         if (response.status === 200) {
             dialog.close();
+            throwSuccessToast("User deleted successfully");
         }
     }
 
@@ -37,6 +40,7 @@
 
         if (response.status === 200) {
             dialog.close();
+            throwSuccessToast("Locker cleared successfully");
         }
     }
 

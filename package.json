@@ -18,6 +18,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@zerodevx/svelte-toast": "^0.9.5",
 		"axios": "^1.6.8",
 		"chart.js": "^4.4.2",
 		"gridjs": "^6.1.1",

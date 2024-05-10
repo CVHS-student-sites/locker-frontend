@@ -1,4 +1,5 @@
 import axios from "axios";
+import { throwErrorToast } from "./throwToast.js";
 
 export async function fetchOverviewData() {
     const response = await fetch('https://locker-api.cvapps.net/admin/management/get-statistics', {
@@ -139,6 +140,7 @@ export async function postDeleteUser(user) {
             }
         );
     } catch (error) {
+        throwErrorToast("error");
         throw error;
     }
 }
