@@ -5,11 +5,7 @@
 
     import {onMount} from "svelte";
 
-    const options = {
-        theme: {
-            '--toastBtnFont': '"Montserrat", sans-serif',
-        },
-    };
+    const options = {};
 
     let isSmallScreen = false;
     onMount(() => {
@@ -34,6 +30,11 @@
         position: absolute;
         width: 100vw;
     }
+
+    .toast-wrap{
+        font-family: "Montserrat", sans-serif;
+    }
+    
 
     .center {
         gap: 16px;
@@ -69,7 +70,10 @@
 </style>
 
 {#if !isSmallScreen}
-    <SvelteToast {options} />
+    <div class="toast-wrap">
+        <SvelteToast {options} />
+    </div>
+    
     <div class="layout-main">
         <Topadmin/>
         <div class="center">
