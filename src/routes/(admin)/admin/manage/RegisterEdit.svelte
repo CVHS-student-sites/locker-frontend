@@ -19,7 +19,7 @@
     async function updateData(){
         let response = await postEnabledGrades(grades);
         if(response.status === 200){
-            throwSuccessToast("Grade updated successfully.");
+            throwSuccessToast("Grade updated successfully");
         }
     }
 
