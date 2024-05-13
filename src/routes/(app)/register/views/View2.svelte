@@ -1,4 +1,5 @@
 <script>
+    // verificaiton status page
     import {onMount} from "svelte";
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";

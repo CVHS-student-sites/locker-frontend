@@ -30,16 +30,17 @@
 
     let gradeCanRegister = false;
 
-    async function checkGrade(grade) {
+    // updated to include prereg, todo change this later if needed
+    async function checkGrade(grade, permissions) {
         let enableGrades = await fetchEnabledGrades();
 
         const gradeKey = "grade_" + grade;
         // Check if the grade exists in the JSON object and if it's enabled
         if (enableGrades.hasOwnProperty(gradeKey) && enableGrades[gradeKey]) {
             gradeCanRegister = true;
+        }else if(enableGrades["preReg"] && permissions === 1){
+            gradeCanRegister = true;
         }
-
-        console.log(gradeCanRegister);
     }
 
     //todo this could use a hell of a lot of optimization
@@ -55,7 +56,7 @@
                     input1.value = "";
                     input1.placeholder = jsonResponse.error;
                 } else if (response.ok) {
-                    await checkGrade(jsonResponse.grade);
+                    await checkGrade(jsonResponse.grade, jsonResponse.permissions);
                     if (gradeCanRegister) {
                         studentId1.set(student1);
                         await sendVerification($studentId1);
@@ -87,7 +88,7 @@
                     input1.value = "";
                     input1.placeholder = jsonResponse.error; //todo this should get a message from the server
                 } else if (response.ok) {
-                    await checkGrade(jsonResponse.grade);
+                    await checkGrade(jsonResponse.grade, jsonResponse.permissions);
                     studentId1.set(student1);
                 }
             } catch (error) {
@@ -107,7 +108,7 @@
                     input2.value = "";
                     input2.placeholder = jsonResponse.error; //todo this should get a message from the server
                 } else if (response.ok) {
-                    await checkGrade(jsonResponse.grade);
+                    await checkGrade(jsonResponse.grade, jsonResponse.permissions);
                     studentId2.set(student2);
                 }
             } catch (error) {
