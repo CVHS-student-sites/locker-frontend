@@ -16,7 +16,7 @@
     }
 
     async function updateData(){
-        let response = await postAreaRestrictions();
+        let response = await postAreaRestrictions(areas);
         if(response.status === 200){
             throwSuccessToast("Building updated successfully");
         }
