@@ -3,6 +3,7 @@
     import {onMount} from "svelte";
     import {Stretch} from "svelte-loading-spinners";
     import {fetchAreaRestrictions, postAreaRestrictions} from "$lib/services/admin/mainApi.js";
+    import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
 
     let showData = false;
     let areas;
@@ -14,12 +15,19 @@
         showData = true;
     }
 
+    async function updateData(){
+        let response = await postAreaRestrictions();
+        if(response.status === 200){
+            throwSuccessToast("Building updated successfully.");
+        }
+    }
+
     onMount(fetchData);
 
     $: {
         if (showData && JSON.stringify(areas) !== initialAreas) {
 
-            postAreaRestrictions(areas);
+            updateData();
             initialAreas = JSON.stringify(areas);
         }
     }
