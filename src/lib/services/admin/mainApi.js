@@ -55,13 +55,12 @@ export async function fetchAreaRestrictions() {
 
 export async function postAreaRestrictions(data) {
     try {
-        const response = await axios.post('https://locker-api.cvapps.net/admin/management/area-restrictions',
+        return await axios.post('https://locker-api.cvapps.net/admin/management/area-restrictions',
             data
             , {
                 withCredentials: true
             }
         );
-        return response.data;
     } catch (error) {
         throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
