@@ -2,6 +2,8 @@
     import BuildingEdit from "./BuildingEdit.svelte";
 
     import RegisterEdit from "./RegisterEdit.svelte";
+
+    import UploadData from "./UploadData.svelte";
 </script>
 
 <svelte:head>
@@ -78,21 +80,7 @@
         gap: 5px;
     }
 
-    .import-cont {
-        flex: 1;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        background-color: green;
-        box-sizing: border-box;
-        align-items: center;
-        justify-content: center;
-    }
 
-    .form {
-        width: 100%;
-        height: 100%;
-    }
 </style>
 
 <div class="main">
@@ -111,39 +99,7 @@
         <div class="grid-item">
             <div class="subcont-main">
                 <div class="subcont-title">Upload Data</div>
-                <div class="import-cont">
-                    <div class="form">
-                        <form
-                                action="https://locker-api.cvapps.net/admin/lockerUpload"
-                                enctype="multipart/form-data"
-                                method="post"
-                        >
-                            <input
-                                    accept=".csv"
-                                    name="csvFile"
-                                    required
-                                    type="file"
-                            />
-                            <button type="submit">Upload Locker</button>
-                        </form>
-                    </div>
-
-                    <div class="form">
-                        <form
-                                action="https://locker-api.cvapps.net/admin/userUpload"
-                                enctype="multipart/form-data"
-                                method="post"
-                        >
-                            <input
-                                    accept=".csv"
-                                    name="csvFile"
-                                    required
-                                    type="file"
-                            />
-                            <button type="submit">Upload User</button>
-                        </form>
-                    </div>
-                </div>
+                <UploadData/>
             </div>
         </div>
         <div class="grid-item"></div>
