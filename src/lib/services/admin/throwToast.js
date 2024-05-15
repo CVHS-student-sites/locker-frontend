@@ -27,8 +27,8 @@ export function throwWarningToast(message){
   toast.push(message, {
       theme: {
           '--toastColor': 'mintcream',
-          '--toastBackground': 'rgba(186, 73, 73, 0.9)',
-          '--toastBarBackground': '#85302f'
+          '--toastBackground': 'rgba(180, 186, 73, 0.9)',
+          '--toastBarBackground': '#85712f'
         },
       duration: 1500,
     })
