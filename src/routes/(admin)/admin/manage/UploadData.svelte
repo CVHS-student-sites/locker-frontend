@@ -6,7 +6,7 @@
     let file2;
 
     async function submitLocker() {
-        if (!files1 || files1.length === 0) {
+        if (!file1 || file1.length === 0) {
             throwWarningToast("No File Selected");
             return;
         }
@@ -20,7 +20,7 @@
     }
 
     async function submitUser() {
-        if (!files2 || files2.length === 0) {
+        if (!file2 || file2.length === 0) {
             throwWarningToast("No File Selected");
             return;
         }
