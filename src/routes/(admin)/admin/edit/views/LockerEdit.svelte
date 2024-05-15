@@ -14,6 +14,7 @@
 
     let number;
 
+    //todo on modal close, we should refresh the table data
     function launchEdit(data) {
         number = data;
         showModal = true;
