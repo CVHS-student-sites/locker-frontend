@@ -140,7 +140,7 @@ export async function getLockerEditData(locker) {
 
 export async function updateLockerEditData(locker, data) {
     try {
-        return await axios.post(`https://locker-api.cvapps.net/admin/edit/user-edit/${locker}`,
+        return await axios.post(`https://locker-api.cvapps.net/admin/edit/locker-edit/${locker}`,
             data
             , {
                 withCredentials: true
