@@ -209,7 +209,7 @@
     <div on:click|stopPropagation>
         <div class="exit-btn material-symbols-outlined" on:click={() => dialog.close()}>close</div>
 
-        <div class="lookup-header">Edit User</div>
+        <div class="lookup-header">Edit Locker</div>
         {#if showData}
             <div class="edit-cont">
 
