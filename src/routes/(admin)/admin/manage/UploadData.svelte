@@ -37,7 +37,7 @@
             <button type="submit">Upload Locker</button>
         </form> -->
 
-        <input accept=".csv" bind:files id="locker" name="locker" type="file" />
+        <input accept=".csv" bind:files id="locker" name="csvFile" type="file" />
         <button on:click={SubmitEvent}>Upload locker</button>
     </div>
 
