@@ -213,26 +213,19 @@
         {#if showData}
             <div class="edit-cont">
 
-                <label for="studentID">Student ID</label>
+                <label for="studentID">Status</label>
                 <input
                         bind:value={lockerData.status}
-                        id="studentID"
-                        name="studentID"
-                        placeholder="Student ID"
+                        id="status"
+                        name="status"
+                        placeholder="Locker Status"
                         required
                         type="text"
-                        readonly
                 />
 
                
 
                 <button class="submit" on:click={submit}>Submit</button>
-
-
-                <div class="action-cont">
-                    <!-- <div class="action-btn material-symbols-outlined" on:click={deleteUser}>delete</div> -->
-                    <!-- <div class="action-btn material-symbols-outlined" on:click={removeLocker}>person_remove</div> -->
-                </div>
             </div>
         {/if}
 
