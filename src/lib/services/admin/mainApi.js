@@ -124,6 +124,36 @@ export async function updateUserEditData(user, data) {
 }
 
 
+export async function getLockerEditData(locker) {
+    try {
+        const response = await axios.get(`https://locker-api.cvapps.net/admin/edit/locker-edit/${locker}`,
+            {
+                withCredentials: true
+            }
+        );
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
+export async function updateLockerEditData(locker, data) {
+    try {
+        return await axios.post(`https://locker-api.cvapps.net/admin/edit/user-edit/${locker}`,
+            data
+            , {
+                withCredentials: true
+            }
+        );
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error;
+    }
+}
+
+
+
 export async function postRemoveUsersLocker(user) {
     try {
         return await axios.post(`https://locker-api.cvapps.net/admin/edit/remove-users-locker/${user}`,

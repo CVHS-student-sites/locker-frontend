@@ -1,7 +1,8 @@
 <script>
     import Grid from "gridjs-svelte";
     import {h} from "gridjs";
-    import Modal from '../Editmodal.svelte';
+    import Modal from '../LockerEditmodal.svelte';
+    
     import {onMount} from 'svelte';
     import '$lib/assets/admin-table.css'
     import {fetchLockerData} from "$lib/services/admin/mainApi.js";
