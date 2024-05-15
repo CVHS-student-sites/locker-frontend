@@ -4,7 +4,7 @@ import axios from "axios";
 
 async function SubmitEvent(){
     var formData = new FormData();
-    formData.append("image", files);
+    formData.append("csvFile", files);
 
     let response = await axios.post('https://locker-api.cvapps.net/admin/lockerUpload', formData, {
         headers: {
