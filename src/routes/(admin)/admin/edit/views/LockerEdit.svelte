@@ -13,7 +13,7 @@
     let data;
 
     function launchEdit(id) {
-        console.log("all")
+        data = id;
         showModal = true;
     }
 
