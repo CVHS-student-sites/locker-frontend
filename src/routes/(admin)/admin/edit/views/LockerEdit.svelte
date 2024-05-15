@@ -62,10 +62,10 @@
         {
             name: 'Status',
             formatter: (cell) => {
-                if (cell === null) {
-                    return 'No Status';
+                if (cell === 1) {
+                    return 'Disabled'
                 } else {
-                    return cell;
+                    return 'No Status';
                 }
             }
         },
