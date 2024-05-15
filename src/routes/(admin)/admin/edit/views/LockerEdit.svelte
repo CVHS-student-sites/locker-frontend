@@ -12,8 +12,10 @@
     let showModal = false;
     let data;
 
-    function launchEdit(id) {
-        data = id;
+    let number;
+
+    function launchEdit(data) {
+        number = data;
         showModal = true;
     }
 
@@ -108,7 +110,7 @@
 
 <div class="locker-edit">
     <div class="modal-cont">
-        <Modal bind:showModal/>
+        <Modal bind:showModal data={number}/>
     </div>
     {#if showData}
         <Grid
