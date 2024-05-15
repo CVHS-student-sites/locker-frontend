@@ -1,5 +1,5 @@
 import axios from "axios";
-import {throwErrorToast} from "./throwToast.js";
+import { throwErrorToast } from "./throwToast.js";
 
 export async function fetchOverviewData() {
     const response = await fetch('https://locker-api.cvapps.net/admin/management/get-statistics', {
@@ -98,7 +98,7 @@ export async function postEnabledGrades(data) {
 export async function getUserEditData(user) {
     try {
         const response = await axios.get(`https://locker-api.cvapps.net/admin/edit/user-edit/${user}`,
-           {
+            {
                 withCredentials: true
             }
         );
@@ -146,6 +146,38 @@ export async function postDeleteUser(user) {
                 withCredentials: true
             }
         );
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error;
+    }
+}
+
+export async function postLockerFile(formData) {
+    try {
+        return await axios.post('https://locker-api.cvapps.net/admin/lockerUpload',
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                withCredentials: true
+            });
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error;
+    }
+}
+
+export async function postUserFile(formData) {
+    try {
+        return await axios.post('https://locker-api.cvapps.net/admin/userUpload',
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                withCredentials: true
+            });
     } catch (error) {
         throwErrorToast("Server error");
         throw error;
