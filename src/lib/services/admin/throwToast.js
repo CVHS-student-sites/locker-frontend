@@ -21,3 +21,15 @@ export function throwErrorToast(message){
         duration: 4500,
       })
 }
+
+//todo make this yellow
+export function throwWarningToast(message){
+  toast.push(message, {
+      theme: {
+          '--toastColor': 'mintcream',
+          '--toastBackground': 'rgba(186, 73, 73, 0.9)',
+          '--toastBarBackground': '#85302f'
+        },
+      duration: 1500,
+    })
+}
