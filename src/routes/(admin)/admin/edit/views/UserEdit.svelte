@@ -60,7 +60,7 @@
         {
             name: 'Permissions',
             formatter: (cell) => {
-                if (cell === 0) {
+                if (cell === 1) {
                     return 'PreReg';
                 } else {
                     return cell;
