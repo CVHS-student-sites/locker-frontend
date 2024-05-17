@@ -81,7 +81,7 @@
              class:data-active-button={selected === LockerEdit}>Lockers
         </div>
         <div class="dataselect-button" on:click={() => (selected = CreateUser)}
-             class:data-active-button={selected === CreateUser}>+ Create
+             class:data-active-button={selected === CreateUser}>Create
         </div>
     </div>
     <div class="sub-scroll">
