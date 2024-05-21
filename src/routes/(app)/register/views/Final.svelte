@@ -38,6 +38,11 @@
         }
     }
 
+
+    function back(){
+        pageView.set(1);
+    }
+
 </script>
 
 <style>
@@ -157,10 +162,11 @@
             <div class="box-header">Confirm Locker Selection</div>
             <div class="small-text">Your locker is assigned randomly</div>
             <div class="selection-div">
-                
+
             </div>
 
             <button class="submit" on:click={next}>{buttonMessage}</button>
+            <button class="submit" on:click={back}>Go back to locker selection</button>
         </div>
     </div>
 </div>
