@@ -8,9 +8,9 @@
     let showError = false;
     let visible = true;
 
-    async function verify(token) {
+    async function verify(token, studentId) {
         try {
-            const response = await fetch(`https://locker-api.cvapps.net/public/verify-student/${token}`);
+            const response = await fetch(`https://locker-api.cvapps.net/public/verify-student/${token}/${studentId}`);
             if (response.ok) {
                 message = 'Verification Succeeded';
                 visible = false;
@@ -28,8 +28,9 @@
     }
 
     onMount(() => {
-        const param1Value = $page.url.searchParams.get('token');
-        verify(param1Value);
+        const token = $page.url.searchParams.get('token');
+        const studentId = $page.url.searchParams.get('studentId');
+        verify(token, studentId);
     });
 </script>
 <svelte:head>
