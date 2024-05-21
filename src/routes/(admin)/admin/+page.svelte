@@ -271,9 +271,9 @@
         </div>
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
-                <div class="num-stat-subcont-title">Last Hour</div>
-                <div class="num-stat-big-text">+{$statStore.lastHour ? $statStore.lastHour : ''}</div>
-                <div class="num-stat-subcont-title">Lockers</div>
+                <div class="num-stat-subcont-title">Verification Queue</div>
+                <div class="num-stat-big-text">+{$statStore.verificationQueues ? $statStore.verificationQueues : ''}</div>
+                <div class="num-stat-subcont-title">Users</div>
             </div>
         </div>
         <div class="grid-element-1">
