@@ -3,7 +3,7 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {singleLocker, studentId1, studentId2, selectedLocation, pageView} from "../store.js";
+    import {singleLocker, studentId1, studentId2, selectedLocation, pageView, editMode} from "../store.js";
     import {fetchAvailableLockers} from "$lib/services/app/mainApi.js";
 
     import Select from "$lib/components/app/Select.svelte";
@@ -17,14 +17,51 @@
     let data2 = [];
     let data3 = [];
 
+    if(!$editMode){
+        selectedLocation.set({
+            building: "",
+            floor: "",
+            level: ""
+        })
+    }
+
+    // let value1 = $selectedLocation.building.toString();
+    // let value2 = $selectedLocation.floor.toString();
+    // let value3 = $selectedLocation.level.toString();
+
     let value1;
     let value2;
     let value3;
+
+    let lab1;
+    let lab2;
+    let lab3;
+
+    // $: if(!load1 && !load2 && !load3){
+    //     console.log("loading")
+    //     console.log($editMode);
+    //     if ($editMode) {
+    //         console.log(value1);
+    //         value1.label = selectedLocation.building;
+    //         value2.label = selectedLocation.floor;
+    //         value3.label = selectedLocation.level;
+    //     }
+    // }
 
     async function fetchData() {
         areas = await fetchAvailableLockers();
         // Update data1 based on fetched areas
         data1 = Object.keys(areas);
+
+        // console.log($editMode);
+        // if ($editMode) {
+        //     console.log($selectedLocation)
+        //     value1.value = $selectedLocation.building.toString();
+        //     value2.value = $selectedLocation.floor.toString();
+        //     value3.value = $selectedLocation.level.toString();
+        // }
+
+
     }
 
     async function next() {
@@ -36,7 +73,15 @@
         if (value3.label === "Single") singleLocker.set(true);
 
         console.log($selectedLocation);
-        pageView.set(2);
+
+        if ($editMode) {
+            pageView.set(4);
+            editMode.set(false);
+
+        } else {
+            pageView.set(2);
+        }
+
     }
 
     onMount(async () => {

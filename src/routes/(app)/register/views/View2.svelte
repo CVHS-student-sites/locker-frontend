@@ -101,7 +101,7 @@
     }
 
     .stat-div {
-        width: 352px;
+        width: 100%;
     }
 
     .stat-1-subcont-1 {

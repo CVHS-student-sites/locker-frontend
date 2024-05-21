@@ -5,7 +5,7 @@
     import {quartOut} from "svelte/easing";
     import {submitLockers} from "$lib/services/app/mainApi.js";
 
-    import {singleLocker, registrationData, studentId1, studentId2, selectedLocation, pageView} from "../store.js";
+    import {singleLocker, registrationData, studentId1, studentId2, selectedLocation, pageView, editMode} from "../store.js";
     import {goto} from "$app/navigation";
 
 
@@ -41,6 +41,7 @@
 
     function back(){
         pageView.set(1);
+        editMode.set(true);
     }
 
 </script>
@@ -93,11 +94,14 @@
         text-align: left;
         font-size: 14px;
         color: var(--text);
-        margin-bottom: 8px;
+        margin-top: 16px;
     }
 
     .selection-div {
         width: 352px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .submit {
@@ -107,7 +111,7 @@
         border: none;
         border-radius: 4px;
         font-weight: bold;
-        margin-top: 20px;
+        margin-top: 4px;
         cursor: pointer;
         transition-duration: 150ms;
         color: var(--text);
@@ -115,6 +119,39 @@
 
     .submit:hover {
         background-color: #577db2;
+    }
+
+    .item {
+        /*background-color: green;*/
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        gap: 15px;
+    }
+
+    .data-cont {
+        height: 40px;
+        width: 90px;
+        background-color: #17171c;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        border: 2px solid #005cb3;
+    }
+
+    .text {
+        color: #d6d6d6;
+        font-size: 24px;
+    }
+
+    .expand {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
     }
 
     .material-symbols-outlined {
@@ -160,10 +197,24 @@
     <div class="box">
         <div class="box-cont">
             <div class="box-header">Confirm Locker Selection</div>
-            <div class="small-text">Your locker is assigned randomly</div>
-            <div class="selection-div">
 
+            <div class="selection-div">
+                <div class="expand">
+                    <div class="item">
+                        <div class="data-cont">{$selectedLocation.building}</div>
+                        <div class="text">Building</div>
+                    </div>
+                    <div class="item">
+                        <div class="data-cont">{$selectedLocation.floor}</div>
+                        <div class="text">Floor</div>
+                    </div>
+                    <div class="item">
+                        <div class="data-cont">{$selectedLocation.level}</div>
+                        <div class="text">Level</div>
+                    </div>
+                </div>
             </div>
+            <div class="small-text">Your locker is assigned randomly</div>
 
             <button class="submit" on:click={next}>{buttonMessage}</button>
             <button class="submit" on:click={back}>Go back to locker selection</button>
