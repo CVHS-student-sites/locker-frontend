@@ -28,6 +28,10 @@
         }
     }
 
+    function back(){
+        //todo make this move page back to prev screen
+    }
+
     let gradeCanRegister = false;
 
     // updated to include prereg, todo change this later if needed
@@ -273,7 +277,13 @@
     /*!*}*!*/
 
     .submit {
-        width: 100%;
+    
+        
+    }
+
+
+    .nav-btn{
+        flex: 1;
         height: 35px;
         background-color: #0082ff;
         border: none;
@@ -283,6 +293,15 @@
         cursor: pointer;
         transition-duration: 150ms;
         color: var(--text);
+    }
+
+    .button-cont{
+        height: 35px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
     }
 
     .submit:hover {
@@ -357,7 +376,11 @@
                             type="text"
                     />
                 {/if}
-                <button class="submit" type="submit">Next</button>
+
+                <div class="button-cont">
+                    <button class="submit nav-btn" type="submit">Next</button>
+                    <button class="submit nav-btn" on:click={back}>Next</button>
+                </div>
             </form>
         </div>
     </div>

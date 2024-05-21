@@ -9,7 +9,7 @@
     import Select from "$lib/components/app/Select.svelte";
 
 
-    let buttonMessage = 'Submit';
+    let buttonMessage = 'Next';
 
 
     let areas = {};
