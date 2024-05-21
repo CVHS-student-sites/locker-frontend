@@ -289,19 +289,20 @@
         border: none;
         border-radius: 4px;
         font-weight: bold;
-        margin-top: 10px;
         cursor: pointer;
         transition-duration: 150ms;
         color: var(--text);
     }
 
     .button-cont{
+        margin-top: 10px;
         height: 35px;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-direction: row;
+        gap: 10px;
     }
 
     .submit:hover {
