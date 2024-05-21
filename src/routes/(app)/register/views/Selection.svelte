@@ -17,30 +17,30 @@
     let data2 = [];
     let data3 = [];
 
-    let datas = {};
+    // let datas = {};
 
-    if(!$editMode){
-        selectedLocation.set({
-            building: "",
-            floor: "",
-            level: ""
-        })
+    // if(!$editMode){
+    //     selectedLocation.set({
+    //         building: "",
+    //         floor: "",
+    //         level: ""
+    //     })
 
-        datas = {
-            building: $selectedLocation.building,
-            floor: $selectedLocation.floor,
-            level: $selectedLocation.level
-        }
-    }
+    //     datas = {
+    //         building: $selectedLocation.building,
+    //         floor: $selectedLocation.floor,
+    //         level: $selectedLocation.level
+    //     }
+    // }
 
-    console.log(datas.building.toString());
-    let value1 = datas.building.toString();
-    let value2 = datas.floor.toString();
-    let value3 = datas.level.toString();
+    // console.log(datas.building.toString());
+    // let value1 = datas.building.toString();
+    // let value2 = datas.floor.toString();
+    // let value3 = datas.level.toString();
 
-    // let value1;
-    // let value2;
-    // let value3;
+    let value1;
+    let value2;
+    let value3;
 
     let lab1;
     let lab2;
