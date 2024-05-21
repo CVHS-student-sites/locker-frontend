@@ -157,7 +157,7 @@
             <div class="box-header">Confirm Locker Selection</div>
             <div class="small-text">Your locker is assigned randomly</div>
             <div class="selection-div">
-
+                
             </div>
 
             <button class="submit" on:click={next}>{buttonMessage}</button>

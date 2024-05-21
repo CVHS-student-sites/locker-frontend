@@ -204,11 +204,11 @@
     <div class="box">
         <div class="box-cont">
             <div class="box-header">Verification Status</div>
-            <div class="small-text">Check Your School Email for Verification link</div>
+            <div class="small-text">Please Check Your School Email for Verification Link</div>
+            <div class="small-text">You will be able to proceed once all students have verified</div>
             <div class="stat-div">
                 <div class="stat-1-subcont-1">
                     <div class="stat-1-grade-cont">
-
 
                         <div class="stat-1-grade-element-subcont">
                             <div
