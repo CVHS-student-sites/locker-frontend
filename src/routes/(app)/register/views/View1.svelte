@@ -35,7 +35,6 @@
 
     function back() {
         pageView.set(1);
-        editMode.set(true);
     }
 
     let gradeCanRegister = false;
