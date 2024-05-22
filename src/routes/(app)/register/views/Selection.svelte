@@ -9,32 +9,26 @@
     import Select from "$lib/components/app/Select.svelte";
 
 
-    let buttonMessage = 'Next';
-
-
     let areas = {};
     let data1 = [];
     let data2 = [];
     let data3 = [];
 
-    // let datas = {};
 
-    // if(!$editMode){
-    //     selectedLocation.set({
-    //         building: "",
-    //         floor: "",
-    //         level: ""
-    //     })
 
-    //     datas = {
-    //         building: $selectedLocation.building,
-    //         floor: $selectedLocation.floor,
-    //         level: $selectedLocation.level
-    //     }
-    // }
+    $: {
+        if(!$editMode){
+            selectedLocation.set({
+                building: "",
+                floor: "",
+                level: ""
+            });
+        }
 
-    // console.log(datas.building.toString());
-    // let value1 = datas.building.toString();
+        let test1 = $selectedLocation.building.toString();
+        console.log(test1);
+    }
+    
     // let value2 = datas.floor.toString();
     // let value3 = datas.level.toString();
 
@@ -82,10 +76,6 @@
     }
 
 
-
-
-
-    let newArr = {};
 
     // Watch for changes in value3 and update data2 accordingly
     $: {
@@ -286,7 +276,7 @@
 
             </div>
 
-            <button class="submit" on:click={next}>{buttonMessage}</button>
+            <button class="submit" on:click={next}>Next</button>
         </div>
     </div>
 </div>
