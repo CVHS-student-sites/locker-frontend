@@ -27,13 +27,13 @@
         }
         let response = await submitLockers(finalArr);
         if (response.ok) {
-            //clear the regestration stores / kinda jank but ok
-            selectedLocation.set({});
-            registrationData.set({});
-            singleLocker.set(false);
+            //clear the registration stores / kinda jank but ok
 
             await goto(`/lookup?id=${$studentId1}`);
 
+            selectedLocation.set({});
+            registrationData.set({});
+            singleLocker.set(false)
             studentId1.set(null);
             studentId2.set(null);
             pageView.set(0);
@@ -246,7 +246,7 @@
                 </div>
             </div>
             <div class="small-text">Your locker is assigned randomly</div>
-            
+
             <div class="button-cont">
                 <button class="nav-btn" type="button" on:click={back}>
                     <span class="material-symbols-outlined filled-icons">arrow_back</span>

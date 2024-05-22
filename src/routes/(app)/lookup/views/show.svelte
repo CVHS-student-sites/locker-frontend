@@ -39,7 +39,7 @@
         flex-direction: column;
         border-radius: 8px;
 
-        width: 416px;
+        width: 352px;
         padding: 32px;
 
         background-color: #1b2c42;
