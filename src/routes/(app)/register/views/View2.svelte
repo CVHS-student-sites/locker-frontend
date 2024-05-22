@@ -19,6 +19,11 @@
         // pageView.set(3);
     }
 
+
+    function back(){
+        pageView.set(2);
+    }
+
     async function checkIDs() {
         if ($singleLocker) {
             let response = await checkVerification($studentId1);
@@ -85,6 +90,7 @@
         padding: 32px;
         color: green;
         background-color: #1b2c42;
+        width: 352px;
     }
 
     .box-header {
@@ -144,19 +150,6 @@
         color: #d6d6d6;
     }
 
-    .submit {
-        width: 100%;
-        height: 35px;
-        background-color: #0082ff;
-        border: none;
-        border-radius: 4px;
-        font-weight: bold;
-        margin-top: 20px;
-        cursor: pointer;
-        transition-duration: 150ms;
-        color: var(--text);
-    }
-
     .submit:hover {
         background-color: #577db2;
     }
@@ -172,6 +165,47 @@
         "wght" 600,
         "GRAD" 0,
         "opsz" 24;
+    }
+
+
+    .nav-btn {
+        flex: 1;
+        height: 35px;
+        background-color: #0082ff;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition-duration: 150ms;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+    }
+
+    .nav-btn:hover {
+        background-color: #577db2;
+    }
+
+
+    .filled-icons {
+        font-variation-settings: "FILL" 1,
+        "wght" 600,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    .button-cont {
+        margin-top: 10px;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 10px;
     }
 
     @media only screen and (max-width: 600px) {
@@ -204,8 +238,8 @@
     <div class="box">
         <div class="box-cont">
             <div class="box-header">Verification Status</div>
-            <div class="small-text">Please Check Your School Email for Verification Link</div>
-            <div class="small-text">You will be able to proceed once all students have verified</div>
+            <div class="small-text">Please Check School Email for Verification Link</div>
+
             <div class="stat-div">
                 <div class="stat-1-subcont-1">
                     <div class="stat-1-grade-cont">
@@ -244,7 +278,18 @@
                 </div>
             </div>
 
-            <button class="submit" on:click={next}>{buttonMessage}</button>
+            <div class="small-text">You can proceed once all students have verified</div>
+
+            <div class="button-cont">
+                <button class="nav-btn" type="button" on:click={back}>
+                    <span class="material-symbols-outlined filled-icons">arrow_back</span>
+                    Back
+                </button>
+                <button class="submit nav-btn" on:click={next}>
+                    Check
+                    <span class="material-symbols-outlined filled-icons">check</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>

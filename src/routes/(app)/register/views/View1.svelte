@@ -89,7 +89,20 @@
             let status = true;
 
             //todo display some sort of error here
-            if (student1 === student2) status = false;
+            if (student1 === student2){
+                status = false;
+                loading = false;
+                input1.style.borderColor = "red";
+                input1.value = "";
+                input1.placeholder = "Cannot use same ID";
+
+
+                input2.style.borderColor = "red";
+                input2.value = "";
+                input2.placeholder = "Cannot use same ID";
+
+
+            }
 
             try {
                 let response = await validateID(student1);
