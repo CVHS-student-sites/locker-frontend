@@ -4,6 +4,9 @@
     import { tick } from 'svelte'
     import {page} from "$app/stores";
 
+    import {fade} from 'svelte/transition';
+    import {quartOut} from 'svelte/easing';
+
     let isVisible = false;
     export let data;
 
@@ -119,11 +122,11 @@
     <div class="lookup">
         {#if isVisible}
             <div>
-                <div use:confetti={{ particleCount: 100, force: 0.4, particleSize: 6, duration: 3500,  stageWidth: 800, colors: ['#E06C75', '#E5C07B', '#98C379', '#56B6C2', '#61AFEF', '#C678DD']}} />
+                <div use:confetti={{ particleCount: 100, force: 0.4, particleSize: 6, duration: 3500, stageWidth: 800, colors: ['#E06C75', '#E5C07B', '#98C379', '#56B6C2', '#61AFEF', '#C678DD']}} />
             </div>
         {/if}
 
-        <div class="lookup-cont">
+        <div class="lookup-cont" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
             <div class="lookup-header">Your locker:</div>
             <div class="expand">
                 <div class="item">
