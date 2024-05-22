@@ -42,35 +42,9 @@
     let value2;
     let value3;
 
-    let lab1;
-    let lab2;
-    let lab3;
-
-    // $: if(!load1 && !load2 && !load3){
-    //     console.log("loading")
-    //     console.log($editMode);
-    //     if ($editMode) {
-    //         console.log(value1);
-    //         value1.label = selectedLocation.building;
-    //         value2.label = selectedLocation.floor;
-    //         value3.label = selectedLocation.level;
-    //     }
-    // }
-
     async function fetchData() {
         areas = await fetchAvailableLockers();
-        // Update data1 based on fetched areas
         data1 = Object.keys(areas);
-
-        // console.log($editMode);
-        // if ($editMode) {
-        //     console.log($selectedLocation)
-        //     value1.value = $selectedLocation.building.toString();
-        //     value2.value = $selectedLocation.floor.toString();
-        //     value3.value = $selectedLocation.level.toString();
-        // }
-
-
     }
 
     async function next() {
@@ -92,10 +66,6 @@
         }
 
     }
-
-    onMount(async () => {
-        await fetchData();
-    });
 
     // Watch for changes in value1 and update data2 accordingly
     $: {
@@ -122,6 +92,9 @@
         if (number === 2) value3 = null;
     }
 
+    onMount(async () => {
+        await fetchData();
+    });
 </script>
 
 <style>
