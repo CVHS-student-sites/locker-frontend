@@ -44,7 +44,21 @@
 
     async function fetchData() {
         areas = await fetchAvailableLockers();
-        data1 = Object.keys(areas);
+
+        let availableLevels = [];
+
+        for (let floor in areas) {
+            for (let position in areas[floor]) {
+                let levels = areas[floor][position].Levels;
+                for (let level of levels) {
+                    if (!availableLevels.includes(level)) {
+                        availableLevels.push(level);
+                    }
+                }
+            }
+        }
+
+        data3 = availableLevels;
     }
 
     async function next() {
@@ -67,29 +81,53 @@
 
     }
 
-    // Watch for changes in value1 and update data2 accordingly
+
+
+
+
+    let newArr = {};
+
+    // Watch for changes in value3 and update data2 accordingly
     $: {
-        if (value1 && areas[value1.value]) {
-
-            data2 = Object.keys(areas[value1.value]);
-
+        if (value3) {
+            let building = [];
+            //bulky but fuck it
+            for (let floor in areas) {
+                for (let position in areas[floor]) {
+                    let levels = areas[floor][position].Levels;
+                    if(levels.includes(value3.value)){
+                        if (!building.includes(floor)) {
+                            building.push(floor);
+                        }
+                    }
+                }
+            }
+            data1 = building;
             clear(1);
-
+            clear(2);
         }
     }
 
     $:{
-        if (value2 && areas[value1.value][value2.value]) {
+        if (value1 && areas[value1.value]) { //todo i have no clue why we are checking value in areas, figure out later
 
-            data3 = areas[value1.value][value2.value]['Levels']
+            let floors = [];
+            for (let position in areas[value1.value]) {
+                let levels = areas[value1.value][position].Levels;
+                if(levels.includes(value3.value)){
+                    if (!floors.includes(position)) {
+                        floors.push(position);
+                    }
+                }
+            }
+            data2 = floors;
             clear(2);
-
         }
     }
 
     function clear(number) {
-        if (number === 1) value2 = null;
-        if (number === 2) value3 = null;
+        if (number === 1) value1 = null;
+        if (number === 2) value2 = null;
     }
 
     onMount(async () => {
@@ -232,6 +270,11 @@
             <div class="selection-div">
 
                 <div class="input-group">
+                    <div class="selection-label">Position</div>
+                    <Select items={data3} placeholder="Select Position" bind:value={value3}/>
+                </div>
+
+                <div class="input-group">
                     <div class="selection-label">Building</div>
                     <Select items={data1} placeholder="Select Building" bind:value={value1}/>
                 </div>
@@ -239,11 +282,6 @@
                 <div class="input-group">
                     <div class="selection-label">Floor</div>
                     <Select items={data2} placeholder="Select Floor" bind:value={value2}/>
-                </div>
-
-                <div class="input-group">
-                    <div class="selection-label">Position</div>
-                    <Select items={data3} placeholder="Select Position" bind:value={value3}/>
                 </div>
 
             </div>
