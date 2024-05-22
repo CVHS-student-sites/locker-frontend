@@ -7,13 +7,17 @@
 
     import {singleLocker, registrationData, studentId1, studentId2, selectedLocation, pageView, editMode} from "../store.js";
     import {goto} from "$app/navigation";
+    import {SyncLoader} from "svelte-loading-spinners";
 
 
     let studentsArr = [];
 
     let buttonMessage = 'Submit';
 
+    let loading = false;
+
     async function next() {
+        loading = true;
         studentsArr[0] = $studentId1;
         if (!$singleLocker) studentsArr[1] = $studentId2;
 
@@ -34,6 +38,7 @@
             studentId2.set(null);
             pageView.set(0);
         } else {
+            loading = false;
             //todo show error reason
         }
     }
@@ -82,6 +87,7 @@
         padding: 32px;
         color: green;
         background-color: #1b2c42;
+        position: absolute;
     }
 
     .box-header {
@@ -184,6 +190,15 @@
         gap: 10px;
     }
 
+    .loading-bar{
+        position: absolute;
+        top: -50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     @media only screen and (max-width: 600px) {
         .box {
             row-gap: 30px;
@@ -206,6 +221,12 @@
 <div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
     <div class="box">
         <div class="box-cont">
+
+            {#if loading}
+                <div class="loading-bar"><SyncLoader size="40" color="#577db2" unit="px" duration="0.8s" /></div>
+            {/if}
+
+
             <div class="box-header">Confirm Locker Selection</div>
 
             <div class="selection-div">

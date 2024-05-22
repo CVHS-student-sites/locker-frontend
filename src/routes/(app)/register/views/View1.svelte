@@ -1,5 +1,7 @@
 <script>
     import {createEventDispatcher} from "svelte";
+    import {SyncLoader} from "svelte-loading-spinners";
+
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {
@@ -21,6 +23,8 @@
 
     let input1;
     let input2;
+
+    let loading = false;
 
     function handleKeyPress(event) {
         if (event.key === "Enter") {
@@ -51,11 +55,13 @@
     async function login(event) {
         event.preventDefault();
 
+        loading = true;
         if ($singleLocker) {
             try {
                 let response = await validateID(student1);
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
+                    loading = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = jsonResponse.error;
@@ -64,6 +70,7 @@
                     if (gradeCanRegister) {
                         studentId1.set(student1);
                         await sendVerification($studentId1);
+                        loading = false;
                         pageView.set(3);
                     } else {
                         input1.style.borderColor = "red";
@@ -88,6 +95,7 @@
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
                     status = false;
+                    loading = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = jsonResponse.error; //todo this should get a message from the server
@@ -108,6 +116,7 @@
                 const jsonResponse = await response.json();
                 if (response.status === 400) {
                     status = false;
+                    loading = false;
                     input2.style.borderColor = "red";
                     input2.value = "";
                     input2.placeholder = jsonResponse.error; //todo this should get a message from the server
@@ -127,8 +136,10 @@
                 if (gradeCanRegister) {
                     await sendVerification($studentId1);
                     await sendVerification($studentId2);
+                    loading = false;
                     pageView.set(3);
                 } else {
+                    loading = false;
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = "Grade cannot register";
@@ -217,6 +228,7 @@
         padding: 32px;
         color: green;
         background-color: #1b2c42;
+        position: absolute;
     }
 
     .login-header {
@@ -317,6 +329,14 @@
         gap: 10px;
     }
 
+    .loading-bar{
+        position: absolute;
+        top: -50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     @media only screen and (max-width: 600px) {
         .main {
@@ -355,6 +375,11 @@
 >
     <div class="login">
         <div class="login-cont">
+
+            {#if loading}
+                <div class="loading-bar"><SyncLoader size="40" color="#577db2" unit="px" duration="0.8s" /></div>
+            {/if}
+
             <div class="login-header">Verify IDs</div>
 
             <form
