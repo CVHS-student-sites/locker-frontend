@@ -4,7 +4,7 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {Moon} from "svelte-loading-spinners";
+    import {Moon, Circle, DoubleBounce, Jellyfish, ScaleOut} from "svelte-loading-spinners";
 
     import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
 
@@ -21,8 +21,13 @@
         // pageView.set(3);
     }
 
+    async function myFunction() {
+        await checkIDs();
+    }
 
-    function back(){
+    setInterval(myFunction, 1000); //keep checking status of user every one second
+
+    function back() {
         pageView.set(2);
     }
 
@@ -49,7 +54,6 @@
     }
 
     onMount(async () => {
-        //
         await checkIDs();
     });
 
@@ -144,7 +148,6 @@
         border-radius: 5px;
         gap: 8px;
         padding-left: 8px;
-        position: absolute;
     }
 
     .stat-1-grade-text {
@@ -153,10 +156,12 @@
         color: #d6d6d6;
     }
 
-    .spinner-cont{
-        position: absolute;
-        right: 0;
-        height: 100%;
+    .spinner-cont {
+        justify-self: center;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: 10px;
     }
 
     .submit:hover {
@@ -261,14 +266,16 @@
                                     : "color:darkred"}
                             >
                                 {$studentStatusStore.student_1
-                                    ? "check_circle"
-                                    : "cancel"}
+                                        ? "check_circle"
+                                        : "cancel"}
                             </div>
                             <div class="stat-1-grade-text">{$studentId1}</div>
 
-                            <div class="spinner-cont">
-                                <Moon size="20" color="#FF3E00" unit="px" duration="1s" />
-                            </div>
+                            {#if !$studentStatusStore.student_1}
+                                <div class="spinner-cont">
+                                    <ScaleOut size="24" color="#577db2" unit="px" duration="0.7s"/>
+                                </div>
+                            {/if}
                         </div>
 
                         {#if !$singleLocker}
@@ -280,14 +287,16 @@
                                     : "color:darkred"}
                                 >
                                     {$studentStatusStore.student_2
-                                        ? "check_circle"
-                                        : "cancel"}
+                                            ? "check_circle"
+                                            : "cancel"}
                                 </div>
                                 <div class="stat-1-grade-text">{$studentId2}</div>
 
-                                <div class="spinner-cont">
-                                    <Moon size="20" color="#FF3E00" unit="px" duration="1s" />
-                                </div>
+                                {#if !$studentStatusStore.student_2}
+                                    <div class="spinner-cont">
+                                        <ScaleOut size="24" color="#577db2" unit="px" duration="0.7s"/>
+                                    </div>
+                                {/if}
                             </div>
                         {/if}
 
