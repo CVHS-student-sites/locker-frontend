@@ -28,8 +28,8 @@
         }
     }
 
-    function back(){
-        //todo make this move page back to prev screen
+    function back() {
+        pageView.set(1);
     }
 
     let gradeCanRegister = false;
@@ -42,7 +42,7 @@
         // Check if the grade exists in the JSON object and if it's enabled
         if (enableGrades.hasOwnProperty(gradeKey) && enableGrades[gradeKey]) {
             gradeCanRegister = true;
-        }else if(enableGrades["preReg"] && permissions === 1){
+        } else if (enableGrades["preReg"] && permissions === 1) {
             gradeCanRegister = true;
         }
     }
@@ -271,18 +271,8 @@
         /*background-color: #eaeaea;*/
     }
 
-    /*input:hover {*/
-    /*    !*border-color: #577db2;*!*/
-    /*    background-color: #eaeaea;*/
-    /*!*}*!*/
 
-    .submit {
-    
-        
-    }
-
-
-    .nav-btn{
+    .nav-btn {
         flex: 1;
         height: 35px;
         background-color: #0082ff;
@@ -292,9 +282,31 @@
         cursor: pointer;
         transition-duration: 150ms;
         color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
     }
 
-    .button-cont{
+    .nav-btn:hover {
+        background-color: #577db2;
+    }
+
+    .material-symbols-outlined {
+        color: #d6d6d6;
+        width: 24px;
+        user-select: none;
+    }
+
+    .filled-icons {
+        font-variation-settings: "FILL" 1,
+        "wght" 600,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    .button-cont {
         margin-top: 10px;
         height: 35px;
         width: 100%;
@@ -305,9 +317,6 @@
         gap: 10px;
     }
 
-    .submit:hover {
-        background-color: #577db2;
-    }
 
     @media only screen and (max-width: 600px) {
         .main {
@@ -350,8 +359,9 @@
 
             <form
                     class="login-form"
-                    on:keydown={handleKeyPress}
+                    on:keydown={{handleKeyPress}}
                     on:submit={login}
+
             >
                 <label>Student 1</label>
 
@@ -379,8 +389,14 @@
                 {/if}
 
                 <div class="button-cont">
-                    <button class="submit nav-btn" type="submit">Next</button>
-                    <button class="submit nav-btn" on:click={back}>Next</button>
+                    <button class="nav-btn" type="button" on:click={back}>
+                        <span class="material-symbols-outlined filled-icons">arrow_back</span>
+                        Back
+                    </button>
+                    <button class="submit nav-btn" type="submit">
+                        Next
+                        <span class="material-symbols-outlined filled-icons">arrow_forward</span>
+                    </button>
                 </div>
             </form>
         </div>
