@@ -18,6 +18,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@neoconfetti/svelte": "^2.2.1",
 		"@zerodevx/svelte-toast": "^0.9.5",
 		"axios": "^1.6.8",
 		"chart.js": "^4.4.2",

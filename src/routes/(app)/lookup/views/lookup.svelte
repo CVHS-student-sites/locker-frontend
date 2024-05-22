@@ -24,7 +24,7 @@
 
         try {
             let response = await fetchLocker(studentID);
-            if (response.status === 404) {
+            if (response.status === 404 && !id) {
                 input.style.borderColor = "red";
                 input.value = "";
                 input.placeholder = "Student not found";
@@ -34,7 +34,6 @@
                 });
             }
         } catch (err) {
-            console.log(err)
             input.style.borderColor = "red";
             input.value = "";
             input.placeholder = "Internal system error";

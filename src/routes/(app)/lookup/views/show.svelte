@@ -1,6 +1,21 @@
 <script>
+    import { onMount } from 'svelte';
+    import { confetti } from '@neoconfetti/svelte'
+    import { tick } from 'svelte'
+    import {page} from "$app/stores";
+
+    let isVisible = false;
     export let data;
-    console.log(data)
+
+
+    onMount(async () => {
+        if($page.url.searchParams.get('id')){
+            isVisible = false;
+            await tick();
+            isVisible = true;
+        }
+    });
+
 </script>
 
 <style>
@@ -29,7 +44,6 @@
         width: 100%;
         align-items: center;
         /*justify-content: center;*/
-        row-gap: 30px;
         margin-top: 20vh;
     }
 
@@ -103,6 +117,12 @@
 
 <div class="main">
     <div class="lookup">
+        {#if isVisible}
+            <div>
+                <div use:confetti={{ particleCount: 100, force: 0.2, particleSize: 6, duration: 3500,  stageWidth: 800 }} />
+            </div>
+        {/if}
+
         <div class="lookup-cont">
             <div class="lookup-header">Your locker:</div>
             <div class="expand">
@@ -124,5 +144,7 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
