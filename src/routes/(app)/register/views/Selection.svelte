@@ -14,24 +14,6 @@
     let data2 = [];
     let data3 = [];
 
-
-
-    $: {
-        if(!$editMode){
-            selectedLocation.set({
-                building: "",
-                floor: "",
-                level: ""
-            });
-        }
-
-        let test1 = $selectedLocation.building.toString();
-        console.log(test1);
-    }
-    
-    // let value2 = datas.floor.toString();
-    // let value3 = datas.level.toString();
-
     let value1;
     let value2;
     let value3;
