@@ -4,6 +4,8 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
+    import {Circle, Moon} from "svelte-loading-spinners";
+
     import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
 
     import {checkVerification} from "$lib/services/app/mainApi.js";
@@ -150,6 +152,12 @@
         color: #d6d6d6;
     }
 
+    .spinner-cont{
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
+
     .submit:hover {
         background-color: #577db2;
     }
@@ -271,6 +279,10 @@
                                         : "cancel"}
                                 </div>
                                 <div class="stat-1-grade-text">{$studentId2}</div>
+
+                                <div class="spinner-cont">
+                                    <Circle size="20" color="#FF3E00" unit="px" duration="1s" >
+                                </div>
                             </div>
                         {/if}
 

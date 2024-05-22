@@ -127,7 +127,7 @@
         {/if}
 
         <div class="lookup-cont" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
-            <div class="lookup-header">Your locker:</div>
+            <div class="lookup-header">Your locker</div>
             <div class="expand">
                 <div class="item">
                     <div class="data-cont">{data.Locker.lockerNumber}</div>
