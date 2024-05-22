@@ -77,6 +77,7 @@
             data1 = buildings;
             clear(1);
             clear(2);
+            data2 = [];
         }
     }
 
