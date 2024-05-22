@@ -54,10 +54,22 @@
 
     .sub {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
+    }
+
+    .landing{
+
+    }
+
+    h1{
+        color: var(--text);
+    }
+
+    p{
+        color: var(--text);
     }
 </style>
 
@@ -69,6 +81,7 @@
 
         <div class="landing">
             <h1>Welcome To CV Locker</h1>
+            <p>"We put you in lockers"</p>
         </div>
 
 
