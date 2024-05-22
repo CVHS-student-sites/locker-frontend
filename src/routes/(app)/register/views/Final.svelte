@@ -104,22 +104,7 @@
         justify-content: center;
     }
 
-    .submit {
-        width: 100%;
-        height: 35px;
-        background-color: #0082ff;
-        border: none;
-        border-radius: 4px;
-        font-weight: bold;
-        margin-top: 4px;
-        cursor: pointer;
-        transition-duration: 150ms;
-        color: var(--text);
-    }
 
-    .submit:hover {
-        background-color: #577db2;
-    }
 
     .item {
         /*background-color: green;*/
@@ -154,6 +139,27 @@
         flex-direction: column;
     }
 
+    .nav-btn {
+        flex: 1;
+        height: 35px;
+        background-color: #0082ff;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition-duration: 150ms;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+    }
+
+    .nav-btn:hover {
+        background-color: #577db2;
+    }
+
     .material-symbols-outlined {
         color: #d6d6d6;
         width: 24px;
@@ -165,6 +171,17 @@
         "wght" 600,
         "GRAD" 0,
         "opsz" 24;
+    }
+
+    .button-cont {
+        margin-top: 10px;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 10px;
     }
 
     @media only screen and (max-width: 600px) {
@@ -216,8 +233,19 @@
             </div>
             <div class="small-text">Your locker is assigned randomly</div>
 
-            <button class="submit" on:click={next}>{buttonMessage}</button>
-            <button class="submit" on:click={back}>Go back to locker selection</button>
+<!--            <button class="submit" on:click={next}>{buttonMessage}</button>-->
+<!--            <button class="submit" on:click={back}>Go back to locker selection</button>-->
+
+            <div class="button-cont">
+                <button class="nav-btn" type="button" on:click={back}>
+                    <span class="material-symbols-outlined filled-icons">arrow_back</span>
+                    Back
+                </button>
+                <button class="submit nav-btn" type="submit" on:click={next}>
+                    {buttonMessage}
+                    <span class="material-symbols-outlined filled-icons">check</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
