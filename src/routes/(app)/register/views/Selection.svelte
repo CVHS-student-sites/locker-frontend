@@ -170,10 +170,9 @@
     }
 
     .selection-label {
-        font-size: 14px;
-        font-weight: bold;
+        font-size: 16px;
         color: var(--text);
-        margin-bottom: 4px;
+        margin-bottom: 10px;
         display: flex;
         width: 100%;
         justify-content: left;
