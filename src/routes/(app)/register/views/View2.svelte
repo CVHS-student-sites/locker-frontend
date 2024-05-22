@@ -4,7 +4,7 @@
     import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {Circle, Moon} from "svelte-loading-spinners";
+    import {Moon} from "svelte-loading-spinners";
 
     import {singleLocker, studentId1, studentId2, pageView} from "../store.js";
 
@@ -144,6 +144,7 @@
         border-radius: 5px;
         gap: 8px;
         padding-left: 8px;
+        position: absolute;
     }
 
     .stat-1-grade-text {
@@ -266,7 +267,7 @@
                             <div class="stat-1-grade-text">{$studentId1}</div>
 
                             <div class="spinner-cont">
-                                <Circle size="20" color="#FF3E00" unit="px" duration="1s" />
+                                <Moon size="20" color="#FF3E00" unit="px" duration="1s" />
                             </div>
                         </div>
 
@@ -285,7 +286,7 @@
                                 <div class="stat-1-grade-text">{$studentId2}</div>
 
                                 <div class="spinner-cont">
-                                    <Circle size="20" color="#FF3E00" unit="px" duration="1s" />
+                                    <Moon size="20" color="#FF3E00" unit="px" duration="1s" />
                                 </div>
                             </div>
                         {/if}
