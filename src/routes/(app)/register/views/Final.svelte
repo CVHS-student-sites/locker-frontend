@@ -196,16 +196,9 @@
             background: unset;
         }
 
-        .stat-div {
-            width: 90vw;
-        }
 
-        .submit {
+        .button-cont {
             width: 90vw;
-        }
-
-        .stat-1-grade-element-subcont {
-            background-color: #090606;
         }
     }
 </style>
