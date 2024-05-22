@@ -47,9 +47,9 @@
 
         let availableLevels = [];
 
-        for (let floor in areas) {
-            for (let position in areas[floor]) {
-                let levels = areas[floor][position].Levels;
+        for (let building in areas) {
+            for (let floor in areas[building]) {
+                let levels = areas[building][floor].Levels;
                 for (let level of levels) {
                     if (!availableLevels.includes(level)) {
                         availableLevels.push(level);
@@ -90,19 +90,19 @@
     // Watch for changes in value3 and update data2 accordingly
     $: {
         if (value3) {
-            let building = [];
+            let buildings = [];
             //bulky but fuck it
-            for (let floor in areas) {
-                for (let position in areas[floor]) {
-                    let levels = areas[floor][position].Levels;
+            for (let building in areas) {
+                for (let floor in areas[building]) {
+                    let levels = areas[building][floor].Levels;
                     if(levels.includes(value3.value)){
-                        if (!building.includes(floor)) {
-                            building.push(floor);
+                        if (!buildings.includes(building)) {
+                            buildings.push(building);
                         }
                     }
                 }
             }
-            data1 = building;
+            data1 = buildings;
             clear(1);
             clear(2);
         }
@@ -112,11 +112,11 @@
         if (value1 && areas[value1.value]) { //todo i have no clue why we are checking value in areas, figure out later
 
             let floors = [];
-            for (let position in areas[value1.value]) {
-                let levels = areas[value1.value][position].Levels;
+            for (let floor in areas[value1.value]) {
+                let levels = areas[value1.value][floor].Levels;
                 if(levels.includes(value3.value)){
-                    if (!floors.includes(position)) {
-                        floors.push(position);
+                    if (!floors.includes(floor)) {
+                        floors.push(floor);
                     }
                 }
             }
