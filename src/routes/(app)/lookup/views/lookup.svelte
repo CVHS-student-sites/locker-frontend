@@ -11,9 +11,13 @@
 
     let id = $page.url.searchParams.get('id');
 
+    let showLookup = false;
+
     if (id) {
         studentID = id;
         submit();
+    } else {
+        showLookup = true;
     }
 
     async function submit() {
@@ -175,23 +179,25 @@
 
 <div class="main">
     <div class="lookup">
-        <div class="lookup-cont">
-            <div class="lookup-header">Lookup Locker</div>
+        {#if showLookup}
+            <div class="lookup-cont">
+                <div class="lookup-header">Lookup Locker</div>
 
-            <div class="lookup-form" on:keydown={handleKeyPress}>
-                <!--                <label for="username">Student ID Number</label>-->
-                <input
-                        bind:this={input}
-                        bind:value={studentID}
-                        id="studentID"
-                        name="studentID"
-                        placeholder="Student ID"
-                        required
-                        type="text"
-                />
+                <div class="lookup-form" on:keydown={handleKeyPress}>
+                    <!--                <label for="username">Student ID Number</label>-->
+                    <input
+                            bind:this={input}
+                            bind:value={studentID}
+                            id="studentID"
+                            name="studentID"
+                            placeholder="Student ID"
+                            required
+                            type="text"
+                    />
 
-                <button class="submit" on:click={submit}>Search</button>
+                    <button class="submit" on:click={submit}>Search</button>
+                </div>
             </div>
-        </div>
+        {/if}
     </div>
 </div>
