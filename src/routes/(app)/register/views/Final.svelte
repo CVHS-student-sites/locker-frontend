@@ -246,10 +246,7 @@
                 </div>
             </div>
             <div class="small-text">Your locker is assigned randomly</div>
-
-<!--            <button class="submit" on:click={next}>{buttonMessage}</button>-->
-<!--            <button class="submit" on:click={back}>Go back to locker selection</button>-->
-
+            
             <div class="button-cont">
                 <button class="nav-btn" type="button" on:click={back}>
                     <span class="material-symbols-outlined filled-icons">arrow_back</span>

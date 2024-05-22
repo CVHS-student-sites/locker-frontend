@@ -14,6 +14,7 @@
         studentId1,
         studentId2,
         pageView,
+        editMode
     } from "../store.js";
 
     const dispatch = createEventDispatcher();
@@ -34,6 +35,7 @@
 
     function back() {
         pageView.set(1);
+        editMode.set(true);
     }
 
     let gradeCanRegister = false;
