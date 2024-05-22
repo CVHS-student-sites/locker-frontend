@@ -264,6 +264,10 @@
                                     : "cancel"}
                             </div>
                             <div class="stat-1-grade-text">{$studentId1}</div>
+
+                            <div class="spinner-cont">
+                                <Circle size="20" color="#FF3E00" unit="px" duration="1s" />
+                            </div>
                         </div>
 
                         {#if !$singleLocker}
@@ -281,7 +285,7 @@
                                 <div class="stat-1-grade-text">{$studentId2}</div>
 
                                 <div class="spinner-cont">
-                                    <Circle size="20" color="#FF3E00" unit="px" duration="1s" >
+                                    <Circle size="20" color="#FF3E00" unit="px" duration="1s" />
                                 </div>
                             </div>
                         {/if}
