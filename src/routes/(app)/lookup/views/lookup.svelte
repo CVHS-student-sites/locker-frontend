@@ -27,7 +27,7 @@
             if (response.status === 404 && !id) {
                 input.style.borderColor = "red";
                 input.value = "";
-                input.placeholder = "Student not found";
+                input.placeholder = "Locker not found";
             } else if (response.ok) {
                 dispatch("message", {
                     data: await response.json(),
@@ -183,7 +183,6 @@
                 <div class="lookup-header">Lookup Locker</div>
 
                 <div class="lookup-form" on:keydown={handleKeyPress}>
-                    <!--                <label for="username">Student ID Number</label>-->
                     <input
                             bind:this={input}
                             bind:value={studentID}
