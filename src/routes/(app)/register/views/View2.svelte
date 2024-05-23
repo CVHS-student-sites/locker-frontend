@@ -227,6 +227,10 @@
             row-gap: 30px;
         }
 
+        .button-cont{
+            width: 90vw;
+        }
+
         .box-cont {
             width: 100vw;
             box-shadow: none;
