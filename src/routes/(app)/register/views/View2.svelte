@@ -25,7 +25,7 @@
         await checkIDs();
     }
 
-    setInterval(myFunction, 1000); //keep checking status of user every one second
+    //setInterval(myFunction, 1000); //todo this is breaking edit, removed for now
 
     function back() {
         pageView.set(2);
