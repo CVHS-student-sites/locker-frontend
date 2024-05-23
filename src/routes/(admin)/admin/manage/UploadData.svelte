@@ -99,6 +99,6 @@
 
             <div class="material-symbols-outlined filled-icons">upload_file</div>
         </label>
-        <button on:click={submitUser}>Upload uesr</button>
+        <button on:click={submitUser}>Upload user</button>
     </div>
 </div>

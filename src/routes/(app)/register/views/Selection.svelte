@@ -237,7 +237,7 @@
 <div class="main" in:slide={{ delay: 250, duration: 600, easing: quartOut, axis: 'x' }}>
     <div class="box">
         <div class="box-cont">
-            <div class="box-header">Select locker Location</div>
+            <div class="box-header">Select Locker Location</div>
 
             <div class="selection-div">
 
