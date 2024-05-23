@@ -74,6 +74,7 @@
                         loading = false;
                         pageView.set(3);
                     } else {
+                        loading = false;
                         input1.style.borderColor = "red";
                         input1.value = "";
                         input1.placeholder = "Grade cannot register";
@@ -157,6 +158,10 @@
                     input1.style.borderColor = "red";
                     input1.value = "";
                     input1.placeholder = "Grade cannot register";
+
+                    input2.style.borderColor = "red";
+                    input2.value = "";
+                    input2.placeholder = "Grade cannot register";
                 }
             }
         }
