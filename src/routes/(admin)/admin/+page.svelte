@@ -10,6 +10,7 @@
     let showData = false;
     let areas;
     let gradeCounts;
+    let showChart = false;
 
     const gradesStore = writable({});
     const statStore = writable({})
@@ -23,6 +24,7 @@
         gradeCounts = Object.values($statStore.regUsersByGrade);
         console.log(gradeCounts);
         showData = true;
+        showChart = true;
     });
 </script>
 
@@ -286,7 +288,9 @@
         </div>
 
         <div class="grid-element-1 large">
-            <Chart chartData={gradeCounts}/>
+            {#if showChart}
+                <Chart bind:chartData={gradeCounts}/>
+            {/if}
         </div>
         <div class="grid-element-1">
             <div class="button-text">list names of new users</div>

@@ -6,16 +6,10 @@
         datasets: [
             {
                 data: chartData,
-                backgroundColor: ["#1e39da", "#0b2aec", "#1c1d9b", "#0052ff"],
+                backgroundColor: ["#E06C75", "#E5C07B", "#98C379", "#61AFEF"],
                 borderColor: "#22263a",
                 borderWidth: 2,
 
-                hoverBackgroundColor: [
-                    "#FF5A5E",
-                    "#5AD3D1",
-                    "#FFC870",
-                    "#A8B3C5",
-                ],
             },
         ],
     };
