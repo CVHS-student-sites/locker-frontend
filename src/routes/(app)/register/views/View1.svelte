@@ -181,7 +181,7 @@
     />
     <meta content="cvapps.net" name="author"/>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script> -->
 </svelte:head>
 
 <!--todo fix layout shift that occurs from transition-->
@@ -434,7 +434,7 @@
                     />
                 {/if}
 
-                <div class="g-recaptcha" data-sitekey="6LfDOecpAAAAAKwTGvj0c4kBlTOf2avJxf-RQSRS"></div>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAAbDQJPXlBpFeetY" data-callback="javascriptCallback"></div>
 
                 <div class="button-cont">
                     <button class="nav-btn" type="button" on:click={back}>
