@@ -50,11 +50,11 @@
         console.log($selectedLocation);
 
         if ($editMode) {
-            pageView.set(4);
-            editMode.set(false);
-
             if(prevType !== $singleLocker){ //catch if the locker type changed, then dispaly the id selection again
                 pageView.set(2);
+                editMode.set(false);
+            }else{
+                pageView.set(4);
                 editMode.set(false);
             }
         } else {
