@@ -45,13 +45,17 @@
             floor: value2.label,
             level: value3.label,
         });
-        if (value3.label === "Single") singleLocker.set(true);
+        if (value3.label === "Single"){
+            singleLocker.set(true);
+        }else{
+            singleLocker.set(false);
+        }
 
         console.log($selectedLocation);
 
         console.log(prevType);
         console.log($singleLocker);
-        
+
         if ($editMode) {
             if(prevType != $singleLocker){ //catch if the locker type changed, then dispaly the id selection again
                 pageView.set(2);
