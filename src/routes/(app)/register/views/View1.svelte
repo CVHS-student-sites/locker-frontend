@@ -16,6 +16,7 @@
         pageView,
         editMode
     } from "../store.js";
+    import { Turnstile } from 'svelte-turnstile';
 
     const dispatch = createEventDispatcher();
 
@@ -35,6 +36,10 @@
 
     function back() {
         pageView.set(1);
+    }
+
+    function getToken(event){
+        console.log(event);
     }
 
     let gradeCanRegister = false;
@@ -180,8 +185,6 @@
             name="keywords"
     />
     <meta content="cvapps.net" name="author"/>
-
-    <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script> -->
 </svelte:head>
 
 <!--todo fix layout shift that occurs from transition-->
@@ -434,7 +437,7 @@
                     />
                 {/if}
 
-                <div class="cf-turnstile" data-sitekey="0x4AAAAAAAbDQJPXlBpFeetY" data-callback="javascriptCallback"></div>
+                <Turnstile siteKey="0x4AAAAAAAbDQJPXlBpFeetY" theme="dark" on:turnstile-callback={getToken}/>
 
                 <div class="button-cont">
                     <button class="nav-btn" type="button" on:click={back}>
