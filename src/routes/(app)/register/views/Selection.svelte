@@ -38,6 +38,8 @@
     }
 
     async function next() {
+        let prevType = $singleLocker;
+        
         selectedLocation.set({
             building: value1.label,
             floor: value2.label,
@@ -51,6 +53,10 @@
             pageView.set(4);
             editMode.set(false);
 
+            if(prevType !== $singleLocker){ //catch if the locker type changed, then dispaly the id selection again
+                pageView.set(2);
+                editMode.set(false);
+            }
         } else {
             pageView.set(2);
         }
