@@ -39,7 +39,7 @@
 
     async function next() {
         let prevType = get(singleLocker);
-        
+
         selectedLocation.set({
             building: value1.label,
             floor: value2.label,
@@ -52,9 +52,6 @@
         }
 
         console.log($selectedLocation);
-
-        console.log(prevType);
-        console.log($singleLocker);
 
         if ($editMode) {
             if(prevType != $singleLocker){ //catch if the locker type changed, then dispaly the id selection again

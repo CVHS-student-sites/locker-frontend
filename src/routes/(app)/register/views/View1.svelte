@@ -23,6 +23,9 @@
     let student1 = "";
     let student2 = "";
 
+    let captchaSolved = false;
+    let token;
+
     let input1;
     let input2;
 
@@ -39,7 +42,8 @@
     }
 
     function getToken(event){
-        console.log(event);
+        token = event.detail.token;
+        captchaSolved = true;
     }
 
     let gradeCanRegister = false;
@@ -74,10 +78,17 @@
                 } else if (response.ok) {
                     await checkGrade(jsonResponse.grade, jsonResponse.permissions);
                     if (gradeCanRegister) {
-                        studentId1.set(student1);
-                        await sendVerification($studentId1);
-                        loading = false;
-                        pageView.set(3);
+                        if(captchaSolved){
+                            studentId1.set(student1);
+                            await sendVerification($studentId1, token);
+                            loading = false;
+                            pageView.set(3);
+                        }else{
+                            input1.style.borderColor = "red";
+                            input1.value = "";
+                            input1.placeholder = "Please solve captcha";
+                        }
+
                     } else {
                         loading = false;
                         input1.style.borderColor = "red";
@@ -154,10 +165,21 @@
             //once both all good, send the response
             if (status) {
                 if (gradeCanRegister) {
-                    await sendVerification($studentId1);
-                    await sendVerification($studentId2);
-                    loading = false;
-                    pageView.set(3);
+                    if(captchaSolved){
+                        await sendVerification($studentId1, token);
+                        await sendVerification($studentId2, token);
+                        loading = false;
+                        pageView.set(3);
+                    }else{
+                        input1.style.borderColor = "red";
+                        input1.value = "";
+                        input1.placeholder = "Please solve captcha";
+
+                        input2.style.borderColor = "red";
+                        input2.value = "";
+                        input2.placeholder = "Please solve captcha";
+                    }
+
                 } else {
                     loading = false;
                     input1.style.borderColor = "red";

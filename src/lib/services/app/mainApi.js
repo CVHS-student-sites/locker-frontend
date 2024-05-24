@@ -18,8 +18,8 @@ export async function fetchEnabledGrades() {
     return await response.json();
 }
 
-export async function sendVerification(data){
-    return await fetch(`https://locker-api.cvapps.net/public/send-verify-student/${data}`, {
+export async function sendVerification(data, token){
+    return await fetch(`https://locker-api.cvapps.net/public/send-verify-student/${data}/${token}`, {
         method: "post",
     });
 }
