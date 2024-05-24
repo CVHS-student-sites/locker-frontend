@@ -1,6 +1,6 @@
 <script>
     import {onMount} from "svelte";
-    import {writable} from "svelte/store";
+    import {writable, get} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {singleLocker, studentId1, studentId2, selectedLocation, pageView, editMode} from "../store.js";
@@ -38,7 +38,7 @@
     }
 
     async function next() {
-        let prevType = $singleLocker;
+        let prevType = get(singleLocker);
         
         selectedLocation.set({
             building: value1.label,
@@ -49,8 +49,11 @@
 
         console.log($selectedLocation);
 
+        console.log(prevType);
+        console.log($singleLocker);
+        
         if ($editMode) {
-            if(prevType !== $singleLocker){ //catch if the locker type changed, then dispaly the id selection again
+            if(prevType != $singleLocker){ //catch if the locker type changed, then dispaly the id selection again
                 pageView.set(2);
                 editMode.set(false);
             }else{
