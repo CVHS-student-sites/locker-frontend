@@ -78,6 +78,7 @@
         font-size: 16px;
         font-family: "Montserrat", sans-serif;
         color: #d6d6d6;
+        margin-right: 8px;
     }
 </style>
 

@@ -10,7 +10,7 @@
             throwWarningToast("No File Selected");
             return;
         }
-        var formData = new FormData();
+        const formData = new FormData();
         formData.append("csvFile", file1[0]);
 
         let response = await postLockerFile(formData);
@@ -24,7 +24,7 @@
             throwWarningToast("No File Selected");
             return;
         }
-        var formData = new FormData();
+        const formData = new FormData();
         formData.append("csvFile", file2[0]);
 
         let response = await postUserFile(formData);
@@ -43,7 +43,7 @@
         box-sizing: border-box;
         align-items: center;
         justify-content: space-evenly;
-        
+
     }
 
     .form {

@@ -1,6 +1,7 @@
 <script>
     import {getLockerEditData, updateLockerEditData} from "$lib/services/admin/mainApi.js";
     import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
+    import Switch from "$lib/components/global/Switch.svelte";
 
     export let showModal; // boolean
     export let data;
@@ -10,14 +11,22 @@
     let dialog; // HTMLDialogElement
     let lockerData = {};
 
+    let status;
+
     async function fetchData() {
-        console.log(data);
         lockerData = await getLockerEditData(data);
+        status = lockerData.status === 1;
         showData = true;
         dialog.showModal();
     }
 
     async function submit() {
+        if(status){
+            lockerData.status = 1;
+        }else{
+            lockerData.status = null;
+        }
+
         let response = await updateLockerEditData(data, lockerData);
 
         if (response.status === 200) {
@@ -214,16 +223,13 @@
             <div class="edit-cont">
 
                 <label for="studentID">Status</label>
-                <input
-                        bind:value={lockerData.status}
-                        id="status"
-                        name="status"
-                        placeholder="Locker Status"
-                        required
-                        type="text"
+                <Switch
+                        bind:checked={status}
+                        fontSize={12}
+                        design="slider"
                 />
 
-               
+
 
                 <button class="submit" on:click={submit}>Submit</button>
             </div>

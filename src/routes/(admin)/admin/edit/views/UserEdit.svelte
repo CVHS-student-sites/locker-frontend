@@ -7,6 +7,7 @@
     import {fetchUserData} from "$lib/services/admin/mainApi.js";
 
     import moment from 'moment';
+    import {Stretch} from "svelte-loading-spinners";
 
     let showModal = false;
     let data;
@@ -15,6 +16,16 @@
     function launchEdit(data) {
         id = data;
         showModal = true;
+    }
+
+    async function updateData(){
+        showData = false;
+        data = await fetchUserData();
+        showData = true;
+    }
+
+    $: if (!showModal) {
+        updateData()
     }
 
     const style = {
@@ -109,7 +120,10 @@
 </svelte:head>
 
 <style>
-    /* Your styles here */
+    .locker-edit{
+        display: flex;
+        justify-content: center;
+    }
 </style>
 
 <div class="locker-edit">
@@ -119,11 +133,14 @@
     {#if showData}
         <Grid
                 {columns}
-                pagination={{ enabled: true, limit: 11 }}
+                pagination={{ enabled: true, limit: 14 }}
                 sort
                 search
                 {data}
                 {style}
         />
+
+    {:else}
+        <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
     {/if}
 </div>

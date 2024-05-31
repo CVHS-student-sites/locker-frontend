@@ -2,22 +2,31 @@
     import Grid from "gridjs-svelte";
     import {h} from "gridjs";
     import Modal from '../LockerEditmodal.svelte';
-    
+
     import {onMount} from 'svelte';
     import '$lib/assets/admin-table.css'
     import {fetchLockerData} from "$lib/services/admin/mainApi.js";
 
     import moment from 'moment';
+    import {Stretch} from "svelte-loading-spinners";
 
     let showModal = false;
     let data;
-
     let number;
 
-    //todo on modal close, we should refresh the table data
     function launchEdit(data) {
         number = data;
         showModal = true;
+    }
+
+    async function updateData(){
+        showData = false;
+        data = await fetchLockerData();
+        showData = true;
+    }
+
+    $: if (!showModal) {
+        updateData()
     }
 
     const style = {
@@ -66,7 +75,7 @@
                 if (cell === 1) {
                     return 'Disabled'
                 } else {
-                    return 'No Status';
+                    return '';
                 }
             }
         },
@@ -106,7 +115,10 @@
 </svelte:head>
 
 <style>
-    /* Your styles here */
+    .locker-edit{
+        display: flex;
+        justify-content: center;
+    }
 </style>
 
 <div class="locker-edit">
@@ -116,12 +128,14 @@
     {#if showData}
         <Grid
                 {columns}
-                pagination={{ enabled: true, limit: 15  }}
+                pagination={{ enabled: true, limit: 14  }}
                 sort
                 search
                 height="auto"
                 {data}
                 {style}
         />
+    {:else}
+        <Stretch size="60" color="#577db2" unit="px" duration="1s"/>
     {/if}
 </div>

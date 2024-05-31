@@ -1,6 +1,7 @@
 <script>
     import {getUserEditData, updateUserEditData, postRemoveUsersLocker, postDeleteUser} from "$lib/services/admin/mainApi.js";
     import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
+    import Switch from "$lib/components/global/Switch.svelte";
 
     export let showModal; // boolean
     export let data;
@@ -10,14 +11,22 @@
     let dialog; // HTMLDialogElement
     let userData = {};
 
+    let preReg;
+
     async function fetchData() {
-        console.log(data);
         userData = await getUserEditData(data);
+        preReg = userData.permissions === 1;
         showData = true;
         dialog.showModal();
     }
 
     async function submit() {
+        if(preReg){
+            userData.permissions = 1;
+        }else{
+            userData.permissions = null;
+        }
+
         let response = await updateUserEditData(data, userData);
 
         if (response.status === 200) {
@@ -245,14 +254,11 @@
                 />
 
 
-                <label for="permissions">Permissions</label>
-                <input
-                        bind:value={userData.permissions}
-                        id="permissions"
-                        name="permissions"
-                        placeholder="Permissions"
-                        required
-                        type="text"
+                <label for="permissions">Pre Register</label>
+                <Switch
+                        bind:checked={preReg}
+                        fontSize={12}
+                        design="slider"
                 />
 
 
