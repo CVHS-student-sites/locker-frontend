@@ -21,9 +21,9 @@
     }
 
     async function submit() {
-        if(status){
+        if (status) {
             lockerData.status = 1;
-        }else{
+        } else {
             lockerData.status = null;
         }
 
@@ -189,11 +189,11 @@
         color: var(--text);
     }
 
-    .submit:hover{
+    .submit:hover {
         background-color: #577db2;
     }
 
-    .action-cont{
+    .action-cont {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -204,6 +204,21 @@
 
     .action-btn {
         cursor: pointer;
+    }
+
+    .status-cont {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 20px;
+        gap: 8px;
+    }
+
+    .status-text {
+        color: var(--text);
+        line-height: 20px;
+        /*margin-top: 10px;*/
     }
 </style>
 
@@ -223,14 +238,14 @@
             <div class="edit-cont">
 
                 <label for="studentID">Status</label>
-                <Switch
-                        bind:checked={status}
-                        fontSize={12}
-                        design="slider"
-                />
-
-
-
+                <div class="status-cont">
+                    <Switch
+                            bind:checked={status}
+                            fontSize={12}
+                            design="slider"
+                    />
+                    <div class="status-text">{status ? 'Disabled' : 'Can be registered'}</div>
+                </div>
                 <button class="submit" on:click={submit}>Submit</button>
             </div>
         {/if}

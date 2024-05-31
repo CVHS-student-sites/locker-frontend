@@ -22,7 +22,6 @@
         statStore.set(await fetchOverviewData());
         gradesStore.set(await fetchEnabledGrades());
         gradeCounts = Object.values($statStore.regUsersByGrade);
-        console.log(gradeCounts);
         showData = true;
         showChart = true;
     });

@@ -71,6 +71,7 @@
         'Building',
         {
             name: 'Status',
+            id: 'status',
             formatter: (cell) => {
                 if (cell === 1) {
                     return 'Disabled'
@@ -81,6 +82,7 @@
         },
         {
             name: 'Users',
+            id: 'users',
             formatter: (cell) => {
                 // Return the array of student IDs
                 return cell.map(user => user.studentId).join(', ');
@@ -88,6 +90,7 @@
         },
         {
             name: '',
+            id: 'btn',
             formatter: (cell, row) => {
                 return [
                     h('button', {

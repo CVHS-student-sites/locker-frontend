@@ -65,11 +65,11 @@
 
     const columns = [
         'Name',
-        // 'Email',
         'ID',
         'Grade',
         {
             name: 'Permissions',
+            id: 'permissions',
             formatter: (cell) => {
                 if (cell === 1) {
                     return 'PreReg';
@@ -80,6 +80,7 @@
         },
         {
             name: 'Locker',
+            id: 'locker',
             formatter: (cell) => {
                 if (cell === null) {
                     return 'No Locker';
@@ -90,10 +91,12 @@
         },
         {
             name: 'Date Registered',
+            id: 'date',
             formatter: (cell) => moment(cell).format('M/D/YY, h:mm A')
         },
         {
             name: '',
+            id: 'btn',
             formatter: (cell, row) => {
                 return [
                     h('button', {
