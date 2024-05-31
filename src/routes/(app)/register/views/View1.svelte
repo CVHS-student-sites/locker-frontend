@@ -85,9 +85,13 @@
                             let studentArr = [];
                             studentArr.push($studentId1);
 
-                            await sendVerification(studentArr, token);
-                            loading = false;
-                            pageView.set(3);
+                            let verifResponse = await sendVerification(studentArr, token);
+                            if(verifResponse.status === 200){
+                                loading = false;
+                                pageView.set(3);
+                            }else{
+                                console.log(response); //todo we should display something to the users here 
+                            }
                         }else{
                             input1.style.borderColor = "red";
                             input1.value = "";
@@ -175,9 +179,14 @@
                         studentArr.push($studentId1);
                         studentArr.push($studentId2);
                             
-                        await sendVerification(studentArr, token);
-                        loading = false;
-                        pageView.set(3);
+                        let verifResponse = await sendVerification(studentArr, token);
+                        if(verifResponse.status === 200){
+                            loading = false;
+                            pageView.set(3);
+                        }else{
+                            console.log(response); //todo we should display something to the users here 
+                        }
+                        
                     }else{
                         input1.style.borderColor = "red";
                         input1.value = "";
