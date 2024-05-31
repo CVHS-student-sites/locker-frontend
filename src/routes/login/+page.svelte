@@ -34,7 +34,7 @@
         if (response.ok) {
             await goto("/admin");
         } else {
-            // todo Handle login error
+
             loading = false;
         }
     }

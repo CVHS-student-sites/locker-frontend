@@ -30,7 +30,14 @@
     onMount(() => {
         const token = $page.url.searchParams.get('token');
         const studentId = $page.url.searchParams.get('studentId');
-        verify(token, studentId);
+        if(!token || !studentId){
+            visible = false;
+            showError = true;
+            message = 'Verification Link Malformed';
+        }else{
+            verify(token, studentId);
+        }
+
     });
 </script>
 <svelte:head>
