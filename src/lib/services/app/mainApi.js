@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export async function fetchLocker(username) {
     return await fetch(`https://locker-api.cvapps.net/public/lookup-user/${username}`, {
             method: 'get',
@@ -18,11 +20,19 @@ export async function fetchEnabledGrades() {
     return await response.json();
 }
 
-export async function sendVerification(data, token){
-    return await fetch(`https://locker-api.cvapps.net/public/send-verify-student/${data}/${token}`, {
-        method: "post",
-    });
+// export async function sendVerification(data, token){
+//     return await fetch(`https://locker-api.cvapps.net/public/send-verify-student/${data}/${token}`, {
+//         method: "post",
+//     });
+// }
+
+
+export async function sendVerification(data, token) {
+    return await axios.post(`https://locker-api.cvapps.net/public/send-verify-student/${token}`,
+        data
+    );
 }
+
 
 export async function checkVerification(data){
     return await fetch(`https://locker-api.cvapps.net/public/check-verification/${data}`, {

@@ -1,4 +1,6 @@
 <script>
+
+    //todo this is the most messy component of the site, fix that eventually
     import {createEventDispatcher} from "svelte";
     import {SyncLoader} from "svelte-loading-spinners";
 
@@ -80,7 +82,10 @@
                     if (gradeCanRegister) {
                         if(captchaSolved){
                             studentId1.set(student1);
-                            await sendVerification($studentId1, token);
+                            let studentArr = [];
+                            studentArr.push($studentId1);
+
+                            await sendVerification(studentArr, token);
                             loading = false;
                             pageView.set(3);
                         }else{
@@ -166,8 +171,11 @@
             if (status) {
                 if (gradeCanRegister) {
                     if(captchaSolved){
-                        await sendVerification($studentId1, token);
-                        await sendVerification($studentId2, token);
+                        let studentArr = [];
+                        studentArr.push($studentId1);
+                        studentArr.push($studentId2);
+                            
+                        await sendVerification(studentArr, token);
                         loading = false;
                         pageView.set(3);
                     }else{
