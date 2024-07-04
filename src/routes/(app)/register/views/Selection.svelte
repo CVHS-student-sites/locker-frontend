@@ -34,15 +34,17 @@
             }
         }
 
-        data3 = availableLevels.map(item => {
-            if (item === "Top") {
-                return "Double - " + item;
-            }
-            if (item === "Bottom") {
-                return "Double - " + item;
-            }
-            return item;
-        });
+        // data3 = availableLevels.map(item => {
+        //     if (item === "Top") {
+        //         return "Double - " + item;
+        //     }
+        //     if (item === "Bottom") {
+        //         return "Double - " + item;
+        //     }
+        //     return item;
+        // });
+
+        data3 = availableLevels;
     }
 
     async function next() {
