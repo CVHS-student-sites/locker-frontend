@@ -1,9 +1,9 @@
 <script>
     import {onMount} from "svelte";
-    import {writable, get} from "svelte/store";
+    import {get} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
-    import {singleLocker, studentId1, studentId2, selectedLocation, pageView, editMode} from "../store.js";
+    import {editMode, pageView, selectedLocation, singleLocker} from "../store.js";
     import {fetchAvailableLockers} from "$lib/services/app/mainApi.js";
 
     import Select from "$lib/components/app/Select.svelte";
@@ -34,7 +34,15 @@
             }
         }
 
-        data3 = availableLevels;
+        data3 = availableLevels.map(item => {
+            if (item === "Top") {
+                return "Double - " + item;
+            }
+            if (item === "Bottom") {
+                return "Double - " + item;
+            }
+            return item;
+        });
     }
 
     async function next() {
