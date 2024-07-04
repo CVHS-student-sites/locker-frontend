@@ -81,6 +81,20 @@
             "GRAD" 0,
             "opsz" 24;
     }
+
+    .submit {
+        outline: none;
+        border-radius: 5px;
+        color: var(--text);
+        padding: 5px;
+        background: none;
+        border: 2px solid var(--accent-color);
+    }
+
+    .submit:hover {
+        cursor: pointer;
+        background-color: #528cac;
+    }
 </style>
 
 <div class="import-cont">
@@ -90,7 +104,7 @@
 
             <div class="material-symbols-outlined filled-icons">upload_file</div>
         </label>
-        <button on:click={submitLocker}>Upload locker</button>
+        <button class="submit" on:click={submitLocker}>Upload locker</button>
     </div>
 
     <div class="form">
@@ -99,6 +113,6 @@
 
             <div class="material-symbols-outlined filled-icons">upload_file</div>
         </label>
-        <button on:click={submitUser}>Upload user</button>
+        <button class="submit" on:click={submitUser}>Upload user</button>
     </div>
 </div>
