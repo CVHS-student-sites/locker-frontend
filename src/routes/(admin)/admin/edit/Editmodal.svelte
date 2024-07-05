@@ -236,6 +236,10 @@
         flex-direction: row;
         gap: 8px;
     }
+
+    .material-symbols-outlined{
+        user-select: none;
+    }
 </style>
 
 
