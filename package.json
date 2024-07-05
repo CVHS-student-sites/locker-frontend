@@ -28,6 +28,7 @@
 		"moment": "^2.30.1",
 		"svelte-chartjs": "^3.1.5",
 		"svelte-select": "^5.8.3",
-		"svelte-toasts": "^1.1.2"
+		"svelte-toasts": "^1.1.2",
+		"vanilla-tilt": "^1.8.1"
 	}
 }

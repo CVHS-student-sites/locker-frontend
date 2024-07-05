@@ -1,5 +1,5 @@
 <script>
-
+    import HomepageTilt from "$lib/components/app/tilt/HomepageTilt.svelte";
 </script>
 
 <svelte:head>
@@ -54,36 +54,47 @@
 
     .sub {
         display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+    }
+
+    .sub1 {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100%;
+        /*width: 50%;*/
     }
 
-    .landing{
 
-    }
-
-    h1{
+    h1 {
         color: var(--text);
     }
 
-    p{
+    p {
         color: var(--text);
     }
 </style>
 
 <div class="main">
     <div class="sub">
-        <div class="graphic">
-            <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">
+
+        <div class="sub1">
+<!--            <div class="graphic">-->
+<!--                <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">-->
+<!--            </div>-->
+
+            <div class="landing">
+                <h1>Welcome To CV Locker</h1>
+                <p>"We put you in lockers"</p>
+            </div>
         </div>
 
-        <div class="landing">
-            <h1>Welcome To CV Locker</h1>
-            <p>"We put you in lockers"</p>
+        <div class="sub1">
+            <HomepageTilt/>
         </div>
-
-
     </div>
 </div>

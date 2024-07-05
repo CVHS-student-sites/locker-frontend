@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <rect x="6" y="0" width="23" height="54" style="fill:rgb(56,69,79);"/>
+    <rect x="9" y="3" width="17" height="48" style="fill:rgb(72,160,220);"/>
+    <path d="M11,58L8,58L8,54L13,54L11,58Z" style="fill:rgb(127,140,141);fill-rule:nonzero;"/>
+    <path d="M25,58L28,58L28,54L23,54L25,58Z" style="fill:rgb(127,140,141);fill-rule:nonzero;"/>
+    <path d="M21,10L14,10C13.448,10 13,9.552 13,9C13,8.448 13.448,8 14,8L21,8C21.552,8 22,8.448 22,9C22,9.552 21.552,10 21,10Z" style="fill:rgb(41,128,186);fill-rule:nonzero;"/>
+    <path d="M21,13L14,13C13.448,13 13,12.552 13,12C13,11.448 13.448,11 14,11L21,11C21.552,11 22,11.448 22,12C22,12.552 21.552,13 21,13Z" style="fill:rgb(41,128,186);fill-rule:nonzero;"/>
+    <path d="M21,16L14,16C13.448,16 13,15.552 13,15C13,14.448 13.448,14 14,14L21,14C21.552,14 22,14.448 22,15C22,15.552 21.552,16 21,16Z" style="fill:rgb(41,128,186);fill-rule:nonzero;"/>
+    <path d="M22,34C21.448,34 21,33.552 21,33L21,28C21,27.448 21.448,27 22,27C22.552,27 23,27.448 23,28L23,33C23,33.552 22.552,34 22,34Z" style="fill:rgb(236,240,241);fill-rule:nonzero;"/>
+    <rect x="29" y="0" width="23" height="54" style="fill:rgb(84,106,121);"/>
+    <rect x="32" y="3" width="17" height="48" style="fill:rgb(72,160,220);"/>
+    <path d="M34,58L31,58L31,54L36,54L34,58Z" style="fill:rgb(127,140,141);fill-rule:nonzero;"/>
+    <path d="M48,58L51,58L51,54L46,54L48,58Z" style="fill:rgb(127,140,141);fill-rule:nonzero;"/>
+    <path d="M44,10L37,10C36.448,10 36,9.552 36,9C36,8.448 36.448,8 37,8L44,8C44.552,8 45,8.448 45,9C45,9.552 44.552,10 44,10Z" style="fill:rgb(41,128,186);fill-rule:nonzero;"/>
+    <path d="M44,13L37,13C36.448,13 36,12.552 36,12C36,11.448 36.448,11 37,11L44,11C44.552,11 45,11.448 45,12C45,12.552 44.552,13 44,13Z" style="fill:rgb(41,128,186);fill-rule:nonzero;"/>
+    <path d="M44,16L37,16C36.448,16 36,15.552 36,15C36,14.448 36.448,14 37,14L44,14C44.552,14 45,14.448 45,15C45,15.552 44.552,16 44,16Z" style="fill:rgb(41,128,186);fill-rule:nonzero;"/>
+    <path d="M45,34C44.448,34 44,33.552 44,33L44,28C44,27.448 44.448,27 45,27C45.552,27 46,27.448 46,28L46,33C46,33.552 45.552,34 45,34Z" style="fill:rgb(236,240,241);fill-rule:nonzero;"/>
+</svg>
