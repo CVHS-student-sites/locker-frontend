@@ -350,7 +350,7 @@
                                         {#each Object.keys(areas[building]) as floor}
                                             <div class="floor">
                                                 <div class="material-symbols-outlined filled-icons"
-                                                     style="{areas[building][floor] ? 'color:darkgreen' : 'color:darkred'}">{areas[building][floor] ? 'block' : 'check_circle'}
+                                                     style="{areas[building][floor] ? 'color:darkred' : 'color:darkgreen'}">{areas[building][floor] ? 'block' : 'check_circle'}
                                                 </div>
                                                 <div class="area-restrictions-title">
                                                     Floor {floor.split("_")[1]}
