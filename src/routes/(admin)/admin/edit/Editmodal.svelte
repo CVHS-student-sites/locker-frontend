@@ -1,10 +1,10 @@
 <script>
     import {
+        getCheckLockerNumber,
         getUserEditData,
-        updateUserEditData,
-        postRemoveUsersLocker,
         postDeleteUser,
-        getCheckLockerNumber
+        postRemoveUsersLocker,
+        updateUserEditData
     } from "$lib/services/admin/mainApi.js";
     import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
     import Switch from "$lib/components/global/Switch.svelte";
@@ -18,6 +18,7 @@
     let userData = {};
 
     let preReg;
+    let numberValid = false;
 
     async function fetchData() {
         userData = await getUserEditData(data);
@@ -27,9 +28,9 @@
     }
 
     async function submit() {
-        if(preReg){
+        if (preReg) {
             userData.permissions = 1;
-        }else{
+        } else {
             userData.permissions = null;
         }
 
@@ -41,7 +42,7 @@
         }
     }
 
-    async function deleteUser(){
+    async function deleteUser() {
         let response = await postDeleteUser(userData.studentId);
 
         if (response.status === 200) {
@@ -50,7 +51,7 @@
         }
     }
 
-    async function removeLocker(){
+    async function removeLocker() {
         let response = await postRemoveUsersLocker(userData.studentId);
 
         if (response.status === 200) {
@@ -59,8 +60,18 @@
         }
     }
 
-    async function checkLockerNumber(){
-        let response = await getCheckLockerNumber()
+    async function checkLockerNumber() {
+        let response = await getCheckLockerNumber(userData.LockerLockerNumber);
+        numberValid = response.exists;
+    }
+
+    $: if (userData.LockerLockerNumber !== undefined) {
+        if (userData.LockerLockerNumber !== '') {
+            checkLockerNumber();
+        } else {
+            numberValid = true;
+        }
+
     }
 
     $: if (dialog && showModal) {
@@ -199,11 +210,11 @@
         color: var(--text);
     }
 
-    .submit:hover{
+    .submit:hover {
         background-color: #577db2;
     }
 
-    .action-cont{
+    .action-cont {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
@@ -214,6 +225,14 @@
 
     .action-btn {
         cursor: pointer;
+    }
+
+    .input-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 8px;
     }
 </style>
 
@@ -284,14 +303,18 @@
 
 
                 <label for="email">Locker</label>
-                <input
-                        bind:value={userData.LockerLockerNumber}
-                        id="locker"
-                        name="locker"
-                        placeholder="Locker Number"
-                        type="text"
-                />
-
+                <div class="input-row">
+                    <input
+                            bind:value={userData.LockerLockerNumber}
+                            id="locker"
+                            name="locker"
+                            placeholder="Locker Number"
+                            type="text"
+                    >
+                    <div class="material-symbols-outlined filled-icons"
+                         style="{numberValid ? 'color:darkgreen' : 'color:darkred'}">{numberValid ? 'check_circle' : 'cancel'}
+                    </div>
+                </div>
 
                 <button class="submit" on:click={submit}>Submit</button>
 
