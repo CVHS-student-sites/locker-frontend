@@ -1,5 +1,6 @@
 import axios from "axios";
 import { throwErrorToast } from "./throwToast.js";
+import {downloadFile} from "$lib/services/admin/utils/fileDonwload.js";
 
 export async function fetchOverviewData() {
     const response = await fetch('https://locker-api.cvapps.net/admin/management/get-statistics', {
@@ -98,6 +99,20 @@ export async function postEnabledGrades(data) {
 export async function getUserEditData(user) {
     try {
         const response = await axios.get(`https://locker-api.cvapps.net/admin/edit/user-edit/${user}`,
+            {
+                withCredentials: true
+            }
+        );
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
+export async function getCheckLockerNumber(locker) {
+    try {
+        const response = await axios.get(`https://locker-api.cvapps.net/admin/edit/check-locker/${locker}`,
             {
                 withCredentials: true
             }
@@ -213,3 +228,13 @@ export async function postUserFile(formData) {
         throw error;
     }
 }
+
+export async function getUserCSV(){
+    try {
+        await downloadFile('users.csv', 'https://locker-api.cvapps.net/admin/csv-action/gen-user-csv');
+    }catch(error){
+        throwErrorToast("Server error");
+        throw error;
+    }
+}
+

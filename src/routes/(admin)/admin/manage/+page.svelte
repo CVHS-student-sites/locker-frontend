@@ -4,6 +4,7 @@
     import RegisterEdit from "./RegisterEdit.svelte";
 
     import UploadData from "./UploadData.svelte";
+    import DownloadCSV from "./DownloadCSV.svelte";
 </script>
 
 <svelte:head>
@@ -102,7 +103,12 @@
                 <UploadData/>
             </div>
         </div>
-        <div class="grid-item"></div>
+        <div class="grid-item">
+            <div class="subcont-main">
+                <div class="subcont-title">Download Data</div>
+                <DownloadCSV/>
+            </div>
+        </div>
         <div class="grid-item"></div>
     </div>
 </div>

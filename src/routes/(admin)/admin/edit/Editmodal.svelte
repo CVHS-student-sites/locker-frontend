@@ -1,5 +1,11 @@
 <script>
-    import {getUserEditData, updateUserEditData, postRemoveUsersLocker, postDeleteUser} from "$lib/services/admin/mainApi.js";
+    import {
+        getUserEditData,
+        updateUserEditData,
+        postRemoveUsersLocker,
+        postDeleteUser,
+        getCheckLockerNumber
+    } from "$lib/services/admin/mainApi.js";
     import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
     import Switch from "$lib/components/global/Switch.svelte";
 
@@ -51,6 +57,10 @@
             dialog.close();
             throwSuccessToast("Locker cleared successfully");
         }
+    }
+
+    async function checkLockerNumber(){
+        let response = await getCheckLockerNumber()
     }
 
     $: if (dialog && showModal) {
@@ -270,6 +280,16 @@
                         placeholder="Email"
                         required
                         type="email"
+                />
+
+
+                <label for="email">Locker</label>
+                <input
+                        bind:value={userData.LockerLockerNumber}
+                        id="locker"
+                        name="locker"
+                        placeholder="Locker Number"
+                        type="text"
                 />
 
 
