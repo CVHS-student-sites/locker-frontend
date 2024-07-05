@@ -18,7 +18,7 @@
     let userData = {};
 
     let preReg;
-    let numberValid = false;
+    let numberValid = true;
 
     async function fetchData() {
         userData = await getUserEditData(data);
