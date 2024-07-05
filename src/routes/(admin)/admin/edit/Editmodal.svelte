@@ -34,6 +34,8 @@
             userData.permissions = null;
         }
 
+        if(userData.LockerLockerNumber === '') userData.LockerLockerNumber = null;
+
         let response = await updateUserEditData(data, userData);
 
         if (response.status === 200) {
@@ -302,7 +304,7 @@
                 />
 
 
-                <label for="email">Locker</label>
+                <label for="email">Locker Number</label>
                 <div class="input-row">
                     <input
                             bind:value={userData.LockerLockerNumber}
