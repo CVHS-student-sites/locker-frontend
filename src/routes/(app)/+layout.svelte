@@ -16,6 +16,18 @@
         width: 100vw;
     }
 
+    .credits{
+        position: absolute;
+        bottom: 0;
+        color: rgba(214, 214, 214, 0.14);
+        font-family: "Montserrat", sans-serif;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+    }
+
     :root {
         --text: #d6d6d6;
         --background: #101014;
@@ -29,5 +41,6 @@
 <div class="layout-main">
     <Topnav/>
     <slot/>
+    <div class="credits">Developed by Marc Hyeler</div>
     <Botnav/>
 </div>
