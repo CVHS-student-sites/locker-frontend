@@ -41,6 +41,6 @@
 <div class="layout-main">
     <Topnav/>
     <slot/>
-    <div class="credits">Developed by Marc Hyeler</div>
+<!--    <div class="credits">Developed by Marc Hyeler</div>-->
     <Botnav/>
 </div>
