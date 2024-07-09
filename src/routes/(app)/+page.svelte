@@ -1,5 +1,13 @@
 <script>
+    import {blur} from 'svelte/transition';
+    import {onMount} from 'svelte';
+
     import HomepageTilt from "$lib/components/app/tilt/HomepageTilt.svelte";
+
+    let visible = false;
+    onMount(() => {
+        visible = true;
+    });
 </script>
 
 <svelte:head>
@@ -92,20 +100,21 @@
 
 <div class="main">
     <div class="sub">
+        {#if visible}
+            <div class="sub1">
+                <!--            <div class="graphic">-->
+                <!--                <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">-->
+                <!--            </div>-->
 
-        <div class="sub1">
-<!--            <div class="graphic">-->
-<!--                <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">-->
-<!--            </div>-->
-
-            <div class="landing">
-                <h1>Welcome To CV Locker</h1>
-                <p>"We put you in lockers"</p>
+                <div class="landing">
+                    <h1 in:blur={{ delay: 50, duration: 300 }}>Welcome To CV Locker</h1>
+                    <p in:blur={{ delay: 400, duration: 600 }}>"We put you in lockers"</p>
+                </div>
             </div>
-        </div>
 
-        <div class="sub1">
-            <HomepageTilt/>
-        </div>
+            <div class="sub1" in:blur={{ delay: 250, duration: 300 }}>
+                <HomepageTilt/>
+            </div>
+        {/if}
     </div>
 </div>
