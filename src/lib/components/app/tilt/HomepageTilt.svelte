@@ -20,7 +20,7 @@
     .inner {
         width: 200px;
         height: 200px;
-        transform: translateZ(20px);
+        transform: translateZ(50px);
     }
 
     .logo{
