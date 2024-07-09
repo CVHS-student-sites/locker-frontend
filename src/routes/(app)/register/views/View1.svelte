@@ -64,6 +64,7 @@
     }
 
     //todo this could use a hell of a lot of optimization
+    //stinky hacks incoming
     async function login(event) {
         event.preventDefault();
 
