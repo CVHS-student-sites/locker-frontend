@@ -1,11 +1,17 @@
 <script>
-    import {onMount} from "svelte";
-    import {writable} from "svelte/store";
     import {slide} from "svelte/transition";
     import {quartOut} from "svelte/easing";
     import {submitLockers} from "$lib/services/app/mainApi.js";
 
-    import {singleLocker, registrationData, studentId1, studentId2, selectedLocation, pageView, editMode} from "../store.js";
+    import {
+        editMode,
+        pageView,
+        registrationData,
+        selectedLocation,
+        singleLocker,
+        studentId1,
+        studentId2
+    } from "../store.js";
     import {goto} from "$app/navigation";
     import {SyncLoader} from "svelte-loading-spinners";
 
@@ -44,7 +50,7 @@
     }
 
 
-    function back(){
+    function back() {
         pageView.set(1);
         editMode.set(true);
     }
@@ -109,7 +115,6 @@
         align-items: center;
         justify-content: center;
     }
-
 
 
     .item {
@@ -190,7 +195,7 @@
         gap: 10px;
     }
 
-    .loading-bar{
+    .loading-bar {
         position: absolute;
         top: -50px;
         width: 100%;
@@ -223,7 +228,9 @@
         <div class="box-cont">
 
             {#if loading}
-                <div class="loading-bar"><SyncLoader size="40" color="#577db2" unit="px" duration="0.8s" /></div>
+                <div class="loading-bar">
+                    <SyncLoader size="40" color="#577db2" unit="px" duration="0.8s"/>
+                </div>
             {/if}
 
 
@@ -232,16 +239,16 @@
             <div class="selection-div">
                 <div class="expand">
                     <div class="item">
+                        <div class="data-cont">{$selectedLocation.level}</div>
+                        <div class="text">Level</div>
+                    </div>
+                    <div class="item">
                         <div class="data-cont">{$selectedLocation.building}</div>
                         <div class="text">Building</div>
                     </div>
                     <div class="item">
                         <div class="data-cont">{$selectedLocation.floor}</div>
                         <div class="text">Floor</div>
-                    </div>
-                    <div class="item">
-                        <div class="data-cont">{$selectedLocation.level}</div>
-                        <div class="text">Level</div>
                     </div>
                 </div>
             </div>

@@ -167,7 +167,7 @@
 <div class="main" in:fade={{ delay: 0, duration: 700, easing: quartOut }}>
     <div class="box">
         <div class="box-cont">
-            <div class="box-header">Grades that can Register:</div>
+            <div class="box-header">Grades that can Register</div>
 
             <div class="stat-div">
                 <div class="stat-1-subcont-1">
