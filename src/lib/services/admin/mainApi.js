@@ -167,8 +167,6 @@ export async function updateLockerEditData(locker, data) {
     }
 }
 
-
-
 export async function postRemoveUsersLocker(user) {
     try {
         return await axios.post(`https://locker-api.cvapps.net/admin/edit/remove-users-locker/${user}`,
@@ -193,6 +191,19 @@ export async function postDeleteUser(user) {
         );
     } catch (error) {
         throwErrorToast("Server error");
+        throw error;
+    }
+}
+
+export async function postCreateUser(data) {
+    try {
+        return await axios.post('https://locker-api.cvapps.net/admin/manual/create-user',
+            data
+            , {
+                withCredentials: true
+            }
+        );
+    } catch (error) {
         throw error;
     }
 }

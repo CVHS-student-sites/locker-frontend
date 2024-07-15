@@ -1,10 +1,18 @@
 <script>
 
-    import {SyncLoader} from "svelte-loading-spinners";
+    import {pageView} from "../store.js";
+
+    import {postCreateUser} from "$lib/services/admin/mainApi.js";
+
+    import Switch from "$lib/components/global/Switch.svelte";
+    import {throwErrorToast, throwSuccessToast} from "$lib/services/admin/throwToast.js";
 
 
-    let student1 = "";
-    let student2 = "";
+    let studentId = "";
+    let name = "";
+    let grade = "";
+    let email = "";
+    let preReg = false;
 
 
     let input1;
@@ -20,6 +28,24 @@
 
     async function login(event) {
         event.preventDefault();
+        let data = {
+            studentId: parseInt(studentId),
+            name: name,
+            grade: parseInt(grade),
+            email: email,
+            permissions: preReg ? 1 : null
+        }
+        console.log(data)
+        try {
+            let response = await postCreateUser(data);
+            if (response.status === 200) {
+                throwSuccessToast("User Create successfully");
+                pageView.set(0);
+            }
+        } catch (error) {
+            throwErrorToast(error.response.data.error)
+        }
+
     }
 
     function back() {
@@ -41,16 +67,9 @@
         --accent: #577db2;
     }
 
-    .create-cont{
+    .create-cont {
         height: 100%;
     }
-
-    /*.main-animate{*/
-    /*    !*position: absolute;*!*/
-    /*    height: 100vh;*/
-    /*    width: 100vw;*/
-    /*}*/
-
 
     .login {
         display: flex;
@@ -63,7 +82,7 @@
         height: 100%;
     }
 
-    .notes-cont{
+    .notes-cont {
         width: 352px;
         /*height: 100%;*/
         padding: 32px;
@@ -227,31 +246,30 @@
 <div class="create-cont">
     <div class="login">
 
-<!--        todo talk to poole to see if there should be notes here-->
-<!--        <div class="notes-cont">-->
-<!--            <h3>Notes on using Create User</h3>-->
-<!--            <p>Students entered into system using this dialog will be automatically verified</p>-->
+        <!--        todo talk to poole to see if there should be notes here-->
+        <!--        <div class="notes-cont">-->
+        <!--            <h3>Notes on using Create User</h3>-->
+        <!--            <p>Students entered into system using this dialog will be automatically verified</p>-->
 
-<!--            <p>After creating user, they can register locker on their own, or admin can assign locker number manually</p>-->
-<!--        </div>-->
+        <!--            <p>After creating user, they can register locker on their own, or admin can assign locker number manually</p>-->
+        <!--        </div>-->
 
-
+        <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
         <div class="login-cont">
 
 
             <div class="login-header">Create User</div>
 
-            <form
+
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div
                     class="login-form"
-                    on:keydown={{handleKeyPress}}
-                    on:submit={login}
+                    on:click|stopPropagation
 
             >
                 <label>Student ID</label>
-
                 <input
-                        bind:this={input1}
-                        bind:value={student1}
+                        bind:value={studentId}
                         id="1studentId"
                         name="1studentId"
                         placeholder="6-Digit ID"
@@ -260,10 +278,8 @@
                 />
 
                 <label>Name</label>
-
                 <input
-                        bind:this={input1}
-                        bind:value={student1}
+                        bind:value={name}
                         id="1studentId"
                         name="1studentId"
                         placeholder="Full Name"
@@ -272,10 +288,8 @@
                 />
 
                 <label>Grade</label>
-
                 <input
-                        bind:this={input1}
-                        bind:value={student1}
+                        bind:value={grade}
                         id="1studentId"
                         name="1studentId"
                         placeholder="9-12"
@@ -284,12 +298,9 @@
                 />
 
 
-
                 <label>Email</label>
-
                 <input
-                        bind:this={input1}
-                        bind:value={student1}
+                        bind:value={email}
                         id="1studentId"
                         name="1studentId"
                         placeholder="GUSD Email"
@@ -298,27 +309,19 @@
                 />
 
                 <label>Permissions</label>
-
-                <input
-                        bind:this={input1}
-                        bind:value={student1}
-                        id="1studentId"
-                        name="1studentId"
-                        placeholder=""
-                        required
-                        type="text"
+                <Switch
+                        bind:checked={preReg}
+                        fontSize={12}
+                        design="slider"
                 />
 
 
-
                 <div class="button-cont">
-                    <button class="nav-btn" type="button">
+                    <button class="nav-btn" type="button" on:click={login}>
                         Submit
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-
-
 </div>

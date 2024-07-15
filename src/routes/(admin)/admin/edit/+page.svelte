@@ -3,7 +3,15 @@
     import UserEdit from "./views/UserEdit.svelte";
     import CreateUser from "./views/CreateUser.svelte";
 
-    let selected = UserEdit;
+    import {pageView} from "./store.js";
+
+    let selected;
+    pageView.set(0);
+
+    $: if ($pageView === 0) selected = UserEdit;
+    $: if ($pageView === 1) selected = LockerEdit;
+    $: if ($pageView === 2) selected = CreateUser;
+
 
 
 </script>
@@ -74,14 +82,14 @@
 
 <div class="main">
     <div class="top-menu">
-        <div class="dataselect-button" on:click={() => (selected = UserEdit)}
-             class:data-active-button={selected === UserEdit}>Users
+        <div class="dataselect-button" on:click={() => (pageView.set(0))}
+             class:data-active-button={$pageView === 0}>Users
         </div>
-        <div class="dataselect-button" on:click={() => (selected = LockerEdit)}
-             class:data-active-button={selected === LockerEdit}>Lockers
+        <div class="dataselect-button" on:click={() => (pageView.set(1))}
+             class:data-active-button={$pageView === 1}>Lockers
         </div>
-        <div class="dataselect-button" on:click={() => (selected = CreateUser)}
-             class:data-active-button={selected === CreateUser}>Create
+        <div class="dataselect-button" on:click={() => (pageView.set(2))}
+             class:data-active-button={$pageView === 2}>Create
         </div>
     </div>
     <div class="sub-scroll">
