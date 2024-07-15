@@ -308,7 +308,7 @@
                         type="text"
                 />
 
-                <label>Permissions</label>
+                <label>Pre Register</label>
                 <Switch
                         bind:checked={preReg}
                         fontSize={12}
