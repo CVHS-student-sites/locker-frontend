@@ -34,7 +34,8 @@
         if (response.ok) {
             await goto("/admin");
         } else {
-
+            let jsons = await response.json()
+            alert(jsons.message);
             loading = false;
         }
     }
