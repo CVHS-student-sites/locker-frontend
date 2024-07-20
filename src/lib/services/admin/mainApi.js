@@ -249,3 +249,13 @@ export async function getUserCSV(){
     }
 }
 
+export async function getLockerCSV(){
+    try {
+        await downloadFile('locker.csv', 'https://locker-api.cvapps.net/admin/csv-action/gen-locker-csv');
+    }catch(error){
+        throwErrorToast("Server error");
+        throw error;
+    }
+}
+
+

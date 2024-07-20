@@ -1,11 +1,15 @@
 <script>
     import { throwSuccessToast, throwWarningToast } from "$lib/services/admin/throwToast.js";
 
-    import {getUserCSV} from "$lib/services/admin/mainApi.js";
+    import {getLockerCSV, getUserCSV} from "$lib/services/admin/mainApi.js";
 
 
     async function getUser(){
-        await getUserCSV()
+        await getUserCSV();
+    }
+
+    async function getLocker(){
+        await getLockerCSV();
     }
 </script>
 
@@ -75,7 +79,7 @@
 <div class="import-cont">
     <div class="form">
 
-        <button class="submit" on:click={getUser}>Download locker</button>
+        <button class="submit" on:click={getLocker}>Download locker</button>
     </div>
 
     <div class="form">
