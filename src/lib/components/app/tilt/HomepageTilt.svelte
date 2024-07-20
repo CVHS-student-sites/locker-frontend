@@ -26,6 +26,7 @@
     .logo{
         width: 200px;
         height: 200px;
+        pointer-events: none;
     }
 </style>
 
@@ -33,7 +34,7 @@
 <div class="main"
      use:tilt={{ "full-page-listening": true, reverse: true, glare: false, "max-glare":0.5, speed:2000, "max":"10", perspective:500 }}>
     <div class="inner">
-        <img class="logo" src="/CVHS-logo.png">
+        <img class="logo" alt="cvhs falcon logo" src="/CVHS-logo.png">
     </div>
 
 </div>
