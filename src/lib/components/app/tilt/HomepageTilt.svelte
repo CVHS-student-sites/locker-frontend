@@ -27,6 +27,7 @@
         width: 200px;
         height: 200px;
         pointer-events: none;
+        user-select: none;
     }
 </style>
 
