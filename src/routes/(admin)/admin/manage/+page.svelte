@@ -79,6 +79,7 @@
         justify-content: center;
         overflow-y: scroll;
         gap: 5px;
+        scrollbar-width: none;
     }
 
 
