@@ -1,5 +1,6 @@
 <script>
     import {blur} from 'svelte/transition';
+    import { fly } from 'svelte/transition';
     import {onMount} from 'svelte';
 
     import HomepageTilt from "$lib/components/app/tilt/HomepageTilt.svelte";
@@ -52,13 +53,13 @@
         margin-right: auto;
     }
 
-    p {
-        font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-        color: #d6d6d6;
-        text-align: center;
-        padding: 1vh
+    .landing {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
+
 
     .sub {
         display: flex;
@@ -73,17 +74,46 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        /*height: 100%;*/
+        color: var(--text);
         /*width: 50%;*/
     }
 
+    .info-cont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        flex-direction: column;
+    }
 
-    h1 {
-        color: var(--text);
+    .list-cont {
+        justify-content: center;
+        display: flex;
+
+        width: 400px;
+        border: 2px solid #577db2;
+        border-radius: 100px;
+        padding: 8px;
+        box-sizing: content-box;
     }
 
     p {
-        color: var(--text);
+        width: 350px;
+        font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+        text-align: center;
+        margin: 0;
+    }
+
+    h1{
+        margin: 0;
+    }
+
+    h3 {
+        margin-bottom: 6px;
+        color: #acacb0;
+        /*align-self: flex-start;*/
     }
 
     @media screen and (max-width: 600px) {
@@ -102,14 +132,29 @@
     <div class="sub">
         {#if visible}
             <div class="sub1">
-                <!--            <div class="graphic">-->
-                <!--                <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">-->
-                <!--            </div>-->
+
 
                 <div class="landing">
                     <h1 in:blur={{ delay: 50, duration: 300 }}>Welcome To CV Locker</h1>
-                    <p in:blur={{ delay: 400, duration: 600 }}>"We put you in lockers"</p>
+                    <h3 in:blur={{ delay: 300, duration: 500 }}>Some info to get you started</h3>
+
+                    <div class="info-cont">
+                        <div class="list-cont" in:fly={{ delay: 700, duration: 350, x: -800, y: 0, opacity: 0.5 }}>
+                            <p>To register for a locker at CV, you need a locker partner, except for single lockers on
+                                the 3rd floor of the 1000 building.</p>
+                        </div>
+
+                        <div class="list-cont" in:fly={{ delay: 800, duration: 350, x: -800, y: 0, opacity: 0.5 }}>
+                            <p>You and your partner are responsible for all items in the locker. CV is not liable for
+                                lost or stolen items.</p>
+                        </div>
+
+                        <div class="list-cont" in:fly={{ delay: 900, duration: 350, x: -800, y: 0, opacity: 0.5 }}>
+                            <p>Locks are available for purchase at the Student Store.</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <div class="sub1" in:blur={{ delay: 250, duration: 300 }}>
