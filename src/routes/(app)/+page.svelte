@@ -1,6 +1,5 @@
 <script>
-    import {blur} from 'svelte/transition';
-    import { fly } from 'svelte/transition';
+    import {blur, fly, slide} from 'svelte/transition';
     import {onMount} from 'svelte';
 
     import HomepageTilt from "$lib/components/app/tilt/HomepageTilt.svelte";
@@ -95,6 +94,12 @@
         border-radius: 100px;
         padding: 8px;
         box-sizing: content-box;
+
+
+        -webkit-box-shadow:0px 0px 15px 0px rgba(5,119,219,0.16);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(5,119,219,0.16);
+        box-shadow: 0px 0px 15px 0px rgba(5,119,219,0.16);
+
     }
 
     p {
@@ -106,7 +111,7 @@
         margin: 0;
     }
 
-    h1{
+    h1 {
         margin: 0;
     }
 
@@ -139,17 +144,17 @@
                     <h3 in:blur={{ delay: 300, duration: 500 }}>Some info to get you started</h3>
 
                     <div class="info-cont">
-                        <div class="list-cont" in:fly={{ delay: 700, duration: 350, x: -800, y: 0, opacity: 0.5 }}>
+                        <div class="list-cont" in:slide={{ delay: 700, duration: 350, axis: 'y' }}>
                             <p>To register for a locker at CV, you need a locker partner, except for single lockers on
                                 the 3rd floor of the 1000 building.</p>
                         </div>
 
-                        <div class="list-cont" in:fly={{ delay: 800, duration: 350, x: -800, y: 0, opacity: 0.5 }}>
+                        <div class="list-cont" in:slide={{ delay: 850, duration: 350, axis: 'y' }}>
                             <p>You and your partner are responsible for all items in the locker. CV is not liable for
                                 lost or stolen items.</p>
                         </div>
 
-                        <div class="list-cont" in:fly={{ delay: 900, duration: 350, x: -800, y: 0, opacity: 0.5 }}>
+                        <div class="list-cont" in:slide={{ delay: 1000, duration: 350, axis: 'y' }}>
                             <p>Locks are available for purchase at the Student Store.</p>
                         </div>
                     </div>
