@@ -1,5 +1,5 @@
 <script>
-    import {blur, fly, slide} from 'svelte/transition';
+    import {blur, slide} from 'svelte/transition';
     import {onMount} from 'svelte';
 
     import HomepageTilt from "$lib/components/app/tilt/HomepageTilt.svelte";
@@ -95,10 +95,9 @@
         padding: 8px;
         box-sizing: content-box;
 
-
-        -webkit-box-shadow:0px 0px 15px 0px rgba(5,119,219,0.16);
-        -moz-box-shadow: 0px 0px 15px 0px rgba(5,119,219,0.16);
-        box-shadow: 0px 0px 15px 0px rgba(5,119,219,0.16);
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(5, 119, 219, 0.16);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(5, 119, 219, 0.16);
+        box-shadow: 0px 0px 15px 0px rgba(5, 119, 219, 0.16);
 
     }
 
@@ -130,6 +129,19 @@
             justify-content: center;
             height: 100%;
         }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            width: 90%;
+        }
+
+        .list-cont {
+            width: 90vw;
+        }
+
     }
 </style>
 
