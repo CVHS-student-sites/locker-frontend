@@ -277,7 +277,7 @@
                         type="text"
                 />
 
-                <label>Name</label>
+                <label>Full Name</label>
                 <input
                         bind:value={name}
                         id="1studentId"
