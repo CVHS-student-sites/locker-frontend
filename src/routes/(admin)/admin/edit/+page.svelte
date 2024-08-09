@@ -2,8 +2,10 @@
     import LockerEdit from "./views/LockerEdit.svelte";
     import UserEdit from "./views/UserEdit.svelte";
     import CreateUser from "./views/CreateUser.svelte";
+    import VerifyUser from "./views/VerifyUser.svelte";
 
     import {pageView} from "./store.js";
+
 
     let selected;
     pageView.set(0);
@@ -11,6 +13,8 @@
     $: if ($pageView === 0) selected = UserEdit;
     $: if ($pageView === 1) selected = LockerEdit;
     $: if ($pageView === 2) selected = CreateUser;
+    $: if ($pageView === 3) selected = VerifyUser;
+
 
 
 
@@ -91,6 +95,9 @@
         </div>
         <div class="dataselect-button" on:click={() => (pageView.set(2))}
              class:data-active-button={$pageView === 2}>Create
+        </div>
+        <div class="dataselect-button" on:click={() => (pageView.set(3))}
+             class:data-active-button={$pageView === 3}>Verify Student
         </div>
     </div>
     <div class="sub-scroll">
