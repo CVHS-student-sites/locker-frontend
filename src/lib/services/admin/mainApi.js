@@ -208,6 +208,19 @@ export async function postCreateUser(data) {
     }
 }
 
+export async function postVerifyUser(data) {
+    try {
+        return await axios.post(`https://locker-api.cvapps.net/admin/manual/verify-user/${data}`,
+            null,
+            {
+                withCredentials: true
+            }
+        );
+    } catch (error) {
+        throw error;
+    }
+}
+
 export async function postLockerFile(formData) {
     try {
         return await axios.post('https://locker-api.cvapps.net/admin/lockerUpload',

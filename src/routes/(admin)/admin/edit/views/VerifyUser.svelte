@@ -1,22 +1,12 @@
 <script>
-
     import {pageView} from "../store.js";
 
-    import {postCreateUser} from "$lib/services/admin/mainApi.js";
+    import {postVerifyUser} from "$lib/services/admin/mainApi.js";
 
-    import Switch from "$lib/components/global/Switch.svelte";
     import {throwErrorToast, throwSuccessToast} from "$lib/services/admin/throwToast.js";
 
 
     let studentId = "";
-    let name = "";
-    let grade = "";
-    let email = "";
-    let preReg = false;
-
-
-    let input1;
-    let input2;
 
 
     function handleKeyPress(event) {
@@ -28,18 +18,10 @@
 
     async function login(event) {
         event.preventDefault();
-        let data = {
-            studentId: parseInt(studentId),
-            name: name,
-            grade: parseInt(grade),
-            email: email,
-            permissions: preReg ? 1 : null
-        }
-        console.log(data)
         try {
-            let response = await postCreateUser(data);
+            let response = await postVerifyUser(parseInt(studentId));
             if (response.status === 200) {
-                throwSuccessToast("User Created Successfully");
+                throwSuccessToast("User Verified Successfully");
                 pageView.set(0);
             }
         } catch (error) {
@@ -48,14 +30,10 @@
 
     }
 
-    function back() {
-
-    }
-
 </script>
 
 <svelte:head>
-    <title>Locker - Create</title>
+    <title>Locker - Verify User</title>
 </svelte:head>
 
 <style>
@@ -258,7 +236,7 @@
         <div class="login-cont">
 
 
-            <div class="login-header">Create User</div>
+            <div class="login-header">Manual Verify User</div>
 
 
             <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -276,45 +254,6 @@
                         required
                         type="text"
                 />
-
-                <label>Full Name</label>
-                <input
-                        bind:value={name}
-                        id="1studentId"
-                        name="1studentId"
-                        placeholder="Full Name"
-                        required
-                        type="text"
-                />
-
-                <label>Grade</label>
-                <input
-                        bind:value={grade}
-                        id="1studentId"
-                        name="1studentId"
-                        placeholder="9-12"
-                        required
-                        type="text"
-                />
-
-
-                <label>Email</label>
-                <input
-                        bind:value={email}
-                        id="1studentId"
-                        name="1studentId"
-                        placeholder="GUSD Email"
-                        required
-                        type="text"
-                />
-
-                <label>Pre Register</label>
-                <Switch
-                        bind:checked={preReg}
-                        fontSize={12}
-                        design="slider"
-                />
-
 
                 <div class="button-cont">
                     <button class="nav-btn" type="button" on:click={login}>

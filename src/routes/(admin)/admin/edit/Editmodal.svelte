@@ -34,7 +34,7 @@
             userData.permissions = null;
         }
 
-        if(userData.LockerLockerNumber === '') userData.LockerLockerNumber = null;
+        if (userData.LockerLockerNumber === '') userData.LockerLockerNumber = null;
 
         let response = await updateUserEditData(data, userData);
 
@@ -225,8 +225,23 @@
         margin-top: 10px;
     }
 
+    .hint-text{
+        color: var(--text);
+        font-size: 12px;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 5px;
+    }
+
     .action-btn {
         cursor: pointer;
+    }
+
+    .action-btn-cont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
     }
 
     .input-row {
@@ -237,7 +252,7 @@
         gap: 8px;
     }
 
-    .material-symbols-outlined{
+    .material-symbols-outlined {
         user-select: none;
     }
 </style>
@@ -326,8 +341,14 @@
 
 
                 <div class="action-cont">
-                    <div class="action-btn material-symbols-outlined" on:click={deleteUser}>delete</div>
-                    <div class="action-btn material-symbols-outlined" on:click={removeLocker}>person_remove</div>
+                    <div class="action-btn-cont">
+                        <div class="action-btn material-symbols-outlined" on:click={deleteUser}>delete</div>
+                        <div class="hint-text">Delete User</div>
+                    </div>
+                    <div class="action-btn-cont">
+                        <div class="action-btn material-symbols-outlined" on:click={removeLocker}>person_remove</div>
+                        <div class="hint-text">Clear Locker</div>
+                    </div>
                 </div>
             </div>
         {/if}
