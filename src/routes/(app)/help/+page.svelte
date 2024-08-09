@@ -1,4 +1,6 @@
-<script></script>
+<script>
+    import BPLogo from "$lib/components/global/BPLogo.svelte";
+</script>
 
 <svelte:head>
     <title>CVHS Locker</title>
@@ -51,18 +53,24 @@
     }
 
     .sub {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+
     }
 
 </style>
 
 <div class="main">
-    <!--    <Topnav />-->
     <div class="sub">
         <img alt="CVHS falcon logo" class="big-logo" src="/CVHS-logo.png">
-        <ul class="list">
-            <li><p>Please contact the AP office for help with locker registration: <a
-                    href="mailto:miguelgonzalez@gusd.net" target="_blank">Miguel Gonzalez</a></p></li>
-        </ul>
+
+        <p>Please contact the AP office for help with locker registration: <a
+                href="mailto:miguelgonzalez@gusd.net" target="_blank">Miguel Gonzalez</a></p>
+
+        <BPLogo/>
     </div>
-    <!--    <Botnav pageId={0}/>-->
 </div>
