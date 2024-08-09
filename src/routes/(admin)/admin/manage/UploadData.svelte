@@ -65,6 +65,20 @@
         /* padding: 6px; */
         cursor: pointer;
         box-sizing: border-box;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+
+    }
+
+    .hint-text{
+        color: var(--text);
+        font-size: 12px;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 5px;
     }
 
     .material-symbols-outlined {
@@ -103,6 +117,7 @@
             <input accept=".csv" class="input" id="locker" name="locker" type="file" bind:files={file1} />
 
             <div class="material-symbols-outlined filled-icons">upload_file</div>
+            <div class="hint-text">Click icon to select file</div>
         </label>
         <button class="submit" on:click={submitLocker}>Upload locker</button>
     </div>
@@ -112,6 +127,7 @@
             <input accept=".csv" class="input" id="locker" name="locker" type="file" bind:files={file2} />
 
             <div class="material-symbols-outlined filled-icons">upload_file</div>
+            <div class="hint-text">Click icon to select file</div>
         </label>
         <button class="submit" on:click={submitUser}>Upload user</button>
     </div>
