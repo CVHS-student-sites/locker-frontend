@@ -29,6 +29,25 @@
         pointer-events: none;
         user-select: none;
     }
+
+    @media screen and (max-width: 600px) {
+        .main {
+            width: 150px;
+            height: 150px;
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            transform: translateZ(30px);
+        }
+
+        .logo{
+            width: 100px;
+            height: 100px;
+        }
+
+    }
 </style>
 
 
