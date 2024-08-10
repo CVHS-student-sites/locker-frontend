@@ -162,11 +162,15 @@
                         </div>
 
                         <div class="list-cont" in:slide={{ delay: 850, duration: 350, axis: 'y' }}>
+                            <p>This process will require students to verify their emails upon registration.</p>
+                        </div>
+
+                        <div class="list-cont" in:slide={{ delay: 1000, duration: 350, axis: 'y' }}>
                             <p>You and your partner are responsible for all items in the locker. CV is not liable for
                                 lost or stolen items.</p>
                         </div>
 
-                        <div class="list-cont" in:slide={{ delay: 1000, duration: 350, axis: 'y' }}>
+                        <div class="list-cont" in:slide={{ delay: 1150, duration: 350, axis: 'y' }}>
                             <p>Locks are available for purchase at the Student Store.</p>
                         </div>
                     </div>
