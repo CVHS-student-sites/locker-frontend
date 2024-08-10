@@ -80,5 +80,5 @@
         {/if}
     </svg>
 
-    <div class="cred-text">Site Developed by Marc Hyeler</div>
+    <div class="cred-text">Site Developed by birdpump</div>
 </div>
