@@ -271,4 +271,16 @@ export async function getLockerCSV(){
     }
 }
 
-
+export async function getDebugLogs(locker) {
+    try {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/debug/get-logs',
+            {
+                withCredentials: true
+            }
+        );
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error;
+    }
+}
