@@ -9,7 +9,7 @@
 
     $: if ($page.url.pathname === '/admin/edit') selectPage = 1;
     $: if ($page.url.pathname === '/admin/manage') selectPage = 2;
-    $: if ($page.url.pathname === '/admin/settings') selectPage = 3;
+    // $: if ($page.url.pathname === '/admin/settings') selectPage = 3;
     $: if ($page.url.pathname === '/admin/debug') selectPage = 4;
 
 </script>
@@ -150,12 +150,12 @@
         </div>
     </a>
 
-    <a href="/admin/settings">
-        <div class="side-element-2" class:active-button={selectPage === 3}>
-            <div class="material-symbols-outlined">settings</div>
-            <div class="button-text">Settings</div>
-        </div>
-    </a>
+<!--    <a href="/admin/settings">-->
+<!--        <div class="side-element-2" class:active-button={selectPage === 3}>-->
+<!--            <div class="material-symbols-outlined">settings</div>-->
+<!--            <div class="button-text">Settings</div>-->
+<!--        </div>-->
+<!--    </a>-->
 
     <a href="/admin/debug">
         <div class="side-element-2" class:active-button={selectPage === 4}>
