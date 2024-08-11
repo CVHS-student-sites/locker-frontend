@@ -155,4 +155,11 @@
             <div class="button-text">Settings</div>
         </div>
     </a>
+
+    <a href="/admin/settings">
+        <div class="side-element-2" class:active-button={selectPage === 3}>
+            <div class="material-symbols-outlined">code</div>
+            <div class="button-text">Debug</div>
+        </div>
+    </a>
 </div>
