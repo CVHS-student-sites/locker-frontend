@@ -42,6 +42,8 @@
         font-size: 12px;
         font-family: "Montserrat", sans-serif;
         color: #d6d6d6;
+        height: 100%;
+        overflow-y: scroll;
     }
 </style>
 
