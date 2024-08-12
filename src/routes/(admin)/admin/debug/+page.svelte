@@ -3,21 +3,16 @@
     import {onMount} from 'svelte';
     import AnsiToHtml from 'ansi-to-html';
 
-    let logHtml;
+    let logHtml = '';
 
     onMount(async () => {
         let test = await getDebugLogs()
-        console.log(test)
 
         const convert = new AnsiToHtml();
 
         logHtml = test.map(log => convert.toHtml(log)).join('')
-        console.log(logHtml)
     });
-
 </script>
-
-
 <svelte:head>
     <title>Locker - Debug</title>
 </svelte:head>
