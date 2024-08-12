@@ -83,8 +83,8 @@
     </div>
 {:else }
     <div class="no-phones">
-        <h1>No phones on admin pages</h1>
+        <h1>Please No phones on admin pages</h1>
         <img class="sus-gif" src="/sus.gif" alt="highly sus gif">
-        <p>You think I got time to make that work?</p>
+        <p>Developers weren't paid enough.</p>
     </div>
 {/if}
