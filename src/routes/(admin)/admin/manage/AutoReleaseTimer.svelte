@@ -5,8 +5,10 @@
 
     import {fetchAutoReleaseDates, fetchAutoReleaseEnablement, postAutoReleaseEnablement, postAutoReleaseDates} from "$lib/services/admin/mainApi.js";
 
-    let enable;
+    let enable = false;
     let initialEnable;
+
+    let loaded = false;
 
     let preRegister;
     let grade12;
@@ -17,7 +19,6 @@
 
     async function fetchData() {
         let dates = await fetchAutoReleaseDates();
-        console.log(dates);
 
         let enabled = await fetchAutoReleaseEnablement();
         enable = enabled.enabled;
@@ -28,6 +29,8 @@
         grade11 = new Date(dates.grade11);
         grade10 = new Date(dates.grade10);
         grade9 = new Date(dates.grade9);
+
+        loaded = true;
     }
 
     function submitEnablement(){
@@ -47,7 +50,7 @@
 
     onMount(fetchData);
 
-    $: if(enable !== initialEnable){
+    $: if((enable !== initialEnable) && loaded){
         submitEnablement();
         initialEnable = enable;
     }
