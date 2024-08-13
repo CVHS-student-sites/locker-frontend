@@ -5,7 +5,7 @@
 
     import {fetchAutoReleaseDates, fetchAutoReleaseEnablement, postAutoReleaseEnablement, postAutoReleaseDates} from "$lib/services/admin/mainApi.js";
 
-    let enable = false;
+    let enable;
     let initialEnable;
 
     let preRegister;
