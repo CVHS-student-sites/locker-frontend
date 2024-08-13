@@ -34,6 +34,7 @@
         border-radius: 5px;
         box-sizing: border-box;
         padding: 5px;
+        border: 2px dotted #00284d;
     }
 
     .floor-cont {
