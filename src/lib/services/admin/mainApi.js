@@ -1,5 +1,5 @@
 import axios from "axios";
-import { throwErrorToast } from "./throwToast.js";
+import {throwErrorToast} from "./throwToast.js";
 import {downloadFile} from "$lib/services/admin/utils/fileDonwload.js";
 
 export async function fetchOverviewData() {
@@ -17,6 +17,7 @@ export async function fetchEnabledGrades() {
 
     return await response.json();
 }
+
 
 export async function fetchUserData() {
     try {
@@ -89,6 +90,58 @@ export async function postEnabledGrades(data) {
                 withCredentials: true
             }
         );
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
+export async function fetchAutoReleaseDates() {
+    try {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/management/auto-release-dates', {
+            withCredentials: true
+        });
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
+export async function postAutoReleaseDates(data) {
+    try {
+        const response = await axios.post('https://locker-api.cvapps.net/admin/management/auto-release-dates',
+            data,
+            {
+                withCredentials: true
+            });
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
+export async function fetchAutoReleaseEnablement() {
+    try {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/management/auto-release-enablement', {
+            withCredentials: true
+        });
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
+export async function postAutoReleaseEnablement(data) {
+    try {
+        const response = await axios.post('https://locker-api.cvapps.net/admin/management/auto-release-enablement',
+            data,
+            {
+                withCredentials: true
+            });
+        return response.data;
     } catch (error) {
         throwErrorToast("Server error");
         throw error; // Rethrow the error to handle it elsewhere if needed
@@ -253,19 +306,19 @@ export async function postUserFile(formData) {
     }
 }
 
-export async function getUserCSV(){
+export async function getUserCSV() {
     try {
         await downloadFile('users.csv', 'https://locker-api.cvapps.net/admin/csv-action/gen-user-csv');
-    }catch(error){
+    } catch (error) {
         throwErrorToast("Server error");
         throw error;
     }
 }
 
-export async function getLockerCSV(){
+export async function getLockerCSV() {
     try {
         await downloadFile('locker.csv', 'https://locker-api.cvapps.net/admin/csv-action/gen-locker-csv');
-    }catch(error){
+    } catch (error) {
         throwErrorToast("Server error");
         throw error;
     }

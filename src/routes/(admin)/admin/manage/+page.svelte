@@ -1,10 +1,9 @@
 <script>
     import BuildingEdit from "./BuildingEdit.svelte";
-
     import RegisterEdit from "./RegisterEdit.svelte";
-
     import UploadData from "./UploadData.svelte";
     import DownloadCSV from "./DownloadCSV.svelte";
+    import AutoReleaseTimer from "./AutoReleaseTimer.svelte";
 </script>
 
 <svelte:head>
@@ -89,7 +88,7 @@
     <div class="grid-container">
         <div class="grid-item">
             <div class="subcont-main">
-                <div class="subcont-title">Config Restrictions</div>
+                <div class="subcont-title">Restrictions</div>
                 <div class="subcont-order">
                     <RegisterEdit/>
                     <BuildingEdit/>
@@ -100,16 +99,22 @@
 
         <div class="grid-item">
             <div class="subcont-main">
-                <div class="subcont-title">Upload Data</div>
-                <UploadData/>
+                <div class="subcont-title">Auto Release Registration</div>
+                <AutoReleaseTimer/>
             </div>
         </div>
+
         <div class="grid-item">
             <div class="subcont-main">
                 <div class="subcont-title">Download Data</div>
                 <DownloadCSV/>
             </div>
         </div>
-        <div class="grid-item"></div>
+        <div class="grid-item">
+            <div class="subcont-main">
+                <div class="subcont-title">Upload Data</div>
+                <UploadData/>
+            </div>
+        </div>
     </div>
 </div>
