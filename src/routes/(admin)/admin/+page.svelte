@@ -72,8 +72,8 @@
     .grid-element-1 {
         width: 100%;
         height: 100%;
-        background-color: #00284d;
-        /*background-color: #131821;*/
+        /*background-color: #00284d;*/
+        background-color: #0e2034;
         border-radius: 10px;
         padding: 8px 8px;
         box-sizing: border-box;
