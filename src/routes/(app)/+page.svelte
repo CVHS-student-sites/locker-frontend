@@ -131,11 +131,16 @@
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 16px;
         }
 
         p {
             width: 90%;
+            font-size: 14px;
         }
 
         .list-cont {
