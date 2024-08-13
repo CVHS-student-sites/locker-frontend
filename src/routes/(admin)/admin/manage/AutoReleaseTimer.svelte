@@ -4,6 +4,7 @@
     import Switch from "$lib/components/global/Switch.svelte";
 
     import {fetchAutoReleaseDates, fetchAutoReleaseEnablement, postAutoReleaseEnablement, postAutoReleaseDates} from "$lib/services/admin/mainApi.js";
+    import {throwSuccessToast} from "$lib/services/admin/throwToast.js";
 
     let enable = false;
     let initialEnable;
@@ -35,6 +36,7 @@
 
     function submitEnablement(){
         postAutoReleaseEnablement({enabled: enable});
+        throwSuccessToast("Auto Releases Setting Saved");
     }
 
     function submitDates() {
@@ -46,6 +48,7 @@
             preRegister: preRegister.toISOString(),
         }
         postAutoReleaseDates(dateData);
+        throwSuccessToast("Auto Releases Dates Saved");
     }
 
     onMount(fetchData);

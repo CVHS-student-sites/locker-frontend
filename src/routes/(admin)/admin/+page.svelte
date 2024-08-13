@@ -1,9 +1,11 @@
 <script>
     import {writable} from 'svelte/store';
-    import {fetchAreaRestrictions, fetchEnabledGrades, fetchOverviewData} from "$lib/services/admin/mainApi.js";
+    import {fetchAreaRestrictions, fetchEnabledGrades, fetchOverviewData, fetchLockerCounts} from "$lib/services/admin/mainApi.js";
     import {onMount} from "svelte";
 
     import Chart from "$lib/components/admin/Chart.svelte";
+
+    import LockerCount from "$lib/components/admin/LockerCount.svelte";
     import {Stretch} from "svelte-loading-spinners";
 
 
@@ -11,6 +13,7 @@
     let areas;
     let gradeCounts;
     let showChart = false;
+
 
     const gradesStore = writable({});
     const statStore = writable({})
@@ -22,6 +25,8 @@
         statStore.set(await fetchOverviewData());
         gradesStore.set(await fetchEnabledGrades());
         gradeCounts = Object.values($statStore.regUsersByGrade);
+
+
         showData = true;
         showChart = true;
     });
@@ -86,6 +91,10 @@
         background-color: #18181b;
     }
 
+    .side {
+        background-color: #18181b;
+    }
+
     .medium {
         grid-column: span 2;
         background-color: #18181b;
@@ -106,6 +115,42 @@
         font-size: 17px;
         font-family: 'Montserrat', sans-serif;
         color: #d6d6d6;
+    }
+
+    .count-stat-subcont-title {
+        font-size: 17px;
+        font-family: 'Montserrat', sans-serif;
+        color: #d6d6d6;
+    }
+    .count-stat-cont-1 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .count-cont{
+        display: flex;
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+
+    .count-cont::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .count-cont {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
     }
 
     .num-stat-big-text {
@@ -274,7 +319,7 @@
         <div class="grid-element-1">
             <div class="num-stat-cont-1">
                 <div class="num-stat-subcont-title">Verification Queue</div>
-                <div class="num-stat-big-text">{$statStore.verificationQueues ? $statStore.verificationQueues : ''}</div>
+                <div class="num-stat-big-text">{$statStore.verificationQueues ? $statStore.verificationQueues : '0'}</div>
                 <div class="num-stat-subcont-title">Users</div>
             </div>
         </div>
@@ -291,8 +336,14 @@
                 <Chart bind:chartData={gradeCounts}/>
             {/if}
         </div>
-        <div class="grid-element-1">
-            <div class="button-text">list names of new users</div>
+
+        <div class="grid-element-1 side">
+            <div class="count-stat-cont-1">
+                <div class="count-stat-subcont-title">Available Lockers</div>
+                <div class="count-cont">
+                    <LockerCount/>
+                </div>
+            </div>
         </div>
 
         <!--        todo should really be separate components-->

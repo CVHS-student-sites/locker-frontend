@@ -43,6 +43,18 @@ export async function fetchLockerData() {
     }
 }
 
+export async function fetchLockerCounts() {
+    try {
+        const response = await axios.get('https://locker-api.cvapps.net/admin/management/get-locker-statistics', {
+            withCredentials: true
+        });
+        return response.data;
+    } catch (error) {
+        throwErrorToast("Server error");
+        throw error; // Rethrow the error to handle it elsewhere if needed
+    }
+}
+
 export async function fetchAreaRestrictions() {
     try {
         const response = await axios.get('https://locker-api.cvapps.net/admin/management/area-restrictions', {
