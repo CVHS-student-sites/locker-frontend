@@ -32,7 +32,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        flex-shrink: 0;
+        min-width: 0;
         width: 20%;
         background-color: #18181b;
         border-radius: 10px;
