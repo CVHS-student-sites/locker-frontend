@@ -16,8 +16,6 @@
     if (id) {
         studentID = id;
         submit();
-
-        goto($page.url.pathname, { replaceState: true });
     } else {
         showLookup = true;
     }
