@@ -17,9 +17,7 @@
         studentID = id;
         submit();
 
-        const url = new URL($page.url);
-        url.searchParams.delete('id');
-        goto(url.toString(), { replaceState: true });
+        goto($page.url.pathname, { replaceState: true });
     } else {
         showLookup = true;
     }
