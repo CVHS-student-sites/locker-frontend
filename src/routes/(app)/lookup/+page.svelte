@@ -6,6 +6,7 @@
     import {onMount} from "svelte";
     import {page} from "$app/stores";
     import lookup from "./views/lookup.svelte";
+    import {goto} from "$app/navigation";
 
 
     let selected = Lookup;
@@ -17,6 +18,7 @@
     }
 
     function handlepageBack(event) {
+        goto($page.url.pathname, { replaceState: true });
         selected = lookup;
     }
 </script>
