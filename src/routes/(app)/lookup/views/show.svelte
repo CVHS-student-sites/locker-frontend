@@ -8,6 +8,7 @@
     import {quartOut} from 'svelte/easing';
 
     let isVisible = false;
+    let hasId = false;
     export let data;
 
     const dispatch = createEventDispatcher();
@@ -19,6 +20,7 @@
 
     onMount(async () => {
         if ($page.url.searchParams.get('id')) {
+            hasId = true;
             isVisible = false;
             await tick();
             isVisible = true;
@@ -155,7 +157,9 @@
         {/if}
 
         <div class="lookup-cont" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
-            <div on:click={pageBack} class="material-symbols-outlined back-icon">arrow_back</div>
+            {#if !hasId}
+                <div on:click={pageBack} class="material-symbols-outlined back-icon">arrow_back</div>
+            {/if}
 
             <div class="lookup-header">Your locker</div>
             <div class="expand">
