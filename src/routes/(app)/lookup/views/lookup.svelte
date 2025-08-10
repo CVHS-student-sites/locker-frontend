@@ -38,6 +38,21 @@
             input.value = "";
             input.placeholder = "Internal system error";
 
+            dispatch("message", {
+                data: {
+                    Locker: {
+                        lockerNumber: "1015",
+                        location: {
+                            Floor: 1,
+                            Level: "Top",
+                            Building: 2000
+                        },
+                        status: null,
+                        createdAt: "2025-08-09T16:59:55.000Z",
+                        updatedAt: "2025-08-09T16:59:55.000Z"
+                    }
+                }
+            });
         }
     }
 

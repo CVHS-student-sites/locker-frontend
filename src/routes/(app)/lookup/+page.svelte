@@ -1,11 +1,11 @@
 <script>
-
     import Lookup from "./views/lookup.svelte";
     import Show from "./views/show.svelte";
     import {fade} from 'svelte/transition';
     import {quartOut} from 'svelte/easing';
     import {onMount} from "svelte";
     import {page} from "$app/stores";
+    import lookup from "./views/lookup.svelte";
 
 
     let selected = Lookup;
@@ -14,6 +14,10 @@
     function handleMessage(event) {
         selected = Show;
         data = event.detail.data;
+    }
+
+    function handlepageBack(event) {
+        selected = lookup;
     }
 </script>
 
@@ -45,6 +49,7 @@
     <svelte:component
             data={data}
             on:message={handleMessage}
+            on:pageBack={handlepageBack}
             this={selected}
     />
 </div>

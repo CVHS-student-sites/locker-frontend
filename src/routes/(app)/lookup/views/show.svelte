@@ -1,7 +1,7 @@
 <script>
-    import { onMount } from 'svelte';
-    import { confetti } from '@neoconfetti/svelte'
-    import { tick } from 'svelte'
+    import {createEventDispatcher, onMount} from 'svelte';
+    import {confetti} from '@neoconfetti/svelte'
+    import {tick} from 'svelte'
     import {page} from "$app/stores";
 
     import {fade} from 'svelte/transition';
@@ -10,9 +10,15 @@
     let isVisible = false;
     export let data;
 
+    const dispatch = createEventDispatcher();
+
+
+    async function pageBack() {
+        dispatch("pageBack", {});
+    }
 
     onMount(async () => {
-        if($page.url.searchParams.get('id')){
+        if ($page.url.searchParams.get('id')) {
             isVisible = false;
             await tick();
             isVisible = true;
@@ -60,6 +66,7 @@
         padding: 32px;
 
         background-color: #1b2c42;
+        position: relative;
     }
 
     .lookup-header {
@@ -91,6 +98,20 @@
         border: 2px solid #005cb3;
     }
 
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        color: var(--text);
+        user-select: none;
+        cursor: pointer;
+        width: 24px;
+    }
+
+    .back-icon {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+    }
+
     .text {
         color: #d6d6d6;
         font-size: 24px;
@@ -113,6 +134,11 @@
             padding: 0;
             background: unset;
         }
+
+        .back-icon {
+            top: 0;
+            left: 0;
+        }
     }
 
 </style>
@@ -120,13 +146,17 @@
 
 <div class="main">
     <div class="lookup">
+
+
         {#if isVisible}
             <div>
-                <div use:confetti={{ particleCount: 100, force: 0.4, particleSize: 6, duration: 3500, stageWidth: 800, colors: ['#E06C75', '#E5C07B', '#98C379', '#56B6C2', '#61AFEF', '#C678DD']}} />
+                <div use:confetti={{ particleCount: 100, force: 0.4, particleSize: 6, duration: 3500, stageWidth: 800, stageHeight: 5000,  colors: ['#E06C75', '#E5C07B', '#98C379', '#56B6C2', '#61AFEF', '#C678DD']}}/>
             </div>
         {/if}
 
         <div class="lookup-cont" in:fade={{ delay: 0, duration: 700, easing: quartOut}}>
+            <div on:click={pageBack} class="material-symbols-outlined back-icon">arrow_back</div>
+
             <div class="lookup-header">Your locker</div>
             <div class="expand">
                 <div class="item">
