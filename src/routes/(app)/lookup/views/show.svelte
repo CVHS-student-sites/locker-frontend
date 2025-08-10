@@ -150,7 +150,7 @@
 
         {#if isVisible}
             <div>
-                <div use:confetti={{ particleCount: 100, force: 0.4, particleSize: 6, duration: 3500, stageWidth: 800, stageHeight: 5000,  colors: ['#E06C75', '#E5C07B', '#98C379', '#56B6C2', '#61AFEF', '#C678DD']}}/>
+                <div use:confetti={{ particleCount: 100, force: 0.4, particleSize: 6, duration: 3500, stageWidth: 800, colors: ['#E06C75', '#E5C07B', '#98C379', '#56B6C2', '#61AFEF', '#C678DD']}}/>
             </div>
         {/if}
 

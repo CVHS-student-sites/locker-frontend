@@ -18,8 +18,9 @@
     }
 
     function handlepageBack(event) {
-        goto($page.url.pathname, { replaceState: true });
         selected = lookup;
+        goto($page.url.pathname, { replaceState: true });
+
     }
 </script>
 
