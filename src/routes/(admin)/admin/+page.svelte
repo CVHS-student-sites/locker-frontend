@@ -294,6 +294,11 @@
         'opsz' 24
     }
 
+    .acknowledgment{
+        align-items: center;
+
+    }
+
 </style>
 
 
@@ -418,8 +423,8 @@
                 </div>
             </div>
         </div>
-        <div class="grid-element-1 medium">
-            <div class="button-text">system stats like uptime, ram usage, db size</div>
+        <div class="grid-element-1 medium acknowledgment">
+            <div class="button-text">System conceptualized by Marc Hyeler and David Kahdian</div>
         </div>
     </div>
 </div>
